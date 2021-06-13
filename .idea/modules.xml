@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/vuexy.iml" filepath="$PROJECT_DIR$/.idea/vuexy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/uib-portal.iml" filepath="$PROJECT_DIR$/.idea/uib-portal.iml" />
     </modules>
   </component>
 </project>
