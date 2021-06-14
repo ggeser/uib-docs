@@ -64,7 +64,7 @@
               icon="HelpCircleIcon"
               size="18"
               class="position-absolute"
-              style="top: 10; right: 10;"
+              style="top: 10px; right: 10px;"
             />
           </b-alert>
 
@@ -277,6 +277,41 @@ export default {
     login() {
       this.$refs.loginForm.validate().then(success => {
         if (success) {
+            //
+            // this.$http.post('/api/auth/login', {
+            //     email: this.userEmail,
+            //     password: this.password,
+            // })
+            //     .then(response => {
+            //         const { userData } = response.data
+            //         useJwt.setToken(response.data.accessToken)
+            //         useJwt.setRefreshToken(response.data.refreshToken)
+            //         localStorage.setItem('userData', JSON.stringify(userData))
+            //         this.$ability.update(userData.ability)
+            //
+            //         // ? This is just for demo purpose as well.
+            //         // ? Because we are showing eCommerce app's cart items count in navbar
+            //         this.$store.commit('app-ecommerce/UPDATE_CART_ITEMS_COUNT', userData.extras.eCommerceCartItemsCount)
+            //
+            //         // ? This is just for demo purpose. Don't think CASL is role based in this case, we used role in if condition just for ease
+            //         this.$router.replace(getHomeRouteForLoggedInUser(userData.role))
+            //             .then(() => {
+            //                 this.$toast({
+            //                     component: ToastificationContent,
+            //                     position: 'top-right',
+            //                     props: {
+            //                         title: `Welcome ${userData.fullName || userData.username}`,
+            //                         icon: 'CoffeeIcon',
+            //                         variant: 'success',
+            //                         text: `You have successfully logged in as ${userData.role}. Now you can start to explore!`,
+            //                     },
+            //                 })
+            //             })
+            //     })
+            //     .catch(error => {
+            //         this.$refs.loginForm.setErrors(error.response.data.error)
+            //     })
+
           useJwt.login({
             email: this.userEmail,
             password: this.password,
@@ -310,6 +345,8 @@ export default {
             .catch(error => {
               this.$refs.loginForm.setErrors(error.response.data.error)
             })
+
+
         }
       })
     },
