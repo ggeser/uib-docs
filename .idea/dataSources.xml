@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MariaDB - uib-db@127.0.0.1" uuid="e9e23fbd-dcf7-4fb0-89ce-44740a2c1c4e">
+    <data-source source="LOCAL" name="uib-db@localhost" uuid="0d1ceb19-d6b5-46bf-8432-b2088bfac845">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://127.0.0.1:3306/uib-db</jdbc-url>
+      <jdbc-url>jdbc:mariadb://localhost:3306/uib-db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
-      <driver-properties>
-        <property name="serverTimezone" value="GMT" />
-      </driver-properties>
     </data-source>
   </component>
 </project>
