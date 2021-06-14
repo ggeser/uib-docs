@@ -5,3 +5,4 @@
 5. spatie
 6. Sanctum
 7. GitHub
+8. Axios - отправка команд между front и back
