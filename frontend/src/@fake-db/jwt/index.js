@@ -162,6 +162,7 @@ mock.onPost('/jwt/refresh-token').reply(request => {
   const { refreshToken } = JSON.parse(request.data)
 
   try {
+
     const { id } = jwt.verify(refreshToken, jwtConfig.refreshTokenSecret)
 
     const userData = { ...data.users.find(user => user.id === id) }

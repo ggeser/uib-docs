@@ -36,10 +36,29 @@ class AuthController extends Controller
             $tokenResult = $user->createToken('Personal Access Token');
             $token = $tokenResult->plainTextToken;
 
+
+            $userData = array(
+                "email" => $user->email,
+                //"password" => $user->password,
+                "username" => $user->name,
+                "fullName" => $user->name,
+                "avatar" => null,
+                "role" => "admin",
+                "ability" => array(array(
+                    "action" => "manage",
+                    "subject" => "all",
+                ))
+            );
+
             return response()->json([
                 'message' => 'Successfully created user!',
+                'userData'=> $userData,
                 'accessToken' => $token,
+                'refreshToken' => $token,
+                'userid' => $user->id,
             ], 201);
+
+
         } else {
             return response()->json(['error' => 'Provide proper details']);
         }

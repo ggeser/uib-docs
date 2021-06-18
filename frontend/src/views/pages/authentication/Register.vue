@@ -214,6 +214,7 @@ import { required, email } from '@validations'
 import { togglePasswordVisibility } from '@core/mixins/ui/forms'
 import store from '@/store/index'
 import useJwt from '@/auth/jwt/useJwt'
+import jwt from "jsonwebtoken";
 
 export default {
   components: {
@@ -238,6 +239,7 @@ export default {
   mixins: [togglePasswordVisibility],
   data() {
     return {
+        fullName: ' ',
       status: '',
       username: '',
       userEmail: '',
@@ -271,7 +273,7 @@ export default {
             //     email: this.userEmail,
             //     password: this.password,
             //     c_password: this.password
-            // }).then(res => console.log(res))
+            // }).then(response => {
 
             useJwt.register({
                 name: this.username,
@@ -280,15 +282,36 @@ export default {
                 c_password: this.password,
             })
                 .then(response => {
-                    console.log(res)
+
+                    // const jwtConfig = {
+                    //     secret: 'dd5f3089-40c3-403d-af14-d0c228b05cb4',
+                    //     refreshTokenSecret: '7c4c1c50-3230-45bf-9eae-c9b2e401c767',
+                    //     expireTime: '10m',
+                    //     refreshTokenExpireTime: '10m',
+                    // }
+
+                    console.log(response.data)
                     useJwt.setToken(response.data.accessToken)
+                    // const accessToken = jwt.sign({ id: response.data.userid }, jwtConfig.secret, { expiresIn: jwtConfig.expireTime })
+                    // useJwt.setToken(accessToken)
+
                     useJwt.setRefreshToken(response.data.refreshToken)
+                    // console.log(response.data.userid)
+                    // console.log(jwtConfig.refreshTokenSecret)
+                    // console.log(jwtConfig.refreshTokenExpireTime)
+                    // const refreshToken = jwt.sign({ id: response.data.userid }, jwtConfig.refreshTokenSecret, {
+                    //     expiresIn: jwtConfig.refreshTokenExpireTime,
+                    // })
+                    // useJwt.setRefreshToken(refreshToken)
+
                     localStorage.setItem('userData', JSON.stringify(response.data.userData))
                     this.$ability.update(response.data.userData.ability)
                     this.$router.push('/')
                 })
                 .catch(error => {
-                    this.$refs.registerForm.setErrors(error.response.data.error)
+                    // console.log(error.response.data.error)
+                    console.log(error)
+                    //this.$refs.registerForm.setErrors(error.response.data.error)
                 })
 
           // useJwt.register({
