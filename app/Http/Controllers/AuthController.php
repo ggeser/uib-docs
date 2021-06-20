@@ -36,6 +36,8 @@ class AuthController extends Controller
             $tokenResult = $user->createToken('Personal Access Token');
             $token = $tokenResult->plainTextToken;
 
+            $tokenResult = $user->createToken('Personal Refresh Token');
+            $refreshToken = $tokenResult->plainTextToken;
 
             $userData = array(
                 "email" => $user->email,
@@ -54,7 +56,7 @@ class AuthController extends Controller
                 'message' => 'Successfully created user!',
                 'userData'=> $userData,
                 'accessToken' => $token,
-                'refreshToken' => $token,
+                'refreshToken' => $refreshToken,
                 'userid' => $user->id,
             ], 201);
 
@@ -75,11 +77,22 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        error_log('lara login 1');
+        error_log('$request->remember_me = '. $request->remember_me);
+
+        $status_remember_me = false;
+        if ( $request->remember_me) {
+            $status_remember_me = true;
+        }
+
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
-            'remember_me' => 'boolean'
+            $status_remember_me => 'boolean',
         ]);
+
+        error_log('lara login 2');
+
 
         $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials)) {
@@ -89,13 +102,35 @@ class AuthController extends Controller
         }
 
         $user = $request->user();
+
+        $userData = array(
+            "email" => $user->email,
+            //"password" => $user->password,
+            "username" => $user->name,
+            "fullName" => $user->name,
+            "avatar" => null,
+            "role" => "admin",
+            "ability" => array(array(
+                "action" => "manage",
+                "subject" => "all",
+            ))
+        );
+
+
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->plainTextToken;
 
+        $tokenResult = $user->createToken('Personal Refresh Token');
+        $refreshToken = $tokenResult->plainTextToken;
+
         return response()->json([
+            'message' => 'Successfully login user!',
+            'userData'=> $userData,
             'accessToken' => $token,
-            'token_type' => 'Bearer',
-        ]);
+            'refreshToken' => $refreshToken,
+            'userid' => $user->id,
+        ], 201);
+
     }
 
 
@@ -117,6 +152,8 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
+        error_log("logout");
+
         $request->user()->tokens()->delete();
 
         return response()->json([

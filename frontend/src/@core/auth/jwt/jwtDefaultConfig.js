@@ -5,10 +5,10 @@ export default {
   //   refreshEndpoint: '/jwt/refresh-token',
   //   logoutEndpoint: '/jwt/logout',
 
-    loginEndpoint: '/api/auth/login',///t
-    registerEndpoint: '/api/auth/register',
-    refreshEndpoint: '/api/auth/refresh-token',
-    logoutEndpoint: '/api/auth/logout',
+    loginEndpoint:      '/api/auth/login',///t
+    registerEndpoint:   '/api/auth/register',
+    refreshEndpoint:    '/api/auth/refresh-token',
+    logoutEndpoint:     '/api/auth/logout',
 
   // This will be prefixed in authorization header with token
   // e.g. Authorization: Bearer <token>

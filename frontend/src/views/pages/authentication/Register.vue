@@ -311,7 +311,7 @@ export default {
                 .catch(error => {
                     // console.log(error.response.data.error)
                     console.log(error)
-                    //this.$refs.registerForm.setErrors(error.response.data.error)
+                    //this.$refs.registerForm.setErrors(error.response.data.error)///t
                 })
 
           // useJwt.register({
