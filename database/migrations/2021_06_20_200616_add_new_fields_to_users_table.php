@@ -15,10 +15,10 @@ class AddNewFieldsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            $table->string('fullName')->after('name');
-            $table->string('avatar')->after('remember_token');
+            $table->string('fullName')->nullable()->after('name');
+            $table->string('avatar')->nullable()->after('remember_token');
             $table->timestamp('birthday')->nullable()->after('avatar');
-            $table->string('dolgnost')->after('birthday');
+            $table->string('dolgnost')->nullable()->after('birthday');
             $table->string('phonenumber')->unique()->nullable()->after('email');
 
         });
