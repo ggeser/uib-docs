@@ -239,7 +239,7 @@ export default {
   mixins: [togglePasswordVisibility],
   data() {
     return {
-        fullName: ' ',
+      fullName: '',
       status: '',
       username: '',
       userEmail: '',
