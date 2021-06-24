@@ -19,7 +19,6 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        error_log('lara register 1');
 
         $request->validate([
             'name' => 'required|string',
@@ -28,22 +27,15 @@ class AuthController extends Controller
             'c_password' => 'required|same:password'
         ]);
 
-        error_log('lara register 2');
-
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-           // 'avatar' => "",
-           // 'dolgnost' => "",
         ]);
 
-        error_log('lara register 3');
-
         if ($user->save()) {
-            error_log('lara register 4');
-            $user->assignRole('super-admin');
-            error_log('lara register 5');
+
+            $user->assignRole('basic-user');
 
             $tokenResult = $user->createToken('Personal Access Token');
             $token = $tokenResult->plainTextToken;
