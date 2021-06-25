@@ -110,11 +110,36 @@ class AuthController extends Controller
         error_log('lara login 3 getRoleNames '. $user->getRoleNames()[0]);
 
         $fullName = $user->familia . " " . $user->name . " " . $user->otchestvo;
-        $fullName = $user->name;
-        error_log('lara login 4 $fullName '. $fullName);
 
         $role = $user->getRoleNames()[0];
-        $role = "admin"; ///t
+
+        $role = 'admin';            ///t пока отправляю во фронт эти role и ability
+        $cur_ability = array(array(
+            "action" => "manage",
+            "subject" => "all",
+        ));
+
+//        if ($role === "super-admin") {
+//            $role = "admin";
+//            $cur_ability = array(array(
+//                "action" => "manage",
+//                "subject" => "all",
+//            ));
+//        }
+//        else {
+//            $role = "client";
+//            $cur_ability = array( ///t
+//                array(
+//                    "action" => "read",
+//                    "subject" => "ACL",
+//                ),
+//                array(
+//                    "action" => "read",
+//                    "subject" => "Auth",
+//                ),
+//            );
+//        }
+
         error_log('lara login 5 $role '. $role);
 
         $userData = array(
@@ -124,10 +149,7 @@ class AuthController extends Controller
             "fullName" => $fullName,
             "avatar" => $user->avatar,
             "role" => $role,
-            "ability" => array(array( ///t
-                "action" => "manage",
-                "subject" => "all",
-            ))
+            "ability" => $cur_ability,
         );
 
 
