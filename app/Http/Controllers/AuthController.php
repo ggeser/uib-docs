@@ -107,14 +107,24 @@ class AuthController extends Controller
 
         $user = $request->user();
 
+        error_log('lara login 3 getRoleNames '. $user->getRoleNames()[0]);
+
+        $fullName = $user->familia . " " . $user->name . " " . $user->otchestvo;
+        $fullName = $user->name;
+        error_log('lara login 4 $fullName '. $fullName);
+
+        $role = $user->getRoleNames()[0];
+        $role = "admin"; ///t
+        error_log('lara login 5 $role '. $role);
+
         $userData = array(
             "email" => $user->email,
             //"password" => $user->password,
             "username" => $user->name,
-            "fullName" => $user->name,
-            "avatar" => null,
-            "role" => "admin",
-            "ability" => array(array(
+            "fullName" => $fullName,
+            "avatar" => $user->avatar,
+            "role" => $role,
+            "ability" => array(array( ///t
                 "action" => "manage",
                 "subject" => "all",
             ))
