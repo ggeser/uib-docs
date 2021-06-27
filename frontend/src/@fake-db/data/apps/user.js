@@ -662,6 +662,9 @@ const data = {
 // GET: Return Users
 // ------------------------------------------------
 mock.onGet('/apps/user/users').reply(config => {
+
+    console.log("mock.onGet('/apps/user/users')")
+
   // eslint-disable-next-line object-curly-newline
   const {
     q = '',

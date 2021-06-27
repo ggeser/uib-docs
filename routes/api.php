@@ -13,8 +13,10 @@ use App\Http\Controllers\AuthController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+error_log('@@ api.php');
 
 Route::group(['prefix' => 'auth'], function () {
+
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);
 
@@ -23,3 +25,7 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('user', [AuthController::class, 'user']);
     });
 });
+
+Route::get('/user/users', [AuthController::class, 'getUsers']); //  /apps/user/users
+
+

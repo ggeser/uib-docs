@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Validator;
+use Illuminate\Support\Facades\Log;
+
 
 class AuthController extends Controller
 {
@@ -195,6 +197,71 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Successfully logged out'
         ]);
+
+    }
+
+
+    /**
+     * Get users list
+     *
+     *
+     */
+
+    public function getUsers(Request $request)
+    {
+        error_log('@@ lara getUsers 1');
+
+        $testPar = "testPar";
+        error_log('@@ testPar = '. $testPar);
+
+        error_log('@@ q = '. $request->q);
+        error_log('@@ perPage = '. $request->perPage);
+
+
+//        q = '',
+//    perPage = 10,
+//    page = 1,
+//    sortBy = 'id',
+//    sortDesc = false,
+//    role = null,
+//    plan = null,
+//    status = null,
+
+//        $request->validate([
+//            'email' => 'required|string|email',
+//            'password' => 'required|string',
+//            $status_remember_me => 'boolean',
+//        ]);
+
+        error_log('@@ lara getUsers 2');
+
+
+//
+//        $userData = array(
+//            "email" => $user->email,
+//            //"password" => $user->password,
+//            "username" => $user->name,
+//            "fullName" => $fullName,
+//            "avatar" => $user->avatar,
+//            "role" => $role,
+//            "ability" => $cur_ability,
+//        );
+//
+//        return response()->json([
+//            'message' => 'Successfully login user!',
+//            'userData'=> $userData,
+//            'accessToken' => $token,
+//            'refreshToken' => $refreshToken,
+//            'userid' => $user->id,
+//        ], 201);
+//
+////        return [
+////        200,
+////        {
+////            users: paginateArray(sortedData, perPage, page),
+////          total: filteredData.length,
+////        },
+////        ]
 
     }
 }
