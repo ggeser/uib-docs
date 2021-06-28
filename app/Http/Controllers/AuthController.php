@@ -211,12 +211,29 @@ class AuthController extends Controller
     {
         error_log('@@ lara getUsers 1');
 
-        $testPar = "testPar";
-        error_log('@@ testPar = '. $testPar);
+        $userDB = User::all();
 
-        error_log('@@ q = '. $request->q);
-        error_log('@@ perPage = '. $request->perPage);
+        foreach ($userDB as $user) {
+            $user["role"] = $user->getRoleNames()[0];
+        }
 
+
+        $users = array(
+            array(
+                //"email" => $user->email,
+                "id"=> $userDB[1]->id,
+                "fullName"=> $userDB[1]->name,
+                "company"=> "Yotz PVT LTD",
+                "role"=> "editor",
+                "username"=> "gslixby0",
+                "country"=> "El Salvador",
+                "contact"=> "(479) 232-9151",
+                "email"=> "gslixby0@abc.net.au",
+                "currentPlan"=> "enterprise",
+                "status"=> "inactive",
+                "avatar"=> "",
+            ),
+        );
 
 //        q = '',
 //    perPage = 10,
@@ -227,41 +244,18 @@ class AuthController extends Controller
 //    plan = null,
 //    status = null,
 
-//        $request->validate([
-//            'email' => 'required|string|email',
-//            'password' => 'required|string',
-//            $status_remember_me => 'boolean',
-//        ]);
+        return response()->json([
+            'users' => $userDB, // $users  $userDB
+            'total'=> count($userDB),
+        ], 200);
 
-        error_log('@@ lara getUsers 2');
-
-
-//
-//        $userData = array(
-//            "email" => $user->email,
-//            //"password" => $user->password,
-//            "username" => $user->name,
-//            "fullName" => $fullName,
-//            "avatar" => $user->avatar,
-//            "role" => $role,
-//            "ability" => $cur_ability,
-//        );
-//
-//        return response()->json([
-//            'message' => 'Successfully login user!',
-//            'userData'=> $userData,
-//            'accessToken' => $token,
-//            'refreshToken' => $refreshToken,
-//            'userid' => $user->id,
-//        ], 201);
-//
-////        return [
-////        200,
-////        {
-////            users: paginateArray(sortedData, perPage, page),
-////          total: filteredData.length,
-////        },
-////        ]
+//        return [
+//        200,
+//        {
+//            users: paginateArray(sortedData, perPage, page),
+//          total: filteredData.length,
+//        },
+//        ]
 
     }
 }
