@@ -51,11 +51,11 @@
             >
               <b-form-input
                 id="full-name"
-                v-model="userData.fullName"
+                v-model="userData.name"
                 autofocus
                 :state="getValidationState(validationContext)"
                 trim
-                placeholder="John Doe"
+                placeholder="ФИО"
               />
 
               <b-form-invalid-feedback>
@@ -71,12 +71,12 @@
             rules="required|alpha-num"
           >
             <b-form-group
-              label="Username"
+              label="Login"
               label-for="username"
             >
               <b-form-input
                 id="username"
-                v-model="userData.username"
+                v-model="userData.login"
                 :state="getValidationState(validationContext)"
                 trim
               />
