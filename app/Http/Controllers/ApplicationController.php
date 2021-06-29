@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+//use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -88,6 +90,51 @@ class ApplicationController extends Controller
             $userDB["role"] = $userDB->getRoleNames()[0];
 
             return response()->json( $userDB, 200 );
+        }
+        else {
+            return response()->json([], 404);
+        }
+    }
+
+
+    /**
+     * add User
+     *
+     *
+     */
+
+    public function addUser(Request $request)
+    {
+        error_log('@@ lara addUser');
+
+        $userdata = $request["user"];
+        // error_log('$request '. $userdata);
+
+        $request->validate([
+            '*.name' => 'required|string',
+            '*.email' => 'required|string|unique:users',
+            //'password' => 'required|string',
+            //'c_password' => 'required|same:password'
+        ]);
+
+        $user = new User([
+            'name' => $userdata['name'],
+            'email' => $userdata['email'],
+            //'password' => bcrypt($request->password),
+        ]);
+
+        if ($user->save()) {
+
+            $user->assignRole('basic-user');
+
+            $tokenResult = $user->createToken('Personal Access Token');
+            $token = $tokenResult->plainTextToken;
+
+            $tokenResult = $user->createToken('Personal Refresh Token');
+            $refreshToken = $tokenResult->plainTextToken;
+
+
+            return response()->json( $user, 200 );
         }
         else {
             return response()->json([], 404);

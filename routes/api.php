@@ -27,7 +27,8 @@ Route::group(['prefix' => 'auth'], function () {
     });
 });
 
-Route::get('/apps/user/users'       , [ApplicationController::class, 'getUsers'     ]);
-Route::get('/apps/user/users/{id}'  , [ApplicationController::class, 'getUserById'  ]);
+Route::get( '/apps/user/users'      , [ApplicationController::class, 'getUsers'     ]);
+Route::post('/apps/user/users'      , [ApplicationController::class, 'addUser'      ]);
+Route::get( '/apps/user/users/{id}' , [ApplicationController::class, 'getUserById'  ]);
 
 
