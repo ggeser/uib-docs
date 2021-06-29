@@ -76,11 +76,11 @@ export default [
       },
       {
         title: 'View',
-        route: { name: 'apps-users-view', params: { id: 21 } },
+        route: { name: 'apps-users-view', params: { id: 1 } },
       },
       {
         title: 'Edit',
-        route: { name: 'apps-users-edit', params: { id: 21 } },
+        route: { name: 'apps-users-edit', params: { id: 1 } },
       },
     ],
   },

@@ -14,7 +14,7 @@ export default function useUsersList() {
 
   // Table Handlers
   const tableColumns = [
-    { key: 'user', sortable: true }, //
+    { key: 'user', sortable: true },
     { key: 'email', sortable: true },
     { key: 'role', sortable: true },
     {
