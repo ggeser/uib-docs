@@ -49,6 +49,11 @@ export default {
     /* eslint-disable global-require */
     const locales = [
       {
+          locale: 'ru',
+          img: require('@/assets/images/flags/ru.png'),
+          name: 'Русский',
+      },
+      {
         locale: 'en',
         img: require('@/assets/images/flags/en.png'),
         name: 'English',

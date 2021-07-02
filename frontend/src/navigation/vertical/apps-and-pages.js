@@ -71,6 +71,10 @@ export default [
     icon: 'UserIcon',
     children: [
       {
+          title: 'Struct',
+          route: 'apps-users-struct',
+      },
+      {
         title: 'List',
         route: 'apps-users-list',
       },

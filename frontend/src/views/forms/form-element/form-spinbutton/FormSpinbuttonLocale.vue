@@ -62,6 +62,7 @@ export default {
       value: 0,
       locale: 'fr-CA',
       locales: [
+        { value: 'ru', text: 'Русский' },
         { value: 'en', text: 'English' },
         { value: 'de', text: 'German' },
         { value: 'fr-CA', text: 'French (Canadian)' },
