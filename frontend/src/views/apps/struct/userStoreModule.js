@@ -9,7 +9,7 @@ export default {
     fetchUsers(ctx, queryParams) {
       return new Promise((resolve, reject) => {
         axios
-          .get('/api/apps/user/users', { params: queryParams })
+          .get('/api/apps/user/structs', { params: queryParams })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -30,6 +30,5 @@ export default {
           .catch(error => reject(error))
       })
     },
-
   },
 }

@@ -181,14 +181,30 @@ export default [
     },
   },
 
+
+    // *===============================================---*
+    // *--------- STRUCT ---- ---------------------------------------*
+    // *===============================================---*
+    {
+        path: '/apps/structs/list',
+        name: 'apps-structs-list',
+        component: () => import('@/views/apps/struct/users-list/UsersList.vue'),
+    },
+    {
+        path: '/apps/structs/view/:id',
+        name: 'apps-structs-view',
+        component: () => import('@/views/apps/struct/users-view/UsersView.vue'),
+    },
+    {
+        path: '/apps/structs/edit/:id',
+        name: 'apps-structs-edit',
+        component: () => import('@/views/apps/struct/users-edit/UsersEdit.vue'),
+    },
+
+
   // *===============================================---*
   // *--------- USER ---- ---------------------------------------*
   // *===============================================---*
-  {
-    path: '/apps/users/struct',
-    name: 'apps-users-struct',
-    component: () => import('@/views/apps/user/users-struct/UsersStruct.vue'),
-  },
   {
     path: '/apps/users/list',
     name: 'apps-users-list',

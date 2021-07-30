@@ -20,6 +20,32 @@
     <strong>We're sorry but Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
   </noscript>
 
+{{--  <div class="container">--}}
+{{--      <div class="card">--}}
+{{--          <div class="row">--}}
+{{--              <div class="card-body">--}}
+{{--                  @foreach ($structs as $struct)--}}
+{{--                      <div class="col-md-12">--}}
+{{--                          <h3>{{ $struct->ShortOrgName }}</h3>--}}
+{{--                          <hr />--}}
+{{--                          <div class="row">--}}
+{{--                              @foreach($struct->children as $cats)--}}
+{{--                                  <div class="col-md-4">--}}
+{{--                                      <h4>{{ $cats->ShortOrgName }}</h4>--}}
+{{--                                      <hr />--}}
+{{--                                      @foreach($cats->children as $cat)--}}
+{{--                                          <h5>{{$cat->ShortOrgName}}</h5>--}}
+{{--                                      @endforeach--}}
+{{--                                  </div>--}}
+{{--                              @endforeach--}}
+{{--                          </div>--}}
+{{--                      </div>--}}
+{{--                  @endforeach--}}
+{{--              </div>--}}
+{{--          </div>--}}
+{{--      </div>--}}
+{{--  </div>--}}
+
   <div id="app">
 
   </div>

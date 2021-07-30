@@ -2,22 +2,22 @@
 
   <div>
 
-<!--    <user-struct-add-new-->
-<!--      :is-add-new-user-sidebar-active.sync="isAddNewUserSidebarActive"-->
-<!--      :role-options="roleOptions"-->
-<!--      :plan-options="planOptions"-->
-<!--      @refetch-data="refetchData"-->
-<!--    />-->
+    <user-list-add-new
+      :is-add-new-user-sidebar-active.sync="isAddNewUserSidebarActive"
+      :role-options="roleOptions"
+      :plan-options="planOptions"
+      @refetch-data="refetchData"
+    />
 
-<!--    &lt;!&ndash; Filters &ndash;&gt;-->
-<!--    <users-struct-filters-->
-<!--      :role-filter.sync="roleFilter"-->
-<!--      :plan-filter.sync="planFilter"-->
-<!--      :status-filter.sync="statusFilter"-->
-<!--      :role-options="roleOptions"-->
-<!--      :plan-options="planOptions"-->
-<!--      :status-options="statusOptions"-->
-<!--    />-->
+    <!-- Filters -->
+    <users-list-filters
+      :role-filter.sync="roleFilter"
+      :plan-filter.sync="planFilter"
+      :status-filter.sync="statusFilter"
+      :role-options="roleOptions"
+      :plan-options="planOptions"
+      :status-options="statusOptions"
+    />
 
     <!-- Table Container Card -->
     <b-card
@@ -71,7 +71,7 @@
       </div>
 
       <b-table
-        ref="refUserstructTable"
+        ref="refUserListTable"
         class="position-relative"
         :items="fetchUsers"
         responsive
@@ -90,18 +90,18 @@
               <b-avatar
                 size="32"
                 :src="data.item.avatar"
-                :text="avatarText(data.item.name)"
+                :text="avatarText(data.item.ShortOrgName)"
                 :variant="`light-${resolveUserRoleVariant(data.item.role)}`"
-                :to="{ name: 'apps-users-view', params: { id: data.item.id } }"
+                :to="{ name: 'apps-structs-view', params: { id: data.item.id } }"
               />
             </template>
             <b-link
-              :to="{ name: 'apps-users-view', params: { id: data.item.id } }"
+              :to="{ name: 'apps-structs-view', params: { id: data.item.id } }"
               class="font-weight-bold d-block text-nowrap"
             >
-              {{ data.item.name }}
+              {{ data.item.ShortOrgName }}
             </b-link>
-            <small class="text-muted">@{{ data.item.login }}</small>
+            <small class="text-muted">@{{ data.item.INN }}</small>
           </b-media>
         </template>
 
@@ -220,15 +220,15 @@ import vSelect from 'vue-select'
 import store from '@/store'
 import { ref, onUnmounted } from '@vue/composition-api'
 import { avatarText } from '@core/utils/filter'
-import UsersStructFilters from './UsersStructFilters.vue'
-import useUsersStruct from './useUsersStruct'
+import UsersListFilters from './UsersListFilters.vue'
+import useUsersList from './useUsersList'
 import userStoreModule from '../userStoreModule'
-import UserStructAddNew from './UserStructAddNew.vue'
+import UserListAddNew from './UserListAddNew.vue'
 
 export default {
   components: {
-    UsersStructFilters,
-    UserStructAddNew,
+    UsersListFilters,
+    UserListAddNew,
 
     BCard,
     BRow,
@@ -291,7 +291,7 @@ export default {
       searchQuery,
       sortBy,
       isSortDirDesc,
-      refUserStructTable,
+      refUserListTable,
       refetchData,
 
       // UI
@@ -303,7 +303,7 @@ export default {
       roleFilter,
       planFilter,
       statusFilter,
-    } = useUsersStruct()
+    } = useUsersList()
 
     return {
 
@@ -320,7 +320,7 @@ export default {
       searchQuery,
       sortBy,
       isSortDirDesc,
-      refUserStructTable,
+      refUserListTable,
       refetchData,
 
       // Filter

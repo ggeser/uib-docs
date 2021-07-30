@@ -17,19 +17,19 @@ class CreateStructsTable extends Migration
             $table->id();
             //$table->integer('parrentID')->unique(); //указатель на вышестоящего агента
 
-            $table->string('comment');      //полное наименование организации
+            $table->string('comment')->nullable();      //полное наименование организации
 
-            $table->string('INN')->unique();    //инн
-            $table->string('KPP')->unique();    //кпп
-            $table->string('OGRN')->unique();   //огрн
-            $table->string('FullOrgName');      //полное наименование организации
-            $table->string('ShortOrgName');     //краткое наименование организации
-            $table->string('UrAddress');        //юридический адрес
-            $table->string('FactAddress');      //фактический адрес
-            $table->string('dolgnostRuk');      //должность руководителя
-            $table->string('nameRuk');          //имя руководителя
-            $table->string('familiaRuk');       //фамилия руководителя
-            $table->string('otchestvoRuk');     //отчество руководителя
+            $table->string('INN')->unique()->nullable();    //инн
+            $table->string('KPP')->unique()->nullable();    //кпп
+            $table->string('OGRN')->unique()->nullable();   //огрн
+            $table->string('FullOrgName')->nullable();      //полное наименование организации
+            $table->string('ShortOrgName')->nullable();     //краткое наименование организации
+            $table->string('UrAddress')->nullable();        //юридический адрес
+            $table->string('FactAddress')->nullable();      //фактический адрес
+            $table->string('dolgnostRuk')->nullable();      //должность руководителя
+            $table->string('nameRuk')->nullable();          //имя руководителя
+            $table->string('familiaRuk')->nullable();       //фамилия руководителя
+            $table->string('otchestvoRuk')->nullable();     //отчество руководителя
 
             $table->nestedSet();
             $table->timestamps();

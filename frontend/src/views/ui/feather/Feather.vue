@@ -296,6 +296,7 @@ export default {
         'SquareIcon',
         'StarIcon',
         'StopCircleIcon',
+        'StructIcon',
         'SunIcon',
         'SunriseIcon',
         'SunsetIcon',

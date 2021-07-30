@@ -6,11 +6,11 @@ import { title } from '@core/utils/filter'
 import { useToast } from 'vue-toastification/composition'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 
-export default function useUsersStruct() {
+export default function useUsersList() {
   // Use toast
   const toast = useToast()
 
-  const refUserStructTable = ref(null)
+  const refUserListTable = ref(null)
 
   // Table Handlers
   const tableColumns = [
@@ -38,7 +38,7 @@ export default function useUsersStruct() {
   const statusFilter = ref(null)
 
   const dataMeta = computed(() => {
-    const localItemsCount = refUserStructTable.value ? refUserStructTable.value.localItems.length : 0
+    const localItemsCount = refUserListTable.value ? refUserListTable.value.localItems.length : 0
     return {
       from: perPage.value * (currentPage.value - 1) + (localItemsCount ? 1 : 0),
       to: perPage.value * (currentPage.value - 1) + localItemsCount,
@@ -47,7 +47,7 @@ export default function useUsersStruct() {
   })
 
   const refetchData = () => {
-    refUserStructTable.value.refresh()
+    refUserListTable.value.refresh()
   }
 
   watch([currentPage, perPage, searchQuery, roleFilter, planFilter, statusFilter], () => {
@@ -76,7 +76,7 @@ export default function useUsersStruct() {
         toast({
           component: ToastificationContent,
           props: {
-            title: 'Error fetching users Struct',
+            title: 'Error fetching users list',
             icon: 'AlertTriangleIcon',
             variant: 'danger',
           },
@@ -124,7 +124,7 @@ export default function useUsersStruct() {
     searchQuery,
     sortBy,
     isSortDirDesc,
-    refUserStructTable,
+    refUserListTable,
 
     resolveUserRoleVariant,
     resolveUserRoleIcon,

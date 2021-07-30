@@ -67,13 +67,27 @@ export default [
     ],
   },
   {
+    title: 'Struct',
+    icon: 'CommandIcon',
+    children: [
+        {
+            title: 'Tree',
+            route: 'apps-structs-list',
+        },
+        {
+            title: 'View',
+            route: { name: 'apps-structs-view', params: { id: 1 } },
+        },
+        {
+            title: 'Edit',
+            route: { name: 'apps-structs-edit', params: { id: 1 } },
+        },
+    ],
+  },
+  {
     title: 'User',
     icon: 'UserIcon',
     children: [
-      {
-          title: 'Struct',
-          route: 'apps-users-struct',
-      },
       {
         title: 'List',
         route: 'apps-users-list',
