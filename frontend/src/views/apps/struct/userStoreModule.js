@@ -9,7 +9,7 @@ export default {
     fetchUsers(ctx, queryParams) {
       return new Promise((resolve, reject) => {
         axios
-          .get('/api/apps/user/structs', { params: queryParams })
+          .get('/api/apps/struct/structs', { params: queryParams })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -17,7 +17,7 @@ export default {
     fetchUser(ctx, { id }) {
       return new Promise((resolve, reject) => {
         axios
-          .get(`/api/apps/user/users/${id}`)
+          .get(`/api/apps/struct/structs/${id}`)
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -25,7 +25,7 @@ export default {
     addUser(ctx, userData) {
       return new Promise((resolve, reject) => {
         axios
-          .post('/api/apps/user/users', { user: userData })
+          .post('/api/apps/struct/structs', { user: userData })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })

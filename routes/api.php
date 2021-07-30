@@ -29,7 +29,11 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::get( '/apps/user/users'      , [ApplicationController::class, 'getUsers'     ]);
-Route::post('/apps/user/users'      , [ApplicationController::class, 'addUser'      ]);
 Route::get( '/apps/user/users/{id}' , [ApplicationController::class, 'getUserById'  ]);
+Route::post('/apps/user/users'      , [ApplicationController::class, 'addUser'      ]);
 
-Route::get( '/apps/user/structs'    , [StructController::class     , 'getStructs'   ]);
+
+Route::get( '/apps/struct/structs'      , [StructController::class, 'getStructs'       ]);
+Route::get( '/apps/struct/structs/{id}' , [StructController::class, 'getStructById'    ]);
+Route::post('/apps/struct/structs'      , [StructController::class, 'addStruct'        ]);
+

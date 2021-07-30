@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Struct;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class StructController extends Controller
@@ -18,8 +19,8 @@ class StructController extends Controller
     {
         error_log('@@ lara getStructs 1');
 
-        //$usersDB = \App\Models\User::all();
-        $usersDB = \App\Models\Struct::get()->toTree();
+        //$usersDB = User::all();
+        $usersDB = Struct::get()->toTree();
 
 //        foreach ($usersDB as $user) {
 //            $user["role"] = $user->getRoleNames()[0];
@@ -65,5 +66,74 @@ class StructController extends Controller
 //        },
 //        ]
 
+    }
+
+
+
+
+    /**
+     * Get data for a given user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getStructById($id)
+    {
+        error_log('@@ lara getUserById $id '. $id);
+
+        if ( $userDB = Struct::findOrFail($id) ) {
+
+            //$userDB["role"] = $userDB->getRoleNames()[0];
+
+            return response()->json( $userDB, 200 );
+        }
+        else {
+            return response()->json([], 404);
+        }
+    }
+
+
+    /**
+     * add User
+     *
+     *
+     */
+
+    public function addStruct(Request $request)
+    {
+        error_log('@@ lara addUser');
+
+        $userdata = $request["user"];
+        // error_log('$request '. $userdata);
+
+        $request->validate([
+            '*.name' => 'required|string',
+            '*.email' => 'required|string|unique:users',
+            //'password' => 'required|string',
+            //'c_password' => 'required|same:password'
+        ]);
+
+        $user = new Struct([
+            'name' => $userdata['name'],
+            'email' => $userdata['email'],
+            //'password' => bcrypt($request->password),
+        ]);
+
+        if ($user->save()) {
+
+            $user->assignRole('basic-user');
+
+            $tokenResult = $user->createToken('Personal Access Token');
+            $token = $tokenResult->plainTextToken;
+
+            $tokenResult = $user->createToken('Personal Refresh Token');
+            $refreshToken = $tokenResult->plainTextToken;
+
+
+            return response()->json( $user, 200 );
+        }
+        else {
+            return response()->json([], 404);
+        }
     }
 }
