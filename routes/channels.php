@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Broadcast;
 */
 
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    error_log('Some message here. 4444444');
+    //error_log('Some message here. 4444444');
     return (int) $user->id === (int) $id;
 });

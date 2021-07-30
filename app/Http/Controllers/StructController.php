@@ -15,12 +15,14 @@ class StructController extends Controller
         //return view('application', ['structs' => $structs]);
     }
 
-    public function getStructs(Request $request)
+    //public function getStructsList(Request $request)
+    public function getStructsList($id)
     {
-        error_log('@@ lara getStructs 1');
+        error_log('@@ lara getStructsList $id= ' . $id);
 
         //$usersDB = User::all();
-        $usersDB = Struct::get()->toTree();
+        $usersDB = Struct::get()->toTree($id); ///t тут подставлять id той структуры начиная с которой может видеть Пользователь
+        //$usersDB = Struct::descendantsOf(1)->toTree(1);
 
 //        foreach ($usersDB as $user) {
 //            $user["role"] = $user->getRoleNames()[0];
@@ -79,9 +81,9 @@ class StructController extends Controller
      */
     public function getStructById($id)
     {
-        error_log('@@ lara getUserById $id '. $id);
+        error_log('@@ lara getStructById $id '. $id);
 
-        if ( $userDB = Struct::findOrFail($id) ) {
+        if ( $userDB = Struct::get()->toTree($id) ) {
 
             //$userDB["role"] = $userDB->getRoleNames()[0];
 
@@ -101,7 +103,7 @@ class StructController extends Controller
 
     public function addStruct(Request $request)
     {
-        error_log('@@ lara addUser');
+        error_log('@@ lara addStruct');
 
         $userdata = $request["user"];
         // error_log('$request '. $userdata);

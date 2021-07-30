@@ -33,7 +33,7 @@ Route::get( '/apps/user/users/{id}' , [ApplicationController::class, 'getUserByI
 Route::post('/apps/user/users'      , [ApplicationController::class, 'addUser'      ]);
 
 
-Route::get( '/apps/struct/structs'      , [StructController::class, 'getStructs'       ]);
-Route::get( '/apps/struct/structs/{id}' , [StructController::class, 'getStructById'    ]);
-Route::post('/apps/struct/structs'      , [StructController::class, 'addStruct'        ]);
+Route::get( '/apps/struct/structslist/{id}' , [StructController::class, 'getStructsList'   ]);
+Route::get( '/apps/struct/structs/{id}'     , [StructController::class, 'getStructById'    ]);
+Route::post('/apps/struct/structs'          , [StructController::class, 'addStruct'        ]);
 

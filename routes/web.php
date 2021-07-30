@@ -18,4 +18,4 @@ use App\Http\Controllers\StructController;
 //Route::get('/', 'StructController@index'); ///t
 //Route::get('/{any}', [StructController::class, 'index'])->where('any', '.*'); ///t
 Route::get('/{any}', [ApplicationController::class, 'index'])->where('any', '.*');
-error_log('Some message here. 555555');
+//error_log('Some message here. 555555');

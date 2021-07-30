@@ -12,7 +12,7 @@ class ApplicationController extends Controller
 {
     public function index()
     {
-        error_log('Some message here. 11111');
+        //error_log('Some message here. 11111');
         return view('application');
     }
 

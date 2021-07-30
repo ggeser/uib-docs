@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Artisan::command('inspire', function () {
-    error_log('Some message here. 22222');
+    //error_log('Some message here. 22222');
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');

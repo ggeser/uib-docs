@@ -96,12 +96,12 @@
               />
             </template>
             <b-link
-              :to="{ name: 'apps-structs-view', params: { id: data.item.id } }"
+              :to="{ name: 'apps-structs-list-id', params: { id: data.item.id } }"
               class="font-weight-bold d-block text-nowrap"
             >
               {{ data.item.ShortOrgName }}
             </b-link>
-            <small class="text-muted">@{{ data.item.INN }}</small>
+            <small class="text-muted">@{{ data.item.id }}</small>
           </b-media>
         </template>
 

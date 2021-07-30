@@ -6,14 +6,24 @@ export default {
   getters: {},
   mutations: {},
   actions: {
-    fetchUsers(ctx, queryParams) {
+    fetchUsers(ctx, { id }) {
       return new Promise((resolve, reject) => {
         axios
-          .get('/api/apps/struct/structs', { params: queryParams })
+          .get(`/api/apps/struct/structslist/${id}`)
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
     },
+      // fetchUsers(ctx, queryParams) {
+      //     return new Promise((resolve, reject) => {
+      //         axios
+      //             .get('/api/apps/struct/structslist', { params: queryParams })
+      //             .then(response => resolve(response))
+      //             .catch(error => reject(error))
+      //     })
+      // },
+
+
     fetchUser(ctx, { id }) {
       return new Promise((resolve, reject) => {
         axios
@@ -22,6 +32,7 @@ export default {
           .catch(error => reject(error))
       })
     },
+
     addUser(ctx, userData) {
       return new Promise((resolve, reject) => {
         axios

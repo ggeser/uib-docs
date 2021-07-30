@@ -5,6 +5,7 @@ import { title } from '@core/utils/filter'
 // Notification
 import { useToast } from 'vue-toastification/composition'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
+import router from "@/router";
 
 export default function useUsersList() {
   // Use toast
@@ -53,10 +54,11 @@ export default function useUsersList() {
   watch([currentPage, perPage, searchQuery, roleFilter, planFilter, statusFilter], () => {
     refetchData()
   })
-
+   // store.dispatch('app-user/fetchUser', { id: router.currentRoute.params.id })
   const fetchUsers = (ctx, callback) => {
     store
       .dispatch('app-user/fetchUsers', {
+        id: router.currentRoute.params.id,
         q: searchQuery.value,
         perPage: perPage.value,
         page: currentPage.value,

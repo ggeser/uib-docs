@@ -72,7 +72,7 @@ export default [
     children: [
         {
             title: 'Tree',
-            route: 'apps-structs-list',
+            route: { name: 'apps-structs-list-id', params: { id: 1 } },
         },
         {
             title: 'View',
