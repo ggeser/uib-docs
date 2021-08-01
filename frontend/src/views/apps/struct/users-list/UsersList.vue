@@ -22,9 +22,25 @@
     />
 
 
-    <breadcrumb-slot />
+    <b-card
+        no-body
+        class="mb-2"
+    >
+        <b-breadcrumb class="breadcrumb-slash">
+            <b-breadcrumb-item href="#home">
+                Home
+            </b-breadcrumb-item>
+            <b-breadcrumb-item href="#foo">
+                Chat
+            </b-breadcrumb-item>
+            <b-breadcrumb-item active>
+                Infos
+            </b-breadcrumb-item>
+        </b-breadcrumb>
+    </b-card>
 
-    <!-- Table Container Card -->
+
+          <!-- Table Container Card -->
     <b-card
       no-body
       class="mb-0"
@@ -232,7 +248,8 @@ import UsersListFilters from './UsersListFilters.vue'
 import useUsersList from './useUsersList'
 import userStoreModule from '../userStoreModule'
 import UserListAddNew from './UserListAddNew.vue'
-import BreadcrumbSlot from '../../../components/breadcrumb/BreadcrumbSlotStruct.vue'
+// import BreadcrumbSlot from '../../../components/breadcrumb/BreadcrumbSlotStruct.vue'
+import { BBreadcrumb, BBreadcrumbItem } from 'bootstrap-vue'
 
 export default {
   components: {
@@ -255,7 +272,8 @@ export default {
 
     vSelect,
 
-    BreadcrumbSlot,
+    BBreadcrumb,
+    BBreadcrumbItem,
   },
   setup() {
     const USER_APP_STORE_MODULE_NAME = 'app-user'
