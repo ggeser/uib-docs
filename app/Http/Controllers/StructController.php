@@ -24,6 +24,8 @@ class StructController extends Controller
         $usersDB = Struct::get()->toTree($id); ///t тут подставлять id той структуры начиная с которой может видеть Пользователь
         //$usersDB = Struct::descendantsOf(1)->toTree(1);
 
+        $breadcrumbsDB = Struct::ancestorsAndSelf($id);
+
 //        foreach ($usersDB as $user) {
 //            $user["role"] = $user->getRoleNames()[0];
 //        }
@@ -57,6 +59,7 @@ class StructController extends Controller
 
         return response()->json([
             'users' => $usersDB, // $users  $userDB
+            'breadcrumbs' => $breadcrumbsDB,
             'total'=> count($usersDB),
         ], 200);
 

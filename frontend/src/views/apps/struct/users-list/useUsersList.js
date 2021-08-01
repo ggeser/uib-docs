@@ -28,7 +28,7 @@ export default function useUsersList() {
     { key: 'actions' },
   ]
 
-  //currentId = 0
+  const breadCrumbsComp = ref(null)
   const currentId = ref(1)
   const perPage = ref(10)
   const totalUsers = ref(0)
@@ -75,10 +75,13 @@ export default function useUsersList() {
       })
       .then(response => {
 
-        const { users, total } = response.data
+        const { users, breadcrumbs, total } = response.data
 
         callback(users)
+
         totalUsers.value = total
+        breadCrumbsComp.value = breadcrumbs
+        // console.log('@@0 breadCrumbsComp= ' + breadCrumbsComp)
 
         console.log('@@1 ' + currentId.value)
         console.log('@@2 ' + router.currentRoute.params.id)
@@ -139,6 +142,7 @@ export default function useUsersList() {
     perPage,
     currentPage,
     totalUsers,
+    breadCrumbsComp,
     dataMeta,
     perPageOptions,
     searchQuery,

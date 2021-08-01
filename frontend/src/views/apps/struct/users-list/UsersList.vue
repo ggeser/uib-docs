@@ -26,16 +26,44 @@
         no-body
         class="mb-2"
     >
-        <b-breadcrumb class="breadcrumb-slash">
-            <b-breadcrumb-item href="#home">
-                Home
-            </b-breadcrumb-item>
-            <b-breadcrumb-item href="#foo">
-                Chat
-            </b-breadcrumb-item>
-            <b-breadcrumb-item active>
-                Infos
-            </b-breadcrumb-item>
+        <b-breadcrumb class="breadcrumb-slash" >
+
+<!--            <div v-for="(item, index) in breadCrumbsComp"-->
+<!--                    :key="item.id"-->
+<!--                    href="#home"-->
+<!--            >-->
+<!--.-->
+<!--                <div v-if="index == breadCrumbsComp.length - 1">-->
+<!--                    <b-breadcrumb-item  href="#home" active>-->
+<!--                        {{ item.ShortOrgName }}-->
+<!--                    </b-breadcrumb-item>-->
+<!--                </div>-->
+<!--                <div v-else>-->
+<!--                    <b-breadcrumb-item-->
+<!--                        href="#home"-->
+<!--                    >-->
+<!--                        {{ item.ShortOrgName }}-->
+<!--                    </b-breadcrumb-item>-->
+<!--                </div>-->
+
+<!--            </div>-->
+
+
+                <b-breadcrumb-item
+                    v-for="(item, index) in breadCrumbsComp"
+                    :key="item.id"
+                    href="#home"
+                    v-if="index == breadCrumbsComp.length - 1" active
+                >
+                    {{ item.ShortOrgName }}
+                </b-breadcrumb-item>
+                <b-breadcrumb-item
+                    v-else
+                    :to="{ name: 'apps-structs-list-id', params: { id: item.id } }"
+                    @click="refetchData"
+                >
+                    {{ item.ShortOrgName }}
+                </b-breadcrumb-item>
         </b-breadcrumb>
     </b-card>
 
@@ -315,6 +343,7 @@ export default {
       perPage,
       currentPage,
       totalUsers,
+      breadCrumbsComp,
       dataMeta,
       perPageOptions,
       searchQuery,
@@ -344,6 +373,7 @@ export default {
       perPage,
       currentPage,
       totalUsers,
+      breadCrumbsComp,
       dataMeta,
       perPageOptions,
       searchQuery,
