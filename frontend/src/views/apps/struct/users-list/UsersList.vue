@@ -2,6 +2,8 @@
 
   <div>
 
+
+
     <user-list-add-new
       :is-add-new-user-sidebar-active.sync="isAddNewUserSidebarActive"
       :role-options="roleOptions"
@@ -18,6 +20,9 @@
       :plan-options="planOptions"
       :status-options="statusOptions"
     />
+
+
+    <breadcrumb-slot />
 
     <!-- Table Container Card -->
     <b-card
@@ -97,7 +102,10 @@
             </template>
             <b-link
               :to="{ name: 'apps-structs-list-id', params: { id: data.item.id } }"
+
               class="font-weight-bold d-block text-nowrap"
+              @click="refetchData"
+
             >
               {{ data.item.ShortOrgName }}
             </b-link>
@@ -224,6 +232,7 @@ import UsersListFilters from './UsersListFilters.vue'
 import useUsersList from './useUsersList'
 import userStoreModule from '../userStoreModule'
 import UserListAddNew from './UserListAddNew.vue'
+import BreadcrumbSlot from '../../../components/breadcrumb/BreadcrumbSlotStruct.vue'
 
 export default {
   components: {
@@ -245,6 +254,8 @@ export default {
     BPagination,
 
     vSelect,
+
+    BreadcrumbSlot,
   },
   setup() {
     const USER_APP_STORE_MODULE_NAME = 'app-user'

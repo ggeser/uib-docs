@@ -27,6 +27,9 @@ export default function useUsersList() {
     { key: 'status', sortable: true },
     { key: 'actions' },
   ]
+
+  //currentId = 0
+  const currentId = ref(1)
   const perPage = ref(10)
   const totalUsers = ref(0)
   const currentPage = ref(1)
@@ -48,10 +51,12 @@ export default function useUsersList() {
   })
 
   const refetchData = () => {
+    console.log('refetchData')
     refUserListTable.value.refresh()
   }
 
-  watch([currentPage, perPage, searchQuery, roleFilter, planFilter, statusFilter], () => {
+  watch([  currentId, currentPage, perPage, searchQuery, roleFilter, planFilter, statusFilter], () => {
+    console.log('watch')
     refetchData()
   })
    // store.dispatch('app-user/fetchUser', { id: router.currentRoute.params.id })
@@ -69,10 +74,23 @@ export default function useUsersList() {
         status: statusFilter.value,
       })
       .then(response => {
+
         const { users, total } = response.data
 
         callback(users)
         totalUsers.value = total
+
+        console.log('@@1 ' + currentId.value)
+        console.log('@@2 ' + router.currentRoute.params.id)
+
+        if ( currentId.value != router.currentRoute.params.id ){
+            currentId.value = router.currentRoute.params.id
+            console.log('@@2 = ')
+
+        }
+        console.log('@@3 ' + currentId.value)
+        console.log('@@4 ' + router.currentRoute.params.id)
+
       })
       .catch(() => {
         toast({

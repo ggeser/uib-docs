@@ -59,7 +59,6 @@ router.beforeEach((to, _, next) => {
     next(getHomeRouteForLoggedInUser(userData ? userData.role : null))
   }
 
-
   console.log("return next()")///t
 
   return next()
