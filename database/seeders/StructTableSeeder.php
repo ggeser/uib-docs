@@ -10,42 +10,22 @@ class StructTableSeeder extends Seeder
     {
         $structs = [
             [
-                'ShortOrgName' => 'Books',
+                'ShortOrgName' => 'Administrator',
                 'children' => [
                     [
-                        'ShortOrgName' => 'Comic Book',
+                        'ShortOrgName' => 'Agent 1',
                         'children' => [
-                            ['ShortOrgName' => 'Marvel Comic Book'],
-                            ['ShortOrgName' => 'DC Comic Book'],
-                            ['ShortOrgName' => 'Action comics'],
+                            ['ShortOrgName' => 'Sub Agent 1'],
+                            ['ShortOrgName' => 'Sub Agent 2'],
+                            ['ShortOrgName' => 'Sub Agent 3'],
                         ],
                     ],
                     [
-                        'ShortOrgName' => 'Textbooks',
+                        'ShortOrgName' => 'Agent 2',
                         'children' => [
-                            ['ShortOrgName' => 'Business'],
-                            ['ShortOrgName' => 'Finance'],
-                            ['ShortOrgName' => 'Computer Science'],
-                        ],
-                    ],
-                ],
-            ],
-            [
-                'ShortOrgName' => 'Electronics',
-                'children' => [
-                    [
-                        'ShortOrgName' => 'TV',
-                        'children' => [
-                            ['ShortOrgName' => 'LED'],
-                            ['ShortOrgName' => 'Blu-ray'],
-                        ],
-                    ],
-                    [
-                        'ShortOrgName' => 'Mobile',
-                        'children' => [
-                            ['ShortOrgName' => 'Samsung'],
-                            ['ShortOrgName' => 'iPhone'],
-                            ['ShortOrgName' => 'Xiomi'],
+                            ['ShortOrgName' => 'Sub Agent 1'],
+                            ['ShortOrgName' => 'Sub Agent 2'],
+                            ['ShortOrgName' => 'Sub Agent 5'],
                         ],
                     ],
                 ],
