@@ -33,13 +33,15 @@ export default {
       })
     },
 
-    addUser(ctx, userData) {
+    addUser(ctx, params) {
+        console.log(params)
       return new Promise((resolve, reject) => {
         axios
-          .post('/api/apps/struct/structs', { user: userData })
+          .post('/api/apps/struct/structs', {params: params })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
     },
+
   },
 }

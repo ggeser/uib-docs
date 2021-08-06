@@ -15,7 +15,7 @@
       <!-- Header -->
       <div class="d-flex justify-content-between align-items-center content-sidebar-header px-2 py-1">
         <h5 class="mb-0">
-          Add New User
+          Add New Agent
         </h5>
 
         <feather-icon
@@ -39,23 +39,23 @@
           @reset.prevent="resetForm"
         >
 
-          <!-- Full Name -->
+          <!-- ShortOrgName -->
           <validation-provider
             #default="validationContext"
-            name="Full Name"
+            name="ShortOrgName"
             rules="required"
           >
             <b-form-group
-              label="Full Name"
-              label-for="full-name"
+              label="ShortOrgName"
+              label-for="Short-Org-Name"
             >
               <b-form-input
-                id="full-name"
-                v-model="userData.name"
+                id="Short-Org-Name"
+                v-model="userData.ShortOrgName"
                 autofocus
                 :state="getValidationState(validationContext)"
                 trim
-                placeholder="ФИО"
+                placeholder="Short Org Name"
               />
 
               <b-form-invalid-feedback>
@@ -268,6 +268,7 @@ import Ripple from 'vue-ripple-directive'
 import vSelect from 'vue-select'
 import countries from '@/hardcode-data/countries'
 import store from '@/store'
+import router from "@/router";
 
 export default {
   components: {
@@ -314,7 +315,7 @@ export default {
   },
   setup(props, { emit }) {
     const blankUserData = {
-      fullName: '',
+      ShortOrgName: '',
       username: '',
       email: '',
       role: null,
@@ -330,7 +331,7 @@ export default {
     }
 
     const onSubmit = () => {
-      store.dispatch('app-user/addUser', userData.value)
+      store.dispatch('app-user/addUser', {parrentId: router.currentRoute.params.id, userData: userData.value})
         .then(() => {
           emit('refetch-data')
           emit('update:is-add-new-user-sidebar-active', false)

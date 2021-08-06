@@ -104,41 +104,53 @@ class StructController extends Controller
      *
      */
 
+    //public function addStruct(Request $request)
     public function addStruct(Request $request)
     {
         error_log('@@ lara addStruct');
 
-        $userdata = $request["user"];
-        // error_log('$request '. $userdata);
+        $params = $request["params"];
+        $parrentId = $params["parrentId"];
+        $userdata = $params["userData"];
 
-        $request->validate([
-            '*.name' => 'required|string',
-            '*.email' => 'required|string|unique:users',
+        error_log('@@ lara addStruct '. $parrentId);
+        error_log('@@ lara addStruct '. $userdata["ShortOrgName"]);
+
+
+
+        $userdata->validate([
+            'ShortOrgName' => 'required|string',
+            //'*.ShortOrgName' => 'required|string',
+            //'*.email' => 'required|string|unique:users',
             //'password' => 'required|string',
             //'c_password' => 'required|same:password'
         ]);
 
-        $user = new Struct([
-            'name' => $userdata['name'],
-            'email' => $userdata['email'],
-            //'password' => bcrypt($request->password),
-        ]);
+        $parrent = Struct::findOrFail($parrentId);
+        error_log('@@ lara addStruct '. $parrent.id);
 
-        if ($user->save()) {
-
-            $user->assignRole('basic-user');
-
-            $tokenResult = $user->createToken('Personal Access Token');
-            $token = $tokenResult->plainTextToken;
-
-            $tokenResult = $user->createToken('Personal Refresh Token');
-            $refreshToken = $tokenResult->plainTextToken;
-
-
-            return response()->json( $user, 200 );
-        }
-        else {
-            return response()->json([], 404);
-        }
+//
+//        $user = new Struct([
+//            'name' => $userdata['name'],
+//            'email' => $userdata['email'],
+//            //'password' => bcrypt($request->password),
+//        ]);
+//
+//        if ($user->save()) {
+//
+//            $user->assignRole('basic-user');
+//
+//            $tokenResult = $user->createToken('Personal Access Token');
+//            $token = $tokenResult->plainTextToken;
+//
+//            $tokenResult = $user->createToken('Personal Refresh Token');
+//            $refreshToken = $tokenResult->plainTextToken;
+//
+//
+//            return response()->json( $user, 200 );
+//        }
+//        else {
+//            return response()->json([], 404);
+//        }
     }
 }
