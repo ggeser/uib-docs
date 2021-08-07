@@ -14,23 +14,5 @@
 10. feather-icons - иконки
 
 
-УСТАНОВКА
-- установить пхпшторм, xammp
-- на мак установить homebrew
-- с помощью homebrew установить node (+npm)
-- залогиниться в браузере в гитхаб
-- в пхпшторм подкачать из гитхаб проект
-- composer install
-- php artisan key:generate
-- npm install
-- cd frontend
-- npm install
-- cd ..
-- npm run dev
-- php artisan serve
-- npm run watch
-- php artisan migrate
-- php artisan db:seed
-- php artisan migrate:fresh --seed --seeder=PermissionsDemoSeeder
-- php artisan db:seed
+
 

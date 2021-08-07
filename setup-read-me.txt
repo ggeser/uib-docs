@@ -1,0 +1,41 @@
+
+
+УСТАНОВКА
+
+- установить phpstorm +  ide-eval-resetter-2.1.13.zip
+- установить xammp, проверить phpmyadmin, создать db "uib-db"
+- на мак установить homebrew
+- с помощью homebrew установить node (+npm)
+- залогиниться в браузере в гитхаб
+- в пхпшторм подкачать из гитхаб проект
+- composer install
+- php artisan key:generate
+- npm install
+- cd frontend
+- npm install
+- cd ..
+- npm run dev
+- php artisan serve
+- npm run watch
+- php artisan migrate
+- php artisan db:seed
+- php artisan migrate:fresh --seed --seeder=PermissionsDemoSeeder
+- php artisan db:seed
+- stop server
+- brew install php
+- pecl install xdebug
+- chrome установить xdebug helper, настройки - выбрать Phpstorm, сохранить. На нужной странице включить жучка
+- Phpstorm, preferences, PHP, lang ->8, CLI imterpreter -> ..., +, php 8 = /usr/local/Cellar/php/8.0.9/bin/php
+- edit php.ini  :
+
+[xdebug]
+zend_extension="xdebug.so"
+xdebug.mode=debug
+xdebug.client_host=127.0.0.1
+xdebug.client_port="9003"
+
+;zend_extension="xdebug.so"
+
+
+- php artisan serve
+- попробовать breakpoint
