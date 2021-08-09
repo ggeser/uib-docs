@@ -73,11 +73,11 @@ class DepartController extends Controller
         $userdata = $params["userData"];
 
         error_log('@@ lara addDepart $parentId'. $parentId);
-        error_log('@@ lara addDepart $userdata["ShortOrgName"]'. $userdata["ShortOrgName"]);
+        error_log('@@ lara addDepart $userdata["name"]'. $userdata["name"]);
 
 
         $validator = Validator::make($request->all(), [
-            'params.userData.ShortOrgName' => 'required|string|unique:departs,ShortOrgName',
+            'params.userData.name' => 'required|string|unique:departs,name',
             ///t другие параметры и проверки
 
         ]);
@@ -89,13 +89,13 @@ class DepartController extends Controller
 //                ->withInput();
         }
 
-        //error_log('@@ lara addDepart @@ '. $request->params['userData']['ShortOrgName']);
+        //error_log('@@ lara addDepart @@ '. $request->params['userData']['name']);
 
         $agent = new Depart([
-            'ShortOrgName' => $request->params['userData']['ShortOrgName'],
+            'name' => $request->params['userData']['name'],
         ]);
 
-        //error_log('@@ lara $agent '. $agent->ShortOrgName);
+        //error_log('@@ lara $agent '. $agent->name);
 
         $parent = Depart::findOrFail($parentId);
         //error_log('@@ lara addDepart '. $parent->id);

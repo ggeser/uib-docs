@@ -35,14 +35,14 @@
 <!--.-->
 <!--                <div v-if="index == breadCrumbsComp.length - 1">-->
 <!--                    <b-breadcrumb-item  href="#home" active>-->
-<!--                        {{ item.ShortOrgName }}-->
+<!--                        {{ item.name }}-->
 <!--                    </b-breadcrumb-item>-->
 <!--                </div>-->
 <!--                <div v-else>-->
 <!--                    <b-breadcrumb-item-->
 <!--                        href="#home"-->
 <!--                    >-->
-<!--                        {{ item.ShortOrgName }}-->
+<!--                        {{ item.name }}-->
 <!--                    </b-breadcrumb-item>-->
 <!--                </div>-->
 
@@ -55,14 +55,14 @@
                     href="#home"
                     v-if="index == breadCrumbsComp.length - 1" active
                 >
-                    {{ item.ShortOrgName }}
+                    {{ item.name }}
                 </b-breadcrumb-item>
                 <b-breadcrumb-item
                     v-else
-                    :to="{ name: 'apps-structs-list-id', params: { id: item.id } }"
+                    :to="{ name: 'apps-departs-list-id', params: { id: item.id } }"
                     @click="refetchData"
                 >
-                    {{ item.ShortOrgName }}
+                    {{ item.name }}
                 </b-breadcrumb-item>
         </b-breadcrumb>
     </b-card>
@@ -139,19 +139,19 @@
               <b-avatar
                 size="32"
                 :src="data.item.avatar"
-                :text="avatarText(data.item.ShortOrgName)"
+                :text="avatarText(data.item.name)"
                 :variant="`light-${resolveUserRoleVariant(data.item.role)}`"
-                :to="{ name: 'apps-structs-view', params: { id: data.item.id } }"
+                :to="{ name: 'apps-departs-view', params: { id: data.item.id } }"
               />
             </template>
             <b-link
-              :to="{ name: 'apps-structs-list-id', params: { id: data.item.id } }"
+              :to="{ name: 'apps-departs-list-id', params: { id: data.item.id } }"
 
               class="font-weight-bold d-block text-nowrap"
               @click="refetchData"
 
             >
-              {{ data.item.ShortOrgName }}
+              {{ data.item.name }}
             </b-link>
             <small class="text-muted">@{{ data.item.id }}</small>
           </b-media>
@@ -276,7 +276,6 @@ import UsersListFilters from './UsersListFilters.vue'
 import useUsersList from './useUsersList'
 import userStoreModule from '../userStoreModule'
 import UserListAddNew from './UserListAddNew.vue'
-// import BreadcrumbSlot from '../../../components/breadcrumb/BreadcrumbSlotStruct.vue'
 import { BBreadcrumb, BBreadcrumbItem } from 'bootstrap-vue'
 
 export default {

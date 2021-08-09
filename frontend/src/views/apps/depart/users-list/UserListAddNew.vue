@@ -39,19 +39,19 @@
           @reset.prevent="resetForm"
         >
 
-          <!-- ShortOrgName -->
+          <!-- name -->
           <validation-provider
             #default="validationContext"
-            name="ShortOrgName"
+            name="name"
             rules="required"
           >
             <b-form-group
-              label="ShortOrgName"
+              label="name"
               label-for="Short-Org-Name"
             >
               <b-form-input
                 id="Short-Org-Name"
-                v-model="userData.ShortOrgName"
+                v-model="userData.name"
                 autofocus
                 :state="getValidationState(validationContext)"
                 trim
@@ -315,7 +315,7 @@ export default {
   },
   setup(props, { emit }) {
     const blankUserData = {
-      ShortOrgName: '',
+      name: '',
       username: '',
       email: '',
       role: null,
