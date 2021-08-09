@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\StructController;
+use App\Http\Controllers\DepartController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
