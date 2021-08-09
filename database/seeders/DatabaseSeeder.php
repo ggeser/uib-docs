@@ -13,7 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // php artisan db:seed
+
         // \App\Models\User::factory(10)->create();
         // $this->call(StructTableSeeder::class);
+        $this->call(DepartTableSeeder::class);
     }
 }
