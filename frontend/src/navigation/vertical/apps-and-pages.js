@@ -102,6 +102,24 @@ export default [
       },
     ],
   },
+    {
+        title: 'Departments',
+        icon: 'UsersIcon',
+        children: [
+            {
+                title: 'Tree',
+                route: { name: 'apps-departs-list-id', params: { id: 1 } },
+            },
+            {
+                title: 'View',
+                route: { name: 'apps-departs-view', params: { id: 1 } },
+            },
+            {
+                title: 'Edit',
+                route: { name: 'apps-departs-edit', params: { id: 1 } },
+            },
+        ],
+    },
   {
     title: 'Pages',
     icon: 'FileIcon',

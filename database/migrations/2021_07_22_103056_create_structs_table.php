@@ -15,7 +15,7 @@ class CreateStructsTable extends Migration
     {
         Schema::create('structs', function (Blueprint $table) {
             $table->id();
-            //$table->integer('parrentID')->unique(); //указатель на вышестоящего агента
+            //$table->integer('parentID')->unique(); //указатель на вышестоящего агента
 
             $table->string('comment')->nullable();      //полное наименование организации
 

@@ -183,7 +183,7 @@ export default [
 
 
     // *===============================================---*
-    // *--------- STRUCT ---- ---------------------------------------*
+    // *--------- STRUCT -------------------------------------------*
     // *===============================================---*
     // {
     //     path: '/apps/structs/list',
@@ -208,7 +208,7 @@ export default [
 
 
   // *===============================================---*
-  // *--------- USER ---- ---------------------------------------*
+  // *--------- USER -------------------------------------------*
   // *===============================================---*
   {
     path: '/apps/users/list',
@@ -225,6 +225,27 @@ export default [
     name: 'apps-users-edit',
     component: () => import('@/views/apps/user/users-edit/UsersEdit.vue'),
   },
+
+
+    // *===============================================---*
+    // *--------- DEPART -------------------------------------------*
+    // *===============================================---*
+    {
+        path: '/apps/departs/list/:id',
+        name: 'apps-departs-list-id',
+        component: () => import('@/views/apps/depart/users-list/UsersList.vue'),
+    },
+    {
+        path: '/apps/departs/view/:id',
+        name: 'apps-departs-view',
+        component: () => import('@/views/apps/depart/users-view/UsersView.vue'),
+    },
+    {
+        path: '/apps/departs/edit/:id',
+        name: 'apps-departs-edit',
+        component: () => import('@/views/apps/depart/users-edit/UsersEdit.vue'),
+    },
+
 
   // Invoice
   {

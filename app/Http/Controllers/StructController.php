@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Struct;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Validator;
 use Illuminate\Http\Request;
 
 class StructController extends Controller
@@ -110,47 +112,43 @@ class StructController extends Controller
         error_log('@@ lara addStruct');
 
         $params = $request["params"];
-        $parrentId = $params["parrentId"];
+        $parentId = $params["parentId"];
         $userdata = $params["userData"];
 
-        error_log('@@ lara addStruct '. $parrentId);
-        error_log('@@ lara addStruct '. $userdata["ShortOrgName"]);
+        error_log('@@ lara addStruct $parentId'. $parentId);
+        error_log('@@ lara addStruct $userdata["ShortOrgName"]'. $userdata["ShortOrgName"]);
 
 
+        $validator = Validator::make($request->all(), [
+            'params.userData.ShortOrgName' => 'required|string|unique:structs,ShortOrgName',
+            ///t другие параметры и проверки
 
-        $userdata->validate([
-            'ShortOrgName' => 'required|string',
-            //'*.ShortOrgName' => 'required|string',
-            //'*.email' => 'required|string|unique:users',
-            //'password' => 'required|string',
-            //'c_password' => 'required|same:password'
         ]);
 
-        $parrent = Struct::findOrFail($parrentId);
-        error_log('@@ lara addStruct '. $parrent.id);
+        if ($validator->fails()) {
+            return response()->json([], 404);
+//            return redirect('post/create')
+//                ->withErrors($validator)
+//                ->withInput();
+        }
 
-//
-//        $user = new Struct([
-//            'name' => $userdata['name'],
-//            'email' => $userdata['email'],
-//            //'password' => bcrypt($request->password),
-//        ]);
-//
-//        if ($user->save()) {
-//
-//            $user->assignRole('basic-user');
-//
-//            $tokenResult = $user->createToken('Personal Access Token');
-//            $token = $tokenResult->plainTextToken;
-//
-//            $tokenResult = $user->createToken('Personal Refresh Token');
-//            $refreshToken = $tokenResult->plainTextToken;
-//
-//
-//            return response()->json( $user, 200 );
-//        }
-//        else {
-//            return response()->json([], 404);
-//        }
+        //error_log('@@ lara addStruct @@ '. $request->params['userData']['ShortOrgName']);
+
+        $agent = new Struct([
+            'ShortOrgName' => $request->params['userData']['ShortOrgName'],
+        ]);
+
+        //error_log('@@ lara $agent '. $agent->ShortOrgName);
+
+        $parent = Struct::findOrFail($parentId);
+        //error_log('@@ lara addStruct '. $parent->id);
+
+
+        if ( $agent->appendToNode($parent)->save() ) {
+            return response()->json( $agent, 200 );
+        }
+        else {
+            return response()->json([], 404);
+        }
     }
 }
