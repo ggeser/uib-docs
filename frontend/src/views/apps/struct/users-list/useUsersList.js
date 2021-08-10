@@ -83,16 +83,16 @@ export default function useUsersList() {
         breadCrumbsComp.value = breadcrumbs
         // console.log('@@0 breadCrumbsComp= ' + breadCrumbsComp)
 
-        console.log('@@1 ' + currentId.value)
-        console.log('@@2 ' + router.currentRoute.params.id)
-
-        if ( currentId.value != router.currentRoute.params.id ){
-            currentId.value = router.currentRoute.params.id
-            console.log('@@2 = ')
-
-        }
-        console.log('@@3 ' + currentId.value)
-        console.log('@@4 ' + router.currentRoute.params.id)
+        // console.log('@@1 ' + currentId.value)
+        // console.log('@@2 ' + router.currentRoute.params.id)
+        //
+        // if ( currentId.value != router.currentRoute.params.id ){
+        //     currentId.value = router.currentRoute.params.id
+        //     console.log('@@2 = ')
+        //
+        // }
+        // console.log('@@3 ' + currentId.value)
+        // console.log('@@4 ' + router.currentRoute.params.id)
 
       })
       .catch(() => {
