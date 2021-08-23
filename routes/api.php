@@ -16,9 +16,8 @@ use App\Http\Controllers\DepartController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-error_log('@@ api.php');
 
-//Route::group(['prefix' => 'api'], function () {
+    error_log('@@ api.php');
 
     Route::group(['prefix' => 'auth'], function () {
         Route::post('login'     , [AuthController::class, 'login']);
@@ -43,4 +42,4 @@ error_log('@@ api.php');
     Route::get( '/apps/depart/departs/{id}'     , [DepartController::class, 'getDepartById'    ]);
     Route::post('/apps/depart/departs'          , [DepartController::class, 'addDepart'        ]);
 
-//});
+
