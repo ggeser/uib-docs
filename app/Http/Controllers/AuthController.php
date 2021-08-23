@@ -83,7 +83,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        error_log('lara login 1');
+        error_log('lara login 111');
         error_log('$request->remember_me = '. $request->remember_me);
 
         $status_remember_me = false;

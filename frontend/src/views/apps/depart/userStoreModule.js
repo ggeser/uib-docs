@@ -9,7 +9,7 @@ export default {
     fetchUsers(ctx, { id }) {
       return new Promise((resolve, reject) => {
         axios
-          .get(`/api/apps/depart/departslist/${id}`)
+          .get(`/apps/depart/departslist/${id}`)
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -17,7 +17,7 @@ export default {
       // fetchUsers(ctx, queryParams) {
       //     return new Promise((resolve, reject) => {
       //         axios
-      //             .get('/api/apps/depart/departslist', { params: queryParams })
+      //             .get('/apps/depart/departslist', { params: queryParams })
       //             .then(response => resolve(response))
       //             .catch(error => reject(error))
       //     })
@@ -27,7 +27,7 @@ export default {
     fetchUser(ctx, { id }) {
       return new Promise((resolve, reject) => {
         axios
-          .get(`/api/apps/depart/departs/${id}`)
+          .get(`/apps/depart/departs/${id}`)
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -37,7 +37,7 @@ export default {
         console.log(params)
       return new Promise((resolve, reject) => {
         axios
-          .post('/api/apps/depart/departs', {params: params })
+          .post('/apps/depart/departs', {params: params })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })

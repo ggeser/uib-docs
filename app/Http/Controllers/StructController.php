@@ -22,9 +22,19 @@ class StructController extends Controller
     {
         error_log('@@ lara getStructsList $id= ' . $id);
 
+        //$canSeeId = $id;
+
+        //$session_id = Session::getId();
+        //error_log('@@ lara getStructsList $session_id= ' . $session_id);
+
+//        if ( $id == 1 ) { ///t поменять проверку на сравнение со списком того что может видеть пользователь
+//            ///t тут подставлять id той структуры начиная с которой может видеть Пользователь
+//
+//
+//        }
+
         //$usersDB = User::all();
-        $usersDB = Struct::get()->toTree($id); ///t тут подставлять id той структуры начиная с которой может видеть Пользователь
-        //$usersDB = Struct::descendantsOf(1)->toTree(1);
+        $usersDB = Struct::get()->toTree($id); //$usersDB = Struct::descendantsOf(1)->toTree(1);
 
         $breadcrumbsDB = Struct::ancestorsAndSelf($id);
 
