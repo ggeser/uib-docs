@@ -1,98 +1,117 @@
 <template>
   <section id="dashboard-ecommerce">
-    <b-row class="match-height">
-      <b-col
-        xl="4"
-        md="6"
-      >
-        <ecommerce-medal :data="data.congratulations" />
-      </b-col>
-      <b-col
-        xl="8"
-        md="6"
-      >
-        <ecommerce-statistics :data="data.statisticsItems" />
-      </b-col>
-    </b-row>
 
-    <b-row class="match-height">
+
+  <b-row class="match-height">
       <b-col lg="4">
-        <b-row class="match-height">
-          <!-- Bar Chart - Orders -->
-          <b-col
-            lg="6"
-            md="3"
-            cols="6"
-          >
-            <ecommerce-order-chart :data="data.statisticsOrder" />
-          </b-col>
-          <!--/ Bar Chart - Orders -->
-          <b-col
-            lg="6"
-            md="3"
-            cols="6"
-          >
-            <ecommerce-profit-chart :data="data.statisticsProfit" />
-          </b-col>
-          <b-col
-            lg="12"
-            md="6"
-          >
-            <ecommerce-earnings-chart :data="data.earningsChart" />
-          </b-col>
-        </b-row>
+          <b-row class="match-height">
+              <b-col
+                  xl="12"
+                  md="12"
+              >
+                  <ecommerce-statistics :data="data.statisticsItems" />
+              </b-col>
+              <b-col
+                  xl="12"
+                  md="12"
+              >
+                  <ecommerce-statistics :data="data.statisticsItems" />
+              </b-col>
+          </b-row>
       </b-col>
-
-      <!-- Revenue Report Card -->
       <b-col lg="8">
-        <ecommerce-revenue-report :data="data.revenue" />
+          <invoice-list />
       </b-col>
-      <!--/ Revenue Report Card -->
-    </b-row>
+  </b-row>
 
-    <b-row class="match-height">
-      <!-- Company Table Card -->
-      <b-col lg="8">
-        <ecommerce-company-table :table-data="data.companyTable" />
-      </b-col>
-      <!--/ Company Table Card -->
 
-      <!-- Developer Meetup Card -->
-      <b-col
-        lg="4"
-        md="6"
-      >
-        <ecommerce-meetup :data="data.meetup" />
-      </b-col>
-      <!--/ Developer Meetup Card -->
 
-      <!-- Browser States Card -->
-      <b-col
-        lg="4"
-        md="6"
-      >
-        <ecommerce-browser-states />
-      </b-col>
-      <!--/ Browser States Card -->
 
-      <!-- Goal Overview Card -->
-      <b-col
-        lg="4"
-        md="6"
-      >
-        <ecommerce-goal-overview :data="data.goalOverview" />
-      </b-col>
-      <!--/ Goal Overview Card -->
 
-      <!-- Transaction Card -->
-      <b-col
-        lg="4"
-        md="6"
-      >
-        <ecommerce-transactions :data="data.transactionData" />
-      </b-col>
-      <!--/ Transaction Card -->
-    </b-row>
+
+
+
+<!--    <b-row class="match-height">-->
+<!--      <b-col lg="4">-->
+<!--        <b-row class="match-height">-->
+<!--          &lt;!&ndash; Bar Chart - Orders &ndash;&gt;-->
+<!--          <b-col-->
+<!--            lg="6"-->
+<!--            md="3"-->
+<!--            cols="6"-->
+<!--          >-->
+<!--            <ecommerce-order-chart :data="data.statisticsOrder" />-->
+<!--          </b-col>-->
+<!--          &lt;!&ndash;/ Bar Chart - Orders &ndash;&gt;-->
+<!--          <b-col-->
+<!--            lg="6"-->
+<!--            md="3"-->
+<!--            cols="6"-->
+<!--          >-->
+<!--            <ecommerce-profit-chart :data="data.statisticsProfit" />-->
+<!--          </b-col>-->
+<!--          <b-col-->
+<!--            lg="12"-->
+<!--            md="6"-->
+<!--          >-->
+<!--            <ecommerce-earnings-chart :data="data.earningsChart" />-->
+<!--          </b-col>-->
+<!--        </b-row>-->
+<!--      </b-col>-->
+
+<!--      &lt;!&ndash; Revenue Report Card &ndash;&gt;-->
+<!--      <b-col lg="8">-->
+<!--        <ecommerce-revenue-report :data="data.revenue" />-->
+<!--      </b-col>-->
+<!--      &lt;!&ndash;/ Revenue Report Card &ndash;&gt;-->
+<!--    </b-row>-->
+
+<!--    <b-row class="match-height">-->
+<!--      &lt;!&ndash; Company Table Card &ndash;&gt;-->
+<!--      <b-col lg="8">-->
+<!--        <ecommerce-company-table :table-data="data.companyTable" />-->
+<!--      </b-col>-->
+<!--      &lt;!&ndash;/ Company Table Card &ndash;&gt;-->
+
+<!--      &lt;!&ndash; Developer Meetup Card &ndash;&gt;-->
+<!--      <b-col-->
+<!--        lg="4"-->
+<!--        md="6"-->
+<!--      >-->
+<!--        <ecommerce-meetup :data="data.meetup" />-->
+<!--      </b-col>-->
+<!--      &lt;!&ndash;/ Developer Meetup Card &ndash;&gt;-->
+
+<!--      &lt;!&ndash; Browser States Card &ndash;&gt;-->
+<!--      <b-col-->
+<!--        lg="4"-->
+<!--        md="6"-->
+<!--      >-->
+<!--        <ecommerce-browser-states />-->
+<!--      </b-col>-->
+<!--      &lt;!&ndash;/ Browser States Card &ndash;&gt;-->
+
+<!--      &lt;!&ndash; Goal Overview Card &ndash;&gt;-->
+<!--      <b-col-->
+<!--        lg="4"-->
+<!--        md="6"-->
+<!--      >-->
+<!--        <ecommerce-goal-overview :data="data.goalOverview" />-->
+<!--      </b-col>-->
+<!--      &lt;!&ndash;/ Goal Overview Card &ndash;&gt;-->
+
+<!--      &lt;!&ndash; Transaction Card &ndash;&gt;-->
+<!--      <b-col-->
+<!--        lg="4"-->
+<!--        md="6"-->
+<!--      >-->
+<!--        <ecommerce-transactions :data="data.transactionData" />-->
+<!--      </b-col>-->
+<!--      &lt;!&ndash;/ Transaction Card &ndash;&gt;-->
+<!--    </b-row>-->
+
+
+
   </section>
 </template>
 
@@ -111,7 +130,10 @@ import EcommerceMeetup from './EcommerceMeetup.vue'
 import EcommerceBrowserStates from './EcommerceBrowserStates.vue'
 import EcommerceGoalOverview from './EcommerceGoalOverview.vue'
 import EcommerceTransactions from './EcommerceTransactions.vue'
+
+import InvoiceList from '@/views/apps/invoice-my/invoice-list/InvoiceList.vue'
 import '@/@fake-db/db' ///t
+
 
 export default {
   components: {
@@ -129,6 +151,8 @@ export default {
     EcommerceBrowserStates,
     EcommerceGoalOverview,
     EcommerceTransactions,
+
+    InvoiceList,
   },
   data() {
     return {

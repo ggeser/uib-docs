@@ -5,18 +5,16 @@
     class="card-statistics"
   >
     <b-card-header>
-      <b-card-title>Statistics</b-card-title>
-      <b-card-text class="font-small-2 mr-25 mb-0">
-        Updated 1 month ago
-      </b-card-text>
+      <b-card-title>Общее кол-во пользователей:</b-card-title>
+<!--      <b-card-text class="font-small-2 mr-25 mb-0">Обновлено 5мин назад</b-card-text>-->
     </b-card-header>
     <b-card-body class="statistics-body">
       <b-row>
         <b-col
           v-for="item in data"
           :key="item.icon"
-          xl="3"
-          sm="6"
+          xl="12"
+          sm="12"
           :class="item.customClass"
         >
           <b-media no-body>
