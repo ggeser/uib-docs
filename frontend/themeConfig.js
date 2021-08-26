@@ -9,9 +9,11 @@ export const $themeBreakpoints = {}
 // APP CONFIG
 export const $themeConfig = {
   app: {
-    appName: 'УИБ', // Will update name in navigation menu (Branding)
+    appName: 'UIBCOM', // Will update name in navigation menu (Branding)
     // eslint-disable-next-line global-require
-    appLogoImage: require('@/assets/images/logo/logo.svg'), // Will update logo in navigation menu (Branding)
+    // appLogoImage: require('@/assets/images/logo/logo.svg'), // Will update logo in navigation menu (Branding)
+    appLogoImage: require('@/assets/images/logo/uib_logo.jpg'), // Will update logo in navigation menu (Branding)
+
   },
   layout: {
     isRTL: false,
