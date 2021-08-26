@@ -137,6 +137,8 @@ import {
 } from 'bootstrap-vue'
 import FaqQuestionAnswer from './FaqQuestionAnswer.vue'
 
+import '@/@fake-db/db' ///t
+
 export default {
   components: {
     BForm,

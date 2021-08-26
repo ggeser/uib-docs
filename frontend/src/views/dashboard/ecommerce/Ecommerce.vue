@@ -111,6 +111,7 @@ import EcommerceMeetup from './EcommerceMeetup.vue'
 import EcommerceBrowserStates from './EcommerceBrowserStates.vue'
 import EcommerceGoalOverview from './EcommerceGoalOverview.vue'
 import EcommerceTransactions from './EcommerceTransactions.vue'
+import '@/@fake-db/db' ///t
 
 export default {
   components: {

@@ -189,6 +189,8 @@ import TodoLeftSidebar from './TodoLeftSidebar.vue'
 import todoStoreModule from './todoStoreModule'
 import TodoTaskHandlerSidebar from './TodoTaskHandlerSidebar.vue'
 
+import '@/@fake-db/db' ///t
+
 export default {
   components: {
     BFormInput,

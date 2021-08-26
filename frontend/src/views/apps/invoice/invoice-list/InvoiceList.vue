@@ -285,6 +285,8 @@ import useInvoicesList from './useInvoiceList'
 
 import invoiceStoreModule from '../invoiceStoreModule'
 
+import '@/@fake-db/db' ///t
+
 export default {
   components: {
     BCard,
