@@ -11,14 +11,14 @@ const data = {
           color: 'light-danger',
           title: '142',
           subtitle: 'ПАРТНЕРЫ',
-          // customClass: 'mb-2 mb-sm-0',
+          customClass: 'mb-2 mb-sm-0',
       },
       {
           icon: 'UserIcon',
           color: 'light-info',
           title: '8.549',
           subtitle: 'КЛИЕНТЫ',
-          // customClass: 'mb-2 mb-xl-0',
+          customClass: 'mb-2 mb-xl-0',
       },
   ],
   statisticsOrder: {

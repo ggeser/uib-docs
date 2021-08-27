@@ -15,7 +15,7 @@
                   xl="12"
                   md="12"
               >
-                  <ecommerce-statistics :data="data.statisticsItems" />
+                  <card-advance-employee-task />
               </b-col>
           </b-row>
       </b-col>
@@ -132,6 +132,7 @@ import EcommerceGoalOverview from './EcommerceGoalOverview.vue'
 import EcommerceTransactions from './EcommerceTransactions.vue'
 
 import InvoiceList from '@/views/apps/invoice-my/invoice-list/InvoiceList.vue'
+import CardAdvanceEmployeeTask from '@/views/card/card-advance/CardAdvanceEmployeeTask.vue'
 import '@/@fake-db/db' ///t
 
 
@@ -153,6 +154,7 @@ export default {
     EcommerceTransactions,
 
     InvoiceList,
+    CardAdvanceEmployeeTask,
   },
   data() {
     return {

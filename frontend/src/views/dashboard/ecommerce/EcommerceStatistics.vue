@@ -4,7 +4,7 @@
     no-body
     class="card-statistics"
   >
-    <b-card-header>
+    <b-card-header style="padding-bottom: 0px;">
       <b-card-title>Общее кол-во пользователей:</b-card-title>
 <!--      <b-card-text class="font-small-2 mr-25 mb-0">Обновлено 5мин назад</b-card-text>-->
     </b-card-header>
@@ -13,8 +13,8 @@
         <b-col
           v-for="item in data"
           :key="item.icon"
-          xl="12"
-          sm="12"
+          xl="6"
+          sm="6"
           :class="item.customClass"
         >
           <b-media no-body>

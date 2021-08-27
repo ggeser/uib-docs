@@ -40,8 +40,8 @@
           <div class="d-flex align-items-center justify-content-end">
             <b-form-input
               v-model="searchQuery"
-              class="d-inline-block mr-1"
-              placeholder="Поиск по ИНН..."
+              class="invoice-search"
+              placeholder="Поиск по ИНН"
             />
             <v-select
               v-model="statusFilter"
@@ -388,6 +388,12 @@ export default {
   ::v-deep .vs__selected {
     width: 100px;
   }
+}
+
+.invoice-search {
+    min-width: 140px;
+    display: inline-block !important;
+    margin-right: 0.25rem !important;
 }
 </style>
 

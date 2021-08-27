@@ -4,12 +4,13 @@
     class="card-employee-task"
   >
     <b-card-header>
-      <b-card-title>Employee Task</b-card-title>
-      <feather-icon
-        icon="MoreVerticalIcon"
-        size="18"
-        class="cursor-pointer"
-      />
+      <b-card-title>Топ партнеры/менеджеры</b-card-title>
+        <b-card-title class="text-primary">Выручка</b-card-title>
+<!--      <feather-icon-->
+<!--        icon="MoreVerticalIcon"-->
+<!--        size="18"-->
+<!--        class="cursor-pointer"-->
+<!--      />-->
     </b-card-header>
 
     <!-- body -->
@@ -81,38 +82,38 @@ export default {
           avatar: require('@/assets/images/portrait/small/avatar-s-9.jpg'),
           userFullName: 'Ryan Harrington',
           designation: 'iOS Developer',
-          duration: '9hr 20m',
+          duration: '100.000р',
         },
         {
           avatar: require('@/assets/images/portrait/small/avatar-s-20.jpg'),
           userFullName: 'Louisa Norton',
           designation: 'UI Designer',
-          duration: '4hr 17m',
+          duration: '50.000р',
         },
         {
           avatar: require('@/assets/images/portrait/small/avatar-s-1.jpg'),
           userFullName: 'Jayden Duncan',
           designation: 'Java Developer',
-          duration: '12hr 8m',
+          duration: '30.000р',
         },
         {
           avatar: require('@/assets/images/portrait/small/avatar-s-20.jpg'),
           userFullName: 'Cynthia Howell',
           designation: 'Anguler Developer',
-          duration: '3hr 19m',
+          duration: '1.000р',
         },
         {
           avatar: require('@/assets/images/portrait/small/avatar-s-16.jpg'),
           userFullName: 'Helena Payne',
           designation: 'Marketing',
-          duration: '9hr 50m',
+          duration: '500р',
         },
-        {
-          avatar: require('@/assets/images/portrait/small/avatar-s-13.jpg'),
-          userFullName: 'Troy Jensen',
-          designation: 'iOS Developer',
-          duration: '4hr 48m',
-        },
+        // {
+        //   avatar: require('@/assets/images/portrait/small/avatar-s-13.jpg'),
+        //   userFullName: 'Troy Jensen',
+        //   designation: 'iOS Developer',
+        //   duration: '2р',
+        // },
       ],
       chart: {
         series: [65],
