@@ -8,7 +8,7 @@
           icon="ListIcon"
         />
         <b-card-title class="ml-25">
-          User Timeline
+          История последних действий
         </b-card-title>
       </div>
       <feather-icon
@@ -22,16 +22,16 @@
       <app-timeline>
         <app-timeline-item variant="primary">
           <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-            <h6>12 Invoices have been paid</h6>
+            <h6>ООО "БИС" добавил новый колледж - ГПОУ КК КАИ</h6>
             <small class="timeline-item-time text-nowrap text-muted ml-1">12 min ago</small>
           </div>
-          <p>Invoices have been paid to the company.</p>
+          <p>Автоматически сформирован новый счет.</p>
           <b-media no-body>
             <b-media-aside class="mr-1">
               <b-img
                 :src="require('@/assets/images/icons/json.png')"
                 height="23"
-                alt="data.json"
+                alt="Счет-КАИ.xls"
               />
             </b-media-aside>
             <b-media-body class="my-auto">
@@ -68,7 +68,7 @@
 
         <app-timeline-item variant="info">
           <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-            <h6>Create a new project for client</h6>
+            <h6>ГПОУ КИО обновил список сотрудников</h6>
             <small class="timeline-item-time text-nowrap text-muted ml-1">2 day ago</small>
           </div>
           <p>Add files to new design folder</p>

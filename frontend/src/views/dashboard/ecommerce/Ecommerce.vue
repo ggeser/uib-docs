@@ -24,7 +24,12 @@
       </b-col>
   </b-row>
 
-
+  <b-row class="match-height">
+      <!-- Timeline -->
+      <b-col lg="8">
+          <card-advance-timeline />
+      </b-col>
+  </b-row>
 
 
 
@@ -133,6 +138,7 @@ import EcommerceTransactions from './EcommerceTransactions.vue'
 
 import InvoiceList from '@/views/apps/invoice-my/invoice-list/InvoiceList.vue'
 import CardAdvanceEmployeeTask from '@/views/card/card-advance/CardAdvanceEmployeeTask.vue'
+import CardAdvanceTimeline from '@/views/card/card-advance/CardAdvanceTimeline.vue'
 import '@/@fake-db/db' ///t
 
 
@@ -155,6 +161,7 @@ export default {
 
     InvoiceList,
     CardAdvanceEmployeeTask,
+    CardAdvanceTimeline,
   },
   data() {
     return {
