@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\StructController;
 
 /*
@@ -17,5 +17,5 @@ use App\Http\Controllers\StructController;
 
 //Route::get('/', 'StructController@index'); ///t
 //Route::get('/{any}', [StructController::class, 'index'])->where('any', '.*'); ///t
-Route::get('/{any}', [ApplicationController::class, 'index'])->where('any', '.*');
+Route::get('/{any}', [UserController::class, 'index'])->where('any', '.*');
 //error_log('Some message here. 555555');

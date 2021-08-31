@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class ApplicationController extends Controller
+class UserController extends Controller
 {
     public function index()
     {

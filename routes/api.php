@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\StructController;
 use App\Http\Controllers\DepartController;
 /*
@@ -29,9 +29,9 @@ use App\Http\Controllers\DepartController;
         });
     });
 
-    Route::get( '/apps/user/users'      , [ApplicationController::class, 'getUsers'     ]);
-    Route::get( '/apps/user/users/{id}' , [ApplicationController::class, 'getUserById'  ]);
-    Route::post('/apps/user/users'      , [ApplicationController::class, 'addUser'      ]);
+    Route::get( '/apps/user/users'      , [UserController::class, 'getUsers'     ]);
+    Route::get( '/apps/user/users/{id}' , [UserController::class, 'getUserById'  ]);
+    Route::post('/apps/user/users'      , [UserController::class, 'addUser'      ]);
 
 
     Route::get( '/apps/struct/structslist/{id}' , [StructController::class, 'getStructsList'   ]);
