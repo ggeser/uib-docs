@@ -1,10 +1,13 @@
 <?php
 
+// вкладка Партнеры
+
 namespace App\Http\Controllers;
 
 use App\Models\Struct;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -17,26 +20,46 @@ class StructController extends Controller
         //return view('application', ['structs' => $structs]);
     }
 
-    //public function getStructsList(Request $request)
-    public function getStructsList($id)
+    // public function getStructsList($id)
+    public function getStructsList(Request $request) // отображение дерева Партнеров
     {
-        error_log('@@ lara getStructsList $id= ' . $id);
+        $target_id = $request["id"]; // запрашиваемый id начиная с которого отображать дерево партнеров
+        error_log('@@ lara getStructsList $target_id'. $target_id);
 
-        //$canSeeId = $id;
+        $user = Auth::user();   // $user = $request->user();  // получаем пользователя который запрашивает отображение ветки Партнеров
+
+        $canSeeId = $user->struct_id;
+
+        error_log('@@ lara $canSeeId= ' . $canSeeId);
+
+
 
         //$session_id = Session::getId();
         //error_log('@@ lara getStructsList $session_id= ' . $session_id);
 
-//        if ( $id == 1 ) { ///t поменять проверку на сравнение со списком того что может видеть пользователь
-//            ///t тут подставлять id той структуры начиная с которой может видеть Пользователь
-//
-//
-//        }
+        if ( $target_id == 1 ) { ///t поменять проверку на сравнение со списком того что может видеть пользователь
+            ///t тут подставлять id той структуры начиная с которой может видеть Пользователь
+            $target_id = $canSeeId;
+
+        }
 
         //$usersDB = User::all();
-        $usersDB = Struct::get()->toTree($id); //$usersDB = Struct::descendantsOf(1)->toTree(1);
+        $usersDB = Struct::get()->toTree($target_id); //$usersDB = Struct::descendantsOf(1)->toTree(1);
 
-        $breadcrumbsDB = Struct::ancestorsAndSelf($id);
+
+
+        $breadcrumbsDB = Struct::ancestorsAndSelf($target_id);
+
+        $rezBread = null;
+        for ( $i = count($breadcrumbsDB)-1; $i>=0; $i-- ) {
+            $tmpBread = $breadcrumbsDB[$i];
+            $rezBread[] = $tmpBread;
+
+            if ( $tmpBread->id == $canSeeId ) { break; }
+        }
+        $rezBread = array_reverse($rezBread);
+
+//        $breadcrumbsDB = Struct::defaultOrder()->ancestorsOf($target_id);
 
 //        foreach ($usersDB as $user) {
 //            $user["role"] = $user->getRoleNames()[0];
@@ -71,7 +94,7 @@ class StructController extends Controller
 
         return response()->json([
             'users' => $usersDB, // $users  $userDB
-            'breadcrumbs' => $breadcrumbsDB,
+            'breadcrumbs' => $rezBread,
             'total'=> count($usersDB),
         ], 200);
 
@@ -94,7 +117,7 @@ class StructController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getStructById($id)
+    public function getStructById($id)  // получаем данные о выбранном партнере
     {
         error_log('@@ lara getStructById $id '. $id);
 
@@ -117,7 +140,7 @@ class StructController extends Controller
      */
 
     //public function addStruct(Request $request)
-    public function addStruct(Request $request)
+    public function addStruct(Request $request)  // создать нового партнера
     {
         error_log('@@ lara addStruct');
 
