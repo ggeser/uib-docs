@@ -102,11 +102,17 @@ class AuthController extends Controller
 
 
         $credentials = request(['email', 'password']);
-        if (!Auth::attempt($credentials)) {
+        $email = request('email');
+        $password = request('password');
+
+        //if (!Auth::attempt($credentials, $status_remember_me)) {
+        if (!Auth::attempt(['email' => $email, 'password' => $password], $status_remember_me)) {
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
         }
+
+        $request->session()->regenerate();
 
 //        $user = Auth::user(); ///t
 //        $canSeeId = $user->id;

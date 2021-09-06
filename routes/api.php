@@ -29,17 +29,21 @@ use App\Http\Controllers\DepartController;
         });
     });
 
-    Route::get( '/apps/user/users'      , [UserController::class, 'getUsers'     ]);
-    Route::get( '/apps/user/users/{id}' , [UserController::class, 'getUserById'  ]);
-    Route::post('/apps/user/users'      , [UserController::class, 'addUser'      ]);
-
-
     Route::get( '/apps/struct/structslist/{id}' , [StructController::class, 'getStructsList'   ]);
     Route::get( '/apps/struct/structs/{id}'     , [StructController::class, 'getStructById'    ]);
     Route::post('/apps/struct/structs'          , [StructController::class, 'addStruct'        ]);
 
+    Route::get( '/apps/user/users'      , [UserController::class, 'getUsers'     ]);
+    Route::get( '/apps/user/users/{id}' , [UserController::class, 'getUserById'  ]);
+    Route::post('/apps/user/users'      , [UserController::class, 'addUser'      ]);
+
     Route::get( '/apps/depart/departslist/{id}' , [DepartController::class, 'getDepartsList'   ]);
     Route::get( '/apps/depart/departs/{id}'     , [DepartController::class, 'getDepartById'    ]);
     Route::post('/apps/depart/departs'          , [DepartController::class, 'addDepart'        ]);
+
+
+
+
+
 
 

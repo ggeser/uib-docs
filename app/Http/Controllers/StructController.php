@@ -26,7 +26,10 @@ class StructController extends Controller
         $target_id = $request["id"]; // запрашиваемый id начиная с которого отображать дерево партнеров
         error_log('@@ lara getStructsList $target_id'. $target_id);
 
+
         $user = Auth::user();   // $user = $request->user();  // получаем пользователя который запрашивает отображение ветки Партнеров
+//        $user = User::find(Auth::id());
+//        $user = User::find(Auth::id());
 
         $canSeeId = $user->struct_id;
 
