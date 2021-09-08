@@ -5,10 +5,12 @@ export default {
   //   refreshEndpoint: '/jwt/refresh-token',
   //   logoutEndpoint: '/jwt/logout',
 
+    // ! у них у всех будет в начале префикс /api/  . Это настраивается в /libs/axios.js
     loginEndpoint:      '/auth/login',///t
     registerEndpoint:   '/auth/register',
     refreshEndpoint:    '/auth/refresh-token',
     logoutEndpoint:     '/auth/logout',
+
 
     // loginEndpoint:      '/api/auth/login',///t
     // registerEndpoint:   '/api/auth/register',

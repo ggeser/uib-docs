@@ -95,6 +95,14 @@ export default class JwtService {
     localStorage.setItem(this.jwtConfig.storageRefreshTokenKeyName, value)
   }
 
+  initCsrf(...args) {
+      return this.axiosIns({
+          method:'get',
+          url:'/sanctum/csrf-cookie',   // жестко прописанный адрес
+          baseURL: '/',                 // потому что нужно чтобы отправлялся без префикса /api/
+      })
+  }
+
   login(...args) {
     return this.axiosIns.post(this.jwtConfig.loginEndpoint, ...args)
   }
