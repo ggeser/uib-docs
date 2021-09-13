@@ -14,8 +14,15 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
-        }
+//        if (! $request->expectsJson()) {
+//            return route('login');
+//        }
+
+        // Не делаем редирект потому-что у нас SPA все переходы между страницами осуществляет Vue, мы только отдаем текстовый ответ
+        // return route('login');
+        // redirect('/login');
+        return response()->json([
+            'message' => 'Unauthorized 1'
+        ], 401);
     }
 }

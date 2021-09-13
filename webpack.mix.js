@@ -53,6 +53,8 @@ mix
     }
   })
   .sass('resources/sass/app.scss', 'public/css')
+    .sourceMaps()
+    .webpackConfig({devtool: 'source-map'})
   .options({
     postCss: [require('autoprefixer'), require('postcss-rtl')]
   })

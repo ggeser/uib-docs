@@ -28,22 +28,32 @@ class StructController extends Controller
 
 
         $user = Auth::user();   // $user = $request->user();  // получаем пользователя который запрашивает отображение ветки Партнеров
-//        $user = User::find(Auth::id());
-//        $user = User::find(Auth::id());
+        //$user = User::find(Auth::id());
+
+        error_log('@@ $user->tokens->count() '. $user->tokens->count());
 
         $canSeeId = $user->struct_id;
+        // error_log('@@ lara $canSeeId= ' . $canSeeId);
 
-        error_log('@@ lara $canSeeId= ' . $canSeeId);
+//        $breadcrumbsDB = Struct::ancestorsAndSelf($target_id);
+//        for ( $i = count($breadcrumbsDB)-1; $i>=0; $i-- ) {
+//            $tmpBread = $breadcrumbsDB[$i];
+//            $rezBread[] = $tmpBread;
+//
+//            if ( $tmpBread->id == $canSeeId ) { break; }
+//        }
 
+        if ( $target_id != $canSeeId ) {
+            $parent = Struct::findOrFail($canSeeId);
+            $target = Struct::findOrFail($target_id);
 
+            if ( !$parent->isAncestorOf($target) ) {  // проверяем является ли агент родителем того что он запрашивает
+                $target_id = $canSeeId;
+            }
+        }
 
-        //$session_id = Session::getId();
-        //error_log('@@ lara getStructsList $session_id= ' . $session_id);
-
-        if ( $target_id == 1 ) { ///t поменять проверку на сравнение со списком того что может видеть пользователь
-            ///t тут подставлять id той структуры начиная с которой может видеть Пользователь
+        if ( $target_id == 1 ) {
             $target_id = $canSeeId;
-
         }
 
         //$usersDB = User::all();

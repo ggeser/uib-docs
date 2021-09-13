@@ -203,12 +203,18 @@ class AuthController extends Controller
     {
         error_log("logout");
 
-        $request->user()->tokens()->delete();
+        Auth::guard('web')->logout();
+        //Auth::logout();
 
+        $request->user()->tokens()->delete();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // Не делаем редирект потому-что у нас SPA все переходы между страницами осуществляет Vue, мы только отдаем текстовый ответ
+        // return redirect('/login');
         return response()->json([
             'message' => 'Successfully logged out'
         ]);
-
     }
 
 }

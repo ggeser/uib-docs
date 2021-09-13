@@ -127,6 +127,8 @@ import {
 import { initialAbility } from '@/libs/acl/config'
 import useJwt from '@/auth/jwt/useJwt'
 import { avatarText } from '@core/utils/filter'
+import {getHomeRouteForLoggedInUser} from "@/auth/utils";
+import ToastificationContent from "@core/components/toastification/ToastificationContent";
 
 export default {
   components: {
@@ -143,19 +145,33 @@ export default {
   },
   methods: {
     logout() {
-      // Remove userData from localStorage
-      // ? You just removed token from localStorage. If you like, you can also make API call to backend to blacklist used token ///t
-      localStorage.removeItem(useJwt.jwtConfig.storageTokenKeyName)
-      localStorage.removeItem(useJwt.jwtConfig.storageRefreshTokenKeyName)
 
-      // Remove userData from localStorage
-      localStorage.removeItem('userData')
+        // Remove userData from localStorage
+        // ? You just removed token from localStorage. If you like, you can also make API call to backend to blacklist used token ///t
+        localStorage.removeItem(useJwt.jwtConfig.storageTokenKeyName)
+        localStorage.removeItem(useJwt.jwtConfig.storageRefreshTokenKeyName)
 
-      // Reset ability
-      this.$ability.update(initialAbility)
+        // Remove userData from localStorage
+        localStorage.removeItem('userData')
 
-      // Redirect to login page
-      this.$router.push({ name: 'auth-login' })
+        // Reset ability
+        this.$ability.update(initialAbility)
+
+
+
+        useJwt.logout({
+        })
+            .then(response => {
+                console.log('resp at vue logout')
+                //const {userData} = response.data ///t .userData ???
+            })
+            .catch(error => {
+                //this.$refs.loginForm.setErrors(error.response.data.error) ///t
+                console.log(error)
+            });
+
+        // Redirect to login page
+        this.$router.push({ name: 'auth-login' })
     },
   },
 }
