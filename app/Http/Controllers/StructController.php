@@ -48,7 +48,15 @@ class StructController extends Controller
             $target = Struct::findOrFail($target_id);
 
             if ( !$parent->isAncestorOf($target) ) {  // проверяем является ли агент родителем того что он запрашивает
-                $target_id = $canSeeId;
+                /// t $target_id = $canSeeId;
+                //redirect('/apps/structs/list/1');
+
+                
+
+//                redirect('/login');
+//                return response()->json([
+//                    'message' => 'Unauthorized'
+//                ], 422);
             }
         }
 
