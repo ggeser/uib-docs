@@ -9,7 +9,7 @@
       >
         <b-card-body class="card-body">
           <h2 class="text-primary">
-            Dedicated Source Used on Website
+            Супер генератор документов
           </h2>
           <b-card-text class="mb-2">
             <span>Popular searches: </span>

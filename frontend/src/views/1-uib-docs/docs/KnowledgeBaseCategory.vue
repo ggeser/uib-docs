@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- search input -->
-    <section id="knowledge-base-search">
+    <section id="kb-category-search">
       <b-card
         no-body
         class="knowledge-base-bg text-center"
@@ -35,30 +35,37 @@
     </section>
     <!--/ search input -->
 
-    <section id="knowledge-base-content">
-
-      <!-- content -->
-      <b-row class="kb-search-content-info match-height">
+    <div id="knowledge-base-category">
+      <b-row class="match-height">
         <b-col
-          v-for="item in filteredKB"
-          :key="item.id"
+          v-for="(data,index) in filteredKB"
+          :key="index"
           md="4"
           sm="6"
-          class="kb-search-content"
         >
-          <b-card
-            class="text-center cursor-pointer"
-            :img-src="item.img"
-            :img-alt="item.img.slice(5)"
-            img-top
-            @click="$router.push({ name: 'pages-knowledge-base-category', params: { category: item.category } })"
-          >
-            <h4>{{ item.title }}</h4>
-            <b-card-text class="mt-1">
-              {{ item.desc }}
-            </b-card-text>
+          <b-card>
+            <h6 class="kb-title">
+              <feather-icon
+                :icon="data.icon"
+                size="20"
+                class="mr-50"
+                :class="data.iconColor"
+              />{{ data.title }} ({{ data.questions.length }})
+            </h6>
+            <b-list-group class="list-group-circle mt-2">
+              <b-list-group-item
+                v-for="(que) in data.questions"
+                :key="que.question"
+                class="text-body"
+                :to="{ name: 'pages-knowledge-base-question', params: { category: $route.params.category, slug: que.slug } }"
+              >
+                {{ que.question }}
+              </b-list-group-item>
+            </b-list-group>
           </b-card>
         </b-col>
+
+        <!-- no result found -->
         <b-col
           v-show="!filteredKB.length"
           cols="12"
@@ -68,22 +75,24 @@
             Search result not found!!
           </h4>
         </b-col>
+        <!--/ no result found -->
       </b-row>
-    </section>
+    </div>
   </div>
 </template>
 
 <script>
 import {
-  BRow, BCol, BCard, BCardBody, BForm, BInputGroup, BFormInput, BCardText, BInputGroupPrepend,
+  BRow, BCol, BCard, BListGroup, BListGroupItem, BCardBody, BCardText, BForm, BInputGroup, BInputGroupPrepend, BFormInput,
 } from 'bootstrap-vue'
-import '@/@fake-db/db' ///t
 
 export default {
   components: {
     BRow,
     BCol,
     BCard,
+    BListGroup,
+    BListGroupItem,
     BCardBody,
     BCardText,
     BForm,
@@ -95,17 +104,18 @@ export default {
     return {
       knowledgeBaseSearchQuery: '',
       kb: [],
-
     }
   },
   computed: {
     filteredKB() {
       const knowledgeBaseSearchQueryLower = this.knowledgeBaseSearchQuery.toLowerCase()
-      return this.kb.filter(item => item.title.toLowerCase().includes(knowledgeBaseSearchQueryLower) || item.desc.toLowerCase().includes(knowledgeBaseSearchQueryLower))
+      return this.kb.filter(item => item.title.toLowerCase().includes(knowledgeBaseSearchQueryLower) || item.questions.filter(queObj => queObj.question.toLowerCase().includes(knowledgeBaseSearchQueryLower)).length)
     },
   },
   created() {
-    this.$http.get('/kb/data/knowledge_base').then(res => { this.kb = res.data })
+    // ! You have to update the below API call according to route parameter
+    // * We are using fixed API call for all categories for demo purposes
+    this.$http.get('/kb/data/category').then(res => { this.kb = res.data })
   },
 }
 </script>
