@@ -19,15 +19,15 @@ export const $themeConfig = {
     isRTL: false,
     skin: 'light', // light, dark, bordered, semi-dark
     routerTransition: 'zoom-fade', // zoom-fade, slide-fade, fade-bottom, fade, zoom-out, none
-    type: 'vertical', // vertical, horizontal ///t
+    type: 'full', // vertical, horizontal ///t
     contentWidth: 'full', // full, boxed
     menu: {
-      hidden: true,
+      hidden: false,
       isCollapsed: false,
     },
     navbar: {
       // ? For horizontal menu, navbar type will work for navMenu type
-      type: 'hidden', // static , sticky , floating, hidden
+      type: 'floating', // static , sticky , floating, hidden
       backgroundColor: '', // BS color options [primary, success, etc]
     },
     footer: {
