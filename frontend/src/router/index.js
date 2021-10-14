@@ -11,7 +11,7 @@ import pages from './routes/pages'
 import chartsMaps from './routes/charts-maps'
 import formsTable from './routes/forms-tables'
 import others from './routes/others'
-import docs from './routes/docs-routes'
+import docsRoutes from './routes/docs-routes'
 
 Vue.use(VueRouter)
 
@@ -24,7 +24,7 @@ const router = new VueRouter({
   routes: [
     // { path: '/', redirect: { name: 'dashboard-ecommerce' } },
     { path: '/', redirect: { name: 'docs' } },
-    ...docs,
+    ...docsRoutes,
     // ...apps,
     // ...dashboard,
     // ...pages,

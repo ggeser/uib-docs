@@ -12,7 +12,15 @@ export default [
         name: 'docs',
         component: () => import('@/views/1-uib-docs/docs/KnowledgeBase.vue'),
         meta: {
-             layout: 'full',
+             // layout: 'full',
+        },
+    },
+    {
+        path: '/master',
+        name: 'master',
+        component: () => import('@/views/1-uib-docs/master/FormWizard.vue'),
+        meta: {
+            // layout: 'full',
         },
     },
     // {

@@ -12,24 +12,18 @@
             Супер генератор документов
           </h2>
           <b-card-text class="mb-2">
-            <span>Popular searches: </span>
-            <span class="font-weight-bolder">Sales automation, Email marketing</span>
+            <span>Подробнее расскажем в блоке снизу </span>
+            <span class="font-weight-bolder">Раз, Два</span>
           </b-card-text>
 
-          <!-- form -->
-          <b-form class="kb-search-input">
-            <b-input-group class="input-group-merge">
-              <b-input-group-prepend is-text>
-                <feather-icon icon="SearchIcon" />
-              </b-input-group-prepend>
-              <b-form-input
-                id="searchbar"
-                v-model="knowledgeBaseSearchQuery"
-                placeholder="Ask a question...."
-              />
-            </b-input-group>
-          </b-form>
-          <!-- form -->
+            <b-button
+                v-ripple.400="'rgba(255, 255, 255, 0.15)'"
+                variant="gradient-success"
+                :to="{ name: 'master'}"
+            >
+                Начать создание документов
+            </b-button>
+
         </b-card-body>
       </b-card>
     </section>
@@ -75,8 +69,9 @@
 
 <script>
 import {
-  BRow, BCol, BCard, BCardBody, BForm, BInputGroup, BFormInput, BCardText, BInputGroupPrepend,
+  BRow, BCol, BCard, BCardBody, BForm, BInputGroup, BFormInput, BCardText, BInputGroupPrepend, BButton,
 } from 'bootstrap-vue'
+import Ripple from 'vue-ripple-directive'
 import '@/@fake-db/db' ///t
 
 export default {
@@ -90,6 +85,10 @@ export default {
     BInputGroup,
     BInputGroupPrepend,
     BFormInput,
+    BButton,
+  },
+  directives: {
+      Ripple,
   },
   data() {
     return {
