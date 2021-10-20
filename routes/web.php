@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\StructController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,8 @@ use App\Http\Controllers\StructController;
 |
 */
 
-//Route::get('/', 'StructController@index'); ///t
-//Route::get('/{any}', [StructController::class, 'index'])->where('any', '.*'); ///t
+Route::get('pdf/preview', [PDFController::class, 'preview'])->name('pdf.preview');
+Route::get('pdf/generate', [PDFController::class, 'generatePDF'])->name('pdf.generate');
+
 Route::get('/{any}', [UserController::class, 'index'])->where('any', '.*');
-//error_log('Some message here. 555555');
+
