@@ -38,7 +38,7 @@ export default {
       return new Promise((resolve, reject) => {
         axios
           .post('/apps/struct/structs', {params: params })
-          .then(response => resolve(response))
+          .then( response => resolve(response))
           .catch(error => reject(error))
       })
     },

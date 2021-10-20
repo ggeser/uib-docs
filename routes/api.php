@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StructController;
 use App\Http\Controllers\DepartController;
+use App\Http\Controllers\PDFController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,7 +18,10 @@ use App\Http\Controllers\DepartController;
 |
 */
 
-    error_log('@@ api.php');
+//    error_log('@@ api.php');
+
+    Route::get('/api/pdf/generate', [PDFController::class, 'generatePDF'])->name('pdf.generate');
+
 
     Route::group(['prefix' => 'auth'], function () {
         Route::post('login'     , [AuthController::class, 'login']);

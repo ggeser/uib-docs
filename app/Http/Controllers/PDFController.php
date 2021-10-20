@@ -10,14 +10,15 @@ class PDFController extends Controller
     // function to display preview
     public function preview()
     {
-        return view('preview', ['url' => "https://detivbezopasnosti.ru/"]);
+        return view('preview3', ['url' => "https://detivbezopasnosti.ru/"]);
     }
 
     public function generatePDF()
     {
 //        $data = array("url" => "https://detivbezopasnosti.ru/");
 
-        $pdf = PDF::loadView('preview', ['url' => "https://detivbezopasnosti.ru/"]);
+        $pdf = PDF::loadView('preview3', ['url' => "https://detivbezopasnosti.ru/"]);
         return $pdf->download('demo.pdf');
+//        return $pdf->stream('demo.pdf');
     }
 }

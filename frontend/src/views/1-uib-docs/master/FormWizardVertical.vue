@@ -276,6 +276,7 @@ import {
   BFormInput,
 } from 'bootstrap-vue'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
+import axios from "@/libs/axios";
 
 export default {
   components: {
@@ -317,14 +318,82 @@ export default {
   },
   methods: {
     formSubmitted() {
-      this.$toast({
-        component: ToastificationContent,
-        props: {
-          title: 'Form Submitted',
-          icon: 'EditIcon',
-          variant: 'success',
-        },
-      })
+        axios({
+            url: '/api/pdf/generate',
+            method: 'GET',
+            responseType: 'blob', // important
+        }).then((response) => {
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            // works in IE11
+            if (typeof window.navigator.msSaveBlob === 'function') {
+                window.navigator.msSaveBlob(
+                    response.data,
+                    `file.pdf`
+                );
+            } else {
+                link.setAttribute('download', 'file.pdf');
+                document.body.appendChild(link);
+                link.click();
+            }
+        });
+
+        // let xhr = new XMLHttpRequest()
+        // xhr.open('GET', '/api/pdf/generate', true)
+        // xhr.setRequestHeader("Authorization", 'Bearer ' + this.token())
+        // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        // xhr.responseType = 'arraybuffer'
+        //
+        // xhr.onload = function(e) {
+        //     if (this.status === 200) {
+        //         let blob = new Blob([this.response], { type:"application/pdf" })
+        //         let link = document.createElement('a')
+        //         link.href = window.URL.createObjectURL(blob)
+        //         link.download = 'Results.pdf'
+        //         link.click()
+        //
+        //         // this.$toast({
+        //         //   component: ToastificationContent,
+        //         //   props: {
+        //         //     title: 'Form Submitted',
+        //         //     icon: 'EditIcon',
+        //         //     variant: 'success',
+        //         //   },
+        //         // })
+        //     }
+        // }
+
+        // return new Promise((resolve, reject) => {
+        //     axios
+        //         .get('api/pdf/generate')
+        //         .then(
+        //             this.$toast({
+        //               component: ToastificationContent,
+        //               props: {
+        //                 title: 'Form Submitted',
+        //                 icon: 'EditIcon',
+        //                 variant: 'success',
+        //               },
+        //             })
+        //         )
+        //         .catch(error => reject(error))
+        // })
+
+        // return new Promise((resolve, reject) => {
+        //     axios
+        //         .get('api/pdf/generate', {params: params })
+        //         .then(response => resolve(response))
+        //         .catch(error => reject(error))
+        // })
+      // this.$toast({
+      //   component: ToastificationContent,
+      //   props: {
+      //     title: 'Form Submitted',
+      //     icon: 'EditIcon',
+      //     variant: 'success',
+      //   },
+      // })
     },
   },
 }
