@@ -185,11 +185,11 @@ export default [
     // *===============================================---*
     // *--------- STRUCT -------------------------------------------*
     // *===============================================---*
-    // {
-    //     path: '/apps/structs/list',
-    //     name: 'apps-structs-list',
-    //     component: () => import('@/views/apps/struct/users-list/UsersList.vue'),
-    // },
+    {
+        path: '/apps/structs/list',
+        name: 'apps-structs-list',
+        component: () => import('@/views/apps/struct/users-list/UsersList.vue'),
+    },
     {
         path: '/apps/structs/list/:id',
         name: 'apps-structs-list-id',
