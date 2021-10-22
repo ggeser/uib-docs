@@ -12,66 +12,82 @@
     >
 
       <!-- account datails tab -->
-      <tab-content title="Account Details">
+      <tab-content title="Регион">
         <b-row>
           <b-col
             cols="12"
             class="mb-2"
           >
             <h5 class="mb-0">
-              Account Details
+              Ваш регион
             </h5>
             <small class="text-muted">
-              Enter Your Account Details.
+              Выберите ваш регион.
             </small>
           </b-col>
-          <b-col md="6">
-            <b-form-group
-              label="Username"
-              label-for="v-username"
-            >
-              <b-form-input
-                id="v-username"
-                placeholder="johndoe"
-              />
-            </b-form-group>
-          </b-col>
-          <b-col md="6">
-            <b-form-group
-              label="Email"
-              label-for="v-email"
-            >
-              <b-form-input
-                id="v-email"
-                type="email"
-                placeholder="john.doe@email.com"
-              />
-            </b-form-group>
-          </b-col>
-          <b-col md="6">
-            <b-form-group
-              label="Password"
-              label-for="v-password"
-            >
-              <b-form-input
-                id="v-password"
-                type="password"
-                placeholder="Password"
-              />
-            </b-form-group>
-          </b-col>
-          <b-col md="6">
-            <b-form-group
-              label="Confirm Password"
-              label-for="v-c-password"
-            >
-              <b-form-input
-                id="v-c-password"
-                type="password"
-                placeholder="Re-type Password"
-              />
-            </b-form-group>
-          </b-col>
+            <b-col md="8">
+                <b-form-group
+                    label="Регион"
+                    label-for="v-region"
+                >
+                    <v-select
+                        id="v-region"
+                        v-model="selectedRegion"
+                        :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                        :options="regionName"
+                        :selectable="option => ! option.value.includes('select_value')"
+                        label="text"
+                    />
+                </b-form-group>
+            </b-col>
+
+<!--          <b-col md="6">-->
+<!--            <b-form-group-->
+<!--              label="Username"-->
+<!--              label-for="v-username"-->
+<!--            >-->
+<!--              <b-form-input-->
+<!--                id="v-username"-->
+<!--                placeholder="johndoe"-->
+<!--              />-->
+<!--            </b-form-group>-->
+<!--          </b-col>-->
+<!--          <b-col md="6">-->
+<!--            <b-form-group-->
+<!--              label="Email"-->
+<!--              label-for="v-email"-->
+<!--            >-->
+<!--              <b-form-input-->
+<!--                id="v-email"-->
+<!--                type="email"-->
+<!--                placeholder="john.doe@email.com"-->
+<!--              />-->
+<!--            </b-form-group>-->
+<!--          </b-col>-->
+<!--          <b-col md="6">-->
+<!--            <b-form-group-->
+<!--              label="Password"-->
+<!--              label-for="v-password"-->
+<!--            >-->
+<!--              <b-form-input-->
+<!--                id="v-password"-->
+<!--                type="password"-->
+<!--                placeholder="Password"-->
+<!--              />-->
+<!--            </b-form-group>-->
+<!--          </b-col>-->
+<!--          <b-col md="6">-->
+<!--            <b-form-group-->
+<!--              label="Confirm Password"-->
+<!--              label-for="v-c-password"-->
+<!--            >-->
+<!--              <b-form-input-->
+<!--                id="v-c-password"-->
+<!--                type="password"-->
+<!--                placeholder="Re-type Password"-->
+<!--              />-->
+<!--            </b-form-group>-->
+<!--          </b-col>-->
         </b-row>
       </tab-content>
 
@@ -117,7 +133,7 @@
             >
               <v-select
                 id="v-country"
-                v-model="selectedContry"
+                v-model="selectedCountry"
                 :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                 :options="countryName"
                 :selectable="option => ! option.value.includes('select_value')"
@@ -292,8 +308,20 @@ export default {
   },
   data() {
     return {
-      selectedContry: 'select_value',
-      selectedLanguage: 'nothing_selected',
+        selectedRegion: 'Выберите регион',
+        regionName: [
+            { value: 'select_value', text: 'Выберите регион' },
+            { value: 'reg001', text: 'Республика Башкортастан' },
+            { value: 'reg002', text: 'Республика Татарстан' },
+            { value: 'Canada', text: 'Canada' },
+            { value: 'China', text: 'China' },
+            { value: 'United States', text: 'United States' },
+            { value: 'Brazil', text: 'Brazil' },
+            { value: 'Australia', text: 'Australia' },
+            { value: 'India', text: 'India' },
+        ],
+
+      selectedCountry: 'select_value',
       countryName: [
         { value: 'select_value', text: 'Select Value' },
         { value: 'Russia', text: 'Russia' },
@@ -304,6 +332,8 @@ export default {
         { value: 'Australia', text: 'Australia' },
         { value: 'India', text: 'India' },
       ],
+
+      selectedLanguage: 'nothing_selected',
       languageName: [
         { value: 'nothing_selected', text: 'Nothing Selected' },
         { value: 'English', text: 'English' },

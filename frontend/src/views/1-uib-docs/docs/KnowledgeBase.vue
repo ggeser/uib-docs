@@ -19,7 +19,7 @@
             <b-button
                 v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                 variant="gradient-success"
-                :to="{ name: 'master'}"
+                :to="{ name: 'select'}"
             >
                 Начать создание документов
             </b-button>
