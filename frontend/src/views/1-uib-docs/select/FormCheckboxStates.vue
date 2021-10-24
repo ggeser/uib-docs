@@ -1,68 +1,103 @@
 <template>
-  <b-card-code
-    title="Contextual state and validation"
-  >
-    <b-card-text>
-      <span>Bootstrap includes validation styles for </span>
-      <code>valid</code>
-      <span> and </span>
-      <code>invalid</code>
-      <span> states on most form controls.</span>
-    </b-card-text>
 
-    <div>
-      <b-form-checkbox-group
-        v-model="value"
-        :options="options"
-        :state="state"
-        class="demo-inline-spacing"
-        name="checkbox-validation"
+  <div class="center-window">
+      <b-card
+        title="Какие документы требуется составить?"
+        class="text-center"
       >
-        <b-form-invalid-feedback :state="state">
-          Please select two
-        </b-form-invalid-feedback>
-        <b-form-valid-feedback :state="state">
-          Thank you
-        </b-form-valid-feedback>
-      </b-form-checkbox-group>
-    </div>
+        <b-card-text>
+          <span>Выберите из списка одно или несколько типов необходимых документов</span>
+        </b-card-text>
 
-    <template #code>
-      {{ codeStates }}
-    </template>
-  </b-card-code>
+        <div class="margin-window">
+          <b-form-checkbox-group
+            v-model="value"
+            :options="options"
+            :state="state"
+            class="demo-my-spacing"
+            name="checkbox-validation"
+            stacked
+          >
+            <b-form-invalid-feedback :state="state">
+              Пожалуйста выберите один пункт или больше
+            </b-form-invalid-feedback>
+            <b-form-valid-feedback :state="state">
+              Спасибо
+            </b-form-valid-feedback>
+          </b-form-checkbox-group>
+        </div>
+
+
+
+
+<!--          <div>-->
+<!--              <b-form-group label="Individual stacked checkboxes (default)">-->
+<!--                  <b-form-checkbox-->
+<!--                      v-for="option in options"-->
+<!--                      :key="option.value"-->
+<!--                      v-model="selected"-->
+<!--                      :value="option.value"-->
+<!--                      name="flavour-3a"-->
+<!--                  >-->
+<!--                      {{ option.text }}-->
+<!--                  </b-form-checkbox>-->
+<!--              </b-form-group>-->
+<!--          </div>-->
+      </b-card>
+  </div>
+
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code'
 import {
-  BFormCheckboxGroup, BFormInvalidFeedback, BFormValidFeedback, BCardText,
+  BFormCheckboxGroup, BFormInvalidFeedback, BFormValidFeedback, BCardText, BCard, BFormCheckbox, BFormGroup,
 } from 'bootstrap-vue'
-import { codeStates } from './code'
 
 export default {
   components: {
     BFormCheckboxGroup,
+    BFormCheckbox,
+    BFormGroup,
     BFormInvalidFeedback,
     BFormValidFeedback,
     BCardText,
-    BCardCode,
+    BCard,
   },
   data() {
     return {
       value: [],
       options: [
-        { text: 'First Check', value: 'first' },
-        { text: 'Second Check', value: 'second' },
-        { text: 'Third Check', value: 'third' },
+        { text: 'Политика в отношении обработки персональных данных;',              value: 'val1' },
+        { text: 'Пользовательское соглашение посетителя сайта;',                    value: 'val2' },
+        { text: 'Согласие на обработку персональных данных для Клиента;',           value: 'val3' },
+        { text: 'Согласие на обработку персональных данных для Сотрудника;',        value: 'val4' },
+        { text: 'Согласие на распространение персональных данных для Клиента;',     value: 'val5' },
+        { text: 'Согласие на распространение персональных данных для Сотрудника;',  value: 'val6' },
+        { text: 'Уведомление в Роскомнадзор.',                                      value: 'val7' },
       ],
-      codeStates,
     }
   },
   computed: {
     state() {
-      return this.value.length === 2
+      return this.value.length >= 1
     },
   },
 }
 </script>
+
+
+
+<style scoped>
+.center-window
+{
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.margin-window
+{
+    margin-top: 2.0rem;
+    margin-bottom: 2.0rem;
+}
+</style>
