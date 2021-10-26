@@ -18,7 +18,7 @@ export default [
     {
         path: '/select',
         name: 'select',
-        component: () => import('@/views/1-uib-docs/select/FormCheckbox.vue'),
+        component: () => import('@/views/1-uib-docs/select/FormValidationSimple.vue'),
         meta: {
              // layout: 'full',
         },

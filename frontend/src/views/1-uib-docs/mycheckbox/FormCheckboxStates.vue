@@ -28,21 +28,14 @@
         </div>
 
 
+          <b-button
+              variant="primary"
+              type="submit"
+              @click.prevent="validationForm"
+          >
+              Submit
+          </b-button>
 
-
-<!--          <div>-->
-<!--              <b-form-group label="Individual stacked checkboxes (default)">-->
-<!--                  <b-form-checkbox-->
-<!--                      v-for="option in options"-->
-<!--                      :key="option.value"-->
-<!--                      v-model="selected"-->
-<!--                      :value="option.value"-->
-<!--                      name="flavour-3a"-->
-<!--                  >-->
-<!--                      {{ option.text }}-->
-<!--                  </b-form-checkbox>-->
-<!--              </b-form-group>-->
-<!--          </div>-->
       </b-card>
   </div>
 
@@ -50,7 +43,7 @@
 
 <script>
 import {
-  BFormCheckboxGroup, BFormInvalidFeedback, BFormValidFeedback, BCardText, BCard, BFormCheckbox, BFormGroup,
+  BFormCheckboxGroup, BFormInvalidFeedback, BFormValidFeedback, BCardText, BCard, BFormCheckbox, BFormGroup, BButton,
 } from 'bootstrap-vue'
 
 export default {
@@ -62,6 +55,7 @@ export default {
     BFormValidFeedback,
     BCardText,
     BCard,
+    BButton,
   },
   data() {
     return {
