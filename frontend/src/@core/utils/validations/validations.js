@@ -15,6 +15,7 @@ import {
 } from 'vee-validate/dist/rules'
 import ar from 'vee-validate/dist/locale/ar.json'
 import en from 'vee-validate/dist/locale/en.json'
+import ru from 'vee-validate/dist/locale/ru.json'
 
 // eslint-disable-next-line object-curly-newline
 import { validatorPositive, validatorUrlValidator, validatorPassword, validatorCreditCard } from './validators'
@@ -81,6 +82,18 @@ localize({
       },
     },
   },
+    ru: {
+        messages: ru.messages,
+        names: {
+            email: 'Почта',
+            password: 'Пароль',
+        },
+        fields: {
+            password: {
+                min: '{_field_} слишком короткий, выхотите чтобы вас взломали?',
+            },
+        },
+    },
   ar: {
     messages: ar.messages,
     names: {

@@ -24,6 +24,7 @@ import useAppConfig from '@core/app-config/useAppConfig'
 import { useWindowSize, useCssVar } from '@vueuse/core'
 
 import store from '@/store'
+import {localize} from "vee-validate";
 
 const LayoutVertical = () => import('@/layouts/vertical/LayoutVertical.vue')
 const LayoutHorizontal = () => import('@/layouts/horizontal/LayoutHorizontal.vue')
@@ -96,6 +97,8 @@ export default {
     watch(windowWidth, val => {
       store.commit('app/UPDATE_WINDOW_WIDTH', val)
     })
+
+    localize('ru');
 
     return {
       skinClasses,

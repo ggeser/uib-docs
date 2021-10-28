@@ -102,7 +102,7 @@
                   type="submit"
                   @click.prevent="validationForm"
               >
-                  Submit
+                  Далее
               </b-button>
 
           </b-form>

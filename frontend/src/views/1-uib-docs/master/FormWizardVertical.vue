@@ -5,90 +5,114 @@
       :title="null"
       :subtitle="null"
       layout="vertical"
-      finish-button-text="Submit"
-      back-button-text="Previous"
+      finish-button-text="Подтвердить"
+      back-button-text="Назад"
+      next-button-text="Далее"
       class="wizard-vertical mb-3"
       @on-complete="formSubmitted"
     >
 
       <!-- account datails tab -->
-      <tab-content title="Регион">
-        <b-row>
-          <b-col
-            cols="12"
-            class="mb-2"
-          >
-            <h5 class="mb-0">
-              Ваш регион
-            </h5>
-            <small class="text-muted">
-              Выберите ваш регион.
-            </small>
-          </b-col>
-            <b-col md="8">
-                <b-form-group
-                    label="Регион"
-                    label-for="v-region"
-                >
-                    <v-select
-                        id="v-region"
-                        v-model="selectedRegion"
-                        :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                        :options="regionName"
-                        :selectable="option => ! option.value.includes('select_value')"
-                        label="text"
-                    />
-                </b-form-group>
-            </b-col>
+        <tab-content
+            title="Регион"
+            :before-change="validationForm"
+        >
+            <validation-observer
+                ref="regionRules"
+                tag="form"
+            >
+                <b-row>
+                  <b-col
+                    cols="12"
+                    class="mb-2"
+                  >
+                    <h5 class="mb-0">
+                      Ваш регион
+                    </h5>
+                    <small class="text-muted">
+                      Выберите ваш регион.
+                    </small>
+                  </b-col>
+                    <b-col md="8">
 
-<!--          <b-col md="6">-->
-<!--            <b-form-group-->
-<!--              label="Username"-->
-<!--              label-for="v-username"-->
-<!--            >-->
-<!--              <b-form-input-->
-<!--                id="v-username"-->
-<!--                placeholder="johndoe"-->
-<!--              />-->
-<!--            </b-form-group>-->
-<!--          </b-col>-->
-<!--          <b-col md="6">-->
-<!--            <b-form-group-->
-<!--              label="Email"-->
-<!--              label-for="v-email"-->
-<!--            >-->
-<!--              <b-form-input-->
-<!--                id="v-email"-->
-<!--                type="email"-->
-<!--                placeholder="john.doe@email.com"-->
-<!--              />-->
-<!--            </b-form-group>-->
-<!--          </b-col>-->
-<!--          <b-col md="6">-->
-<!--            <b-form-group-->
-<!--              label="Password"-->
-<!--              label-for="v-password"-->
-<!--            >-->
-<!--              <b-form-input-->
-<!--                id="v-password"-->
-<!--                type="password"-->
-<!--                placeholder="Password"-->
-<!--              />-->
-<!--            </b-form-group>-->
-<!--          </b-col>-->
-<!--          <b-col md="6">-->
-<!--            <b-form-group-->
-<!--              label="Confirm Password"-->
-<!--              label-for="v-c-password"-->
-<!--            >-->
-<!--              <b-form-input-->
-<!--                id="v-c-password"-->
-<!--                type="password"-->
-<!--                placeholder="Re-type Password"-->
-<!--              />-->
-<!--            </b-form-group>-->
-<!--          </b-col>-->
-        </b-row>
+                            <validation-provider
+                                #default="{ errors }"
+                                name="Регион"
+                                rules="required"
+                            >
+                                <b-form-group
+                                    label="Регион"
+                                    label-for="v-region"
+                                    :state="errors.length > 0 ? false:null"
+                                >
+                                <v-select
+                                    id="v-region"
+                                    v-model="selectedRegion"
+                                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                                    :options="regionName"
+                                    :selectable="option => ! option.value.includes('select_value')"
+                                    label="text"
+                                    placeholder="Выберите регион"
+                                />
+<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
+                                    <b-form-invalid-feedback :state="errors.length > 0 ? false:null">
+                                        {{ errors[0] }}
+                                    </b-form-invalid-feedback>
+                                </b-form-group>
+                            </validation-provider>
+
+
+                    </b-col>
+
+        <!--          <b-col md="6">-->
+        <!--            <b-form-group-->
+        <!--              label="Username"-->
+        <!--              label-for="v-username"-->
+        <!--            >-->
+        <!--              <b-form-input-->
+        <!--                id="v-username"-->
+        <!--                placeholder="johndoe"-->
+        <!--              />-->
+        <!--            </b-form-group>-->
+        <!--          </b-col>-->
+        <!--          <b-col md="6">-->
+        <!--            <b-form-group-->
+        <!--              label="Email"-->
+        <!--              label-for="v-email"-->
+        <!--            >-->
+        <!--              <b-form-input-->
+        <!--                id="v-email"-->
+        <!--                type="email"-->
+        <!--                placeholder="john.doe@email.com"-->
+        <!--              />-->
+        <!--            </b-form-group>-->
+        <!--          </b-col>-->
+        <!--          <b-col md="6">-->
+        <!--            <b-form-group-->
+        <!--              label="Password"-->
+        <!--              label-for="v-password"-->
+        <!--            >-->
+        <!--              <b-form-input-->
+        <!--                id="v-password"-->
+        <!--                type="password"-->
+        <!--                placeholder="Password"-->
+        <!--              />-->
+        <!--            </b-form-group>-->
+        <!--          </b-col>-->
+        <!--          <b-col md="6">-->
+        <!--            <b-form-group-->
+        <!--              label="Confirm Password"-->
+        <!--              label-for="v-c-password"-->
+        <!--            >-->
+        <!--              <b-form-input-->
+        <!--                id="v-c-password"-->
+        <!--                type="password"-->
+        <!--                placeholder="Re-type Password"-->
+        <!--              />-->
+        <!--            </b-form-group>-->
+        <!--          </b-col>-->
+                </b-row>
+            </validation-observer>
       </tab-content>
 
       <!-- personal info tab -->
@@ -284,18 +308,23 @@
 <script>
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import vSelect from 'vue-select'
+import {ValidationProvider, ValidationObserver, localize} from 'vee-validate'
+import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import {
   BRow,
   BCol,
   BFormGroup,
   BFormInput,
+  BFormInvalidFeedback,
 } from 'bootstrap-vue'
-import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
+import { required, email } from '@validations'
 import axios from "@/libs/axios";
 
 export default {
   components: {
+    ValidationProvider,
+    ValidationObserver,
     FormWizard,
     TabContent,
     BRow,
@@ -303,12 +332,13 @@ export default {
     BFormGroup,
     BFormInput,
     vSelect,
+    BFormInvalidFeedback,
     // eslint-disable-next-line vue/no-unused-components
     ToastificationContent,
   },
   data() {
     return {
-        selectedRegion: 'Выберите регион',
+        selectedRegion: '', //Выберите регион
         regionName: [
             { value: 'select_value', text: 'Выберите регион' },
             { value: 'reg001', text: 'Республика Башкортастан' },
@@ -368,63 +398,22 @@ export default {
                 link.click();
             }
         });
-
-        // let xhr = new XMLHttpRequest()
-        // xhr.open('GET', '/api/pdf/generate', true)
-        // xhr.setRequestHeader("Authorization", 'Bearer ' + this.token())
-        // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-        // xhr.responseType = 'arraybuffer'
-        //
-        // xhr.onload = function(e) {
-        //     if (this.status === 200) {
-        //         let blob = new Blob([this.response], { type:"application/pdf" })
-        //         let link = document.createElement('a')
-        //         link.href = window.URL.createObjectURL(blob)
-        //         link.download = 'Results.pdf'
-        //         link.click()
-        //
-        //         // this.$toast({
-        //         //   component: ToastificationContent,
-        //         //   props: {
-        //         //     title: 'Form Submitted',
-        //         //     icon: 'EditIcon',
-        //         //     variant: 'success',
-        //         //   },
-        //         // })
-        //     }
-        // }
-
-        // return new Promise((resolve, reject) => {
-        //     axios
-        //         .get('api/pdf/generate')
-        //         .then(
-        //             this.$toast({
-        //               component: ToastificationContent,
-        //               props: {
-        //                 title: 'Form Submitted',
-        //                 icon: 'EditIcon',
-        //                 variant: 'success',
-        //               },
-        //             })
-        //         )
-        //         .catch(error => reject(error))
-        // })
-
-        // return new Promise((resolve, reject) => {
-        //     axios
-        //         .get('api/pdf/generate', {params: params })
-        //         .then(response => resolve(response))
-        //         .catch(error => reject(error))
-        // })
-      // this.$toast({
-      //   component: ToastificationContent,
-      //   props: {
-      //     title: 'Form Submitted',
-      //     icon: 'EditIcon',
-      //     variant: 'success',
-      //   },
-      // })
     },
+
+    validationForm() {
+        return new Promise((resolve, reject) => {
+            this.$refs.regionRules.validate().then(success => {
+                if (success) {
+                    resolve(true)
+                } else {
+                    reject()
+                }
+            })
+        })
+
+
+    },
+
   },
 }
 </script>
