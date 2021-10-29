@@ -10,19 +10,19 @@
 
 <script>
 import { BRow, BCol } from 'bootstrap-vue'
-import FormWizardNumber from './FormWizardNumber.vue'
-import FormWizardIcon from './FormWizardIcon.vue'
+// import FormWizardNumber from './FormWizardNumber.vue'
+// import FormWizardIcon from './FormWizardIcon.vue'
 import FormWizardVertical from './FormWizardVertical.vue'
-import FormWizardVerticalIcon from './FormWizardVerticalIcon.vue'
+// import FormWizardVerticalIcon from './FormWizardVerticalIcon.vue'
 
 export default {
   components: {
     BRow,
     BCol,
-    FormWizardNumber,
-    FormWizardIcon,
+    // FormWizardNumber,
+    // FormWizardIcon,
     FormWizardVertical,
-    FormWizardVerticalIcon,
+    // FormWizardVerticalIcon,
   },
 }
 </script>
