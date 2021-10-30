@@ -12,6 +12,19 @@
       @on-complete="formSubmitted"
     >
 
+        <!-- Company tab -->
+        <tab-content
+            title="Данные компании"
+            :before-change="validationFormCompany"
+        >
+            <validation-observer
+                ref="companyRules"
+                tag="form"
+            >
+                <form-wizard-company2 />
+            </validation-observer>
+        </tab-content>
+
         <!-- Region tab -->
         <tab-content
             title="Регион"
@@ -26,17 +39,6 @@
         </tab-content>
 
 
-        <tab-content
-            title="Данные компании"
-            :before-change="validationFormCompany"
-        >
-            <validation-observer
-                ref="companyRules"
-                tag="form"
-            >
-                <form-wizard-company2 />
-            </validation-observer>
-        </tab-content>
 
 
         <!-- address  -->
