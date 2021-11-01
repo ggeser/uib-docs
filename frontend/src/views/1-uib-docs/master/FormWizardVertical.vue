@@ -12,16 +12,16 @@
       @on-complete="formSubmitted"
     >
 
-        <!-- Company tab -->
+        <!-- Category tab -->
         <tab-content
-            title="Данные компании"
-            :before-change="validationFormCompany"
+            title="Категории данных"
+            :before-change="validationFormCategory"
         >
             <validation-observer
-                ref="companyRules"
+                ref="categoryRules"
                 tag="form"
             >
-                <form-wizard-company2 />
+                <form-wizard-category3 />
             </validation-observer>
         </tab-content>
 
@@ -39,6 +39,19 @@
         </tab-content>
 
 
+
+        <!-- Company tab -->
+        <tab-content
+            title="Данные компании"
+            :before-change="validationFormCompany"
+        >
+            <validation-observer
+                ref="companyRules"
+                tag="form"
+            >
+                <form-wizard-company2 />
+            </validation-observer>
+        </tab-content>
 
 
         <!-- address  -->
@@ -253,8 +266,9 @@
 </template>
 
 <script>
-import FormWizardCompany2 from './FormWizardCompany2.vue'
 import FormWizardRegion1 from './FormWizardRegion1.vue'
+import FormWizardCompany2 from './FormWizardCompany2.vue'
+import FormWizardCategory3 from './FormWizardCategory3.vue'
 
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import vSelect from 'vue-select'
@@ -270,6 +284,7 @@ import {
 } from 'bootstrap-vue'
 import { required, email } from '@validations'
 import axios from "@/libs/axios";
+
 
 export default {
   components: {
@@ -287,6 +302,7 @@ export default {
     ToastificationContent,
     FormWizardCompany2,
     FormWizardRegion1,
+    FormWizardCategory3,
   },
   data() {
     return {
@@ -331,6 +347,17 @@ export default {
       validationFormCompany() {
           return new Promise((resolve, reject) => {
               this.$refs.companyRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
+      validationFormCategory() {
+          return new Promise((resolve, reject) => {
+              this.$refs.categoryRules.validate().then(success => {
                   if (success) {
                       resolve(true)
                   } else {

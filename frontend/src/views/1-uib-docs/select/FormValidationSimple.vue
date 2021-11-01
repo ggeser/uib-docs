@@ -10,9 +10,6 @@
             </b-card-text>
 
 
-
-
-
         <!-- form -->
         <validation-observer ref="simpleRules">
           <b-form>

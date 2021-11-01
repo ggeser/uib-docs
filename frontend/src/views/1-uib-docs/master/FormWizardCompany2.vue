@@ -338,6 +338,92 @@
 <!--            </b-form-group>-->
 <!--        </b-col>-->
 
+        <b-col md="6">
+            <b-form-group
+                label="Должность руководителя"
+                label-for="dolgnost"
+            >
+                <validation-provider
+                    #default="{ errors }"
+                    name="Должность руководителя"
+                    rules="required"
+                >
+                    <b-form-input
+                        id="dolgnost"
+                        v-model="dolgnost"
+                        :state="errors.length > 0 ? false:dolgnost.length >= 1 ? true:null"
+                        placeholder='Генеральный директор'
+                    />
+                    <small class="text-danger">{{ errors[0] }}</small>
+                </validation-provider>
+            </b-form-group>
+        </b-col>
+
+        <b-col md="6">
+            <b-form-group
+                label="ФИО руководителя"
+                label-for="fio"
+            >
+                <validation-provider
+                    #default="{ errors }"
+                    name="ФИО руководителя"
+                    rules="required"
+                >
+                    <b-form-input
+                        id="fio"
+                        v-model="fio"
+                        :state="errors.length > 0 ? false:fio.length >= 5 ? true:null"
+                        placeholder='Иванов Иван Иванович'
+                    />
+                    <small class="text-danger">{{ errors[0] }}</small>
+                </validation-provider>
+            </b-form-group>
+        </b-col>
+
+        <b-col md="6">
+            <b-form-group
+                label="Дата открытия организации"
+                label-for="ot-date"
+            >
+                <validation-provider
+                    #default="{ errors }"
+                    name="Дата открытия организации"
+                    rules="required"
+                >
+                    <b-form-input
+                        id="ot-date"
+                        v-model="ot_date"
+                        :state="errors.length > 0 ? false:ot_date.length === 10 ? true:null"
+                        type="date"
+                        placeholder="дд.мм.гггг"
+                        :style="ot_date.length === 0 ? { color:'#babac4' } : null"
+                    />
+                    <small class="text-danger">{{ errors[0] }}</small>
+                </validation-provider>
+            </b-form-group>
+        </b-col>
+
+        <b-col md="6">
+            <b-form-group
+                label="Сайт организации"
+                label-for="site"
+            >
+                <validation-provider
+                    #default="{ errors }"
+                    name="Сайт организации"
+                    rules="required"
+                >
+                    <b-form-input
+                        id="site"
+                        v-model="site"
+                        :state="errors.length > 0 ? false:site.length >= 3 ? true:null"
+                        placeholder='сайт.рф'
+                    />
+                    <small class="text-danger">{{ errors[0] }}</small>
+                </validation-provider>
+            </b-form-group>
+        </b-col>
+
     </b-row>
 </template>
 
@@ -391,13 +477,13 @@ export default {
         okopf: '',
         mydate: '',
         uc_date: '',
-
+        dolgnost: '',
+        fio: '',
+        ot_date: '',
+        site: '',
 
         required,
         email,
-
-
-
 
         // form: {
         //     date: null,
