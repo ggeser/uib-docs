@@ -19,15 +19,46 @@
                         name="First Name"
                         rules="required"
                     >
-                        <b-form-checkbox-group
-                            v-model="value"
-                            :options="options"
+<!--                        <b-form-checkbox-group-->
+<!--                            v-model="value"-->
+<!--                            :options="options"-->
 
-                            class="demo-my-spacing"
-                            name="checkbox-validation"
-                            stacked
+<!--                            class="demo-my-spacing"-->
+<!--                            name="checkbox-validation"-->
+<!--                            stacked-->
+<!--                        >-->
+<!--                        </b-form-checkbox-group>-->
+
+<!--                        <b-table-->
+<!--                            striped-->
+<!--                            responsive-->
+<!--                            class="mb-0"-->
+<!--                            v-model="value"-->
+<!--                            :items="permissionsData"-->
+<!--                        >-->
+<!--                            <template #cell(module)="data">-->
+<!--                                {{ data.value }}-->
+<!--                            </template>-->
+<!--                            <template #cell()="data">-->
+<!--                                <b-form-checkbox :checked="data.value" />-->
+<!--                            </template>-->
+<!--                        </b-table>                        -->
+                        <b-table
+                            striped
+                            responsive
+                            class="mb-0"
+                            v-model="value"
+                            :items="permissionsData"
                         >
-                        </b-form-checkbox-group>
+                            <template #cell(module)="data">
+                                {{ data.value }}
+                            </template>
+                            <template #cell()="data">
+                                <b-form-checkbox :checked="data.value" />
+                            </template>
+                        </b-table>
+
+
                         <div v-if="(value.length >= 1) || ( errors[0]  == null) ">
                             <br>
                         </div>
@@ -57,10 +88,14 @@ import {
   BFormGroup,
   BFormInput,
   BFormInvalidFeedback,
-  BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox,
+  BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox, BTable,
 } from 'bootstrap-vue'
 import { required, email } from '@validations'
 import router from "@/router";
+import useUsersList from "@/views/apps/user/users-list/useUsersList";
+import {ref} from "@vue/composition-api";
+import {useInputImageRenderer} from "@core/comp-functions/forms/form-utils";
+import {avatarText} from "@core/utils/filter";
 
 
 export default {
@@ -78,7 +113,50 @@ export default {
         BFormInvalidFeedback,
         // eslint-disable-next-line vue/no-unused-components
         ToastificationContent,
-        BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox,
+        BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox, BTable,
+    },
+    setup() {
+        const permissionsData = [
+            {
+                module: 'Admin',
+                read: false,
+                write: false,
+                create: false,
+                delete: false,
+            },
+            {
+                module: 'Staff',
+                read: false,
+                write: false,
+                create: false,
+                delete: false,
+            },
+            {
+                module: 'Author',
+                read: false,
+                write: false,
+                create: false,
+                delete: false,
+            },
+            {
+                module: 'Contributor',
+                read: false,
+                write: false,
+                create: false,
+                delete: false,
+            },
+            {
+                module: 'User',
+                read: false,
+                write: false,
+                create: false,
+                delete: false,
+            },
+        ]
+
+        return {
+            permissionsData,
+        }
     },
     data() {
         return {

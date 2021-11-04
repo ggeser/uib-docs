@@ -160,47 +160,47 @@
             </b-form-group>
         </b-col>
 
-        <b-col md="6">
-            <b-form-group
-                label="ОКВЭД"
-                label-for="okved"
-            >
-                <validation-provider
-                    #default="{ errors }"
-                    name="ОКВЭД"
-                    rules="required"
-                >
-                    <b-form-input
-                        id="okved"
-                        v-model="okved"
-                        :state="errors.length > 0 ? false:okved.length >= 1 ? true:null"
-                        placeholder="ОКВЭД"
-                    />
-                    <small class="text-danger">{{ errors[0] }}</small>
-                </validation-provider>
-            </b-form-group>
-        </b-col>
+<!--        <b-col md="6">-->
+<!--            <b-form-group-->
+<!--                label="ОКВЭД"-->
+<!--                label-for="okved"-->
+<!--            >-->
+<!--                <validation-provider-->
+<!--                    #default="{ errors }"-->
+<!--                    name="ОКВЭД"-->
+<!--                    rules="required"-->
+<!--                >-->
+<!--                    <b-form-input-->
+<!--                        id="okved"-->
+<!--                        v-model="okved"-->
+<!--                        :state="errors.length > 0 ? false:okved.length >= 1 ? true:null"-->
+<!--                        placeholder="ОКВЭД"-->
+<!--                    />-->
+<!--                    <small class="text-danger">{{ errors[0] }}</small>-->
+<!--                </validation-provider>-->
+<!--            </b-form-group>-->
+<!--        </b-col>-->
 
-        <b-col md="6">
-            <b-form-group
-                label="Расшифровка ОКВЭДа"
-                label-for="ras-okved"
-            >
-                <validation-provider
-                    #default="{ errors }"
-                    name="Расшифровка ОКВЭДа"
-                    rules="required"
-                >
-                    <b-form-input
-                        id="ras-okved"
-                        v-model="ras_okved"
-                        :state="errors.length > 0 ? false:ras_okved.length >= 1 ? true:null"
-                        placeholder="Расшифровка ОКВЭДа"
-                    />
-                    <small class="text-danger">{{ errors[0] }}</small>
-                </validation-provider>
-            </b-form-group>
-        </b-col>
+<!--        <b-col md="6">-->
+<!--            <b-form-group-->
+<!--                label="Расшифровка ОКВЭДа"-->
+<!--                label-for="ras-okved"-->
+<!--            >-->
+<!--                <validation-provider-->
+<!--                    #default="{ errors }"-->
+<!--                    name="Расшифровка ОКВЭДа"-->
+<!--                    rules="required"-->
+<!--                >-->
+<!--                    <b-form-input-->
+<!--                        id="ras-okved"-->
+<!--                        v-model="ras_okved"-->
+<!--                        :state="errors.length > 0 ? false:ras_okved.length >= 1 ? true:null"-->
+<!--                        placeholder="Расшифровка ОКВЭДа"-->
+<!--                    />-->
+<!--                    <small class="text-danger">{{ errors[0] }}</small>-->
+<!--                </validation-provider>-->
+<!--            </b-form-group>-->
+<!--        </b-col>-->
 
         <b-col md="6">
             <b-form-group
