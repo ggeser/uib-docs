@@ -17,49 +17,18 @@
                         name="First Name"
                         rules="required"
                     >
-<!--                        <b-form-checkbox-group-->
-<!--                            v-model="value"-->
-<!--                            :options="options"-->
-
-<!--                            class="demo-my-spacing"-->
-<!--                            name="checkbox-validation"-->
-<!--                            stacked-->
-<!--                        >-->
-<!--                        </b-form-checkbox-group>-->
-
-<!--                        <b-table-->
-<!--                            striped-->
-<!--                            responsive-->
-<!--                            class="mb-0"-->
-<!--                            v-model="value"-->
-<!--                            :items="permissionsData"-->
-<!--                        >-->
-<!--                            <template #cell(module)="data">-->
-<!--                                {{ data.value }}-->
-<!--                            </template>-->
-<!--                            <template #cell()="data">-->
-<!--                                <b-form-checkbox :checked="data.value" />-->
-<!--                            </template>-->
-<!--                        </b-table>                        -->
                         <b-table
                             striped
                             responsive
-
-
                             :items="permissionsData"
-
                         >
                             <template #cell(module)="data">
                                 {{ data.value }}
                             </template>
                             <template #cell()="data">
-<!--                                <b-form-checkbox :checked="data.value" />-->
                                 <b-form-checkbox
-
                                     v-model="value"
                                     :value="data.value"
-
-
                                 />
                             </template>
                         </b-table>
@@ -76,10 +45,13 @@
                             name="Краткое название"
                             rules="required"
                         >
-                            <b-form-input
-                                id="short-name"
-                                v-model="value"
-                            />
+                            <div v-if="true">
+                                <input
+                                    type="hidden"
+                                    id="short-name"
+                                    v-model="value"
+                                />
+                            </div>
                         </validation-provider>
 
 
@@ -94,7 +66,6 @@
                     </validation-provider>
                 </div>
             </b-form>
-<!--        </validation-observer>-->
 
     </b-row>
 </template>
