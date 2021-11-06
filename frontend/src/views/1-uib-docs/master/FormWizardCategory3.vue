@@ -10,8 +10,6 @@
             <small class="text-muted">Выберите необходимые категории.</small>
         </b-col>
 
-        <!-- form -->
-        <validation-observer ref="simpleRules">
             <b-form>
                 <div class="margin-window">
                     <validation-provider
@@ -46,17 +44,43 @@
                         <b-table
                             striped
                             responsive
-                            class="mb-0"
-                            v-model="value"
+
+
                             :items="permissionsData"
+
                         >
                             <template #cell(module)="data">
                                 {{ data.value }}
                             </template>
                             <template #cell()="data">
-                                <b-form-checkbox :checked="data.value" />
+<!--                                <b-form-checkbox :checked="data.value" />-->
+                                <b-form-checkbox
+
+                                    v-model="value"
+                                    :value="data.value"
+
+
+                                />
                             </template>
                         </b-table>
+
+<!--                        <b-button-->
+<!--                            variant="primary"-->
+<!--                            type="submit"-->
+<!--                            @click="mycheck"-->
+<!--                        >-->
+<!--                            mycheck-->
+<!--                        </b-button>-->
+
+                        <validation-provider
+                            name="Краткое название"
+                            rules="required"
+                        >
+                            <b-form-input
+                                id="short-name"
+                                v-model="value"
+                            />
+                        </validation-provider>
 
 
                         <div v-if="(value.length >= 1) || ( errors[0]  == null) ">
@@ -70,7 +94,7 @@
                     </validation-provider>
                 </div>
             </b-form>
-        </validation-observer>
+<!--        </validation-observer>-->
 
     </b-row>
 </template>
@@ -98,7 +122,22 @@ import {useInputImageRenderer} from "@core/comp-functions/forms/form-utils";
 import {avatarText} from "@core/utils/filter";
 
 
+// export const validatorPositive = value => {
+//     if (value >= 0) {
+//         return true
+//     }
+//     return false
+// }
+//
+// export const positive = extend('positive', {
+//     validate: validatorPositive,
+//     message: 'Please enter positive number!',
+// })
+
+
+
 export default {
+
     components: {
         ValidationProvider,
         ValidationObserver,
@@ -116,41 +155,79 @@ export default {
         BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox, BTable,
     },
     setup() {
+        // const permissionsData = [
+        //     {
+        //         module: 'Admin',
+        //         read: false,
+        //         write: false,
+        //         create: false,
+        //         delete: false,
+        //     },
+        //     {
+        //         module: 'Staff',
+        //         read: false,
+        //         write: false,
+        //         create: false,
+        //         delete: false,
+        //     },
+        //     {
+        //         module: 'Author',
+        //         read: false,
+        //         write: false,
+        //         create: false,
+        //         delete: false,
+        //     },
+        //     {
+        //         module: 'Contributor',
+        //         read: false,
+        //         write: false,
+        //         create: false,
+        //         delete: false,
+        //     },
+        //     {
+        //         module: 'User',
+        //         read: false,
+        //         write: false,
+        //         create: false,
+        //         delete: false,
+        //     },
+        // ]
+
         const permissionsData = [
             {
                 module: 'Admin',
-                read: false,
-                write: false,
-                create: false,
-                delete: false,
+                read: 'val1',
+                write: 'val2',
+                create: 'val3',
+                delete: 'val4',
             },
             {
                 module: 'Staff',
-                read: false,
-                write: false,
-                create: false,
-                delete: false,
+                read: 'val5',
+                write: 'val6',
+                create: 'val7',
+                delete: 'val8',
             },
             {
                 module: 'Author',
-                read: false,
-                write: false,
-                create: false,
-                delete: false,
+                read: 'val9',
+                write: 'val10',
+                create: 'val11',
+                delete: 'val12',
             },
             {
                 module: 'Contributor',
-                read: false,
-                write: false,
-                create: false,
-                delete: false,
+                read: 'val13',
+                write: 'val14',
+                create: 'val15',
+                delete: 'val16',
             },
             {
                 module: 'User',
-                read: false,
-                write: false,
-                create: false,
-                delete: false,
+                read: 'val17',
+                write: 'val18',
+                create: 'val19',
+                delete: 'val20',
             },
         ]
 
@@ -160,24 +237,76 @@ export default {
     },
     data() {
         return {
+            // permissionsData: [
+            //     {
+            //         module: 'Admin',
+            //         read: 'va1l',
+            //         write: 'val2',
+            //         create: 'val3',
+            //         delete: 'val4',
+            //     },
+            //     {
+            //         module: 'Staff',
+            //         read: 'val5',
+            //         write: 'val6',
+            //         create: 'val7',
+            //         delete: 'val8',
+            //     },
+            //     {
+            //         module: 'Author',
+            //         read: 'val9',
+            //         write: 'val10',
+            //         create: 'val11',
+            //         delete: 'val12',
+            //     },
+            //     {
+            //         module: 'Contributor',
+            //         read: 'val13',
+            //         write: 'val14',
+            //         create: 'val15',
+            //         delete: 'val16',
+            //     },
+            //     {
+            //         module: 'User',
+            //         read: 'val17',
+            //         write: 'val18',
+            //         create: 'val19',
+            //         delete: 'val20',
+            //     },
+            // ],
+
+            // selected: ['val19', 'val20'],
+            selected: [],
+
             value: [],
-            options: [
-                { text: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',  value: 'val1' },
-                { text: 'Паспортные данные',  value: 'val2' },
-                { text: 'Семейное положение',  value: 'val3' },
-                { text: 'Социальное положение',  value: 'val4' },
-                { text: 'Имущественное положение',  value: 'val5' },
-                { text: 'Документы об образовании',  value: 'val6' },
-                { text: 'Профессия',  value: 'val7' },
-                { text: 'Сведения о доходах',  value: 'val8' },
-                { text: 'ИНН',  value: 'val9' },
-                { text: 'Данные медицинского полиса',  value: 'val10' },
-                { text: 'Страховое свидетельство',  value: 'val11' },
-                { text: 'Специальные персональные данные',  value: 'val12' },
-                { text: 'Биометрические персональные данные',  value: 'val13' },
-            ],
+            // options: [
+            //     { text: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',  value: 'val1' },
+            //     { text: 'Паспортные данные',  value: 'val2' },
+            //     { text: 'Семейное положение',  value: 'val3' },
+            //     { text: 'Социальное положение',  value: 'val4' },
+            //     { text: 'Имущественное положение',  value: 'val5' },
+            //     { text: 'Документы об образовании',  value: 'val6' },
+            //     { text: 'Профессия',  value: 'val7' },
+            //     { text: 'Сведения о доходах',  value: 'val8' },
+            //     { text: 'ИНН',  value: 'val9' },
+            //     { text: 'Данные медицинского полиса',  value: 'val10' },
+            //     { text: 'Страховое свидетельство',  value: 'val11' },
+            //     { text: 'Специальные персональные данные',  value: 'val12' },
+            //     { text: 'Биометрические персональные данные',  value: 'val13' },
+            // ],
 
             required,
+            // export const positive = extend('positive', {
+            //     validate: validatorPositive,
+            //     message: 'Please enter positive number!',
+            // })
+            //
+            // export const validatorPositive = value => {
+            //     if (value >= 0) {
+            //         return true
+            //     }
+            //     return false
+            // }
         }
     },
     computed: {
@@ -186,12 +315,9 @@ export default {
         },
     },
     methods: {
-        validationForm() {
-            this.$refs.simpleRules.validate().then(success => {
-                if (success) {
-                    router.push('master')
-                }
-            })
+        mycheck() {
+            // alert(this.permissionsData[1].read)
+            alert(this.value)
         },
     },
 }
