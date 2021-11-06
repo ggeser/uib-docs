@@ -10,20 +10,31 @@
             <small class="text-muted">Выберите необходимые категории.</small>
         </b-col>
 
+        <b-col
+            cols="12"
+            class="mb-2"
+        >
+
             <b-form>
-                <div class="margin-window">
+<!--                <div class="margin-window">-->
+                <div>
                     <validation-provider
                         #default="{ errors }"
                         name="First Name"
                         rules="required"
                     >
+
                         <b-table
                             striped
                             responsive
                             :items="permissionsData"
+                            class="myclass2"
+                            fixed="false"
                         >
                             <template #cell(Модуль)="data">
-                                {{ data.value }}
+<!--                                <span class="text-nowrap">-->
+                                    {{ data.value }}
+<!--                                 </span>-->
                             </template>
                             <template #cell()="data">
                                 <b-form-checkbox
@@ -32,6 +43,7 @@
                                 />
                             </template>
                         </b-table>
+
 
 <!--                        <b-button-->
 <!--                            variant="primary"-->
@@ -66,7 +78,7 @@
                     </validation-provider>
                 </div>
             </b-form>
-
+        </b-col>
     </b-row>
 </template>
 
@@ -267,5 +279,21 @@ export default {
 .margin-window
 {
     margin-left: 1.0rem;
+}
+.myclass
+{
+    /*width: 800px;*/
+    /*min-width: 800px;*/
+    /*max-width: 8080px;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+}
+.myclass2
+{
+    /*width: auto;*/
+    /*min-width: 800px;*/
+    /*max-width: 8080px;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
 }
 </style>

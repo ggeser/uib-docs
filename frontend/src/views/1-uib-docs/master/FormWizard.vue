@@ -1,4 +1,5 @@
 <template>
+<!--    <form-wizard-vertical />-->
   <b-row>
     <b-col cols="1"></b-col>
     <b-col cols="10">

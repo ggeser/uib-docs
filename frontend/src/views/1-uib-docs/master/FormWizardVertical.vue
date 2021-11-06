@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="center-window">
     <form-wizard
       color="#7367F0"
       :title="null"
@@ -392,3 +392,15 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.center-window
+{
+    /*min-width: 1100px;*/
+    /*overflow-x: auto;*/
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+</style>
