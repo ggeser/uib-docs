@@ -1,12 +1,15 @@
 <template>
-<!--    <form-wizard-vertical />-->
-  <b-row>
-    <b-col cols="1"></b-col>
-    <b-col cols="10">
-      <form-wizard-vertical />
-    </b-col>
-    <b-col cols="1"></b-col>
-  </b-row>
+    <div class="center-window">
+        <form-wizard-vertical />
+    </div>
+
+<!--  <b-row>-->
+<!--    <b-col cols="1"></b-col>-->
+<!--    <b-col cols="10">-->
+<!--      <form-wizard-vertical />-->
+<!--    </b-col>-->
+<!--    <b-col cols="1"></b-col>-->
+<!--  </b-row>-->
 </template>
 
 <script>
@@ -31,4 +34,13 @@ export default {
 <style lang="scss">
   @import '~@core/scss/vue/libs/vue-wizard.scss';
   @import '~@core/scss/vue/libs/vue-select.scss';
+</style>
+
+<style scoped>
+.center-window
+{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
 </style>

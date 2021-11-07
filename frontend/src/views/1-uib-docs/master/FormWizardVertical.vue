@@ -15,6 +15,19 @@
         <!-- Category tab -->
         <tab-content
             title="Категории данных"
+            :before-change="validationFormOrgType"
+        >
+            <validation-observer
+                ref="orgTypeRules"
+                tag="form"
+            >
+                <form-wizard-org-type01 />
+            </validation-observer>
+        </tab-content>
+
+        <!-- Category tab -->
+        <tab-content
+            title="Категории данных"
             :before-change="validationFormCategory"
         >
             <validation-observer
@@ -266,6 +279,7 @@
 </template>
 
 <script>
+import FormWizardOrgType01 from './FormWizardOrgType01.vue'
 import FormWizardRegion1 from './FormWizardRegion1.vue'
 import FormWizardCompany2 from './FormWizardCompany2.vue'
 import FormWizardCategory3 from './FormWizardCategory3.vue'
@@ -288,21 +302,22 @@ import axios from "@/libs/axios";
 
 export default {
   components: {
-    ValidationProvider,
-    ValidationObserver,
-    FormWizard,
-    TabContent,
-    BRow,
-    BCol,
-    BFormGroup,
-    BFormInput,
-    vSelect,
-    BFormInvalidFeedback,
-    // eslint-disable-next-line vue/no-unused-components
-    ToastificationContent,
-    FormWizardCompany2,
-    FormWizardRegion1,
-    FormWizardCategory3,
+      ValidationProvider,
+      ValidationObserver,
+      FormWizard,
+      TabContent,
+      BRow,
+      BCol,
+      BFormGroup,
+      BFormInput,
+      vSelect,
+      BFormInvalidFeedback,
+      // eslint-disable-next-line vue/no-unused-components
+      ToastificationContent,
+      FormWizardCompany2,
+      FormWizardRegion1,
+      FormWizardCategory3,
+      FormWizardOrgType01,
   },
   data() {
     return {
@@ -333,6 +348,17 @@ export default {
         });
     },
 
+      validationFormOrgType() {
+          return new Promise((resolve, reject) => {
+              this.$refs.orgTypeRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
       validationFormRegion() {
           return new Promise((resolve, reject) => {
               this.$refs.regionRules.validate().then(success => {
