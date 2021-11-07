@@ -28,13 +28,14 @@
                             striped
                             responsive
                             :items="permissionsData"
-                            class="myclass2"
+                            class="myclass2 myclass3"
                             fixed="false"
                         >
                             <template #cell(Модуль)="data">
 <!--                                <span class="text-nowrap">-->
+                                <span class="myclass3">
                                     {{ data.value }}
-<!--                                 </span>-->
+                                 </span>
                             </template>
                             <template #cell()="data">
                                 <b-form-checkbox
@@ -290,6 +291,15 @@ export default {
 }
 .myclass2
 {
+    /*width: auto;*/
+    /*min-width: 800px;*/
+    /*max-width: 8080px;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+}
+.myclass3
+{
+    margin: 0;
     /*width: auto;*/
     /*min-width: 800px;*/
     /*max-width: 8080px;*/

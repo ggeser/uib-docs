@@ -12,20 +12,7 @@
       @on-complete="formSubmitted"
     >
 
-        <!-- Category tab -->
-        <tab-content
-            title="Категории данных"
-            :before-change="validationFormOrgType"
-        >
-            <validation-observer
-                ref="orgTypeRules"
-                tag="form"
-            >
-                <form-wizard-org-type01 />
-            </validation-observer>
-        </tab-content>
-
-        <!-- Category tab -->
+        <!-- Category tab 4-->
         <tab-content
             title="Категории данных"
             :before-change="validationFormCategory"
@@ -38,7 +25,20 @@
             </validation-observer>
         </tab-content>
 
-        <!-- Region tab -->
+        <!-- OrgType tab 1-->
+        <tab-content
+            title="Тип учреждения"
+            :before-change="validationFormOrgType"
+        >
+            <validation-observer
+                ref="orgTypeRules"
+                tag="form"
+            >
+                <form-wizard-org-type01 />
+            </validation-observer>
+        </tab-content>
+
+        <!-- Region tab 2-->
         <tab-content
             title="Регион"
             :before-change="validationFormRegion"
@@ -51,9 +51,7 @@
             </validation-observer>
         </tab-content>
 
-
-
-        <!-- Company tab -->
+        <!-- Company tab 3-->
         <tab-content
             title="Данные компании"
             :before-change="validationFormCompany"
@@ -65,6 +63,14 @@
                 <form-wizard-company2 />
             </validation-observer>
         </tab-content>
+
+
+
+
+
+
+
+
 
 
         <!-- address  -->

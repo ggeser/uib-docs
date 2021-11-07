@@ -5,37 +5,34 @@
         class="mb-2"
       >
         <h5 class="mb-0">
-          Ваш регион
+          Тип учреждения
         </h5>
         <small class="text-muted">
-          Выберите ваш регион.
+          Выберите тип вашего учреждения.
         </small>
       </b-col>
         <b-col md="8">
             <validation-provider
                 #default="{ errors }"
-                name="Регион"
+                name="Тип учреждения"
                 rules="required"
             >
-                <b-form-group
-                    label="Регион"
-                    label-for="v-region"
-                    :state="errors.length > 0 ? false:null"
+                <b-form-radio-group
+                    v-model="value"
+                    :options="options"
+                    class="demo-my-spacing"
+                    name="checkbox-validation"
+                    stacked
                 >
-                <v-select
-                    id="v-region"
-                    v-model="selectedRegion"
-                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                    :options="regionName"
-                    :selectable="option => ! option.value.includes('select_value')"
-                    label="text"
-                    placeholder="Выберите регион"
-                />
-<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
-                    <b-form-invalid-feedback :state="errors.length > 0 ? false:null">
-                        {{ errors[0] }}
-                    </b-form-invalid-feedback>
-                </b-form-group>
+                </b-form-radio-group>
+                <div v-if="(value.length >= 1) || ( errors[0]  == null) ">
+                    <br>
+                </div>
+                <div v-else>
+                    <small class="text-danger">
+                        Пожалуйста выберите один пункт или больше
+                    </small>
+                </div>
             </validation-provider>
         </b-col>
     </b-row>
@@ -48,42 +45,45 @@ import {ValidationProvider, ValidationObserver, localize} from 'vee-validate'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import {
-  BRow,
-  BCol,
-  BFormGroup,
-  BFormInput,
-  BFormInvalidFeedback,
+    BRow,
+    BCol,
+    BFormGroup,
+    BFormInput,
+    BFormInvalidFeedback,
+    BFormRadioGroup,
+    BFormRadio,
 } from 'bootstrap-vue'
 import { required, email } from '@validations'
 
 export default {
   components: {
-    ValidationProvider,
-    ValidationObserver,
-    FormWizard,
-    TabContent,
-    BRow,
-    BCol,
-    BFormGroup,
-    BFormInput,
-    vSelect,
-    BFormInvalidFeedback,
-    // eslint-disable-next-line vue/no-unused-components
-    ToastificationContent,
+      ValidationProvider,
+      ValidationObserver,
+      FormWizard,
+      TabContent,
+      BRow,
+      BCol,
+      BFormGroup,
+      BFormInput,
+      vSelect,
+      BFormInvalidFeedback,
+      // eslint-disable-next-line vue/no-unused-components
+      ToastificationContent,
+      BFormRadioGroup,
+      BFormRadio,
   },
   data() {
     return {
-        selectedRegion: '', //Выберите регион
-        regionName: [
-            { value: 'select_value', text: 'Выберите регион' },
-            { value: 'reg001', text: 'Республика Башкортастан' },
-            { value: 'reg002', text: 'Республика Татарстан' },
-            { value: 'Canada', text: 'Canada' },
-            { value: 'China', text: 'China' },
-            { value: 'United States', text: 'United States' },
-            { value: 'Brazil', text: 'Brazil' },
-            { value: 'Australia', text: 'Australia' },
-            { value: 'India', text: 'India' },
+        required,
+
+        value: [],
+        options: [
+            { text: 'Юридическое лицо',                                                                             value: 'val1' },
+            { text: 'Индивидуальный предприниматель',                                                               value: 'val2' },
+            { text: 'Юридическое лицо с использованием 2-х информационных систем и Интернет-сайта',                 value: 'val3' },
+            { text: 'Индивидуальный предприниматель с использованием 2-х информационных систем и Интернет-сайта',   value: 'val4' },
+            { text: 'Нотариус с использованием 2-х информационных систем',                                          value: 'val5' },
+            { text: 'Учреждене здравоохранения с использованием 5-ти информационных систем',                        value: 'val6' },
         ],
     }
   },
