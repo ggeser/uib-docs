@@ -27,48 +27,72 @@
                         <b-table
                             striped
                             responsive
-                            :items="permissionsData"
-                            class="myclass2 myclass3"
+                            :fields="fields"
+                            :items="items"
+                            class="mytable"
                             fixed="false"
                         >
-                            <template #cell(Модуль)="data">
+                            <!-- A virtual column -->
+<!--                            <template #cell(index)="data">-->
+<!--                                {{ data.index + 1 }}-->
+<!--                            </template>-->
+
+                            <template #cell(module)="data">
 <!--                                <span class="text-nowrap">-->
-                                <span class="myclass3">
+<!--                                <span class="myclass3">-->
                                     {{ data.value }}
-                                 </span>
+<!--                                 </span>-->
                             </template>
                             <template #cell()="data">
                                 <b-form-checkbox
-                                    v-model="value"
-                                    :value="data.value"
+                                    v-model="data.value.checked"
+                                    :value="data.value.id"
+                                    :id="data.value.id"
+                                    :ref="data.value.id"
+                                    :checked="data.value.checked"
+                                    :indeterminate="indeterminate"
+                                    @change=switchCheckbox(data.value.id)
                                 />
                             </template>
                         </b-table>
 
+                        <b-form-checkbox
+                            v-model="chk1"
+                            :value="test"
+                            :indeterminate="indeterminate"
+                        />
+<!--                        <b-form-checkbox-->
+<!--                            v-model="chk2"-->
+<!--                            :value="test"-->
+<!--                            :checked=checked(1)-->
+<!--                            :indeterminate="indeterminate"-->
+<!--                        />-->
 
-<!--                        <b-button-->
-<!--                            variant="primary"-->
-<!--                            type="submit"-->
-<!--                            @click="mycheck"-->
-<!--                        >-->
-<!--                            mycheck-->
-<!--                        </b-button>-->
+                        <b-button
+                            variant="primary"
+                            type="submit"
+                            @click="mycheck"
+                        >
+                            mycheck
+                        </b-button>
 
                         <validation-provider
                             name="Краткое название"
                             rules="required"
                         >
                             <div v-if="true">
+
+                                <!--                            type="hidden"-->
                                 <input
-                                    type="hidden"
+
                                     id="short-name"
-                                    v-model="value"
+                                    v-model="selected"
                                 />
                             </div>
                         </validation-provider>
 
 
-                        <div v-if="(value.length >= 1) || ( errors[0]  == null) ">
+                        <div v-if="(selected.length >= 1) || ( errors[0]  == null) ">
                             <br>
                         </div>
                         <div v-else>
@@ -139,110 +163,259 @@ export default {
         BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox, BTable,
     },
     setup() {
-        const permissionsData = [
+        const fields = [
+
+            // { key: 'index', label: '№' } ,// A virtual column that doesn't exist in items
+            { key: 'module', label: 'Модуль' },
+            { key: 'alll', label: 'V' },
+            { key: 'col1', label: 'Согласие на обработку персональных данных клиента' },
+            { key: 'col2', label: 'Согласие на обработку персональных данных работника' },
+            { key: 'col3', label: 'Согласие на распространение персональных данных клиента' },
+            { key: 'col4', label: 'Согласие на распространение персональных данных работника' },
+        ]
+
+        const items = [
             {
-                Модуль: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
-                'Согласие на обработку персональных данных клиента': 'val1',
-                'Согласие на обработку персональных данных работника': 'val2',
-                'Согласие на распространение персональных данных клиента': 'val3',
-                'Согласие на распространение персональных данных работника': 'val4',
+                module: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
+                alll: { id: 'val-01-0', checked: false, indet: false,},
+                col1: { id: 'val-01-1', checked: false, indet: false,},
+                col2: { id: 'val-01-2', checked: false, indet: false,},
+                col3: { id: 'val-01-3', checked: false, indet: false,},
+                col4: { id: 'val-01-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Паспортные данные',
-                'Согласие на обработку персональных данных клиента': 'val5',
-                'Согласие на обработку персональных данных работника': 'val6',
-                'Согласие на распространение персональных данных клиента': 'val7',
-                'Согласие на распространение персональных данных работника': 'val8',
+                module: 'Паспортные данные',
+                alll: { id: 'val-02-0', checked: false, indet: false,},
+                col1: { id: 'val-02-1', checked: false, indet: false,},
+                col2: { id: 'val-02-2', checked: false, indet: false,},
+                col3: { id: 'val-02-3', checked: false, indet: false,},
+                col4: { id: 'val-02-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Семейное положение',
-                'Согласие на обработку персональных данных клиента': 'val9',
-                'Согласие на обработку персональных данных работника': 'val10',
-                'Согласие на распространение персональных данных клиента': 'val11',
-                'Согласие на распространение персональных данных работника': 'val12',
+                module: 'Семейное положение',
+                alll: { id: 'val-03-0', checked: false, indet: false,},
+                col1: { id: 'val-03-1', checked: false, indet: false,},
+                col2: { id: 'val-03-2', checked: false, indet: false,},
+                col3: { id: 'val-03-3', checked: false, indet: false,},
+                col4: { id: 'val-03-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Социальное положение',
-                'Согласие на обработку персональных данных клиента': 'val13',
-                'Согласие на обработку персональных данных работника': 'val14',
-                'Согласие на распространение персональных данных клиента': 'val15',
-                'Согласие на распространение персональных данных работника': 'val16',
+                module: 'Социальное положение',
+                alll: { id: 'val-04-0', checked: false, indet: false,},
+                col1: { id: 'val-04-1', checked: false, indet: false,},
+                col2: { id: 'val-04-2', checked: false, indet: false,},
+                col3: { id: 'val-04-3', checked: false, indet: false,},
+                col4: { id: 'val-04-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Имущественное положение',
-                'Согласие на обработку персональных данных клиента': 'val17',
-                'Согласие на обработку персональных данных работника': 'val18',
-                'Согласие на распространение персональных данных клиента': 'val19',
-                'Согласие на распространение персональных данных работника': 'val20',
+                module: 'Имущественное положение',
+                alll: { id: 'val-05-0', checked: false, indet: false,},
+                col1: { id: 'val-05-1', checked: false, indet: false,},
+                col2: { id: 'val-05-2', checked: false, indet: false,},
+                col3: { id: 'val-05-3', checked: false, indet: false,},
+                col4: { id: 'val-05-4', checked: false, indet: false,},
             },
 
             {
-                Модуль: 'Документы об образовании',
-                'Согласие на обработку персональных данных клиента': 'val21',
-                'Согласие на обработку персональных данных работника': 'val22',
-                'Согласие на распространение персональных данных клиента': 'val23',
-                'Согласие на распространение персональных данных работника': 'val24',
+                module: 'Документы об образовании',
+                alll: { id: 'val-06-0', checked: false, indet: false,},
+                col1: { id: 'val-06-1', checked: false, indet: false,},
+                col2: { id: 'val-06-2', checked: false, indet: false,},
+                col3: { id: 'val-06-3', checked: false, indet: false,},
+                col4: { id: 'val-06-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Профессия',
-                'Согласие на обработку персональных данных клиента': 'val25',
-                'Согласие на обработку персональных данных работника': 'val26',
-                'Согласие на распространение персональных данных клиента': 'val27',
-                'Согласие на распространение персональных данных работника': 'val28',
+                module: 'Профессия',
+                alll: { id: 'val-07-0', checked: false, indet: false,},
+                col1: { id: 'val-07-1', checked: false, indet: false,},
+                col2: { id: 'val-07-2', checked: false, indet: false,},
+                col3: { id: 'val-07-3', checked: false, indet: false,},
+                col4: { id: 'val-07-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Сведения о доходах',
-                'Согласие на обработку персональных данных клиента': 'val29',
-                'Согласие на обработку персональных данных работника': 'val30',
-                'Согласие на распространение персональных данных клиента': 'val31',
-                'Согласие на распространение персональных данных работника': 'val32',
+                module: 'Сведения о доходах',
+                alll: { id: 'val-08-0', checked: false, indet: false,},
+                col1: { id: 'val-08-1', checked: false, indet: false,},
+                col2: { id: 'val-08-2', checked: false, indet: false,},
+                col3: { id: 'val-08-3', checked: false, indet: false,},
+                col4: { id: 'val-08-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'ИНН',
-                'Согласие на обработку персональных данных клиента': 'val33',
-                'Согласие на обработку персональных данных работника': 'val34',
-                'Согласие на распространение персональных данных клиента': 'val35',
-                'Согласие на распространение персональных данных работника': 'val36',
+                module: 'ИНН',
+                alll: { id: 'val-09-0', checked: false, indet: false,},
+                col1: { id: 'val-09-1', checked: false, indet: false,},
+                col2: { id: 'val-09-2', checked: false, indet: false,},
+                col3: { id: 'val-09-3', checked: false, indet: false,},
+                col4: { id: 'val-09-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Данные медицинского полиса',
-                'Согласие на обработку персональных данных клиента': 'val37',
-                'Согласие на обработку персональных данных работника': 'val38',
-                'Согласие на распространение персональных данных клиента': 'val39',
-                'Согласие на распространение персональных данных работника': 'val40',
+                module: 'Данные медицинского полиса',
+                alll: { id: 'val-10-0', checked: false, indet: false,},
+                col1: { id: 'val-10-1', checked: false, indet: false,},
+                col2: { id: 'val-10-2', checked: false, indet: false,},
+                col3: { id: 'val-10-3', checked: false, indet: false,},
+                col4: { id: 'val-10-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Страховое свидетельство',
-                'Согласие на обработку персональных данных клиента': 'val41',
-                'Согласие на обработку персональных данных работника': 'val42',
-                'Согласие на распространение персональных данных клиента': 'val43',
-                'Согласие на распространение персональных данных работника': 'val44',
+                module: 'Страховое свидетельство',
+                alll: { id: 'val-11-0', checked: false, indet: false,},
+                col1: { id: 'val-11-1', checked: false, indet: false,},
+                col2: { id: 'val-11-2', checked: false, indet: false,},
+                col3: { id: 'val-11-3', checked: false, indet: false,},
+                col4: { id: 'val-11-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Специальные персональные данные',
-                'Согласие на обработку персональных данных клиента': 'val45',
-                'Согласие на обработку персональных данных работника': 'val46',
-                'Согласие на распространение персональных данных клиента': 'val47',
-                'Согласие на распространение персональных данных работника': 'val48',
+                module: 'Специальные персональные данные',
+                alll: { id: 'val-12-0', checked: false, indet: false,},
+                col1: { id: 'val-12-1', checked: false, indet: false,},
+                col2: { id: 'val-12-2', checked: false, indet: false,},
+                col3: { id: 'val-12-3', checked: false, indet: false,},
+                col4: { id: 'val-12-4', checked: false, indet: false,},
             },
             {
-                Модуль: 'Биометрические персональные данные',
-                'Согласие на обработку персональных данных клиента': 'val49',
-                'Согласие на обработку персональных данных работника': 'val50',
-                'Согласие на распространение персональных данных клиента': 'val51',
-                'Согласие на распространение персональных данных работника': 'val52',
+                module: 'Биометрические персональные данные',
+                alll: { id: 'val-13-0', checked: false, indet: false,},
+                col1: { id: 'val-13-1', checked: false, indet: false,},
+                col2: { id: 'val-13-2', checked: false, indet: false,},
+                col3: { id: 'val-13-3', checked: false, indet: false,},
+                col4: { id: 'val-13-4', checked: false, indet: false,},
             },
         ]
 
         return {
-            permissionsData,
+            items,
+            fields,
         }
     },
     data() {
         return {
+            chk1: true,
+            chk2: "",
+
+            // fields: [
+            //
+            //     // { key: 'index', label: '№' } ,// A virtual column that doesn't exist in items
+            //     { key: 'module', label: 'Модуль' },
+            //     { key: 'alll', label: 'V' },
+            //     { key: 'col1', label: 'Согласие на обработку персональных данных клиента' },
+            //     { key: 'col2', label: 'Согласие на обработку персональных данных работника' },
+            //     { key: 'col3', label: 'Согласие на распространение персональных данных клиента' },
+            //     { key: 'col4', label: 'Согласие на распространение персональных данных работника' },
+            // ],
+            //
+            // items : [
+            //     {
+            //         module: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
+            //         alll: { id: 'val-01-0', checked: false },
+            //         col1: { id: 'val-01-1', checked: false },
+            //         col2: { id: 'val-01-2', checked: false },
+            //         col3: { id: 'val-01-3', checked: false },
+            //         col4: { id: 'val-01-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Паспортные данные',
+            //         alll: { id: 'val-02-0', checked: false },
+            //         col1: { id: 'val-02-1', checked: false },
+            //         col2: { id: 'val-02-2', checked: false },
+            //         col3: { id: 'val-02-3', checked: false },
+            //         col4: { id: 'val-02-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Семейное положение',
+            //         alll: { id: 'val-03-0', checked: false },
+            //         col1: { id: 'val-03-1', checked: false },
+            //         col2: { id: 'val-03-2', checked: false },
+            //         col3: { id: 'val-03-3', checked: false },
+            //         col4: { id: 'val-03-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Социальное положение',
+            //         alll: { id: 'val-04-0', checked: false },
+            //         col1: { id: 'val-04-1', checked: false },
+            //         col2: { id: 'val-04-2', checked: false },
+            //         col3: { id: 'val-04-3', checked: false },
+            //         col4: { id: 'val-04-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Имущественное положение',
+            //         alll: { id: 'val-05-0', checked: false },
+            //         col1: { id: 'val-05-1', checked: false },
+            //         col2: { id: 'val-05-2', checked: false },
+            //         col3: { id: 'val-05-3', checked: false },
+            //         col4: { id: 'val-05-4', checked: false },
+            //     },
+            //
+            //     {
+            //         module: 'Документы об образовании',
+            //         alll: { id: 'val-06-0', checked: false },
+            //         col1: { id: 'val-06-1', checked: false },
+            //         col2: { id: 'val-06-2', checked: false },
+            //         col3: { id: 'val-06-3', checked: false },
+            //         col4: { id: 'val-06-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Профессия',
+            //         alll: { id: 'val-07-0', checked: false },
+            //         col1: { id: 'val-07-1', checked: false },
+            //         col2: { id: 'val-07-2', checked: false },
+            //         col3: { id: 'val-07-3', checked: false },
+            //         col4: { id: 'val-07-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Сведения о доходах',
+            //         alll: { id: 'val-08-0', checked: false },
+            //         col1: { id: 'val-08-1', checked: false },
+            //         col2: { id: 'val-08-2', checked: false },
+            //         col3: { id: 'val-08-3', checked: false },
+            //         col4: { id: 'val-08-4', checked: false },
+            //     },
+            //     {
+            //         module: 'ИНН',
+            //         alll: { id: 'val-09-0', checked: false },
+            //         col1: { id: 'val-09-1', checked: false },
+            //         col2: { id: 'val-09-2', checked: false },
+            //         col3: { id: 'val-09-3', checked: false },
+            //         col4: { id: 'val-09-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Данные медицинского полиса',
+            //         alll: { id: 'val-10-0', checked: false },
+            //         col1: { id: 'val-10-1', checked: false },
+            //         col2: { id: 'val-10-2', checked: false },
+            //         col3: { id: 'val-10-3', checked: false },
+            //         col4: { id: 'val-10-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Страховое свидетельство',
+            //         alll: { id: 'val-11-0', checked: false },
+            //         col1: { id: 'val-11-1', checked: false },
+            //         col2: { id: 'val-11-2', checked: false },
+            //         col3: { id: 'val-11-3', checked: false },
+            //         col4: { id: 'val-11-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Специальные персональные данные',
+            //         alll: { id: 'val-12-0', checked: false },
+            //         col1: { id: 'val-12-1', checked: false },
+            //         col2: { id: 'val-12-2', checked: false },
+            //         col3: { id: 'val-12-3', checked: false },
+            //         col4: { id: 'val-12-4', checked: false },
+            //     },
+            //     {
+            //         module: 'Биометрические персональные данные',
+            //         alll: { id: 'val-13-0', checked: false },
+            //         col1: { id: 'val-13-1', checked: false },
+            //         col2: { id: 'val-13-2', checked: false },
+            //         col3: { id: 'val-13-3', checked: false },
+            //         col4: { id: 'val-13-4', checked: false },
+            //     },
+            // ],
+
+
+            indeterminate: true,
             selected: [],
 
-            value: [],
+            // value: [],
             // options: [
             //     { text: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',  value: 'val1' },
             //     { text: 'Паспортные данные',  value: 'val2' },
@@ -264,13 +437,74 @@ export default {
     },
     computed: {
         state() {
-            return this.value.length >= 1
+            return this.selected.length >= 1
         },
+
+        mychecked(nom) {
+            let arr=[
+                {chk1: this.chk1},
+                {chk2: this.chk2},
+            ]
+            return arr[nom];
+        }
+        // valueAsArray() {
+        //     // returns either an arrau with ['foo'] or an empty array []
+        //     return [this.selected].filter(v => !!v)
+        // }
+
     },
     methods: {
         mycheck() {
-            // alert(this.permissionsData[1].read)
-            alert(this.value)
+            // alert(this.items[1].read)
+            // alert(this.selected)
+            // this.indeterminate = !this.indeterminate;
+
+            this.items[12].alll.checked = this.items[12].alll.id;
+        },
+
+        switchCheckbox(id_str) {
+            // alert(this.$refs["val-01-1"].id)
+            // alert(el)
+            // this.$refs.val_01_1.id.checked=true;
+            // this.selected.push('val-01-1')
+            // this.selected = this.selected.unique();
+            // this.selected.unique();
+
+
+
+            // if(this.selected.indexOf('val-01-1') === -1 && el !== 'val-01-1'){
+            //     this.selected.push('val-01-1');
+            // }
+
+            // this.$refs["val-01-1"].checked = true;
+
+            // alert(this.selected);
+
+            if( id_str[7] === '0' ){
+
+                let curPref = "val-" + id_str[4] + id_str[5] + "-";
+                let curInd = "";
+
+                if( this.selected.indexOf(id_str) !== -1 ) {    //включили галку в левом столбце
+
+                    for (let i = 1; i <= 4; i++) {
+                        curInd = curPref + i;
+                        if (this.selected.indexOf(curInd) === -1) {
+                            this.selected.push(curInd);
+                        }
+                    }
+                }
+                else {                                      //выключили галку в левом столбце
+                    for (let i = 1; i <= 4; i++) {
+                        curInd = curPref + i;
+                        let pos = this.selected.indexOf(curInd);
+                        if (pos !== -1) {
+                            this.selected.splice(pos,1);
+                        }
+                    }
+                }
+
+            }
         },
     },
 }
@@ -300,10 +534,25 @@ export default {
 .myclass3
 {
     margin: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+
     /*width: auto;*/
     /*min-width: 800px;*/
     /*max-width: 8080px;*/
     /*margin-left: auto;*/
     /*margin-right: auto;*/
 }
+
+/*!*.mytable>tbody>tr>td, .mytable>tbody>tr>th, .mytable>tfoot>tr>td, .mytable>tfoot>tr>th, .mytable>thead>tr>td, .mytable>thead>tr>th {*!*/
+/*table.mytable>tbody>tr>td, table.mytable>tbody>tr>th, table.mytable>tfoot>tr>td, table.mytable>tfoot>tr>th, table.mytable>thead>tr>td, table.mytable>thead>tr>th, table.mytable>td{*/
+/*!*.mytable tbody tr td, .mytable tbody tr th, .mytable tfoot tr td, .mytable tfoot tr th, .mytable thead tr td, .mytable thead tr th {*!*/
+
+/*    padding-top: 0.1rem !important;*/
+/*    padding-right: 0.1rem !important;*/
+/*    padding-bottom: 0.1rem !important;*/
+/*    padding-left: 0.1rem !important;*/
+/*}*/
+
 </style>
