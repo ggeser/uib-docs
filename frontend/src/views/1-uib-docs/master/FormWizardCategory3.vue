@@ -23,14 +23,14 @@
                         name="First Name"
                         rules="required"
                     >
-
+<!--                        responsive-->
                         <b-table
                             striped
-                            responsive
+
                             :fields="fields"
                             :items="items"
                             class="mytable"
-                            fixed="false"
+                            fixed
                         >
                             <!-- A virtual column -->
 <!--                            <template #cell(index)="data">-->
@@ -56,40 +56,18 @@
                             </template>
                         </b-table>
 
-<!--                        <b-form-checkbox-->
-<!--                            v-model="chk1"-->
-<!--                            :indeterminate="indeterminate"-->
-<!--                        />-->
-<!--                        <b-form-checkbox-->
-<!--                            v-model="chk2"-->
-<!--                            :value="test"-->
-<!--                            :checked=checked(1)-->
-<!--                            :indeterminate="indeterminate"-->
-<!--                        />-->
-
-<!--                        <b-button-->
-<!--                            variant="primary"-->
-<!--                            type="submit"-->
-<!--                            @click="mycheck"-->
-<!--                        >-->
-<!--                            mycheck-->
-<!--                        </b-button>-->
-
                         <validation-provider
                             #default="{ errors }"
                             name="Краткое название"
                             rules="required"
                         >
                             <div v-if="true">
-
-                                <!--                            type="hidden"-->
                                 <input
-
+                                    type="hidden"
                                     id="short-name"
                                     v-model="selected"
                                 />
                             </div>
-                            {{ selected }}
 
                             <div v-if="(selected.length >= 1) || ( errors[0]  == null) ">
                                 <br>
@@ -101,9 +79,6 @@
                             </div>
 
                         </validation-provider>
-
-
-
                     </validation-provider>
                 </div>
             </b-form>
@@ -133,21 +108,6 @@ import {ref} from "@vue/composition-api";
 import {useInputImageRenderer} from "@core/comp-functions/forms/form-utils";
 import {avatarText} from "@core/utils/filter";
 
-
-// export const validatorPositive = value => {
-//     if (value >= 0) {
-//         return true
-//     }
-//     return false
-// }
-//
-// export const positive = extend('positive', {
-//     validate: validatorPositive,
-//     message: 'Please enter positive number!',
-// })
-
-
-
 export default {
 
     components: {
@@ -171,7 +131,7 @@ export default {
 
             // { key: 'index', label: '№' } ,// A virtual column that doesn't exist in items
             { key: 'module', label: 'Модуль' },
-            { key: 'alll', label: 'V' },
+            { key: 'alll', label: 'V' , tdClass: 'tdClass1'},
             { key: 'col1', label: 'Согласие на обработку персональных данных клиента' },
             { key: 'col2', label: 'Согласие на обработку персональных данных работника' },
             { key: 'col3', label: 'Согласие на распространение персональных данных клиента' },
@@ -296,75 +256,27 @@ export default {
             chk1: true,
             chk2: "",
 
+            fixed: true,
+
             indeterminate: true,
             selected: [],
 
             required,
         }
     },
-    // watch: {
-    //     // эта функция запускается при любом изменении вопроса
-    //     rezStr(newVal, oldVal) {
-    //         alert(newVal);
-    //         alert(oldVal);
-    //
-    //         let arr=[];
-    //
-    //         // for (let i = 0; i <= 12; i++) {
-    //         //     if ( this.items[i].alll.checked !== false ){ arr.push( this.items[i].alll.id ); }
-    //         //     if ( this.items[i].col1.checked !== false ){ arr.push( this.items[i].col1.id ); }
-    //         //     if ( this.items[i].col2.checked !== false ){ arr.push( this.items[i].col2.id ); }
-    //         //     if ( this.items[i].col3.checked !== false ){ arr.push( this.items[i].col3.id ); }
-    //         //     if ( this.items[i].col4.checked !== false ){ arr.push( this.items[i].col4.id ); }
-    //         // }
-    //
-    //         arr.push( "123");
-    //
-    //         return arr;
-    //     },
-    // },
 
     computed: {
-        state() {
-            return this.selected.length >= 1
-        },
-
-        mychecked(nom) {
-            let arr=[
-                {chk1: this.chk1},
-                {chk2: this.chk2},
-            ]
-            return arr[nom];
-        },
-
-        // rezStr: {
-        //     // геттер:
-        //     get: function () {
-        //         let arr=[];
-        //
-        //         for (let i = 0; i <= 12; i++) {
-        //             if ( this.items[i].alll.checked !== false ){ arr.push( this.items[i].alll.id ); }
-        //             if ( this.items[i].col1.checked !== false ){ arr.push( this.items[i].col1.id ); }
-        //             if ( this.items[i].col2.checked !== false ){ arr.push( this.items[i].col2.id ); }
-        //             if ( this.items[i].col3.checked !== false ){ arr.push( this.items[i].col3.id ); }
-        //             if ( this.items[i].col4.checked !== false ){ arr.push( this.items[i].col4.id ); }
-        //         }
-        //
-        //         return arr;
-        //     },
-        //     // сеттер:
-        //     set: function (newValue) {
-        //
-        //     }
+        // state() {
+        //     return this.selected.length >= 1
         // },
-
-
-
-        // valueAsArray() {
-        //     // returns either an arrau with ['foo'] or an empty array []
-        //     return [this.selected].filter(v => !!v)
+        //
+        // mychecked(nom) {
+        //     let arr=[
+        //         {chk1: this.chk1},
+        //         {chk2: this.chk2},
+        //     ]
+        //     return arr[nom];
         // },
-
     },
     methods: {
         mycheck() {
@@ -375,55 +287,7 @@ export default {
             this.items[12].alll.checked = this.items[12].alll.id;
         },
 
-        addToSelected(val){
-
-        },
-
         switchCheckbox(id_str,my_obj,virt) {
-            // alert(this.$refs["val-01-1"].id)
-            // alert(el)
-            // this.$refs.val_01_1.id.checked=true;
-            // this.selected.push('val-01-1')
-            // this.selected = this.selected.unique();
-            // this.selected.unique();
-
-
-
-            // if(this.selected.indexOf('val-01-1') === -1 && el !== 'val-01-1'){
-            //     this.selected.push('val-01-1');
-            // }
-
-            // this.$refs["val-01-1"].checked = true;
-
-            // alert(this.selected);
-
-
-
-            // if( id_str[7] === '0' ){
-            //
-            //     let curPref = "val-" + id_str[4] + id_str[5] + "-";
-            //     let curInd = "";
-            //
-            //     if( this.selected.indexOf(id_str) !== -1 ) {    //включили галку в левом столбце
-            //
-            //         for (let i = 1; i <= 4; i++) {
-            //             curInd = curPref + i;
-            //             if (this.selected.indexOf(curInd) === -1) {
-            //                 this.selected.push(curInd);
-            //             }
-            //         }
-            //     }
-            //     else {                                      //выключили галку в левом столбце
-            //         for (let i = 1; i <= 4; i++) {
-            //             curInd = curPref + i;
-            //             let pos = this.selected.indexOf(curInd);
-            //             if (pos !== -1) {
-            //                 this.selected.splice(pos,1);
-            //             }
-            //         }
-            //     }
-            // }
-
 
             let curId = id_str;
             let stroka = id_str[4] + id_str[5];
@@ -528,7 +392,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
+.tdClass1
+{
+    margin-left: 0.1rem !important;
+    max-width: 30px !important;
+    backgroundColor: '#3eef33' !important;
+}
+
 .margin-window
 {
     margin-left: 1.0rem;
