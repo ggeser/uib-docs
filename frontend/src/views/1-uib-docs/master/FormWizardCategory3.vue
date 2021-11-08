@@ -50,8 +50,8 @@
                                     :id="data.value.id"
                                     :ref="data.value.id"
                                     :checked="data.value.checked"
-                                    :indeterminate="indeterminate"
-                                    @change=switchCheckbox(data.value.id)
+                                    :indeterminate="data.value.indet"
+                                    @change=switchCheckbox(data.value.id,data.value)
                                 />
                             </template>
                         </b-table>
@@ -77,6 +77,7 @@
                         </b-button>
 
                         <validation-provider
+                            #default="{ errors }"
                             name="Краткое название"
                             rules="required"
                         >
@@ -89,17 +90,21 @@
                                     v-model="selected"
                                 />
                             </div>
+                            {{ selected }}
+
+                            <div v-if="(selected.length >= 1) || ( errors[0]  == null) ">
+                                <br>
+                            </div>
+                            <div v-else>
+                                <small class="text-danger">
+                                    Пожалуйста выберите один пункт или больше
+                                </small>
+                            </div>
+
                         </validation-provider>
 
 
-                        <div v-if="(selected.length >= 1) || ( errors[0]  == null) ">
-                            <br>
-                        </div>
-                        <div v-else>
-                            <small class="text-danger">
-                                Пожалуйста выберите один пункт или больше
-                            </small>
-                        </div>
+
                     </validation-provider>
                 </div>
             </b-form>
@@ -292,149 +297,34 @@ export default {
             chk1: true,
             chk2: "",
 
-            // fields: [
-            //
-            //     // { key: 'index', label: '№' } ,// A virtual column that doesn't exist in items
-            //     { key: 'module', label: 'Модуль' },
-            //     { key: 'alll', label: 'V' },
-            //     { key: 'col1', label: 'Согласие на обработку персональных данных клиента' },
-            //     { key: 'col2', label: 'Согласие на обработку персональных данных работника' },
-            //     { key: 'col3', label: 'Согласие на распространение персональных данных клиента' },
-            //     { key: 'col4', label: 'Согласие на распространение персональных данных работника' },
-            // ],
-            //
-            // items : [
-            //     {
-            //         module: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
-            //         alll: { id: 'val-01-0', checked: false },
-            //         col1: { id: 'val-01-1', checked: false },
-            //         col2: { id: 'val-01-2', checked: false },
-            //         col3: { id: 'val-01-3', checked: false },
-            //         col4: { id: 'val-01-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Паспортные данные',
-            //         alll: { id: 'val-02-0', checked: false },
-            //         col1: { id: 'val-02-1', checked: false },
-            //         col2: { id: 'val-02-2', checked: false },
-            //         col3: { id: 'val-02-3', checked: false },
-            //         col4: { id: 'val-02-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Семейное положение',
-            //         alll: { id: 'val-03-0', checked: false },
-            //         col1: { id: 'val-03-1', checked: false },
-            //         col2: { id: 'val-03-2', checked: false },
-            //         col3: { id: 'val-03-3', checked: false },
-            //         col4: { id: 'val-03-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Социальное положение',
-            //         alll: { id: 'val-04-0', checked: false },
-            //         col1: { id: 'val-04-1', checked: false },
-            //         col2: { id: 'val-04-2', checked: false },
-            //         col3: { id: 'val-04-3', checked: false },
-            //         col4: { id: 'val-04-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Имущественное положение',
-            //         alll: { id: 'val-05-0', checked: false },
-            //         col1: { id: 'val-05-1', checked: false },
-            //         col2: { id: 'val-05-2', checked: false },
-            //         col3: { id: 'val-05-3', checked: false },
-            //         col4: { id: 'val-05-4', checked: false },
-            //     },
-            //
-            //     {
-            //         module: 'Документы об образовании',
-            //         alll: { id: 'val-06-0', checked: false },
-            //         col1: { id: 'val-06-1', checked: false },
-            //         col2: { id: 'val-06-2', checked: false },
-            //         col3: { id: 'val-06-3', checked: false },
-            //         col4: { id: 'val-06-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Профессия',
-            //         alll: { id: 'val-07-0', checked: false },
-            //         col1: { id: 'val-07-1', checked: false },
-            //         col2: { id: 'val-07-2', checked: false },
-            //         col3: { id: 'val-07-3', checked: false },
-            //         col4: { id: 'val-07-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Сведения о доходах',
-            //         alll: { id: 'val-08-0', checked: false },
-            //         col1: { id: 'val-08-1', checked: false },
-            //         col2: { id: 'val-08-2', checked: false },
-            //         col3: { id: 'val-08-3', checked: false },
-            //         col4: { id: 'val-08-4', checked: false },
-            //     },
-            //     {
-            //         module: 'ИНН',
-            //         alll: { id: 'val-09-0', checked: false },
-            //         col1: { id: 'val-09-1', checked: false },
-            //         col2: { id: 'val-09-2', checked: false },
-            //         col3: { id: 'val-09-3', checked: false },
-            //         col4: { id: 'val-09-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Данные медицинского полиса',
-            //         alll: { id: 'val-10-0', checked: false },
-            //         col1: { id: 'val-10-1', checked: false },
-            //         col2: { id: 'val-10-2', checked: false },
-            //         col3: { id: 'val-10-3', checked: false },
-            //         col4: { id: 'val-10-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Страховое свидетельство',
-            //         alll: { id: 'val-11-0', checked: false },
-            //         col1: { id: 'val-11-1', checked: false },
-            //         col2: { id: 'val-11-2', checked: false },
-            //         col3: { id: 'val-11-3', checked: false },
-            //         col4: { id: 'val-11-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Специальные персональные данные',
-            //         alll: { id: 'val-12-0', checked: false },
-            //         col1: { id: 'val-12-1', checked: false },
-            //         col2: { id: 'val-12-2', checked: false },
-            //         col3: { id: 'val-12-3', checked: false },
-            //         col4: { id: 'val-12-4', checked: false },
-            //     },
-            //     {
-            //         module: 'Биометрические персональные данные',
-            //         alll: { id: 'val-13-0', checked: false },
-            //         col1: { id: 'val-13-1', checked: false },
-            //         col2: { id: 'val-13-2', checked: false },
-            //         col3: { id: 'val-13-3', checked: false },
-            //         col4: { id: 'val-13-4', checked: false },
-            //     },
-            // ],
-
-
             indeterminate: true,
             selected: [],
-
-            // value: [],
-            // options: [
-            //     { text: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',  value: 'val1' },
-            //     { text: 'Паспортные данные',  value: 'val2' },
-            //     { text: 'Семейное положение',  value: 'val3' },
-            //     { text: 'Социальное положение',  value: 'val4' },
-            //     { text: 'Имущественное положение',  value: 'val5' },
-            //     { text: 'Документы об образовании',  value: 'val6' },
-            //     { text: 'Профессия',  value: 'val7' },
-            //     { text: 'Сведения о доходах',  value: 'val8' },
-            //     { text: 'ИНН',  value: 'val9' },
-            //     { text: 'Данные медицинского полиса',  value: 'val10' },
-            //     { text: 'Страховое свидетельство',  value: 'val11' },
-            //     { text: 'Специальные персональные данные',  value: 'val12' },
-            //     { text: 'Биометрические персональные данные',  value: 'val13' },
-            // ],
 
             required,
         }
     },
+    // watch: {
+    //     // эта функция запускается при любом изменении вопроса
+    //     rezStr(newVal, oldVal) {
+    //         alert(newVal);
+    //         alert(oldVal);
+    //
+    //         let arr=[];
+    //
+    //         // for (let i = 0; i <= 12; i++) {
+    //         //     if ( this.items[i].alll.checked !== false ){ arr.push( this.items[i].alll.id ); }
+    //         //     if ( this.items[i].col1.checked !== false ){ arr.push( this.items[i].col1.id ); }
+    //         //     if ( this.items[i].col2.checked !== false ){ arr.push( this.items[i].col2.id ); }
+    //         //     if ( this.items[i].col3.checked !== false ){ arr.push( this.items[i].col3.id ); }
+    //         //     if ( this.items[i].col4.checked !== false ){ arr.push( this.items[i].col4.id ); }
+    //         // }
+    //
+    //         arr.push( "123");
+    //
+    //         return arr;
+    //     },
+    // },
+
     computed: {
         state() {
             return this.selected.length >= 1
@@ -446,11 +336,35 @@ export default {
                 {chk2: this.chk2},
             ]
             return arr[nom];
-        }
+        },
+
+        // rezStr: {
+        //     // геттер:
+        //     get: function () {
+        //         let arr=[];
+        //
+        //         for (let i = 0; i <= 12; i++) {
+        //             if ( this.items[i].alll.checked !== false ){ arr.push( this.items[i].alll.id ); }
+        //             if ( this.items[i].col1.checked !== false ){ arr.push( this.items[i].col1.id ); }
+        //             if ( this.items[i].col2.checked !== false ){ arr.push( this.items[i].col2.id ); }
+        //             if ( this.items[i].col3.checked !== false ){ arr.push( this.items[i].col3.id ); }
+        //             if ( this.items[i].col4.checked !== false ){ arr.push( this.items[i].col4.id ); }
+        //         }
+        //
+        //         return arr;
+        //     },
+        //     // сеттер:
+        //     set: function (newValue) {
+        //
+        //     }
+        // },
+
+
+
         // valueAsArray() {
         //     // returns either an arrau with ['foo'] or an empty array []
         //     return [this.selected].filter(v => !!v)
-        // }
+        // },
 
     },
     methods: {
@@ -462,7 +376,11 @@ export default {
             this.items[12].alll.checked = this.items[12].alll.id;
         },
 
-        switchCheckbox(id_str) {
+        addToSelected(val){
+
+        },
+
+        switchCheckbox(id_str,my_obj) {
             // alert(this.$refs["val-01-1"].id)
             // alert(el)
             // this.$refs.val_01_1.id.checked=true;
@@ -480,30 +398,79 @@ export default {
 
             // alert(this.selected);
 
-            if( id_str[7] === '0' ){
 
-                let curPref = "val-" + id_str[4] + id_str[5] + "-";
-                let curInd = "";
 
-                if( this.selected.indexOf(id_str) !== -1 ) {    //включили галку в левом столбце
+            // if( id_str[7] === '0' ){
+            //
+            //     let curPref = "val-" + id_str[4] + id_str[5] + "-";
+            //     let curInd = "";
+            //
+            //     if( this.selected.indexOf(id_str) !== -1 ) {    //включили галку в левом столбце
+            //
+            //         for (let i = 1; i <= 4; i++) {
+            //             curInd = curPref + i;
+            //             if (this.selected.indexOf(curInd) === -1) {
+            //                 this.selected.push(curInd);
+            //             }
+            //         }
+            //     }
+            //     else {                                      //выключили галку в левом столбце
+            //         for (let i = 1; i <= 4; i++) {
+            //             curInd = curPref + i;
+            //             let pos = this.selected.indexOf(curInd);
+            //             if (pos !== -1) {
+            //                 this.selected.splice(pos,1);
+            //             }
+            //         }
+            //     }
+            // }
 
+
+            let curId = id_str;
+            let stroka = id_str[4] + id_str[5];
+            let curInd = id_str[7];
+
+            let curPref = "val-" + stroka + "-";
+
+            // alert(id_str+" "+my_obj.id);
+            // alert( my_obj.checked );
+
+            if( my_obj.checked ) {
+
+            }
+
+
+
+            if( my_obj.checked !== false ) {    //галка включается
+
+                this.selected.push(id_str);
+
+                if( curInd === '0' ){                    //если галка в левом столбце - включаем всю строку
                     for (let i = 1; i <= 4; i++) {
-                        curInd = curPref + i;
-                        if (this.selected.indexOf(curInd) === -1) {
-                            this.selected.push(curInd);
+                        curId = curPref + i;
+                        if (this.selected.indexOf(curId) === -1) {
+                            this.selected.push(curId);
                         }
                     }
                 }
-                else {                                      //выключили галку в левом столбце
+
+            }
+            else {                                      //галка выключается
+
+                let pos = this.selected.indexOf(curId);
+                if (pos !== -1) {
+                    this.selected.splice(pos,1);
+                }
+
+                if( curInd === '0' ){                //если галка в левом столбце - выключаем всю строку
                     for (let i = 1; i <= 4; i++) {
-                        curInd = curPref + i;
-                        let pos = this.selected.indexOf(curInd);
+                        curId = curPref + i;
+                        let pos = this.selected.indexOf(curId);
                         if (pos !== -1) {
                             this.selected.splice(pos,1);
                         }
                     }
                 }
-
             }
         },
     },
