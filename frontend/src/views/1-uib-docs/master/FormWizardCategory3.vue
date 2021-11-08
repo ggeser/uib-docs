@@ -51,16 +51,15 @@
                                     :ref="data.value.id"
                                     :checked="data.value.checked"
                                     :indeterminate="data.value.indet"
-                                    @change=switchCheckbox(data.value.id,data.value)
+                                    @change=switchCheckbox(data.value.id,data.value,data)
                                 />
                             </template>
                         </b-table>
 
-                        <b-form-checkbox
-                            v-model="chk1"
-                            :value="test"
-                            :indeterminate="indeterminate"
-                        />
+<!--                        <b-form-checkbox-->
+<!--                            v-model="chk1"-->
+<!--                            :indeterminate="indeterminate"-->
+<!--                        />-->
 <!--                        <b-form-checkbox-->
 <!--                            v-model="chk2"-->
 <!--                            :value="test"-->
@@ -68,13 +67,13 @@
 <!--                            :indeterminate="indeterminate"-->
 <!--                        />-->
 
-                        <b-button
-                            variant="primary"
-                            type="submit"
-                            @click="mycheck"
-                        >
-                            mycheck
-                        </b-button>
+<!--                        <b-button-->
+<!--                            variant="primary"-->
+<!--                            type="submit"-->
+<!--                            @click="mycheck"-->
+<!--                        >-->
+<!--                            mycheck-->
+<!--                        </b-button>-->
 
                         <validation-provider
                             #default="{ errors }"
@@ -125,7 +124,7 @@ import {
   BFormGroup,
   BFormInput,
   BFormInvalidFeedback,
-  BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox, BTable,
+  BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox, BTable, BForm,
 } from 'bootstrap-vue'
 import { required, email } from '@validations'
 import router from "@/router";
@@ -165,7 +164,7 @@ export default {
         BFormInvalidFeedback,
         // eslint-disable-next-line vue/no-unused-components
         ToastificationContent,
-        BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox, BTable,
+        BFormCheckboxGroup, BFormValidFeedback, BFormCheckbox, BTable, BForm,
     },
     setup() {
         const fields = [
@@ -380,7 +379,7 @@ export default {
 
         },
 
-        switchCheckbox(id_str,my_obj) {
+        switchCheckbox(id_str,my_obj,virt) {
             // alert(this.$refs["val-01-1"].id)
             // alert(el)
             // this.$refs.val_01_1.id.checked=true;
@@ -434,18 +433,21 @@ export default {
 
             // alert(id_str+" "+my_obj.id);
             // alert( my_obj.checked );
-
-            if( my_obj.checked ) {
-
-            }
-
-
+            // console.log(virt.item[1]);
 
             if( my_obj.checked !== false ) {    //галка включается
 
                 this.selected.push(id_str);
 
                 if( curInd === '0' ){                    //если галка в левом столбце - включаем всю строку
+
+                    this.items[stroka-1].alll.indet = false;
+
+                    this.items[stroka-1].col1.checked = this.items[stroka-1].col1.id;
+                    this.items[stroka-1].col2.checked = this.items[stroka-1].col2.id;
+                    this.items[stroka-1].col3.checked = this.items[stroka-1].col3.id;
+                    this.items[stroka-1].col4.checked = this.items[stroka-1].col4.id;
+
                     for (let i = 1; i <= 4; i++) {
                         curId = curPref + i;
                         if (this.selected.indexOf(curId) === -1) {
@@ -453,7 +455,25 @@ export default {
                         }
                     }
                 }
+                else { //включается галка из четырех столбцов, нужно включить левую галку и пометить ее наполовину
+                    this.items[stroka-1].alll.checked = this.items[stroka-1].alll.id;
+                    this.items[stroka-1].alll.indet = true;
 
+                    curId = curPref + 0;
+                    if (this.selected.indexOf(curId) === -1) {
+                        this.selected.push(curId);
+                    }
+
+                    if (
+                        this.items[stroka-1].col1.checked !== false &&
+                        this.items[stroka-1].col2.checked !== false &&
+                        this.items[stroka-1].col3.checked !== false &&
+                        this.items[stroka-1].col4.checked !== false
+                    )
+                    {
+                        this.items[stroka-1].alll.indet = false;
+                    }
+                }
             }
             else {                                      //галка выключается
 
@@ -463,8 +483,39 @@ export default {
                 }
 
                 if( curInd === '0' ){                //если галка в левом столбце - выключаем всю строку
+
+                    this.items[stroka-1].alll.indet = false;
+
+                    this.items[stroka-1].col1.checked = false;
+                    this.items[stroka-1].col2.checked = false;
+                    this.items[stroka-1].col3.checked = false;
+                    this.items[stroka-1].col4.checked = false;
+
                     for (let i = 1; i <= 4; i++) {
                         curId = curPref + i;
+                        let pos = this.selected.indexOf(curId);
+                        if (pos !== -1) {
+                            this.selected.splice(pos,1);
+                        }
+                    }
+                }
+                else { //выключается галка из четырех столбцов, нужно левую галку либо выключить либо перевести в среднее состояние
+                    this.items[stroka-1].alll.indet = false;
+
+                    if (
+                        this.items[stroka-1].col1.checked !== false ||
+                        this.items[stroka-1].col2.checked !== false ||
+                        this.items[stroka-1].col3.checked !== false ||
+                        this.items[stroka-1].col4.checked !== false
+                    )
+                    {
+                        this.items[stroka-1].alll.indet = true;
+                    }
+
+                    if (this.items[stroka-1].alll.indet === false ) {
+                        this.items[stroka-1].alll.checked = false;
+
+                        curId = curPref + 0;
                         let pos = this.selected.indexOf(curId);
                         if (pos !== -1) {
                             this.selected.splice(pos,1);
