@@ -24,18 +24,25 @@
                         rules="required"
                     >
 <!--                        responsive-->
+<!--                        fixed-->
+                        <div class="table-responsive">
                         <b-table
                             striped
-
+                            fixed
+                            responsive
                             :fields="fields"
                             :items="items"
                             class="mytable"
-                            fixed
+
                         >
-                            <!-- A virtual column -->
-<!--                            <template #cell(index)="data">-->
-<!--                                {{ data.index + 1 }}-->
-<!--                            </template>-->
+                            <template v-slot:table-colgroup>
+                                <col>
+                                <col style="width: 2rem">
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                            </template>
 
                             <template #cell(module)="data">
 <!--                                <span class="text-nowrap">-->
@@ -55,6 +62,7 @@
                                 />
                             </template>
                         </b-table>
+                        </div>
 
                         <validation-provider
                             #default="{ errors }"
@@ -131,7 +139,9 @@ export default {
 
             // { key: 'index', label: '№' } ,// A virtual column that doesn't exist in items
             { key: 'module', label: 'Модуль' },
-            { key: 'alll', label: 'V' , tdClass: 'tdClass1'},
+            // { key: 'alll', label: 'V' , thStyle: { backgroundColor: '#3eef33', width: 10} },
+            // { key: 'alll', label: 'V' , thClass: 'tdClass1'},
+            { key: 'alll', label: 'V'},
             { key: 'col1', label: 'Согласие на обработку персональных данных клиента' },
             { key: 'col2', label: 'Согласие на обработку персональных данных работника' },
             { key: 'col3', label: 'Согласие на распространение персональных данных клиента' },
@@ -392,7 +402,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .tdClass1
 {
