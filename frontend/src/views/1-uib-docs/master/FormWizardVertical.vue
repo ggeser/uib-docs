@@ -15,6 +15,8 @@
 
 
 
+
+
         <!-- OrgType tab 1-->
         <tab-content
             title="Тип учреждения"
@@ -118,6 +120,20 @@
                 <form-wizard-otvets10 />
             </validation-observer>
         </tab-content>
+
+        <!-- Trans tab 11-->
+        <tab-content
+            title="Передачи данных"
+            :before-change="validationFormTrans"
+        >
+            <validation-observer
+                ref="transRules"
+                tag="form"
+            >
+                <form-wizard-trans11 />
+            </validation-observer>
+        </tab-content>
+
 
 <!--        &lt;!&ndash; address  &ndash;&gt;-->
 <!--        <tab-content-->
@@ -339,6 +355,7 @@ import FormWizardDataSubj5 from './FormWizardDataSubj5.vue'
 import FormWizardDataAct6 from './FormWizardDataAct6.vue'
 import FormWizardDataProc7 from './FormWizardDataProc7.vue'
 import FormWizardOtvets10 from './FormWizardOtvets10.vue'
+import FormWizardTrans11 from './FormWizardTrans11.vue'
 
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import vSelect from 'vue-select'
@@ -378,6 +395,7 @@ export default {
       FormWizardDataAct6,
       FormWizardDataProc7,
       FormWizardOtvets10,
+      FormWizardTrans11,
   },
   data() {
     return {
@@ -408,6 +426,17 @@ export default {
         });
     },
 
+      validationFormTrans() {
+          return new Promise((resolve, reject) => {
+              this.$refs.transRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
       validationFormOtvets() {
           return new Promise((resolve, reject) => {
               this.$refs.otvetsRules.validate().then(success => {
