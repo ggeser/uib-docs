@@ -92,7 +92,18 @@
             </validation-observer>
         </tab-content>
 
-
+        <!-- DataProc tab 7-->
+        <tab-content
+            title="Способы обработки"
+            :before-change="validationFormDataProc"
+        >
+            <validation-observer
+                ref="dataProcRules"
+                tag="form"
+            >
+                <form-wizard-data-proc7 />
+            </validation-observer>
+        </tab-content>
 
 
 <!--        &lt;!&ndash; address  &ndash;&gt;-->
@@ -313,6 +324,7 @@ import FormWizardCompany2 from './FormWizardCompany2.vue'
 import FormWizardCategory4 from './FormWizardCategory4.vue'
 import FormWizardDataSubj5 from './FormWizardDataSubj5.vue'
 import FormWizardDataAct6 from './FormWizardDataAct6.vue'
+import FormWizardDataProc7 from './FormWizardDataProc7.vue'
 
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import vSelect from 'vue-select'
@@ -350,6 +362,7 @@ export default {
       FormWizardOrgType01,
       FormWizardDataSubj5,
       FormWizardDataAct6,
+      FormWizardDataProc7,
   },
   data() {
     return {
@@ -380,6 +393,17 @@ export default {
         });
     },
 
+      validationFormDataProc() {
+          return new Promise((resolve, reject) => {
+              this.$refs.dataProcRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
       validationFormDataAct() {
           return new Promise((resolve, reject) => {
               this.$refs.dataActRules.validate().then(success => {
