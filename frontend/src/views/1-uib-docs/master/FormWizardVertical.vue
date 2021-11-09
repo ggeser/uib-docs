@@ -12,16 +12,16 @@
       @on-complete="formSubmitted"
     >
 
-        <!-- Category tab 4-->
+        <!-- DataSubj tab 5-->
         <tab-content
-            title="Категории данных"
-            :before-change="validationFormCategory"
+            title="Субъекты данных"
+            :before-change="validationFormDataSubj"
         >
             <validation-observer
-                ref="categoryRules"
+                ref="dataSubjRules"
                 tag="form"
             >
-                <form-wizard-category3 />
+                <form-wizard-data-subj5 />
             </validation-observer>
         </tab-content>
 
@@ -64,7 +64,18 @@
             </validation-observer>
         </tab-content>
 
-
+        <!-- Category tab 4-->
+        <tab-content
+            title="Категории данных"
+            :before-change="validationFormCategory"
+        >
+            <validation-observer
+                ref="categoryRules"
+                tag="form"
+            >
+                <form-wizard-category3 />
+            </validation-observer>
+        </tab-content>
 
 
 
@@ -289,6 +300,7 @@ import FormWizardOrgType01 from './FormWizardOrgType01.vue'
 import FormWizardRegion1 from './FormWizardRegion1.vue'
 import FormWizardCompany2 from './FormWizardCompany2.vue'
 import FormWizardCategory3 from './FormWizardCategory3.vue'
+import FormWizardDataSubj5 from './FormWizardDataSubj5.vue'
 
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import vSelect from 'vue-select'
@@ -324,6 +336,7 @@ export default {
       FormWizardRegion1,
       FormWizardCategory3,
       FormWizardOrgType01,
+      FormWizardDataSubj5
   },
   data() {
     return {
@@ -354,6 +367,17 @@ export default {
         });
     },
 
+      validationFormDataSubj() {
+          return new Promise((resolve, reject) => {
+              this.$refs.dataSubjRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
       validationFormOrgType() {
           return new Promise((resolve, reject) => {
               this.$refs.orgTypeRules.validate().then(success => {
