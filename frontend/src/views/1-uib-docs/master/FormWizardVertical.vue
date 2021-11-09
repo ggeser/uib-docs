@@ -12,18 +12,7 @@
       @on-complete="formSubmitted"
     >
 
-        <!-- DataSubj tab 5-->
-        <tab-content
-            title="Субъекты данных"
-            :before-change="validationFormDataSubj"
-        >
-            <validation-observer
-                ref="dataSubjRules"
-                tag="form"
-            >
-                <form-wizard-data-subj5 />
-            </validation-observer>
-        </tab-content>
+
 
         <!-- OrgType tab 1-->
         <tab-content
@@ -73,13 +62,35 @@
                 ref="categoryRules"
                 tag="form"
             >
-                <form-wizard-category3 />
+                <form-wizard-category4 />
             </validation-observer>
         </tab-content>
 
+        <!-- DataSubj tab 5-->
+        <tab-content
+            title="Субъекты данных"
+            :before-change="validationFormDataSubj"
+        >
+            <validation-observer
+                ref="dataSubjRules"
+                tag="form"
+            >
+                <form-wizard-data-subj5 />
+            </validation-observer>
+        </tab-content>
 
-
-
+        <!-- DataAct tab 6-->
+        <tab-content
+            title="Действия"
+            :before-change="validationFormDataAct"
+        >
+            <validation-observer
+                ref="dataActRules"
+                tag="form"
+            >
+                <form-wizard-data-act6 />
+            </validation-observer>
+        </tab-content>
 
 
 
@@ -299,8 +310,9 @@
 import FormWizardOrgType01 from './FormWizardOrgType01.vue'
 import FormWizardRegion1 from './FormWizardRegion1.vue'
 import FormWizardCompany2 from './FormWizardCompany2.vue'
-import FormWizardCategory3 from './FormWizardCategory3.vue'
+import FormWizardCategory4 from './FormWizardCategory4.vue'
 import FormWizardDataSubj5 from './FormWizardDataSubj5.vue'
+import FormWizardDataAct6 from './FormWizardDataAct6.vue'
 
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import vSelect from 'vue-select'
@@ -334,9 +346,10 @@ export default {
       ToastificationContent,
       FormWizardCompany2,
       FormWizardRegion1,
-      FormWizardCategory3,
+      FormWizardCategory4,
       FormWizardOrgType01,
-      FormWizardDataSubj5
+      FormWizardDataSubj5,
+      FormWizardDataAct6,
   },
   data() {
     return {
@@ -367,6 +380,17 @@ export default {
         });
     },
 
+      validationFormDataAct() {
+          return new Promise((resolve, reject) => {
+              this.$refs.dataActRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
       validationFormDataSubj() {
           return new Promise((resolve, reject) => {
               this.$refs.dataSubjRules.validate().then(success => {

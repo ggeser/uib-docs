@@ -18,11 +18,11 @@
             <b-form>
 <!--                <div class="margin-window">-->
                 <div>
-                    <validation-provider
-                        #default="{ errors }"
-                        name="First Name"
-                        rules="required"
-                    >
+<!--                    <validation-provider-->
+<!--                        #default="{ errors }"-->
+<!--                        name="First Name"-->
+<!--                        rules="required"-->
+<!--                    >-->
 <!--                        responsive-->
 <!--                        fixed-->
                         <div class="table-responsive">
@@ -87,7 +87,7 @@
                             </div>
 
                         </validation-provider>
-                    </validation-provider>
+<!--                    </validation-provider>-->
                 </div>
             </b-form>
         </b-col>
@@ -294,7 +294,7 @@ export default {
             // alert(this.selected)
             // this.indeterminate = !this.indeterminate;
 
-            this.items[12].alll.checked = this.items[12].alll.id;
+            // this.items[12].alll.checked = this.items[12].alll.id;
         },
 
         switchCheckbox(id_str,my_obj,virt) {
