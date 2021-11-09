@@ -13,9 +13,18 @@
     >
 
 
-
-
-
+        <!-- DataPlace tab 12-->
+        <tab-content
+            title="Места хранения"
+            :before-change="validationFormDataPlace"
+        >
+            <validation-observer
+                ref="dataPlaceRules"
+                tag="form"
+            >
+                <form-wizard-data-place12 />
+            </validation-observer>
+        </tab-content>
 
         <!-- OrgType tab 1-->
         <tab-content
@@ -135,212 +144,6 @@
         </tab-content>
 
 
-<!--        &lt;!&ndash; address  &ndash;&gt;-->
-<!--        <tab-content-->
-<!--            title="Address"-->
-<!--            :before-change="validationFormAddress"-->
-<!--        >-->
-<!--            <validation-observer-->
-<!--                ref="addressRules"-->
-<!--                tag="form"-->
-<!--            >-->
-<!--                <b-row>-->
-<!--                    <b-col-->
-<!--                        cols="12"-->
-<!--                        class="mb-2"-->
-<!--                    >-->
-<!--                        <h5 class="mb-0">-->
-<!--                            Address-->
-<!--                        </h5>-->
-<!--                        <small class="text-muted">Enter Your Address.</small>-->
-<!--                    </b-col>-->
-<!--                    <b-col md="6">-->
-<!--                        <b-form-group-->
-<!--                            label="Address"-->
-<!--                            label-for="address"-->
-<!--                        >-->
-<!--                            <validation-provider-->
-<!--                                #default="{ errors }"-->
-<!--                                name="Address"-->
-<!--                                rules="required"-->
-<!--                            >-->
-<!--                                <b-form-input-->
-<!--                                    id="address"-->
-<!--                                    v-model="address"-->
-<!--                                    :state="errors.length > 0 ? false:null"-->
-<!--                                    placeholder="98 Borough bridge Road, Birmingham"-->
-<!--                                />-->
-<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                            </validation-provider>-->
-<!--                        </b-form-group>-->
-<!--                    </b-col>-->
-<!--                    <b-col md="6">-->
-<!--                        <b-form-group-->
-<!--                            label="Landmark"-->
-<!--                            label-for="landmark"-->
-<!--                        >-->
-<!--                            <validation-provider-->
-<!--                                #default="{ errors }"-->
-<!--                                name="Landmark"-->
-<!--                                rules="required"-->
-<!--                            >-->
-<!--                                <b-form-input-->
-<!--                                    id="landmark"-->
-<!--                                    v-model="landMark"-->
-<!--                                    :state="errors.length > 0 ? false:null"-->
-<!--                                    placeholder="Borough bridge"-->
-<!--                                />-->
-<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                            </validation-provider>-->
-<!--                        </b-form-group>-->
-<!--                    </b-col>-->
-<!--                    <b-col md="6">-->
-<!--                        <b-form-group-->
-<!--                            label="Pincode"-->
-<!--                            label-for="pincode"-->
-<!--                        >-->
-<!--                            <validation-provider-->
-<!--                                #default="{ errors }"-->
-<!--                                name="Pincode"-->
-<!--                                rules="required"-->
-<!--                            >-->
-<!--                                <b-form-input-->
-<!--                                    id="pincode"-->
-<!--                                    v-model="pincode"-->
-<!--                                    :state="errors.length > 0 ? false:null"-->
-<!--                                    type="number"-->
-<!--                                    placeholder="658921"-->
-<!--                                />-->
-<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                            </validation-provider>-->
-<!--                        </b-form-group>-->
-<!--                    </b-col>-->
-<!--                    <b-col md="6">-->
-<!--                        <b-form-group-->
-<!--                            label="City"-->
-<!--                            label-for="city"-->
-<!--                        >-->
-<!--                            <validation-provider-->
-<!--                                #default="{ errors }"-->
-<!--                                name="City"-->
-<!--                                rules="required"-->
-<!--                            >-->
-<!--                                <b-form-input-->
-<!--                                    id="city"-->
-<!--                                    v-model="city"-->
-<!--                                    :state="errors.length > 0 ? false:null"-->
-<!--                                    placeholder="Birmingham"-->
-<!--                                />-->
-<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                            </validation-provider>-->
-<!--                        </b-form-group>-->
-<!--                    </b-col>-->
-<!--                </b-row>-->
-<!--            </validation-observer>-->
-<!--        </tab-content>-->
-
-<!--        &lt;!&ndash; social link &ndash;&gt;-->
-<!--        <tab-content-->
-<!--            title="Social Links"-->
-<!--            :before-change="validationFormSocial"-->
-<!--        >-->
-<!--            <validation-observer-->
-<!--                ref="socialRules"-->
-<!--                tag="form"-->
-<!--            >-->
-<!--                <b-row>-->
-<!--                    <b-col-->
-<!--                        cols="12"-->
-<!--                        class="mb-2"-->
-<!--                    >-->
-<!--                        <h5 class="mb-0">-->
-<!--                            Social Links-->
-<!--                        </h5>-->
-<!--                        <small class="text-muted">Enter Your Social Links</small>-->
-<!--                    </b-col>-->
-<!--                    <b-col md="6">-->
-<!--                        <b-form-group-->
-<!--                            label="Twitter"-->
-<!--                            label-for="twitter"-->
-<!--                        >-->
-<!--                            <validation-provider-->
-<!--                                #default="{ errors }"-->
-<!--                                name="Twitter"-->
-<!--                                rules="required|url"-->
-<!--                            >-->
-<!--                                <b-form-input-->
-<!--                                    id="twitter"-->
-<!--                                    v-model="twitterUrl"-->
-<!--                                    :state="errors.length > 0 ? false:null"-->
-<!--                                    placeholder="https://twitter.com/abc"-->
-<!--                                />-->
-<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                            </validation-provider>-->
-<!--                        </b-form-group>-->
-<!--                    </b-col>-->
-<!--                    <b-col md="6">-->
-<!--                        <b-form-group-->
-<!--                            label="Facebook"-->
-<!--                            label-for="facebook"-->
-<!--                        >-->
-<!--                            <validation-provider-->
-<!--                                #default="{ errors }"-->
-<!--                                name="Facebook"-->
-<!--                                rules="required|url"-->
-<!--                            >-->
-<!--                                <b-form-input-->
-<!--                                    id="facebook"-->
-<!--                                    v-model="facebookUrl"-->
-<!--                                    :state="errors.length > 0 ? false:null"-->
-<!--                                    placeholder="https://facebook.com/abc"-->
-<!--                                />-->
-<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                            </validation-provider>-->
-<!--                        </b-form-group>-->
-<!--                    </b-col>-->
-<!--                    <b-col md="6">-->
-<!--                        <b-form-group-->
-<!--                            label="Google+"-->
-<!--                            label-for="google-plus"-->
-<!--                        >-->
-<!--                            <validation-provider-->
-<!--                                #default="{ errors }"-->
-<!--                                name="Google+"-->
-<!--                                rules="required|url"-->
-<!--                            >-->
-<!--                                <b-form-input-->
-<!--                                    id="google-plus"-->
-<!--                                    v-model="googleUrl"-->
-<!--                                    :state="errors.length > 0 ? false:null"-->
-<!--                                    placeholder="https://plus.google.com/abc"-->
-<!--                                />-->
-<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                            </validation-provider>-->
-<!--                        </b-form-group>-->
-<!--                    </b-col>-->
-<!--                    <b-col md="6">-->
-<!--                        <b-form-group-->
-<!--                            label="LinkedIn"-->
-<!--                            label-for="linked-in"-->
-<!--                        >-->
-<!--                            <validation-provider-->
-<!--                                #default="{ errors }"-->
-<!--                                name="LinkedIn"-->
-<!--                                rules="required|url"-->
-<!--                            >-->
-<!--                                <b-form-input-->
-<!--                                    id="linked-in"-->
-<!--                                    v-model="linkedinUrl"-->
-<!--                                    :state="errors.length > 0 ? false:null"-->
-<!--                                    placeholder="https://linkedin.com/abc"-->
-<!--                                />-->
-<!--                                <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                            </validation-provider>-->
-<!--                        </b-form-group>-->
-<!--                    </b-col>-->
-<!--                </b-row>-->
-<!--            </validation-observer>-->
-<!--        </tab-content>-->
     </form-wizard>
 
   </div>
@@ -356,6 +159,7 @@ import FormWizardDataAct6 from './FormWizardDataAct6.vue'
 import FormWizardDataProc7 from './FormWizardDataProc7.vue'
 import FormWizardOtvets10 from './FormWizardOtvets10.vue'
 import FormWizardTrans11 from './FormWizardTrans11.vue'
+import FormWizardDataPlace12 from './FormWizardDataPlace12.vue'
 
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import vSelect from 'vue-select'
@@ -396,6 +200,7 @@ export default {
       FormWizardDataProc7,
       FormWizardOtvets10,
       FormWizardTrans11,
+      FormWizardDataPlace12,
   },
   data() {
     return {
@@ -426,6 +231,17 @@ export default {
         });
     },
 
+      validationFormDataPlace() {
+          return new Promise((resolve, reject) => {
+              this.$refs.dataPlaceRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
       validationFormTrans() {
           return new Promise((resolve, reject) => {
               this.$refs.transRules.validate().then(success => {
