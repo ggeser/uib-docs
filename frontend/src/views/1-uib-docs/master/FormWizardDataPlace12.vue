@@ -31,7 +31,7 @@
                     <b-col md="6">
                         <b-form-group
                             label="Адрес"
-                            label-for="address"
+                            label-for="item-name"
                         >
                             <validation-provider
                                 #default="{ errors }"
@@ -42,11 +42,13 @@
                                 <b-form-input
                                     id=item.id
                                     type="text"
-                                    v-model=item.address
+                                    v-model="item.address"
 
                                     placeholder="Адрес"
                                 />
 <!--                                :state="errors.length > 0 ? false:item.address.length >= 1 ? true:null"-->
+
+                                {{ item.id }} - {{ index }} - {{ item.address }}
                             </validation-provider>
                         </b-form-group>
                     </b-col>
@@ -74,7 +76,7 @@
 <!--                        <hr>-->
 <!--                    </b-col>-->
 
-
+                    {{ items[index].address }}
                 </b-row>
             </b-form>
 
@@ -89,6 +91,9 @@
                 />
                 <span>Add New</span>
             </b-button>
+
+
+
         </div>
 
 </template>
@@ -143,16 +148,10 @@ export default {
     data() {
         return {
             items: [{
-                id: 1,
+                id: "0",
                 address: '',
-                selected: 'male',
-                selected1: 'designer',
-                prevHeight: 0,
-
             }],
-            nextTodoId: 2,
-
-
+            nextTodoId: 1,
 
             required,
         }
@@ -170,8 +169,11 @@ export default {
     methods: {
         repeateAgain() {
             this.items.push({
-                id: this.nextTodoId += this.nextTodoId,
+                // id: this.nextTodoId += this.nextTodoId,
+                id: this.nextTodoId,
             })
+
+            this.nextTodoId += 1;
 
             this.$nextTick(() => {
                 this.trAddHeight(this.$refs.row[0].offsetHeight)
