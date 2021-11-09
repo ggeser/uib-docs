@@ -14,6 +14,7 @@
 
 
 
+
         <!-- OrgType tab 1-->
         <tab-content
             title="Тип учреждения"
@@ -105,6 +106,18 @@
             </validation-observer>
         </tab-content>
 
+        <!-- Company tab 10-->
+        <tab-content
+            title="Ответственный"
+            :before-change="validationFormOtvets"
+        >
+            <validation-observer
+                ref="otvetsRules"
+                tag="form"
+            >
+                <form-wizard-otvets10 />
+            </validation-observer>
+        </tab-content>
 
 <!--        &lt;!&ndash; address  &ndash;&gt;-->
 <!--        <tab-content-->
@@ -325,6 +338,7 @@ import FormWizardCategory4 from './FormWizardCategory4.vue'
 import FormWizardDataSubj5 from './FormWizardDataSubj5.vue'
 import FormWizardDataAct6 from './FormWizardDataAct6.vue'
 import FormWizardDataProc7 from './FormWizardDataProc7.vue'
+import FormWizardOtvets10 from './FormWizardOtvets10.vue'
 
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import vSelect from 'vue-select'
@@ -363,6 +377,7 @@ export default {
       FormWizardDataSubj5,
       FormWizardDataAct6,
       FormWizardDataProc7,
+      FormWizardOtvets10,
   },
   data() {
     return {
@@ -393,6 +408,17 @@ export default {
         });
     },
 
+      validationFormOtvets() {
+          return new Promise((resolve, reject) => {
+              this.$refs.otvetsRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
       validationFormDataProc() {
           return new Promise((resolve, reject) => {
               this.$refs.dataProcRules.validate().then(success => {
