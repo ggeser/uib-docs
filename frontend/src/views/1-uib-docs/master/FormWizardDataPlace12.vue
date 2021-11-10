@@ -27,7 +27,6 @@
                     ref="row"
                 >
 
-                    <!-- Item Name -->
                     <b-col md="6">
                         <b-form-group
                             label="Адрес"
@@ -35,21 +34,57 @@
                         >
                             <validation-provider
                                 #default="{ errors }"
-                                name="Адрес"
                                 rules="required"
                             >
-<!--                                ////t -->
                                 <b-form-input
-                                    id=item.id
+                                    :id=item.id
                                     type="text"
                                     v-model="item.address"
-
+                                    :state="errors.length > 0 ? false:item.address.length >= 1 ? true:null"
                                     placeholder="Адрес"
                                 />
-<!--                                :state="errors.length > 0 ? false:item.address.length >= 1 ? true:null"-->
 
-                                {{ item.id }} - {{ index }} - {{ item.address }}
+                                <div v-if="( errors[0]  == null) ">
+                                    <br>
+                                </div>
+                                <div v-else>
+                                    <small class="text-danger">
+                                        Поле обязательно для заполнения
+                                    </small>
+                                </div>
+<!--                                {{ item.id }} - {{ index }} - {{ item.address }}-->
                             </validation-provider>
+                        </b-form-group>
+                    </b-col>
+
+                    <b-col md="3">
+                        <b-form-group
+                            label="Имеется собственный ЦОД?"
+                            label-for="item-name"
+                        >
+                        <validation-provider
+                            #default="{ errors }"
+                            rules="required"
+                        >
+                                <b-form-radio-group
+                                    v-model="item.zod"
+                                    :options="item.options"
+                                    class="demo-inline-spacing"
+                                >
+                                </b-form-radio-group>
+
+<!--                            <div v-if="(item.zod.length >= 1) || ( errors[0]  == null) ">-->
+                            <div v-if="( errors[0]  == null) ">
+                                <br>
+                            </div>
+                            <div v-else>
+                                <small class="text-danger">
+                                    Пожалуйста выберите
+                                </small>
+                            </div>
+                        </validation-provider>
+
+<!--                        {{ item.id }} - {{ index }} - {{ item.address }} - {{ item.zod }} - {{ value }}-->
                         </b-form-group>
                     </b-col>
 
@@ -59,24 +94,25 @@
                         md="3"
                         class="mb-50"
                     >
-                        <b-button
-                            v-ripple.400="'rgba(234, 84, 85, 0.15)'"
-                            variant="outline-danger"
-                            class="mt-0 mt-md-2"
-                            @click="removeItem(index)"
-                        >
-                            <feather-icon
-                                icon="XIcon"
-                                class="mr-25"
-                            />
-                            <span>Delete</span>
-                        </b-button>
+                        <div v-if="( index !== 0) ">
+                            <b-button
+                                v-ripple.400="'rgba(234, 84, 85, 0.15)'"
+                                variant="outline-danger"
+                                class="mt-0 mt-md-2"
+                                @click="removeItem(index)"
+                            >
+                                <feather-icon
+                                    icon="XIcon"
+                                    class="mr-25"
+                                />
+                                <span>Удалить</span>
+                            </b-button>
+                        </div>
                     </b-col>
 <!--                    <b-col cols="12">-->
 <!--                        <hr>-->
 <!--                    </b-col>-->
 
-                    {{ items[index].address }}
                 </b-row>
             </b-form>
 
@@ -89,10 +125,8 @@
                     icon="PlusIcon"
                     class="mr-25"
                 />
-                <span>Add New</span>
+                <span>Добавить</span>
             </b-button>
-
-
 
         </div>
 
@@ -113,6 +147,8 @@ import {
     BFormInput,
     BFormInvalidFeedback,
     BButton,
+    BFormRadioGroup,
+    BFormRadio,
 
 } from 'bootstrap-vue'
 import { required } from '@validations'
@@ -132,6 +168,8 @@ export default {
         BFormGroup,
         BFormInput,
         BButton,
+        BFormRadioGroup,
+        BFormRadio,
         vSelect,
         Cleave,
         BFormInvalidFeedback,
@@ -150,6 +188,11 @@ export default {
             items: [{
                 id: "0",
                 address: '',
+                zod: null,
+                options: [
+                    { text: 'Да',    value: 'val1' },
+                    { text: 'Нет',   value: 'val2' },
+                ],
             }],
             nextTodoId: 1,
 
@@ -166,11 +209,26 @@ export default {
         window.removeEventListener('resize', this.initTrHeight)
     },
 
+    computed: {
+
+    },
+
     methods: {
+        state(index,errors) {
+            return this.items[index].address.length >= 1 ? true:null;
+            // return errors.length > 0 ? false:items[index].address.length >= 1 ? true:null;
+        },
+
         repeateAgain() {
+            // this.item0.id = this.nextTodoId.toString()
+            // this.items.push(this.item0);
+
             this.items.push({
                 // id: this.nextTodoId += this.nextTodoId,
-                id: this.nextTodoId,
+                id: this.nextTodoId.toString(),
+                address: '',
+                zod: null,
+                options: this.items[0].options,
             })
 
             this.nextTodoId += 1;
