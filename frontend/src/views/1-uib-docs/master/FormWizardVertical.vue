@@ -103,6 +103,19 @@
             </validation-observer>
         </tab-content>
 
+        <!-- DataProc tab 9-->
+        <tab-content
+            title="Обработка данных"
+            :before-change="validationFormDataProc2"
+        >
+            <validation-observer
+                ref="dataProc2Rules"
+                tag="form"
+            >
+                <form-wizard-data-proc9 />
+            </validation-observer>
+        </tab-content>
+
         <!-- Company tab 10-->
         <tab-content
             title="Ответственный"
@@ -168,6 +181,7 @@ import FormWizardCategory4 from './FormWizardCategory4.vue'
 import FormWizardDataSubj5 from './FormWizardDataSubj5.vue'
 import FormWizardDataAct6 from './FormWizardDataAct6.vue'
 import FormWizardDataProc7 from './FormWizardDataProc7.vue'
+import FormWizardDataProc9 from './FormWizardDataProc9.vue'
 import FormWizardOtvets10 from './FormWizardOtvets10.vue'
 import FormWizardTrans11 from './FormWizardTrans11.vue'
 import FormWizardDataPlace12 from './FormWizardDataPlace12.vue'
@@ -210,6 +224,7 @@ export default {
       FormWizardDataSubj5,
       FormWizardDataAct6,
       FormWizardDataProc7,
+      FormWizardDataProc9,
       FormWizardOtvets10,
       FormWizardTrans11,
       FormWizardDataPlace12,
@@ -280,6 +295,17 @@ export default {
       validationFormOtvets() {
           return new Promise((resolve, reject) => {
               this.$refs.otvetsRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
+      validationFormDataProc2() {
+          return new Promise((resolve, reject) => {
+              this.$refs.dataProc2Rules.validate().then(success => {
                   if (success) {
                       resolve(true)
                   } else {
