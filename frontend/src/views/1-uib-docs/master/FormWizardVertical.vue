@@ -12,7 +12,6 @@
       @on-complete="formSubmitted"
     >
 
-
         <!-- OrgType tab 1-->
         <tab-content
             title="Тип учреждения"
@@ -143,6 +142,18 @@
             </validation-observer>
         </tab-content>
 
+        <!-- Inform tab 13-->
+        <tab-content
+            title="Информ. системы"
+            :before-change="validationFormInform"
+        >
+            <validation-observer
+                ref="informRules"
+                tag="form"
+            >
+                <form-wizard-inform13 />
+            </validation-observer>
+        </tab-content>
 
     </form-wizard>
 
@@ -160,6 +171,7 @@ import FormWizardDataProc7 from './FormWizardDataProc7.vue'
 import FormWizardOtvets10 from './FormWizardOtvets10.vue'
 import FormWizardTrans11 from './FormWizardTrans11.vue'
 import FormWizardDataPlace12 from './FormWizardDataPlace12.vue'
+import FormWizardInform13 from './FormWizardInform13.vue'
 
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import vSelect from 'vue-select'
@@ -201,6 +213,7 @@ export default {
       FormWizardOtvets10,
       FormWizardTrans11,
       FormWizardDataPlace12,
+      FormWizardInform13,
   },
   data() {
     return {
@@ -231,6 +244,17 @@ export default {
         });
     },
 
+      validationFormInform() {
+          return new Promise((resolve, reject) => {
+              this.$refs.informRules.validate().then(success => {
+                  if (success) {
+                      resolve(true)
+                  } else {
+                      reject()
+                  }
+              })
+          })
+      },
       validationFormDataPlace() {
           return new Promise((resolve, reject) => {
               this.$refs.dataPlaceRules.validate().then(success => {
