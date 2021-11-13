@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate";
 
 // Modules
 import ecommerceStoreModule from '@/views/apps/e-commerce/eCommerceStoreModule'
@@ -26,4 +27,6 @@ export default new Vuex.Store({
         'app-ecommerce': ecommerceStoreModule,
     },
     strict: process.env.DEV,
+
+    plugins: [createPersistedState()],
 })
