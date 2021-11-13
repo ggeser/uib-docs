@@ -13,9 +13,13 @@ class PDFController extends Controller
         return view('preview3', ['url' => "https://detivbezopasnosti.ru/"]);
     }
 
-    public function generatePDF()
+    public function generatePDF(Request $request)
     {
-        $data = array("url" => "https://detivbezopasnosti.ru/");
+        $params = $request["params"];
+        $orgType = $params["orgType"];
+
+
+        $data = array("url" => $orgType);
 
         $pdf = PDF::loadView('preview3', $data);
         return $pdf->download('demo.pdf');
