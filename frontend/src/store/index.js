@@ -10,11 +10,20 @@ import verticalMenu from './vertical-menu'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules: {
-    app,
-    appConfig,
-    verticalMenu,
-    'app-ecommerce': ecommerceStoreModule,
-  },
-  strict: process.env.DEV,
+    state: {
+        orgType:[],
+    },
+    mutations: {
+        setOrgType (state, value) {
+            state.orgType = value;
+        }
+    },
+
+    modules: {
+        app,
+        appConfig,
+        verticalMenu,
+        'app-ecommerce': ecommerceStoreModule,
+    },
+    strict: process.env.DEV,
 })

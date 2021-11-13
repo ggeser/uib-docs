@@ -76,7 +76,7 @@ export default {
     return {
         required,
 
-        value: [],
+         // value: [],
         options: [
             { text: 'Юридическое лицо',                                                                             value: 'val1' },
             { text: 'Индивидуальный предприниматель',                                                               value: 'val2' },
@@ -87,8 +87,15 @@ export default {
         ],
     }
   },
-  methods: {
-
-  },
+    computed: {
+        value: {
+            get() {
+                return this.$store.state.orgType;
+            },
+            set(value) {
+                this.$store.commit('setOrgType', value);
+            }
+        }
+    },
 }
 </script>
