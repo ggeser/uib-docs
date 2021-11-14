@@ -24,8 +24,6 @@ export default new Vuex.Store({
            inn: '',
            kpp: '',
            ogrn: '',
-           okved: '',
-           ras_okved: '',
            okpo: '',
            okfs: '',
            okogu: '',
@@ -45,7 +43,9 @@ export default new Vuex.Store({
             state.select = [];      // 0
             state.orgType = [];     // 1
             state.region = '';      // 2
-            state.rekv = {                 // 3
+
+                                    // 3
+            state.rekv = {
                 full_name: '',
                 short_name: '',
                 ur_address: '',

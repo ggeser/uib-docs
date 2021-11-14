@@ -20,9 +20,12 @@ class PDFController extends Controller
         $params = $request["params"];
         $orgType = $params["orgType"];
         $select = $params["select"];
+        $rekv = $params["rekv"];
 
+//        error_log('@@ $rekv'. $rekv);
 
-        $data = array("select" => $select);
+//        $data = array("select" => $select);
+        $data = array("full_name" => $rekv["full_name"]);
 
         $pdf = PDF::loadView('preview3', $data);
         return $pdf->download('demo.pdf');

@@ -261,6 +261,8 @@ export default {
                 params: {
                     orgType: this.$store.state.orgType,
                     select: this.$store.state.select,
+                    rekv: this.$store.state.rekv,
+
                 }
             }
         }).then((response) => {
