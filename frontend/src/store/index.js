@@ -12,12 +12,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        orgType:[],
+        select:[],  //0
+        orgType:[], // 1
+
     },
     mutations: {
-        setOrgType (state, value) {
-            state.orgType = value;
-        }
+        setSelect (state, value) { state.select = value; },          // 0
+        setOrgType (state, value) { state.orgType = value; }         // 1
+
     },
 
     modules: {

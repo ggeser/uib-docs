@@ -141,7 +141,7 @@ export default {
             required,
             email,
 
-            value: [],
+            // value: [],
             options: [
                 { text: 'Политика в отношении обработки персональных данных;',              value: 'val1' },
                 { text: 'Пользовательское соглашение посетителя сайта;',                    value: 'val2' },
@@ -157,6 +157,11 @@ export default {
         state() {
             return this.value.length >= 1
         },
+
+        value: {
+            get() { return this.$store.state.select; },
+            set(value) { this.$store.commit('setSelect', value); }
+        }
     },
     methods: {
         validationForm() {

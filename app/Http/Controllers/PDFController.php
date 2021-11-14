@@ -19,9 +19,10 @@ class PDFController extends Controller
         error_log('@@ lara generatePDF $request'. $request);
         $params = $request["params"];
         $orgType = $params["orgType"];
+        $select = $params["select"];
 
 
-        $data = array("url" => $orgType);
+        $data = array("select" => $select);
 
         $pdf = PDF::loadView('preview3', $data);
         return $pdf->download('demo.pdf');

@@ -252,6 +252,7 @@ export default {
             data: {
                 params: {
                     orgType: this.$store.state.orgType,
+                    select: this.$store.state.select,
                 }
             }
         }).then((response) => {
