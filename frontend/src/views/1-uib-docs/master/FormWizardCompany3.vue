@@ -313,31 +313,6 @@
             </b-form-group>
         </b-col>
 
-<!--        <b-col md="6">-->
-<!--            <b-form-group-->
-<!--                label="Дата утверждения устава компании"-->
-<!--                label-for="uc-date"-->
-<!--            >-->
-<!--                <validation-provider-->
-<!--                    #default="{ errors }"-->
-<!--                    name="Дата утверждения устава компании"-->
-<!--                    rules="required"-->
-<!--                >-->
-<!--                    <cleave-->
-<!--                        id="uc-date"-->
-<!--                        v-model="form.date"-->
-<!--                        class="form-control"-->
-<!--                        :raw="false"-->
-<!--                        :options="options.date"-->
-<!--                        :state="false"-->
-<!--                        placeholder="дд.мм.гггг"-->
-<!--                    />-->
-<!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-
-<!--                </validation-provider>-->
-<!--            </b-form-group>-->
-<!--        </b-col>-->
-
         <b-col md="6">
             <b-form-group
                 label="Должность руководителя"
@@ -462,25 +437,26 @@ export default {
   },
   data() {
     return {
-        full_name: '',
-        short_name: '',
-        ur_address: '',
-        fakt_address: '',
-        inn: '',
-        kpp: '',
-        ogrn: '',
-        okved: '',
-        ras_okved: '',
-        okpo: '',
-        okfs: '',
-        okogu: '',
-        okopf: '',
-        mydate: '',
-        uc_date: '',
-        dolgnost: '',
-        fio: '',
-        ot_date: '',
-        site: '',
+        // rekv: {
+        //     full_name: '',
+        //     short_name: '',
+        //     ur_address: '',
+        //     fakt_address: '',
+        //     inn: '',
+        //     kpp: '',
+        //     ogrn: '',
+        //     // okved: '',
+        //     // ras_okved: '',
+        //     okpo: '',
+        //     okfs: '',
+        //     okogu: '',
+        //     okopf: '',
+        //     uc_date: '',
+        //     dolgnost: '',
+        //     fio: '',
+        //     ot_date: '',
+        //     site: '',
+        // },
 
         required,
         email,
@@ -497,10 +473,77 @@ export default {
         // },
     }
   },
-  computed: {
-  },
-  methods: {
-  },
+    computed: {
+        full_name: {
+            get() { return this.$store.state.rekv.full_name; },
+            set(value) { this.$store.commit('set_rekv_full_name', value); }
+        },
+        short_name: {
+            get() { return this.$store.state.rekv.short_name; },
+            set(value) { this.$store.commit('set_rekv_short_name', value); }
+        },
+        ur_address: {
+            get() { return this.$store.state.rekv.ur_address; },
+            set(value) { this.$store.commit('set_rekv_ur_address', value); }
+        },
+        fakt_address: {
+            get() { return this.$store.state.rekv.fakt_address; },
+            set(value) { this.$store.commit('set_rekv_fakt_address', value); }
+        },
+        inn: {
+            get() { return this.$store.state.rekv.inn; },
+            set(value) { this.$store.commit('set_rekv_inn', value); }
+        },
+        kpp: {
+            get() { return this.$store.state.rekv.kpp; },
+            set(value) { this.$store.commit('set_rekv_kpp', value); }
+        },
+        ogrn: {
+            get() { return this.$store.state.rekv.ogrn; },
+            set(value) { this.$store.commit('set_rekv_ogrn', value); }
+        },
+        okpo: {
+            get() { return this.$store.state.rekv.okpo; },
+            set(value) { this.$store.commit('set_rekv_okpo', value); }
+        },
+        okfs: {
+            get() { return this.$store.state.rekv.okfs; },
+            set(value) { this.$store.commit('set_rekv_okfs', value); }
+        },
+        okogu: {
+            get() { return this.$store.state.rekv.okogu; },
+            set(value) { this.$store.commit('set_rekv_okogu', value); }
+        },
+        okopf: {
+            get() { return this.$store.state.rekv.okopf; },
+            set(value) { this.$store.commit('set_rekv_okopf', value); }
+        },
+        uc_date: {
+            get() { return this.$store.state.rekv.uc_date; },
+            set(value) { this.$store.commit('set_rekv_uc_date', value); }
+        },
+        dolgnost: {
+            get() { return this.$store.state.rekv.dolgnost; },
+            set(value) { this.$store.commit('set_rekv_dolgnost', value); }
+        },
+        fio: {
+            get() { return this.$store.state.rekv.fio; },
+            set(value) { this.$store.commit('set_rekv_fio', value); }
+        },
+        ot_date: {
+            get() { return this.$store.state.rekv.ot_date; },
+            set(value) { this.$store.commit('set_rekv_ot_date', value); }
+        },
+        site: {
+            get() { return this.$store.state.rekv.site; },
+            set(value) { this.$store.commit('set_rekv_site', value); }
+        },
+    },
+    // methods: {
+    //     updateStore (e) {
+    //         this.$store.commit('setRekv', e.target.value)
+    //     }
+    // },
 }
 </script>
 
