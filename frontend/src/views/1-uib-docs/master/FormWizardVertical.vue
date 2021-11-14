@@ -22,6 +22,12 @@
                 tag="form"
             >
                 <form-wizard-org-type01 />
+
+                <b-button
+                    @click="formSubmitted"
+                >
+                    <span>Тест</span>
+                </b-button>
             </validation-observer>
         </tab-content>
 
@@ -193,11 +199,12 @@ import {ValidationProvider, ValidationObserver, localize} from 'vee-validate'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import {
-  BRow,
-  BCol,
-  BFormGroup,
-  BFormInput,
-  BFormInvalidFeedback,
+    BRow,
+    BCol,
+    BFormGroup,
+    BFormInput,
+    BFormInvalidFeedback,
+    BButton,
 } from 'bootstrap-vue'
 import { required, email } from '@validations'
 import axios from "@/libs/axios";
@@ -213,6 +220,7 @@ export default {
       BCol,
       BFormGroup,
       BFormInput,
+      BButton,
       vSelect,
       BFormInvalidFeedback,
       // eslint-disable-next-line vue/no-unused-components
@@ -239,7 +247,7 @@ export default {
     formSubmitted() {
         axios({
             url: '/api/pdf/generate',
-            method: 'GET',
+            method: 'POST',
             responseType: 'blob', // important
             data: {
                 params: {

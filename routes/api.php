@@ -20,7 +20,7 @@ use App\Http\Controllers\PDFController;
 
 //    error_log('@@ api.php');
 
-    Route::get('/api/pdf/generate', [PDFController::class, 'generatePDF'])->name('pdf.generate');
+    Route::post('/api/pdf/generate', [PDFController::class, 'generatePDF'])->name('pdf.generate');
 
 
 //    Route::group(['prefix' => 'auth'], function () {
