@@ -22,13 +22,21 @@
                 tag="form"
             >
                 <form-wizard-org-type01 />
-
-                <b-button
-                    @click="formSubmitted"
-                >
-                    <span>Тест</span>
-                </b-button>
             </validation-observer>
+
+<!--            ////t-->
+            <b-button
+                @click="formSubmitted"
+            >
+                <span>Тест</span>
+            </b-button>
+            <b-button
+                @click="formClearData"
+            >
+                <span>Сброс</span>
+            </b-button>
+
+
         </tab-content>
 
         <!-- Region tab 2-->
@@ -40,7 +48,7 @@
                 ref="regionRules"
                 tag="form"
             >
-                <form-wizard-region1 />
+                <form-wizard-region2 />
             </validation-observer>
         </tab-content>
 
@@ -53,7 +61,7 @@
                 ref="companyRules"
                 tag="form"
             >
-                <form-wizard-company2 />
+                <form-wizard-company3 />
             </validation-observer>
         </tab-content>
 
@@ -181,8 +189,8 @@
 
 <script>
 import FormWizardOrgType01 from './FormWizardOrgType01.vue'
-import FormWizardRegion1 from './FormWizardRegion1.vue'
-import FormWizardCompany2 from './FormWizardCompany2.vue'
+import FormWizardRegion2 from './FormWizardRegion2.vue'
+import FormWizardCompany3 from './FormWizardCompany3.vue'
 import FormWizardCategory4 from './FormWizardCategory4.vue'
 import FormWizardDataSubj5 from './FormWizardDataSubj5.vue'
 import FormWizardDataAct6 from './FormWizardDataAct6.vue'
@@ -225,8 +233,8 @@ export default {
       BFormInvalidFeedback,
       // eslint-disable-next-line vue/no-unused-components
       ToastificationContent,
-      FormWizardCompany2,
-      FormWizardRegion1,
+      FormWizardCompany3,
+      FormWizardRegion2,
       FormWizardCategory4,
       FormWizardOrgType01,
       FormWizardDataSubj5,
@@ -271,6 +279,9 @@ export default {
                 link.click();
             }
         });
+    },
+      formClearData() {
+          this.$store.commit('clearStore');
     },
 
       validationFormInform() {

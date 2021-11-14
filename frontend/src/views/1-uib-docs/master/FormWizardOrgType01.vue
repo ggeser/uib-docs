@@ -56,45 +56,41 @@ import {
 import { required, email } from '@validations'
 
 export default {
-  components: {
-      ValidationProvider,
-      ValidationObserver,
-      FormWizard,
-      TabContent,
-      BRow,
-      BCol,
-      BFormGroup,
-      BFormInput,
-      vSelect,
-      BFormInvalidFeedback,
-      // eslint-disable-next-line vue/no-unused-components
-      ToastificationContent,
-      BFormRadioGroup,
-      BFormRadio,
-  },
-  data() {
-    return {
-        required,
+    components: {
+        ValidationProvider,
+        ValidationObserver,
+        FormWizard,
+        TabContent,
+        BRow,
+        BCol,
+        BFormGroup,
+        BFormInput,
+        vSelect,
+        BFormInvalidFeedback,
+        // eslint-disable-next-line vue/no-unused-components
+        ToastificationContent,
+        BFormRadioGroup,
+        BFormRadio,
+    },
+    data() {
+        return {
+            required,
 
-         // value: [],
-        options: [
-            { text: 'Юридическое лицо',                                                                             value: 'val1' },
-            { text: 'Индивидуальный предприниматель',                                                               value: 'val2' },
-            { text: 'Юридическое лицо с использованием 2-х информационных систем и Интернет-сайта',                 value: 'val3' },
-            { text: 'Индивидуальный предприниматель с использованием 2-х информационных систем и Интернет-сайта',   value: 'val4' },
-            { text: 'Нотариус с использованием 2-х информационных систем',                                          value: 'val5' },
-            { text: 'Учреждене здравоохранения с использованием 5-ти информационных систем',                        value: 'val6' },
-        ],
-    }
-  },
+            // value: [],
+            options: [
+                { text: 'Юридическое лицо',                                                                             value: 'val0' },
+                { text: 'Индивидуальный предприниматель',                                                               value: 'val1' },
+                { text: 'Юридическое лицо с использованием 2-х информационных систем и Интернет-сайта',                 value: 'val2' },
+                { text: 'Индивидуальный предприниматель с использованием 2-х информационных систем и Интернет-сайта',   value: 'val3' },
+                { text: 'Нотариус с использованием 2-х информационных систем',                                          value: 'val4' },
+                { text: 'Учреждене здравоохранения с использованием 5-ти информационных систем',                        value: 'val5' },
+            ],
+        }
+    },
     computed: {
         value: {
-            get() {
-                return this.$store.state.orgType;
-            },
-            set(value) {
-                this.$store.commit('setOrgType', value);
-            }
+            get() { return this.$store.state.orgType; },
+            set(value) { this.$store.commit('setOrgType', value); }
         }
     },
 }

@@ -24,7 +24,7 @@
                 >
                 <v-select
                     id="v-region"
-                    v-model="selectedRegion"
+                    v-model="value"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                     :options="regionName"
                     :selectable="option => ! option.value.includes('select_value')"
@@ -71,24 +71,27 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     ToastificationContent,
   },
-  data() {
-    return {
-        selectedRegion: '', //Выберите регион
-        regionName: [
-            { value: 'select_value', text: 'Выберите регион' },
-            { value: 'reg001', text: 'Республика Башкортастан' },
-            { value: 'reg002', text: 'Республика Татарстан' },
-            { value: 'Canada', text: 'Canada' },
-            { value: 'China', text: 'China' },
-            { value: 'United States', text: 'United States' },
-            { value: 'Brazil', text: 'Brazil' },
-            { value: 'Australia', text: 'Australia' },
-            { value: 'India', text: 'India' },
-        ],
-    }
-  },
-  methods: {
-
-  },
+    data() {
+        return {
+            // value: '', //Выберите регион
+            regionName: [
+                { value: 'select_value',    text: 'Выберите регион' },
+                { value: 'val0',            text: 'Республика Башкортастан' },
+                { value: 'val1',            text: 'Республика Татарстан' },
+                { value: 'val2',            text: 'Canada' },
+                { value: 'China',           text: 'China' },
+                { value: 'United States',   text: 'United States' },
+                { value: 'Brazil',          text: 'Brazil' },
+                { value: 'Australia',       text: 'Australia' },
+                { value: 'India',           text: 'India' },
+            ],
+        }
+    },
+    computed: {
+        value: {
+            get() { return this.$store.state.region; },
+            set(value) { this.$store.commit('setRegion', value); }
+        }
+    },
 }
 </script>
