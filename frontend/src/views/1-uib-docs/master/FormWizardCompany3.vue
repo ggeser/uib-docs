@@ -403,6 +403,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { mapMutations } from 'vuex';
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import Cleave from 'vue-cleave-component'
 import vSelect from 'vue-select'
@@ -420,59 +422,61 @@ import { required, email } from '@validations'
 
 
 export default {
-  components: {
-    ValidationProvider,
-    ValidationObserver,
-    FormWizard,
-    TabContent,
-    BRow,
-    BCol,
-    BFormGroup,
-    BFormInput,
-    vSelect,
-    Cleave,
-    BFormInvalidFeedback,
-    // eslint-disable-next-line vue/no-unused-components
-    ToastificationContent,
-  },
-  data() {
-    return {
-        // rekv: {
-        //     full_name: '',
-        //     short_name: '',
-        //     ur_address: '',
-        //     fakt_address: '',
-        //     inn: '',
-        //     kpp: '',
-        //     ogrn: '',
-        //     // okved: '',
-        //     // ras_okved: '',
-        //     okpo: '',
-        //     okfs: '',
-        //     okogu: '',
-        //     okopf: '',
-        //     uc_date: '',
-        //     dolgnost: '',
-        //     fio: '',
-        //     ot_date: '',
-        //     site: '',
-        // },
+    components: {
+        ValidationProvider,
+        ValidationObserver,
+        FormWizard,
+        TabContent,
+        BRow,
+        BCol,
+        BFormGroup,
+        BFormInput,
+        vSelect,
+        Cleave,
+        BFormInvalidFeedback,
+        // eslint-disable-next-line vue/no-unused-components
+        ToastificationContent,
+    },
+    data() {
+        return {
+            // rekv: {
+            //     full_name: '',
+            //     short_name: '',
+            //     ur_address: '',
+            //     fakt_address: '',
+            //     inn: '',
+            //     kpp: '',
+            //     ogrn: '',
+            //     // okved: '',
+            //     // ras_okved: '',
+            //     okpo: '',
+            //     okfs: '',
+            //     okogu: '',
+            //     okopf: '',
+            //     uc_date: '',
+            //     dolgnost: '',
+            //     fio: '',
+            //     ot_date: '',
+            //     site: '',
+            // },
 
-        required,
-        email,
+            required,
+            email,
 
-        // form: {
-        //     date: null,
-        // },
-        // options: {
-        //     date: {
-        //         date: true,
-        //         delimiter: '.',
-        //         datePattern: ['d', 'm', 'Y'],
-        //     },
-        // },
-    }
-  },
+            // form: {
+            //     date: null,
+            // },
+            // options: {
+            //     date: {
+            //         date: true,
+            //         delimiter: '.',
+            //         datePattern: ['d', 'm', 'Y'],
+            //     },
+            // },
+        }
+    },
+
+
     computed: {
         full_name: {
             get() { return this.$store.state.rekv.full_name; },
@@ -539,6 +543,8 @@ export default {
             set(value) { this.$store.commit('set_rekv_site', value); }
         },
     },
+
+
     // methods: {
     //     updateStore (e) {
     //         this.$store.commit('setRekv', e.target.value)

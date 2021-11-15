@@ -1,18 +1,18 @@
 
 UIB-DOCS
 
-0
+0.
 {{ $select[0] }}
 ...
 {{ $select[6] }}
 
-1
+1.
 {{ $orgType }}
 
-2
+2.
 {{ $region }}
 
-3
+3.
 {{ $full_name }}
 {{ $short_name }}
 {{ $ur_address }}

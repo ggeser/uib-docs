@@ -71,6 +71,7 @@ export default new Vuex.Store({
         setSelect (state, value) { state.select = value; },                         // 0
         setOrgType (state, value) { state.orgType = value; },                       // 1
         setRegion (state, value) { state.region = value; } ,                        // 2
+
         set_rekv_full_name (state, value) { state.rekv.full_name = value; } ,       // 3
         set_rekv_short_name (state, value) { state.rekv.short_name = value; } ,
         set_rekv_ur_address (state, value) { state.rekv.ur_address = value; } ,

@@ -67,9 +67,9 @@
                     Пользователь несет персональную ответственность за проверку настоящего Соглашения на наличие изменений в нем.
                 </div>
             </div>
-            <div class="text-center pdf-btn">
-                <a href="{{ route('pdf.generate') }}" class="btn btn-primary">Generate PDF</a>
-            </div>
+{{--            <div class="text-center pdf-btn">--}}
+{{--                <a href="{{ route('pdf.generate') }}" class="btn btn-primary">Generate PDF</a>--}}
+{{--            </div>--}}
         </div>
 {{--    </div>--}}
 {{--</div>--}}
