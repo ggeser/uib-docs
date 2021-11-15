@@ -18,11 +18,14 @@ class PDFController extends Controller
 
         error_log('@@ lara generatePDF $request'. $request);
         $params = $request["params"];
+
         $orgType = $params["orgType"];
         $select = $params["select"];
         $rekv = $params["rekv"];
+        $q4Selected = $params["q4Selected"];
 
-//        error_log('@@ $rekv'. $rekv);
+
+//        error_log('@@ $q4Selected'. var_dump($q4Selected));
 
 //        $data = array("select" => $select);
         $data = array("full_name" => $rekv["full_name"]);

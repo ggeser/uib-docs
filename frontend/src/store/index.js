@@ -36,6 +36,116 @@ export default new Vuex.Store({
         },
 
 
+        q4Selected: [],         // 4
+        q4Items : [
+            {
+                module: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
+                alll: { id: 'val-01-0', checked: false, indet: false,},
+                col1: { id: 'val-01-1', checked: false, indet: false,},
+                col2: { id: 'val-01-2', checked: false, indet: false,},
+                col3: { id: 'val-01-3', checked: false, indet: false,},
+                col4: { id: 'val-01-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Паспортные данные',
+                alll: { id: 'val-02-0', checked: false, indet: false,},
+                col1: { id: 'val-02-1', checked: false, indet: false,},
+                col2: { id: 'val-02-2', checked: false, indet: false,},
+                col3: { id: 'val-02-3', checked: false, indet: false,},
+                col4: { id: 'val-02-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Семейное положение',
+                alll: { id: 'val-03-0', checked: false, indet: false,},
+                col1: { id: 'val-03-1', checked: false, indet: false,},
+                col2: { id: 'val-03-2', checked: false, indet: false,},
+                col3: { id: 'val-03-3', checked: false, indet: false,},
+                col4: { id: 'val-03-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Социальное положение',
+                alll: { id: 'val-04-0', checked: false, indet: false,},
+                col1: { id: 'val-04-1', checked: false, indet: false,},
+                col2: { id: 'val-04-2', checked: false, indet: false,},
+                col3: { id: 'val-04-3', checked: false, indet: false,},
+                col4: { id: 'val-04-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Имущественное положение',
+                alll: { id: 'val-05-0', checked: false, indet: false,},
+                col1: { id: 'val-05-1', checked: false, indet: false,},
+                col2: { id: 'val-05-2', checked: false, indet: false,},
+                col3: { id: 'val-05-3', checked: false, indet: false,},
+                col4: { id: 'val-05-4', checked: false, indet: false,},
+            },
+
+            {
+                module: 'Документы об образовании',
+                alll: { id: 'val-06-0', checked: false, indet: false,},
+                col1: { id: 'val-06-1', checked: false, indet: false,},
+                col2: { id: 'val-06-2', checked: false, indet: false,},
+                col3: { id: 'val-06-3', checked: false, indet: false,},
+                col4: { id: 'val-06-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Профессия',
+                alll: { id: 'val-07-0', checked: false, indet: false,},
+                col1: { id: 'val-07-1', checked: false, indet: false,},
+                col2: { id: 'val-07-2', checked: false, indet: false,},
+                col3: { id: 'val-07-3', checked: false, indet: false,},
+                col4: { id: 'val-07-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Сведения о доходах',
+                alll: { id: 'val-08-0', checked: false, indet: false,},
+                col1: { id: 'val-08-1', checked: false, indet: false,},
+                col2: { id: 'val-08-2', checked: false, indet: false,},
+                col3: { id: 'val-08-3', checked: false, indet: false,},
+                col4: { id: 'val-08-4', checked: false, indet: false,},
+            },
+            {
+                module: 'ИНН',
+                alll: { id: 'val-09-0', checked: false, indet: false,},
+                col1: { id: 'val-09-1', checked: false, indet: false,},
+                col2: { id: 'val-09-2', checked: false, indet: false,},
+                col3: { id: 'val-09-3', checked: false, indet: false,},
+                col4: { id: 'val-09-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Данные медицинского полиса',
+                alll: { id: 'val-10-0', checked: false, indet: false,},
+                col1: { id: 'val-10-1', checked: false, indet: false,},
+                col2: { id: 'val-10-2', checked: false, indet: false,},
+                col3: { id: 'val-10-3', checked: false, indet: false,},
+                col4: { id: 'val-10-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Страховое свидетельство',
+                alll: { id: 'val-11-0', checked: false, indet: false,},
+                col1: { id: 'val-11-1', checked: false, indet: false,},
+                col2: { id: 'val-11-2', checked: false, indet: false,},
+                col3: { id: 'val-11-3', checked: false, indet: false,},
+                col4: { id: 'val-11-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Специальные персональные данные',
+                alll: { id: 'val-12-0', checked: false, indet: false,},
+                col1: { id: 'val-12-1', checked: false, indet: false,},
+                col2: { id: 'val-12-2', checked: false, indet: false,},
+                col3: { id: 'val-12-3', checked: false, indet: false,},
+                col4: { id: 'val-12-4', checked: false, indet: false,},
+            },
+            {
+                module: 'Биометрические персональные данные',
+                alll: { id: 'val-13-0', checked: false, indet: false,},
+                col1: { id: 'val-13-1', checked: false, indet: false,},
+                col2: { id: 'val-13-2', checked: false, indet: false,},
+                col3: { id: 'val-13-3', checked: false, indet: false,},
+                col4: { id: 'val-13-4', checked: false, indet: false,},
+            },
+        ],
+
+        // q4Items: this.q4Items_0,
 
     },
     mutations: {
@@ -66,7 +176,121 @@ export default new Vuex.Store({
                 site: '',
             };
 
+                        //4
+            state.q4Items = [
+                {
+                    module: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
+                    alll: { id: 'val-01-0', checked: false, indet: false,},
+                    col1: { id: 'val-01-1', checked: false, indet: false,},
+                    col2: { id: 'val-01-2', checked: false, indet: false,},
+                    col3: { id: 'val-01-3', checked: false, indet: false,},
+                    col4: { id: 'val-01-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Паспортные данные',
+                    alll: { id: 'val-02-0', checked: false, indet: false,},
+                    col1: { id: 'val-02-1', checked: false, indet: false,},
+                    col2: { id: 'val-02-2', checked: false, indet: false,},
+                    col3: { id: 'val-02-3', checked: false, indet: false,},
+                    col4: { id: 'val-02-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Семейное положение',
+                    alll: { id: 'val-03-0', checked: false, indet: false,},
+                    col1: { id: 'val-03-1', checked: false, indet: false,},
+                    col2: { id: 'val-03-2', checked: false, indet: false,},
+                    col3: { id: 'val-03-3', checked: false, indet: false,},
+                    col4: { id: 'val-03-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Социальное положение',
+                    alll: { id: 'val-04-0', checked: false, indet: false,},
+                    col1: { id: 'val-04-1', checked: false, indet: false,},
+                    col2: { id: 'val-04-2', checked: false, indet: false,},
+                    col3: { id: 'val-04-3', checked: false, indet: false,},
+                    col4: { id: 'val-04-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Имущественное положение',
+                    alll: { id: 'val-05-0', checked: false, indet: false,},
+                    col1: { id: 'val-05-1', checked: false, indet: false,},
+                    col2: { id: 'val-05-2', checked: false, indet: false,},
+                    col3: { id: 'val-05-3', checked: false, indet: false,},
+                    col4: { id: 'val-05-4', checked: false, indet: false,},
+                },
+
+                {
+                    module: 'Документы об образовании',
+                    alll: { id: 'val-06-0', checked: false, indet: false,},
+                    col1: { id: 'val-06-1', checked: false, indet: false,},
+                    col2: { id: 'val-06-2', checked: false, indet: false,},
+                    col3: { id: 'val-06-3', checked: false, indet: false,},
+                    col4: { id: 'val-06-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Профессия',
+                    alll: { id: 'val-07-0', checked: false, indet: false,},
+                    col1: { id: 'val-07-1', checked: false, indet: false,},
+                    col2: { id: 'val-07-2', checked: false, indet: false,},
+                    col3: { id: 'val-07-3', checked: false, indet: false,},
+                    col4: { id: 'val-07-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Сведения о доходах',
+                    alll: { id: 'val-08-0', checked: false, indet: false,},
+                    col1: { id: 'val-08-1', checked: false, indet: false,},
+                    col2: { id: 'val-08-2', checked: false, indet: false,},
+                    col3: { id: 'val-08-3', checked: false, indet: false,},
+                    col4: { id: 'val-08-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'ИНН',
+                    alll: { id: 'val-09-0', checked: false, indet: false,},
+                    col1: { id: 'val-09-1', checked: false, indet: false,},
+                    col2: { id: 'val-09-2', checked: false, indet: false,},
+                    col3: { id: 'val-09-3', checked: false, indet: false,},
+                    col4: { id: 'val-09-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Данные медицинского полиса',
+                    alll: { id: 'val-10-0', checked: false, indet: false,},
+                    col1: { id: 'val-10-1', checked: false, indet: false,},
+                    col2: { id: 'val-10-2', checked: false, indet: false,},
+                    col3: { id: 'val-10-3', checked: false, indet: false,},
+                    col4: { id: 'val-10-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Страховое свидетельство',
+                    alll: { id: 'val-11-0', checked: false, indet: false,},
+                    col1: { id: 'val-11-1', checked: false, indet: false,},
+                    col2: { id: 'val-11-2', checked: false, indet: false,},
+                    col3: { id: 'val-11-3', checked: false, indet: false,},
+                    col4: { id: 'val-11-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Специальные персональные данные',
+                    alll: { id: 'val-12-0', checked: false, indet: false,},
+                    col1: { id: 'val-12-1', checked: false, indet: false,},
+                    col2: { id: 'val-12-2', checked: false, indet: false,},
+                    col3: { id: 'val-12-3', checked: false, indet: false,},
+                    col4: { id: 'val-12-4', checked: false, indet: false,},
+                },
+                {
+                    module: 'Биометрические персональные данные',
+                    alll: { id: 'val-13-0', checked: false, indet: false,},
+                    col1: { id: 'val-13-1', checked: false, indet: false,},
+                    col2: { id: 'val-13-2', checked: false, indet: false,},
+                    col3: { id: 'val-13-3', checked: false, indet: false,},
+                    col4: { id: 'val-13-4', checked: false, indet: false,},
+                },
+            ];
+
+            state.q4Selected = [];
+
+
         },
+
+
 
         setSelect (state, value) { state.select = value; },                         // 0
         setOrgType (state, value) { state.orgType = value; },                       // 1
@@ -89,6 +313,10 @@ export default new Vuex.Store({
         set_rekv_ot_date (state, value) { state.rekv.ot_date = value; } ,
         set_rekv_site (state, value) { state.rekv.site = value; } ,
 
+        setQ4Items (state, {items, selected}) {                                                 // 4
+            state.q4Items = items;
+            state.q4Selected = selected;
+        },
     },
 
     modules: {

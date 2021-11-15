@@ -32,10 +32,10 @@ UIB-DOCS
 {{ $ot_date }}
 {{ $site }}
 
-
-
-
-
+4.
+q4Selected["val-01-0"]  ...  q4Selected["val-01-4"]
+        ...                         ...
+q4Selected["val-13-0"]  ...  q4Selected["val-13-4"]
 
 
 

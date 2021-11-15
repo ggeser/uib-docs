@@ -23,20 +23,6 @@
             >
                 <form-wizard-org-type01 />
             </validation-observer>
-
-<!--            ////t-->
-            <b-button
-                @click="formSubmitted"
-            >
-                <span>Тест</span>
-            </b-button>
-            <b-button
-                @click="formClearData"
-            >
-                <span>Сброс</span>
-            </b-button>
-
-
         </tab-content>
 
         <!-- Region tab 2-->
@@ -182,7 +168,21 @@
             </validation-observer>
         </tab-content>
 
+
+
     </form-wizard>
+
+      <!--            ////t-->
+      <b-button
+          @click="formSubmitted"
+      >
+          <span>Тест ген пдф</span>
+      </b-button>
+      <b-button
+          @click="formClearData"
+      >
+          <span>Сброс</span>
+      </b-button>
 
   </div>
 </template>
@@ -262,6 +262,7 @@ export default {
                     orgType: this.$store.state.orgType,
                     select: this.$store.state.select,
                     rekv: this.$store.state.rekv,
+                    q4Selected: this.$store.state.q4Selected,
 
                 }
             }

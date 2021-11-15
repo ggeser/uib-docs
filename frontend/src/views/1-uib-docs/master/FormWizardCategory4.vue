@@ -95,6 +95,7 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
 import { FormWizard, TabContent } from 'vue-form-wizard'
 import Cleave from 'vue-cleave-component'
 import vSelect from 'vue-select'
@@ -146,136 +147,169 @@ export default {
             { key: 'col2', label: 'Согласие на обработку персональных данных работника' },
             { key: 'col3', label: 'Согласие на распространение персональных данных клиента' },
             { key: 'col4', label: 'Согласие на распространение персональных данных работника' },
-        ]
+        ];
 
-        const items = [
-            {
-                module: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
-                alll: { id: 'val-01-0', checked: false, indet: false,},
-                col1: { id: 'val-01-1', checked: false, indet: false,},
-                col2: { id: 'val-01-2', checked: false, indet: false,},
-                col3: { id: 'val-01-3', checked: false, indet: false,},
-                col4: { id: 'val-01-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Паспортные данные',
-                alll: { id: 'val-02-0', checked: false, indet: false,},
-                col1: { id: 'val-02-1', checked: false, indet: false,},
-                col2: { id: 'val-02-2', checked: false, indet: false,},
-                col3: { id: 'val-02-3', checked: false, indet: false,},
-                col4: { id: 'val-02-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Семейное положение',
-                alll: { id: 'val-03-0', checked: false, indet: false,},
-                col1: { id: 'val-03-1', checked: false, indet: false,},
-                col2: { id: 'val-03-2', checked: false, indet: false,},
-                col3: { id: 'val-03-3', checked: false, indet: false,},
-                col4: { id: 'val-03-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Социальное положение',
-                alll: { id: 'val-04-0', checked: false, indet: false,},
-                col1: { id: 'val-04-1', checked: false, indet: false,},
-                col2: { id: 'val-04-2', checked: false, indet: false,},
-                col3: { id: 'val-04-3', checked: false, indet: false,},
-                col4: { id: 'val-04-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Имущественное положение',
-                alll: { id: 'val-05-0', checked: false, indet: false,},
-                col1: { id: 'val-05-1', checked: false, indet: false,},
-                col2: { id: 'val-05-2', checked: false, indet: false,},
-                col3: { id: 'val-05-3', checked: false, indet: false,},
-                col4: { id: 'val-05-4', checked: false, indet: false,},
-            },
+        // let items = [
+        //     {
+        //         module: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
+        //         alll: { id: 'val-01-0', checked: false, indet: false,},
+        //         col1: { id: 'val-01-1', checked: false, indet: false,},
+        //         col2: { id: 'val-01-2', checked: false, indet: false,},
+        //         col3: { id: 'val-01-3', checked: false, indet: false,},
+        //         col4: { id: 'val-01-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Паспортные данные',
+        //         alll: { id: 'val-02-0', checked: false, indet: false,},
+        //         col1: { id: 'val-02-1', checked: false, indet: false,},
+        //         col2: { id: 'val-02-2', checked: false, indet: false,},
+        //         col3: { id: 'val-02-3', checked: false, indet: false,},
+        //         col4: { id: 'val-02-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Семейное положение',
+        //         alll: { id: 'val-03-0', checked: false, indet: false,},
+        //         col1: { id: 'val-03-1', checked: false, indet: false,},
+        //         col2: { id: 'val-03-2', checked: false, indet: false,},
+        //         col3: { id: 'val-03-3', checked: false, indet: false,},
+        //         col4: { id: 'val-03-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Социальное положение',
+        //         alll: { id: 'val-04-0', checked: false, indet: false,},
+        //         col1: { id: 'val-04-1', checked: false, indet: false,},
+        //         col2: { id: 'val-04-2', checked: false, indet: false,},
+        //         col3: { id: 'val-04-3', checked: false, indet: false,},
+        //         col4: { id: 'val-04-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Имущественное положение',
+        //         alll: { id: 'val-05-0', checked: false, indet: false,},
+        //         col1: { id: 'val-05-1', checked: false, indet: false,},
+        //         col2: { id: 'val-05-2', checked: false, indet: false,},
+        //         col3: { id: 'val-05-3', checked: false, indet: false,},
+        //         col4: { id: 'val-05-4', checked: false, indet: false,},
+        //     },
+        //
+        //     {
+        //         module: 'Документы об образовании',
+        //         alll: { id: 'val-06-0', checked: false, indet: false,},
+        //         col1: { id: 'val-06-1', checked: false, indet: false,},
+        //         col2: { id: 'val-06-2', checked: false, indet: false,},
+        //         col3: { id: 'val-06-3', checked: false, indet: false,},
+        //         col4: { id: 'val-06-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Профессия',
+        //         alll: { id: 'val-07-0', checked: false, indet: false,},
+        //         col1: { id: 'val-07-1', checked: false, indet: false,},
+        //         col2: { id: 'val-07-2', checked: false, indet: false,},
+        //         col3: { id: 'val-07-3', checked: false, indet: false,},
+        //         col4: { id: 'val-07-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Сведения о доходах',
+        //         alll: { id: 'val-08-0', checked: false, indet: false,},
+        //         col1: { id: 'val-08-1', checked: false, indet: false,},
+        //         col2: { id: 'val-08-2', checked: false, indet: false,},
+        //         col3: { id: 'val-08-3', checked: false, indet: false,},
+        //         col4: { id: 'val-08-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'ИНН',
+        //         alll: { id: 'val-09-0', checked: false, indet: false,},
+        //         col1: { id: 'val-09-1', checked: false, indet: false,},
+        //         col2: { id: 'val-09-2', checked: false, indet: false,},
+        //         col3: { id: 'val-09-3', checked: false, indet: false,},
+        //         col4: { id: 'val-09-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Данные медицинского полиса',
+        //         alll: { id: 'val-10-0', checked: false, indet: false,},
+        //         col1: { id: 'val-10-1', checked: false, indet: false,},
+        //         col2: { id: 'val-10-2', checked: false, indet: false,},
+        //         col3: { id: 'val-10-3', checked: false, indet: false,},
+        //         col4: { id: 'val-10-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Страховое свидетельство',
+        //         alll: { id: 'val-11-0', checked: false, indet: false,},
+        //         col1: { id: 'val-11-1', checked: false, indet: false,},
+        //         col2: { id: 'val-11-2', checked: false, indet: false,},
+        //         col3: { id: 'val-11-3', checked: false, indet: false,},
+        //         col4: { id: 'val-11-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Специальные персональные данные',
+        //         alll: { id: 'val-12-0', checked: false, indet: false,},
+        //         col1: { id: 'val-12-1', checked: false, indet: false,},
+        //         col2: { id: 'val-12-2', checked: false, indet: false,},
+        //         col3: { id: 'val-12-3', checked: false, indet: false,},
+        //         col4: { id: 'val-12-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Биометрические персональные данные',
+        //         alll: { id: 'val-13-0', checked: false, indet: false,},
+        //         col1: { id: 'val-13-1', checked: false, indet: false,},
+        //         col2: { id: 'val-13-2', checked: false, indet: false,},
+        //         col3: { id: 'val-13-3', checked: false, indet: false,},
+        //         col4: { id: 'val-13-4', checked: false, indet: false,},
+        //     },
+        // ];
 
-            {
-                module: 'Документы об образовании',
-                alll: { id: 'val-06-0', checked: false, indet: false,},
-                col1: { id: 'val-06-1', checked: false, indet: false,},
-                col2: { id: 'val-06-2', checked: false, indet: false,},
-                col3: { id: 'val-06-3', checked: false, indet: false,},
-                col4: { id: 'val-06-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Профессия',
-                alll: { id: 'val-07-0', checked: false, indet: false,},
-                col1: { id: 'val-07-1', checked: false, indet: false,},
-                col2: { id: 'val-07-2', checked: false, indet: false,},
-                col3: { id: 'val-07-3', checked: false, indet: false,},
-                col4: { id: 'val-07-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Сведения о доходах',
-                alll: { id: 'val-08-0', checked: false, indet: false,},
-                col1: { id: 'val-08-1', checked: false, indet: false,},
-                col2: { id: 'val-08-2', checked: false, indet: false,},
-                col3: { id: 'val-08-3', checked: false, indet: false,},
-                col4: { id: 'val-08-4', checked: false, indet: false,},
-            },
-            {
-                module: 'ИНН',
-                alll: { id: 'val-09-0', checked: false, indet: false,},
-                col1: { id: 'val-09-1', checked: false, indet: false,},
-                col2: { id: 'val-09-2', checked: false, indet: false,},
-                col3: { id: 'val-09-3', checked: false, indet: false,},
-                col4: { id: 'val-09-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Данные медицинского полиса',
-                alll: { id: 'val-10-0', checked: false, indet: false,},
-                col1: { id: 'val-10-1', checked: false, indet: false,},
-                col2: { id: 'val-10-2', checked: false, indet: false,},
-                col3: { id: 'val-10-3', checked: false, indet: false,},
-                col4: { id: 'val-10-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Страховое свидетельство',
-                alll: { id: 'val-11-0', checked: false, indet: false,},
-                col1: { id: 'val-11-1', checked: false, indet: false,},
-                col2: { id: 'val-11-2', checked: false, indet: false,},
-                col3: { id: 'val-11-3', checked: false, indet: false,},
-                col4: { id: 'val-11-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Специальные персональные данные',
-                alll: { id: 'val-12-0', checked: false, indet: false,},
-                col1: { id: 'val-12-1', checked: false, indet: false,},
-                col2: { id: 'val-12-2', checked: false, indet: false,},
-                col3: { id: 'val-12-3', checked: false, indet: false,},
-                col4: { id: 'val-12-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Биометрические персональные данные',
-                alll: { id: 'val-13-0', checked: false, indet: false,},
-                col1: { id: 'val-13-1', checked: false, indet: false,},
-                col2: { id: 'val-13-2', checked: false, indet: false,},
-                col3: { id: 'val-13-3', checked: false, indet: false,},
-                col4: { id: 'val-13-4', checked: false, indet: false,},
-            },
-        ]
+        // const store = useStore();
+
+        // items = this.$store.state.q4Items;
 
         return {
-            items,
+            // items,
+            // items: computed(() => store.state.q4Items),
             fields,
+
         }
     },
+    updated() {
+        console.log("updated");
+    },
+    mounted() {
+        console.log("mounted");
+    },
+    beforeMount() {
+        console.log("beforeMount");
+    },
+    beforeRouteUpdate() {
+        console.log("beforeRouteUpdate");
+    },
+
     data() {
         return {
+
+            // items: this.$store.state.q4Items,
+            // selected: this.$store.state.q4Selected,
             chk1: true,
             chk2: "",
 
             fixed: true,
 
             indeterminate: true,
-            selected: [],
+            // selected: [],
 
             required,
         }
     },
 
     computed: {
+
+        items: {
+            get() { return this.$store.state.q4Items; },
+             // set(value) { this.$store.commit('setQ4Items', value); }
+        },
+        selected: {
+            get() { return this.$store.state.q4Selected; },
+             // set(value) { this.$store.commit('setQ4Items', value); }
+        }
+
+
         // state() {
         //     return this.selected.length >= 1
         // },
@@ -397,6 +431,13 @@ export default {
                     }
                 }
             }
+
+            this.updateStore();
+        },
+
+
+        updateStore() {
+            this.$store.commit('setQ4Items', { 'items': this.items, 'selected': this.selected } )
         },
     },
 }
