@@ -12,7 +12,7 @@ export const $themeConfig = {
     appName: 'UIBCOM', // Will update name in navigation menu (Branding)
     // eslint-disable-next-line global-require
     // appLogoImage: require('@/assets/images/logo/logo.svg'), // Will update logo in navigation menu (Branding)
-    appLogoImage: require('@/assets/images/logo/uib_logo.jpg'), // Will update logo in navigation menu (Branding)
+    appLogoImage: require('@/assets/images/logo/uib_logo.jpg'), // Will update logo in navigation menu (Branding)  ////t
 
   },
   layout: {
