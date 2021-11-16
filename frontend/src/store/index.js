@@ -524,7 +524,7 @@ export default new Vuex.Store({
                     col3: { id: 'val-12-3', checked: false, indet: false,},
                     col4: { id: 'val-12-4', checked: false, indet: false,},
                 },
-            ],
+            ];
 
             state.q6Selected = [];                                              // 6
 

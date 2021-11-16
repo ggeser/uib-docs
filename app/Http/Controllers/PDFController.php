@@ -15,20 +15,35 @@ class PDFController extends Controller
 
     public function generatePDF(Request $request)
     {
-
         error_log('@@ lara generatePDF $request'. $request);
         $params = $request["params"];
 
-        $orgType = $params["orgType"];
-        $q1select = $params["q1select"];
-        $rekv = $params["rekv"];
-        $q4Selected = $params["q4Selected"];
-        $q5select = $params["q5select"];
+        $q0select = $params["q0select"];                // 0
+        $orgType = $params["orgType"];                  // 1
+        $region = $params["region"]["value"];           // 2
+        $rekv = $params["rekv"];                        // 3
+        $q4Selected = $params["q4Selected"];            // 4
+        $q5select = $params["q5select"];                // 5
 
-//        error_log('@@ $q4Selected'. var_dump($q4Selected));
+//        var_dump($q0select[0]);
+//        error_log('@@ '. $q0select[0]);
+//        if (in_array("val0", $q0select)) {
+//            error_log('@@ 1');
+//        }
+//        else{
+//            error_log('@@ 0');
+//        }
 
-//        $data = array("select" => $select);
-        $data = array("full_name" => $rekv["full_name"]);
+
+        $data = array(
+            "q0select" => $q0select,        // 0
+            "orgType" => $orgType,          // 1
+            "region" => $region,            // 2
+            "rekv" => $rekv,                // 3
+            "q4Selected" => $q4Selected,    // 4
+            "q5select" => $q5select,        // 5
+
+        );
 
         $pdf = PDF::loadView('preview3', $data);
         return $pdf->download('demo.pdf');

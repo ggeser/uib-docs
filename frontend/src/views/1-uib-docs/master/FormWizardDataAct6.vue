@@ -269,6 +269,7 @@ export default {
     },
 
     computed: {
+
         items: {
             get() { return this.$store.state.q6Items; },
             // set(value) { this.$store.commit('setQ4Items', value); }
@@ -402,6 +403,7 @@ export default {
 
             this.updateStore();
         },
+
 
         updateStore() {
             this.$store.commit('setQ6Items', { 'items': this.items, 'selected': this.selected } )
