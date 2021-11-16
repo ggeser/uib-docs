@@ -145,9 +145,9 @@ export default new Vuex.Store({
             },
         ],
 
-        // q4Items: this.q4Items_0,
 
-        q5select: [],                                                                   // 5
+
+        q5select: [],                                                                // 5
 
                                                                                      // 6
         q6Selected: [],

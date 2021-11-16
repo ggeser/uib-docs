@@ -54,12 +54,13 @@
                                 <b-form-checkbox
                                     v-model="data.value.checked"
                                     :value="data.value.id"
-                                    :id="data.value.id"
-                                    :ref="data.value.id"
-                                    :checked="data.value.checked"
+
                                     :indeterminate="data.value.indet"
                                     @change=switchCheckbox(data.value.id,data.value,data)
                                 />
+<!--                                :id="data.value.id"-->
+<!--                                :ref="data.value.id"-->
+<!--                                :checked="data.value.checked"-->
                             </template>
                         </b-table>
                         </div>
@@ -256,6 +257,9 @@ export default {
     },
     data() {
         return {
+
+            items: this.$store.state.q6Items,
+            selected: this.$store.state.q6Selected,
             chk1: true,
             chk2: "",
 
@@ -270,14 +274,14 @@ export default {
 
     computed: {
 
-        items: {
-            get() { return this.$store.state.q6Items; },
-            // set(value) { this.$store.commit('setQ4Items', value); }
-        },
-        selected: {
-            get() { return this.$store.state.q6Selected; },
-            // set(value) { this.$store.commit('setQ4Items', value); }
-        }
+        // items: {
+        //     get() { return this.$store.state.q6Items; },
+        //     // set(value) { this.$store.commit('setQ4Items', value); }
+        // },
+        // selected: {
+        //     get() { return this.$store.state.q6Selected; },
+        //     // set(value) { this.$store.commit('setQ4Items', value); }
+        // }
 
         // state() {
         //     return this.selected.length >= 1

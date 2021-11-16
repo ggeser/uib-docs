@@ -54,12 +54,12 @@
                                 <b-form-checkbox
                                     v-model="data.value.checked"
                                     :value="data.value.id"
-                                    :id="data.value.id"
-                                    :ref="data.value.id"
-                                    :checked="data.value.checked"
                                     :indeterminate="data.value.indet"
                                     @change=switchCheckbox(data.value.id,data.value,data)
                                 />
+<!--                                :id="data.value.id"-->
+                                <!--                            :ref="data.value.id"-->
+                                <!--                            :checked="data.value.checked"-->
                             </template>
                         </b-table>
                         </div>
@@ -268,24 +268,12 @@ export default {
 
         }
     },
-    updated() {
-        console.log("updated");
-    },
-    mounted() {
-        console.log("mounted");
-    },
-    beforeMount() {
-        console.log("beforeMount");
-    },
-    beforeRouteUpdate() {
-        console.log("beforeRouteUpdate");
-    },
 
     data() {
         return {
 
-            // items: this.$store.state.q4Items,
-            // selected: this.$store.state.q4Selected,
+            items: this.$store.state.q4Items,
+            selected: this.$store.state.q4Selected,
             chk1: true,
             chk2: "",
 
@@ -300,14 +288,14 @@ export default {
 
     computed: {
 
-        items: {
-            get() { return this.$store.state.q4Items; },
-             // set(value) { this.$store.commit('setQ4Items', value); }
-        },
-        selected: {
-            get() { return this.$store.state.q4Selected; },
-             // set(value) { this.$store.commit('setQ4Items', value); }
-        }
+        // items: {
+        //     get() { return this.$store.state.q4Items; },
+        //      // set(value) { this.$store.commit('setQ4Items', value); }
+        // },
+        // selected: {
+        //     get() { return this.$store.state.q4Selected; },
+        //      // set(value) { this.$store.commit('setQ4Items', value); }
+        // }
 
 
         // state() {
