@@ -272,6 +272,16 @@ export default new Vuex.Store({
                 { text: 'Нет',   value: 'val1' },
             ],
         }],
+                                                                                        // 13
+        q13items: [{
+            id: "0",
+            name: '',
+            zod: null,
+            options: [
+                { text: 'Да',    value: 'val1' },
+                { text: 'Нет',   value: 'val2' },
+            ],
+        }],
 
     },
     mutations: {
@@ -539,6 +549,17 @@ export default new Vuex.Store({
                     { text: 'Нет',   value: 'val1' },
                 ],
             }];
+
+                                                                                 // 13
+            state.q13items = [{
+                id: "0",
+                name: '',
+                zod: null,
+                options: [
+                    { text: 'Да',    value: 'val1' },
+                    { text: 'Нет',   value: 'val2' },
+                ],
+            }];
         },
 
 
@@ -581,6 +602,7 @@ export default new Vuex.Store({
         setq10items (state, value) { state.q10items = value; },                                 // 10
         setTrans (state, value) { state.trans = value; },                                       // 11
         setq12items (state, value) { state.q12items = value; },                                 // 12
+        setq13items (state, value) { state.q13items = value; },                                 // 13
     },
 
     modules: {

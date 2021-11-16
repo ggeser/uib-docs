@@ -39,9 +39,10 @@
                                 <b-form-input
                                     :id=item.id
                                     type="text"
-                                    v-model="item.address"
-                                    :state="errors.length > 0 ? false:item.address.length >= 1 ? true:null"
+                                    v-model="item.name"
+                                    :state="errors.length > 0 ? false:item.name.length >= 1 ? true:null"
                                     placeholder="Название"
+                                    @input="updateStore"
                                 />
 
                                 <div v-if="( errors[0]  == null) ">
@@ -52,7 +53,7 @@
                                         Поле обязательно для заполнения
                                     </small>
                                 </div>
-<!--                                {{ item.id }} - {{ index }} - {{ item.address }}-->
+<!--                                {{ item.id }} - {{ index }} - {{ item.name }}-->
                             </validation-provider>
                         </b-form-group>
                     </b-col>
@@ -155,15 +156,15 @@ export default {
 
     data() {
         return {
-            items: [{
-                id: "0",
-                address: '',
-                zod: null,
-                options: [
-                    { text: 'Да',    value: 'val1' },
-                    { text: 'Нет',   value: 'val2' },
-                ],
-            }],
+            // items: [{
+            //     id: "0",
+            //     name: '',
+            //     zod: null,
+            //     options: [
+            //         { text: 'Да',    value: 'val1' },
+            //         { text: 'Нет',   value: 'val2' },
+            //     ],
+            // }],
             nextTodoId: 1,
 
             required,
@@ -180,13 +181,20 @@ export default {
     },
 
     computed: {
-
+        items: {
+            get() { return this.$store.state.q13items; },
+            // set(value) { this.$store.commit('setq10items', value); }
+        }
     },
 
     methods: {
+        updateStore() {
+            this.$store.commit('setq13items', this.items )
+        },
+
         state(index,errors) {
-            return this.items[index].address.length >= 1 ? true:null;
-            // return errors.length > 0 ? false:items[index].address.length >= 1 ? true:null;
+            return this.items[index].name.length >= 1 ? true:null;
+            // return errors.length > 0 ? false:items[index].name.length >= 1 ? true:null;
         },
 
         repeateAgain() {
@@ -196,7 +204,7 @@ export default {
             this.items.push({
                 // id: this.nextTodoId += this.nextTodoId,
                 id: this.nextTodoId.toString(),
-                address: '',
+                name: '',
                 zod: null,
                 options: this.items[0].options,
             })
@@ -206,10 +214,14 @@ export default {
             this.$nextTick(() => {
                 this.trAddHeight(this.$refs.row[0].offsetHeight)
             })
+
+            this.updateStore();
         },
         removeItem(index) {
             this.items.splice(index, 1)
             this.trTrimHeight(this.$refs.row[0].offsetHeight)
+
+            this.updateStore();
         },
         initTrHeight() {
             this.trSetHeight(null)

@@ -12,22 +12,6 @@
       @on-complete="formSubmitted"
     >
 
-
-
-
-        <!-- Inform tab 13-->
-        <tab-content
-            title="Информ. системы"
-            :before-change="validationFormInform"
-        >
-            <validation-observer
-                ref="informRules"
-                tag="form"
-            >
-                <form-wizard-inform13 />
-            </validation-observer>
-        </tab-content>
-
         <!-- OrgType tab 1-->
         <tab-content
             title="Тип учреждения"
@@ -172,9 +156,18 @@
             </validation-observer>
         </tab-content>
 
-
-
-
+        <!-- Inform tab 13-->
+        <tab-content
+            title="Информ. системы"
+            :before-change="validationFormInform"
+        >
+            <validation-observer
+                ref="informRules"
+                tag="form"
+            >
+                <form-wizard-inform13 />
+            </validation-observer>
+        </tab-content>
 
 
     </form-wizard>
@@ -278,6 +271,7 @@ export default {
                     q10items: this.$store.state.q10items,       // 10
                     trans: this.$store.state.trans,             // 11
                     q12items: this.$store.state.q12items,       // 12
+                    q13items: this.$store.state.q13items,       // 13
                 }
             }
         }).then((response) => {
