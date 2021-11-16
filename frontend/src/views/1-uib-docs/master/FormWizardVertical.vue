@@ -12,19 +12,19 @@
       @on-complete="formSubmitted"
     >
 
-        <!-- DataSubj tab 5-->
+
+        <!-- DataAct tab 6-->
         <tab-content
-            title="Субъекты данных"
-            :before-change="validationFormDataSubj"
+            title="Действия"
+            :before-change="validationFormDataAct"
         >
             <validation-observer
-                ref="dataSubjRules"
+                ref="dataActRules"
                 tag="form"
             >
-                <form-wizard-data-subj5 />
+                <form-wizard-data-act6 />
             </validation-observer>
         </tab-content>
-
 
         <!-- OrgType tab 1-->
         <tab-content
@@ -78,20 +78,20 @@
             </validation-observer>
         </tab-content>
 
-
-
-        <!-- DataAct tab 6-->
+        <!-- DataSubj tab 5-->
         <tab-content
-            title="Действия"
-            :before-change="validationFormDataAct"
+            title="Субъекты данных"
+            :before-change="validationFormDataSubj"
         >
             <validation-observer
-                ref="dataActRules"
+                ref="dataSubjRules"
                 tag="form"
             >
-                <form-wizard-data-act6 />
+                <form-wizard-data-subj5 />
             </validation-observer>
         </tab-content>
+
+
 
         <!-- DataProc tab 7-->
         <tab-content

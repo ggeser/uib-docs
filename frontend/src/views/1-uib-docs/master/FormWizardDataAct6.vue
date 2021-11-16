@@ -149,105 +149,105 @@ export default {
             { key: 'col4', label: 'Согласие на распространение персональных данных работника' },
         ]
 
-        const items = [
-            {
-                module: 'Сбор',
-                alll: { id: 'val-01-0', checked: false, indet: false,},
-                col1: { id: 'val-01-1', checked: false, indet: false,},
-                col2: { id: 'val-01-2', checked: false, indet: false,},
-                col3: { id: 'val-01-3', checked: false, indet: false,},
-                col4: { id: 'val-01-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Запись',
-                alll: { id: 'val-02-0', checked: false, indet: false,},
-                col1: { id: 'val-02-1', checked: false, indet: false,},
-                col2: { id: 'val-02-2', checked: false, indet: false,},
-                col3: { id: 'val-02-3', checked: false, indet: false,},
-                col4: { id: 'val-02-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Систематизация',
-                alll: { id: 'val-03-0', checked: false, indet: false,},
-                col1: { id: 'val-03-1', checked: false, indet: false,},
-                col2: { id: 'val-03-2', checked: false, indet: false,},
-                col3: { id: 'val-03-3', checked: false, indet: false,},
-                col4: { id: 'val-03-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Накопление',
-                alll: { id: 'val-04-0', checked: false, indet: false,},
-                col1: { id: 'val-04-1', checked: false, indet: false,},
-                col2: { id: 'val-04-2', checked: false, indet: false,},
-                col3: { id: 'val-04-3', checked: false, indet: false,},
-                col4: { id: 'val-04-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Хранение',
-                alll: { id: 'val-05-0', checked: false, indet: false,},
-                col1: { id: 'val-05-1', checked: false, indet: false,},
-                col2: { id: 'val-05-2', checked: false, indet: false,},
-                col3: { id: 'val-05-3', checked: false, indet: false,},
-                col4: { id: 'val-05-4', checked: false, indet: false,},
-            },
-
-            {
-                module: 'Уточнение (обновление, изменение)',
-                alll: { id: 'val-06-0', checked: false, indet: false,},
-                col1: { id: 'val-06-1', checked: false, indet: false,},
-                col2: { id: 'val-06-2', checked: false, indet: false,},
-                col3: { id: 'val-06-3', checked: false, indet: false,},
-                col4: { id: 'val-06-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Извлечение',
-                alll: { id: 'val-07-0', checked: false, indet: false,},
-                col1: { id: 'val-07-1', checked: false, indet: false,},
-                col2: { id: 'val-07-2', checked: false, indet: false,},
-                col3: { id: 'val-07-3', checked: false, indet: false,},
-                col4: { id: 'val-07-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Передача (предоставление, доступ)',
-                alll: { id: 'val-08-0', checked: false, indet: false,},
-                col1: { id: 'val-08-1', checked: false, indet: false,},
-                col2: { id: 'val-08-2', checked: false, indet: false,},
-                col3: { id: 'val-08-3', checked: false, indet: false,},
-                col4: { id: 'val-08-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Распространение',
-                alll: { id: 'val-09-0', checked: false, indet: false,},
-                col1: { id: 'val-09-1', checked: false, indet: false,},
-                col2: { id: 'val-09-2', checked: false, indet: false,},
-                col3: { id: 'val-09-3', checked: false, indet: false,},
-                col4: { id: 'val-09-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Обезличивание',
-                alll: { id: 'val-10-0', checked: false, indet: false,},
-                col1: { id: 'val-10-1', checked: false, indet: false,},
-                col2: { id: 'val-10-2', checked: false, indet: false,},
-                col3: { id: 'val-10-3', checked: false, indet: false,},
-                col4: { id: 'val-10-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Блокирование',
-                alll: { id: 'val-11-0', checked: false, indet: false,},
-                col1: { id: 'val-11-1', checked: false, indet: false,},
-                col2: { id: 'val-11-2', checked: false, indet: false,},
-                col3: { id: 'val-11-3', checked: false, indet: false,},
-                col4: { id: 'val-11-4', checked: false, indet: false,},
-            },
-            {
-                module: 'Удаление (уничтожение)',
-                alll: { id: 'val-12-0', checked: false, indet: false,},
-                col1: { id: 'val-12-1', checked: false, indet: false,},
-                col2: { id: 'val-12-2', checked: false, indet: false,},
-                col3: { id: 'val-12-3', checked: false, indet: false,},
-                col4: { id: 'val-12-4', checked: false, indet: false,},
-            },
-        ]
+        // const items = [
+        //     {
+        //         module: 'Сбор',
+        //         alll: { id: 'val-01-0', checked: false, indet: false,},
+        //         col1: { id: 'val-01-1', checked: false, indet: false,},
+        //         col2: { id: 'val-01-2', checked: false, indet: false,},
+        //         col3: { id: 'val-01-3', checked: false, indet: false,},
+        //         col4: { id: 'val-01-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Запись',
+        //         alll: { id: 'val-02-0', checked: false, indet: false,},
+        //         col1: { id: 'val-02-1', checked: false, indet: false,},
+        //         col2: { id: 'val-02-2', checked: false, indet: false,},
+        //         col3: { id: 'val-02-3', checked: false, indet: false,},
+        //         col4: { id: 'val-02-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Систематизация',
+        //         alll: { id: 'val-03-0', checked: false, indet: false,},
+        //         col1: { id: 'val-03-1', checked: false, indet: false,},
+        //         col2: { id: 'val-03-2', checked: false, indet: false,},
+        //         col3: { id: 'val-03-3', checked: false, indet: false,},
+        //         col4: { id: 'val-03-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Накопление',
+        //         alll: { id: 'val-04-0', checked: false, indet: false,},
+        //         col1: { id: 'val-04-1', checked: false, indet: false,},
+        //         col2: { id: 'val-04-2', checked: false, indet: false,},
+        //         col3: { id: 'val-04-3', checked: false, indet: false,},
+        //         col4: { id: 'val-04-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Хранение',
+        //         alll: { id: 'val-05-0', checked: false, indet: false,},
+        //         col1: { id: 'val-05-1', checked: false, indet: false,},
+        //         col2: { id: 'val-05-2', checked: false, indet: false,},
+        //         col3: { id: 'val-05-3', checked: false, indet: false,},
+        //         col4: { id: 'val-05-4', checked: false, indet: false,},
+        //     },
+        //
+        //     {
+        //         module: 'Уточнение (обновление, изменение)',
+        //         alll: { id: 'val-06-0', checked: false, indet: false,},
+        //         col1: { id: 'val-06-1', checked: false, indet: false,},
+        //         col2: { id: 'val-06-2', checked: false, indet: false,},
+        //         col3: { id: 'val-06-3', checked: false, indet: false,},
+        //         col4: { id: 'val-06-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Извлечение',
+        //         alll: { id: 'val-07-0', checked: false, indet: false,},
+        //         col1: { id: 'val-07-1', checked: false, indet: false,},
+        //         col2: { id: 'val-07-2', checked: false, indet: false,},
+        //         col3: { id: 'val-07-3', checked: false, indet: false,},
+        //         col4: { id: 'val-07-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Передача (предоставление, доступ)',
+        //         alll: { id: 'val-08-0', checked: false, indet: false,},
+        //         col1: { id: 'val-08-1', checked: false, indet: false,},
+        //         col2: { id: 'val-08-2', checked: false, indet: false,},
+        //         col3: { id: 'val-08-3', checked: false, indet: false,},
+        //         col4: { id: 'val-08-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Распространение',
+        //         alll: { id: 'val-09-0', checked: false, indet: false,},
+        //         col1: { id: 'val-09-1', checked: false, indet: false,},
+        //         col2: { id: 'val-09-2', checked: false, indet: false,},
+        //         col3: { id: 'val-09-3', checked: false, indet: false,},
+        //         col4: { id: 'val-09-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Обезличивание',
+        //         alll: { id: 'val-10-0', checked: false, indet: false,},
+        //         col1: { id: 'val-10-1', checked: false, indet: false,},
+        //         col2: { id: 'val-10-2', checked: false, indet: false,},
+        //         col3: { id: 'val-10-3', checked: false, indet: false,},
+        //         col4: { id: 'val-10-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Блокирование',
+        //         alll: { id: 'val-11-0', checked: false, indet: false,},
+        //         col1: { id: 'val-11-1', checked: false, indet: false,},
+        //         col2: { id: 'val-11-2', checked: false, indet: false,},
+        //         col3: { id: 'val-11-3', checked: false, indet: false,},
+        //         col4: { id: 'val-11-4', checked: false, indet: false,},
+        //     },
+        //     {
+        //         module: 'Удаление (уничтожение)',
+        //         alll: { id: 'val-12-0', checked: false, indet: false,},
+        //         col1: { id: 'val-12-1', checked: false, indet: false,},
+        //         col2: { id: 'val-12-2', checked: false, indet: false,},
+        //         col3: { id: 'val-12-3', checked: false, indet: false,},
+        //         col4: { id: 'val-12-4', checked: false, indet: false,},
+        //     },
+        // ]
 
         return {
             items,
@@ -269,6 +269,15 @@ export default {
     },
 
     computed: {
+        items: {
+            get() { return this.$store.state.q6Items; },
+            // set(value) { this.$store.commit('setQ4Items', value); }
+        },
+        selected: {
+            get() { return this.$store.state.q6Selected; },
+            // set(value) { this.$store.commit('setQ4Items', value); }
+        }
+
         // state() {
         //     return this.selected.length >= 1
         // },
@@ -390,6 +399,12 @@ export default {
                     }
                 }
             }
+
+            this.updateStore();
+        },
+
+        updateStore() {
+            this.$store.commit('setQ6Items', { 'items': this.items, 'selected': this.selected } )
         },
     },
 }
