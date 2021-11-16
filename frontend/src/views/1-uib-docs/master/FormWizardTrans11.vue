@@ -56,36 +56,39 @@ import {
 import { required, email } from '@validations'
 
 export default {
-  components: {
-      ValidationProvider,
-      ValidationObserver,
-      FormWizard,
-      TabContent,
-      BRow,
-      BCol,
-      BFormGroup,
-      BFormInput,
-      vSelect,
-      BFormInvalidFeedback,
-      // eslint-disable-next-line vue/no-unused-components
-      ToastificationContent,
-      BFormRadioGroup,
-      BFormRadio,
-  },
-  data() {
-    return {
-        required,
+    components: {
+        ValidationProvider,
+        ValidationObserver,
+        FormWizard,
+        TabContent,
+        BRow,
+        BCol,
+        BFormGroup,
+        BFormInput,
+        vSelect,
+        BFormInvalidFeedback,
+        // eslint-disable-next-line vue/no-unused-components
+        ToastificationContent,
+        BFormRadioGroup,
+        BFormRadio,
+    },
+    data() {
+        return {
+            required,
 
-        value: [],
-        options: [
-            { text: 'Да',     value: 'val1' },
-            { text: 'Нет',    value: 'val2' },
+            // value: [],
+            options: [
+                { text: 'Да',     value: 'val1' },
+                { text: 'Нет',    value: 'val2' },
 
-        ],
-    }
-  },
-  methods: {
-
-  },
+            ],
+        }
+    },
+    computed: {
+        value: {
+            get() { return this.$store.state.trans; },
+            set(value) { this.$store.commit('setTrans', value); }
+        }
+    },
 }
 </script>

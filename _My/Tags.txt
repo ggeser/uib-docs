@@ -2,58 +2,71 @@
 UIB-DOCS
 
 0.
-{{ $q1select[0] }}
+{{ $q0select["val0"] }}  ==  true / false
 ...
-{{ $q1select[6] }}
+{{ $q0select["val6"] }}  ==  true / false
 
 1.
-{{ $orgType }}
+{{ $orgType }}      == "val0" / ... / "val5"
+
 
 2.
-{{ $region }}
+{{ $region }}       == "val0" / ... / "val100"
 
 3.
-{{ $full_name }}
-{{ $short_name }}
-{{ $ur_address }}
-{{ $fakt_address }}
-{{ $inn }}
-{{ $kpp }}
-{{ $ogrn }}
-{{ $okved }}
-{{ $ras_okved }}
-{{ $okpo }}
-{{ $okfs }}
-{{ $okogu }}
-{{ $okopf }}
-{{ $uc_date }}
-{{ $dolgnost }}
-{{ $fio }}
-{{ $ot_date }}
-{{ $site }}
+{{ $full_name }}        == ""
+{{ $short_name }}       == ""
+{{ $ur_address }}       == ""
+{{ $fakt_address }}     == ""
+{{ $inn }}              == ""
+{{ $kpp }}              == ""
+{{ $ogrn }}             == ""
+{{ $okved }}            == ""
+{{ $ras_okved }}        == ""
+{{ $okpo }}             == ""
+{{ $okfs }}             == ""
+{{ $okogu }}            == ""
+{{ $okopf }}            == ""
+{{ $uc_date }}          == ""
+{{ $dolgnost }}         == ""
+{{ $fio }}              == ""
+{{ $ot_date }}          == ""
+{{ $site }}             == ""
 
 4.
 q4Selected["val-01-0"]  ...  q4Selected["val-01-4"]
         ...                         ...
 q4Selected["val-13-0"]  ...  q4Selected["val-13-4"]
 
+Все true / false
+
 5.
-{{ $q5select[0] }}
+{{ $q5select["val0"] }}  ==  true / false
 ...
-{{ $q5select[3] }}
+{{ $q5select["val3"] }}  ==  true / false
 
 6.
 q6Selected["val-01-0"]  ...  q6Selected["val-01-4"]
         ...                         ...
 q6Selected["val-12-0"]  ...  q6Selected["val-12-4"]
 
+Все true / false
+
 7.
-{{ $q7select[0] }}
-{{ $q7select[1] }}
-{{ $q7select[2] }}
+{{ $q7select["val0"] }}  ==  true / false
+{{ $q7select["val1"] }}  ==  true / false
+{{ $q7select["val2"] }}  ==  true / false
 
+9.
+{{ $q9select["val0"] }}  ==  true / false
+{{ $q9select["val1"] }}  ==  true / false
+{{ $q9select["val2"] }}  ==  true / false
 
-
+10.
+q10items[0].text     == ""   // fio
+q10items[1].text     == ""   // phone
+q10items[2].text     == ""   // address
+q10items[3].text     == ""   // eemail
 
 
 

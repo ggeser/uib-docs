@@ -12,7 +12,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        q1select:[],               // 0
+        q0select:[],               // 0
         orgType:[],              // 1
         region: '',              // 2
 
@@ -261,10 +261,12 @@ export default new Vuex.Store({
             { text: '' },  // eemail
         ],
 
+        trans:[],              // 11
+
     },
     mutations: {
         clearStore  (state) {
-            state.q1select = [];      // 0
+            state.q0select = [];      // 0
             state.orgType = [];     // 1
             state.region = '';      // 2
 
@@ -515,11 +517,13 @@ export default new Vuex.Store({
                 { text: '' },  // address
                 { text: '' },  // eemail
             ];
+
+            state.trans = [];              // 11
         },
 
 
 
-        setq1select (state, value) { state.q1select = value; },                         // 0
+        setq0select (state, value) { state.q0select = value; },                         // 0
         setOrgType (state, value) { state.orgType = value; },                       // 1
         setRegion (state, value) { state.region = value; } ,                        // 2
 
@@ -555,6 +559,7 @@ export default new Vuex.Store({
         setq7select (state, value) { state.q7select = value; },                                 // 7
         setq9select (state, value) { state.q9select = value; },                                 // 9
         setq10items (state, value) { state.q10items = value; },                                 // 10
+        setTrans (state, value) { state.trans = value; },                                       // 11
     },
 
     modules: {

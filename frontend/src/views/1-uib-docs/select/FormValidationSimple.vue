@@ -159,8 +159,8 @@ export default {
         },
 
         value: {
-            get() { return this.$store.state.q1select; },
-            set(value) { this.$store.commit('q1setSelect', value); }
+            get() { return this.$store.state.q0select; },
+            set(value) { this.$store.commit('setq0select', value); }
         }
     },
     methods: {

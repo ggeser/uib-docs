@@ -15,16 +15,16 @@
 
 
 
-        <!-- Company tab 10-->
+        <!-- Trans tab 11-->
         <tab-content
-            title="Ответственный"
-            :before-change="validationFormOtvets"
+            title="Передачи данных"
+            :before-change="validationFormTrans"
         >
             <validation-observer
-                ref="otvetsRules"
+                ref="transRules"
                 tag="form"
             >
-                <form-wizard-otvets10 />
+                <form-wizard-trans11 />
             </validation-observer>
         </tab-content>
 
@@ -133,21 +133,21 @@
             </validation-observer>
         </tab-content>
 
-
-
-
-        <!-- Trans tab 11-->
+        <!-- Company tab 10-->
         <tab-content
-            title="Передачи данных"
-            :before-change="validationFormTrans"
+            title="Ответственный"
+            :before-change="validationFormOtvets"
         >
             <validation-observer
-                ref="transRules"
+                ref="otvetsRules"
                 tag="form"
             >
-                <form-wizard-trans11 />
+                <form-wizard-otvets10 />
             </validation-observer>
         </tab-content>
+
+
+
 
         <!-- DataPlace tab 12-->
         <tab-content
@@ -266,14 +266,18 @@ export default {
             responseType: 'blob', // important
             data: {
                 params: {
-                    orgType: this.$store.state.orgType,
-                    q1select: this.$store.state.q1select,
-                    rekv: this.$store.state.rekv,
-                    q4Selected: this.$store.state.q4Selected,
-                    q5select: this.$store.state.q5select,
-                    q6Selected: this.$store.state.q6Selected,
-                    q7select: this.$store.state.q7select,
-                    q9select: this.$store.state.q9select,
+                    q0select: this.$store.state.q0select,       // 0
+                    orgType: this.$store.state.orgType,         // 1
+                    region: this.$store.state.region,           // 2
+                    rekv: this.$store.state.rekv,               // 3
+                    q4Selected: this.$store.state.q4Selected,   // 4
+                    q5select: this.$store.state.q5select,       // 5
+                    q6Selected: this.$store.state.q6Selected,   // 6
+                    q7select: this.$store.state.q7select,       // 7
+                    q9select: this.$store.state.q9select,       // 9
+                    q10items: this.$store.state.q10items,       // 10
+                    trans: this.$store.state.trans,             // 11
+
                 }
             }
         }).then((response) => {
