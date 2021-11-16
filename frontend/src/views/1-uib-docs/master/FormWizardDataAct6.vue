@@ -250,7 +250,7 @@ export default {
         // ]
 
         return {
-            items,
+            // items,
             fields,
         }
     },
@@ -262,7 +262,7 @@ export default {
             fixed: true,
 
             indeterminate: true,
-            selected: [],
+            // selected: [],
 
             required,
         }

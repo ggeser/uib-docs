@@ -190,8 +190,8 @@ export default {
                 address: '',
                 zod: null,
                 options: [
-                    { text: 'Да',    value: 'val1' },
-                    { text: 'Нет',   value: 'val2' },
+                    { text: 'Да',    value: 'val0' },
+                    { text: 'Нет',   value: 'val1' },
                 ],
             }],
             nextTodoId: 1,

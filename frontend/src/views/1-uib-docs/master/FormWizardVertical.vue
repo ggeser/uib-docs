@@ -13,16 +13,18 @@
     >
 
 
-        <!-- DataProc tab 9-->
+
+
+        <!-- Company tab 10-->
         <tab-content
-            title="Обработка данных"
-            :before-change="validationFormDataProc2"
+            title="Ответственный"
+            :before-change="validationFormOtvets"
         >
             <validation-observer
-                ref="dataProc2Rules"
+                ref="otvetsRules"
                 tag="form"
             >
-                <form-wizard-data-proc9 />
+                <form-wizard-otvets10 />
             </validation-observer>
         </tab-content>
 
@@ -118,21 +120,21 @@
         </tab-content>
 
 
-
-
-
-        <!-- Company tab 10-->
+        <!-- DataProc tab 9-->
         <tab-content
-            title="Ответственный"
-            :before-change="validationFormOtvets"
+            title="Обработка данных"
+            :before-change="validationFormDataProc2"
         >
             <validation-observer
-                ref="otvetsRules"
+                ref="dataProc2Rules"
                 tag="form"
             >
-                <form-wizard-otvets10 />
+                <form-wizard-data-proc9 />
             </validation-observer>
         </tab-content>
+
+
+
 
         <!-- Trans tab 11-->
         <tab-content

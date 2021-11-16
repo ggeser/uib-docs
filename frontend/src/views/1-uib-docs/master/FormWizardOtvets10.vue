@@ -23,9 +23,10 @@
                 >
                     <b-form-input
                         id="fio"
-                        v-model="fio"
-                        :state="errors.length > 0 ? false:fio.length >= 5 ? true:null"
+                        v-model="items[0].text"
+                        :state="errors.length > 0 ? false:items[0].text.length >= 5 ? true:null"
                         placeholder='Иванов Иван Иванович'
+                        @input="updateStore"
                     />
                     <small class="text-danger">{{ errors[0] }}</small>
                 </validation-provider>
@@ -44,10 +45,11 @@
                 >
                     <b-form-input
                         id="phone"
-                        v-model="phone"
-                        :state="errors.length > 0 ? false:phone.length >= 6 ? true:null"
+                        v-model="items[1].text"
+                        :state="errors.length > 0 ? false:items[1].text.length >= 6 ? true:null"
                         type="number"
                         placeholder="8901234567"
+                        @input="updateStore"
                     />
                     <small class="text-danger">{{ errors[0] }}</small>
                 </validation-provider>
@@ -66,9 +68,10 @@
                 >
                     <b-form-input
                         id="address"
-                        v-model="address"
-                        :state="errors.length > 0 ? false:address.length >= 1 ? true:null"
+                        v-model="items[2].text"
+                        :state="errors.length > 0 ? false:items[2].text.length >= 1 ? true:null"
                         placeholder="Адрес"
+                        @input="updateStore"
                     />
                     <small class="text-danger">{{ errors[0] }}</small>
                 </validation-provider>
@@ -87,9 +90,10 @@
                 >
                     <b-form-input
                         id="eemail"
-                        v-model="eemail"
-                        :state="errors.length > 0 ? false:eemail.length >= 1 ? true:null"
+                        v-model="items[3].text"
+                        :state="errors.length > 0 ? false:items[3].text.length >= 1 ? true:null"
                         placeholder="e-mail"
+                        @input="updateStore"
                     />
                     <small class="text-danger">{{ errors[0] }}</small>
                 </validation-provider>
@@ -117,36 +121,46 @@ import { required, email } from '@validations'
 
 
 export default {
-  components: {
-    ValidationProvider,
-    ValidationObserver,
-    FormWizard,
-    TabContent,
-    BRow,
-    BCol,
-    BFormGroup,
-    BFormInput,
-    vSelect,
-    Cleave,
-    BFormInvalidFeedback,
-    // eslint-disable-next-line vue/no-unused-components
-    ToastificationContent,
-  },
-  data() {
-    return {
-        fio: '',
-        phone: '',
-        address: '',
-        eemail: '',
+    components: {
+        ValidationProvider,
+        ValidationObserver,
+        FormWizard,
+        TabContent,
+        BRow,
+        BCol,
+        BFormGroup,
+        BFormInput,
+        vSelect,
+        Cleave,
+        BFormInvalidFeedback,
+        // eslint-disable-next-line vue/no-unused-components
+        ToastificationContent,
+    },
+    data() {
+        return {
 
-        required,
-        email,
+            // items: [
+            //     { text: '' },  // fio
+            //     { text: ''} ,  // phone
+            //     { text: '' },  // address
+            //     { text: '' },  // eemail
+            // ],
+
+            required,
+            email,
+        }
+    },
+    computed: {
+        items: {
+            get() { return this.$store.state.q10items; },
+            // set(value) { this.$store.commit('setq10items', value); }
+        }
+    },
+    methods: {
+        updateStore() {
+            this.$store.commit('setq10items', this.items )
+        },
     }
-  },
-  computed: {
-  },
-  methods: {
-  },
 }
 </script>
 

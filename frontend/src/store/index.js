@@ -253,6 +253,13 @@ export default new Vuex.Store({
 
         q7select: [],                                                                   // 7
         q9select: [],                                                                   // 9
+                                                                                        // 10
+        q10items: [
+            { text: '' },  // fio
+            { text: ''} ,  // phone
+            { text: '' },  // address
+            { text: '' },  // eemail
+        ],
 
     },
     mutations: {
@@ -501,6 +508,13 @@ export default new Vuex.Store({
 
             state.q7select = [];                                                // 7
             state.q9select = [];                                                // 9
+                                                                                // 10
+            state.q10items = [
+                { text: '' },  // fio
+                { text: ''} ,  // phone
+                { text: '' },  // address
+                { text: '' },  // eemail
+            ];
         },
 
 
@@ -540,6 +554,7 @@ export default new Vuex.Store({
 
         setq7select (state, value) { state.q7select = value; },                                 // 7
         setq9select (state, value) { state.q9select = value; },                                 // 9
+        setq10items (state, value) { state.q10items = value; },                                 // 10
     },
 
     modules: {
