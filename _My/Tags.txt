@@ -38,10 +38,19 @@ q4Selected["val-01-0"]  ...  q4Selected["val-01-4"]
 q4Selected["val-13-0"]  ...  q4Selected["val-13-4"]
 
 5.
-{{ $q1select[0] }}
+{{ $q5select[0] }}
 ...
-{{ $q1select[3] }}
+{{ $q5select[3] }}
 
+6.
+q6Selected["val-01-0"]  ...  q6Selected["val-01-4"]
+        ...                         ...
+q6Selected["val-12-0"]  ...  q6Selected["val-12-4"]
+
+7.
+{{ $q7select[0] }}
+{{ $q7select[1] }}
+{{ $q7select[2] }}
 
 
 

@@ -13,16 +13,16 @@
     >
 
 
-        <!-- DataAct tab 6-->
+        <!-- DataProc tab 7-->
         <tab-content
-            title="Действия"
-            :before-change="validationFormDataAct"
+            title="Способы обработки"
+            :before-change="validationFormDataProc"
         >
             <validation-observer
-                ref="dataActRules"
+                ref="dataProcRules"
                 tag="form"
             >
-                <form-wizard-data-act6 />
+                <form-wizard-data-proc7 />
             </validation-observer>
         </tab-content>
 
@@ -91,20 +91,20 @@
             </validation-observer>
         </tab-content>
 
-
-
-        <!-- DataProc tab 7-->
+        <!-- DataAct tab 6-->
         <tab-content
-            title="Способы обработки"
-            :before-change="validationFormDataProc"
+            title="Действия"
+            :before-change="validationFormDataAct"
         >
             <validation-observer
-                ref="dataProcRules"
+                ref="dataActRules"
                 tag="form"
             >
-                <form-wizard-data-proc7 />
+                <form-wizard-data-act6 />
             </validation-observer>
         </tab-content>
+
+
 
         <!-- DataProc tab 9-->
         <tab-content
@@ -267,7 +267,8 @@ export default {
                     rekv: this.$store.state.rekv,
                     q4Selected: this.$store.state.q4Selected,
                     q5select: this.$store.state.q5select,
-
+                    q6Selected: this.$store.state.q6Selected,
+                    q7select: this.$store.state.q7select,
                 }
             }
         }).then((response) => {

@@ -251,6 +251,7 @@ export default new Vuex.Store({
             },
         ],
 
+        q7select: [],                                                                   // 7
 
     },
     mutations: {
@@ -495,7 +496,9 @@ export default new Vuex.Store({
                 },
             ],
 
-            state.q6Selected = [];
+            state.q6Selected = [];                                              // 6
+
+            state.q7select = [];                                                // 7
         },
 
 
@@ -532,6 +535,8 @@ export default new Vuex.Store({
             state.q6Items = items;
             state.q6Selected = selected;
         },
+
+        setq7select (state, value) { state.q7select = value; },                                 // 7
     },
 
     modules: {

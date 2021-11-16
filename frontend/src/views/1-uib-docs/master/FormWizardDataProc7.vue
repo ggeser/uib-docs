@@ -76,16 +76,19 @@ export default {
     return {
         required,
 
-        value: [],
+        // value: [],
         options: [
-            { text: 'Автоматизированная – обработка с помощью ЭВМ без участия человека',    value: 'val1' },
-            { text: 'Неавтоматизированная – обработка человеком без участия ЭВМ',           value: 'val2' },
-            { text: 'Смешанная -  обработка человеком персональных с применением ЭВМ',      value: 'val3' },
+            { text: 'Автоматизированная – обработка с помощью ЭВМ без участия человека',    value: 'val0' },
+            { text: 'Неавтоматизированная – обработка человеком без участия ЭВМ',           value: 'val1' },
+            { text: 'Смешанная -  обработка человеком персональных с применением ЭВМ',      value: 'val2' },
         ],
     }
   },
-  methods: {
-
-  },
+    computed: {
+        value: {
+            get() { return this.$store.state.q7select; },
+            set(value) { this.$store.commit('setq7select', value); }
+        }
+    },
 }
 </script>
