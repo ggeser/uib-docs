@@ -12,7 +12,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        select:[],               // 0
+        q1select:[],               // 0
         orgType:[],              // 1
         region: '',              // 2
 
@@ -147,10 +147,12 @@ export default new Vuex.Store({
 
         // q4Items: this.q4Items_0,
 
+        q5select: [],               // 5
+
     },
     mutations: {
         clearStore  (state) {
-            state.select = [];      // 0
+            state.q1select = [];      // 0
             state.orgType = [];     // 1
             state.region = '';      // 2
 
@@ -287,12 +289,13 @@ export default new Vuex.Store({
 
             state.q4Selected = [];
 
+            state.q5select = [];      // 0
 
         },
 
 
 
-        setSelect (state, value) { state.select = value; },                         // 0
+        setq1select (state, value) { state.q1select = value; },                         // 0
         setOrgType (state, value) { state.orgType = value; },                       // 1
         setRegion (state, value) { state.region = value; } ,                        // 2
 
@@ -317,6 +320,8 @@ export default new Vuex.Store({
             state.q4Items = items;
             state.q4Selected = selected;
         },
+
+        setq5select (state, value) { state.q5select = value; },                         // 0
     },
 
     modules: {

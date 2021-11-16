@@ -76,17 +76,20 @@ export default {
     return {
         required,
 
-        value: [],
+        // value: [],
         options: [
-            { text: 'Работники организации',                 value: 'val1' },
-            { text: 'Кандидаты',                             value: 'val2' },
-            { text: 'Клиенты',                               value: 'val3' },
-            { text: 'Заявители с обращениями/жалобами',      value: 'val4' },
+            { text: 'Работники организации',                 value: 'val0' },
+            { text: 'Кандидаты',                             value: 'val1' },
+            { text: 'Клиенты',                               value: 'val2' },
+            { text: 'Заявители с обращениями/жалобами',      value: 'val3' },
         ],
     }
   },
-  methods: {
-
+  computed: {
+      value: {
+          get() { return this.$store.state.q5select; },
+          set(value) { this.$store.commit('setq5select', value); }
+      }
   },
 }
 </script>

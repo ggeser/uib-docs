@@ -20,10 +20,10 @@ class PDFController extends Controller
         $params = $request["params"];
 
         $orgType = $params["orgType"];
-        $select = $params["select"];
+        $q1select = $params["q1select"];
         $rekv = $params["rekv"];
         $q4Selected = $params["q4Selected"];
-
+        $q5select = $params["q5select"];
 
 //        error_log('@@ $q4Selected'. var_dump($q4Selected));
 

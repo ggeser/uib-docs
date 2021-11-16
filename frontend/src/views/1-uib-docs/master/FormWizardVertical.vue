@@ -12,6 +12,20 @@
       @on-complete="formSubmitted"
     >
 
+        <!-- DataSubj tab 5-->
+        <tab-content
+            title="Субъекты данных"
+            :before-change="validationFormDataSubj"
+        >
+            <validation-observer
+                ref="dataSubjRules"
+                tag="form"
+            >
+                <form-wizard-data-subj5 />
+            </validation-observer>
+        </tab-content>
+
+
         <!-- OrgType tab 1-->
         <tab-content
             title="Тип учреждения"
@@ -64,18 +78,7 @@
             </validation-observer>
         </tab-content>
 
-        <!-- DataSubj tab 5-->
-        <tab-content
-            title="Субъекты данных"
-            :before-change="validationFormDataSubj"
-        >
-            <validation-observer
-                ref="dataSubjRules"
-                tag="form"
-            >
-                <form-wizard-data-subj5 />
-            </validation-observer>
-        </tab-content>
+
 
         <!-- DataAct tab 6-->
         <tab-content
@@ -260,9 +263,10 @@ export default {
             data: {
                 params: {
                     orgType: this.$store.state.orgType,
-                    select: this.$store.state.select,
+                    q1select: this.$store.state.q1select,
                     rekv: this.$store.state.rekv,
                     q4Selected: this.$store.state.q4Selected,
+                    q5select: this.$store.state.q5select,
 
                 }
             }
