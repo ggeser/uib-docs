@@ -252,6 +252,7 @@ export default new Vuex.Store({
         ],
 
         q7select: [],                                                                   // 7
+        q9select: [],                                                                   // 9
 
     },
     mutations: {
@@ -499,6 +500,7 @@ export default new Vuex.Store({
             state.q6Selected = [];                                              // 6
 
             state.q7select = [];                                                // 7
+            state.q9select = [];                                                // 9
         },
 
 
@@ -537,6 +539,7 @@ export default new Vuex.Store({
         },
 
         setq7select (state, value) { state.q7select = value; },                                 // 7
+        setq9select (state, value) { state.q9select = value; },                                 // 9
     },
 
     modules: {

@@ -56,37 +56,40 @@ import {
 import { required, email } from '@validations'
 
 export default {
-  components: {
-      ValidationProvider,
-      ValidationObserver,
-      FormWizard,
-      TabContent,
-      BRow,
-      BCol,
-      BFormGroup,
-      BFormInput,
-      vSelect,
-      BFormInvalidFeedback,
-      // eslint-disable-next-line vue/no-unused-components
-      ToastificationContent,
-      BFormCheckboxGroup,
-      BFormCheckbox,
-  },
-  data() {
-    return {
-        required,
+    components: {
+        ValidationProvider,
+        ValidationObserver,
+        FormWizard,
+        TabContent,
+        BRow,
+        BCol,
+        BFormGroup,
+        BFormInput,
+        vSelect,
+        BFormInvalidFeedback,
+        // eslint-disable-next-line vue/no-unused-components
+        ToastificationContent,
+        BFormCheckboxGroup,
+        BFormCheckbox,
+    },
+    data() {
+        return {
+            required,
 
-        value: [],
-        options: [
-            { text: 'На бумажных носителях',                                                                            value: 'val1' },
-            { text: 'В информационных системах персональных данных с использованием автоматизации',                     value: 'val2' },
-            { text: 'В информационных системах персональных данных с использованием без использования автоматизации',   value: 'val3' },
-            { text: 'Смешанная обработка персональных данных – автоматизированная обработка при участии человека',      value: 'val4' },
-        ],
-    }
-  },
-  methods: {
-
-  },
+            // value: [],
+            options: [
+                { text: 'На бумажных носителях',                                                                            value: 'val0' },
+                { text: 'В информационных системах персональных данных с использованием автоматизации',                     value: 'val1' },
+                { text: 'В информационных системах персональных данных с использованием без использования автоматизации',   value: 'val2' },
+                { text: 'Смешанная обработка персональных данных – автоматизированная обработка при участии человека',      value: 'val3' },
+            ],
+        }
+    },
+    computed: {
+        value: {
+            get() { return this.$store.state.q9select; },
+            set(value) { this.$store.commit('setq9select', value); }
+        }
+    },
 }
 </script>

@@ -56,34 +56,34 @@ import {
 import { required, email } from '@validations'
 
 export default {
-  components: {
-      ValidationProvider,
-      ValidationObserver,
-      FormWizard,
-      TabContent,
-      BRow,
-      BCol,
-      BFormGroup,
-      BFormInput,
-      vSelect,
-      BFormInvalidFeedback,
-      // eslint-disable-next-line vue/no-unused-components
-      ToastificationContent,
-      BFormCheckboxGroup,
-      BFormCheckbox,
-  },
-  data() {
-    return {
-        required,
+    components: {
+        ValidationProvider,
+        ValidationObserver,
+        FormWizard,
+        TabContent,
+        BRow,
+        BCol,
+        BFormGroup,
+        BFormInput,
+        vSelect,
+        BFormInvalidFeedback,
+        // eslint-disable-next-line vue/no-unused-components
+        ToastificationContent,
+        BFormCheckboxGroup,
+        BFormCheckbox,
+    },
+    data() {
+        return {
+            required,
 
-        // value: [],
-        options: [
-            { text: 'Автоматизированная – обработка с помощью ЭВМ без участия человека',    value: 'val0' },
-            { text: 'Неавтоматизированная – обработка человеком без участия ЭВМ',           value: 'val1' },
-            { text: 'Смешанная -  обработка человеком персональных с применением ЭВМ',      value: 'val2' },
-        ],
-    }
-  },
+            // value: [],
+            options: [
+                { text: 'Автоматизированная – обработка с помощью ЭВМ без участия человека',    value: 'val0' },
+                { text: 'Неавтоматизированная – обработка человеком без участия ЭВМ',           value: 'val1' },
+                { text: 'Смешанная -  обработка человеком персональных с применением ЭВМ',      value: 'val2' },
+            ],
+        }
+    },
     computed: {
         value: {
             get() { return this.$store.state.q7select; },

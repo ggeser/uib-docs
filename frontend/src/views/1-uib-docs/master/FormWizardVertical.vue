@@ -13,16 +13,16 @@
     >
 
 
-        <!-- DataProc tab 7-->
+        <!-- DataProc tab 9-->
         <tab-content
-            title="Способы обработки"
-            :before-change="validationFormDataProc"
+            title="Обработка данных"
+            :before-change="validationFormDataProc2"
         >
             <validation-observer
-                ref="dataProcRules"
+                ref="dataProc2Rules"
                 tag="form"
             >
-                <form-wizard-data-proc7 />
+                <form-wizard-data-proc9 />
             </validation-observer>
         </tab-content>
 
@@ -104,20 +104,22 @@
             </validation-observer>
         </tab-content>
 
-
-
-        <!-- DataProc tab 9-->
+        <!-- DataProc tab 7-->
         <tab-content
-            title="Обработка данных"
-            :before-change="validationFormDataProc2"
+            title="Способы обработки"
+            :before-change="validationFormDataProc"
         >
             <validation-observer
-                ref="dataProc2Rules"
+                ref="dataProcRules"
                 tag="form"
             >
-                <form-wizard-data-proc9 />
+                <form-wizard-data-proc7 />
             </validation-observer>
         </tab-content>
+
+
+
+
 
         <!-- Company tab 10-->
         <tab-content
@@ -269,6 +271,7 @@ export default {
                     q5select: this.$store.state.q5select,
                     q6Selected: this.$store.state.q6Selected,
                     q7select: this.$store.state.q7select,
+                    q9select: this.$store.state.q9select,
                 }
             }
         }).then((response) => {
