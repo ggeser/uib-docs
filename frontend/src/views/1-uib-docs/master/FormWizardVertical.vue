@@ -15,16 +15,16 @@
 
 
 
-        <!-- Trans tab 11-->
+        <!-- Inform tab 13-->
         <tab-content
-            title="Передачи данных"
-            :before-change="validationFormTrans"
+            title="Информ. системы"
+            :before-change="validationFormInform"
         >
             <validation-observer
-                ref="transRules"
+                ref="informRules"
                 tag="form"
             >
-                <form-wizard-trans11 />
+                <form-wizard-inform13 />
             </validation-observer>
         </tab-content>
 
@@ -146,8 +146,18 @@
             </validation-observer>
         </tab-content>
 
-
-
+        <!-- Trans tab 11-->
+        <tab-content
+            title="Передачи данных"
+            :before-change="validationFormTrans"
+        >
+            <validation-observer
+                ref="transRules"
+                tag="form"
+            >
+                <form-wizard-trans11 />
+            </validation-observer>
+        </tab-content>
 
         <!-- DataPlace tab 12-->
         <tab-content
@@ -162,18 +172,8 @@
             </validation-observer>
         </tab-content>
 
-        <!-- Inform tab 13-->
-        <tab-content
-            title="Информ. системы"
-            :before-change="validationFormInform"
-        >
-            <validation-observer
-                ref="informRules"
-                tag="form"
-            >
-                <form-wizard-inform13 />
-            </validation-observer>
-        </tab-content>
+
+
 
 
 
@@ -277,7 +277,7 @@ export default {
                     q9select: this.$store.state.q9select,       // 9
                     q10items: this.$store.state.q10items,       // 10
                     trans: this.$store.state.trans,             // 11
-
+                    q12items: this.$store.state.q12items,       // 12
                 }
             }
         }).then((response) => {

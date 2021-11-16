@@ -261,7 +261,17 @@ export default new Vuex.Store({
             { text: '' },  // eemail
         ],
 
-        trans:[],              // 11
+        trans:[],                                                                       // 11
+                                                                                        // 12
+        q12items: [{
+            id: "0",
+            address: '',
+            zod: null,
+            options: [
+                { text: 'Да',    value: 'val0' },
+                { text: 'Нет',   value: 'val1' },
+            ],
+        }],
 
     },
     mutations: {
@@ -518,7 +528,17 @@ export default new Vuex.Store({
                 { text: '' },  // eemail
             ];
 
-            state.trans = [];              // 11
+            state.trans = [];                                                   // 11
+                                                                                // 12
+            state.q12items= [{
+                id: "0",
+                address: '',
+                zod: null,
+                options: [
+                    { text: 'Да',    value: 'val0' },
+                    { text: 'Нет',   value: 'val1' },
+                ],
+            }];
         },
 
 
@@ -560,6 +580,7 @@ export default new Vuex.Store({
         setq9select (state, value) { state.q9select = value; },                                 // 9
         setq10items (state, value) { state.q10items = value; },                                 // 10
         setTrans (state, value) { state.trans = value; },                                       // 11
+        setq12items (state, value) { state.q12items = value; },                                 // 12
     },
 
     modules: {

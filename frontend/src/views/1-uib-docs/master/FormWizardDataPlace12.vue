@@ -42,6 +42,7 @@
                                     v-model="item.address"
                                     :state="errors.length > 0 ? false:item.address.length >= 1 ? true:null"
                                     placeholder="Адрес"
+                                    @input="updateStore"
                                 />
 
                                 <div v-if="( errors[0]  == null) ">
@@ -70,6 +71,7 @@
                                     v-model="item.zod"
                                     :options="item.options"
                                     class="demo-inline-spacing"
+                                    @change="updateStore"
                                 >
                                 </b-form-radio-group>
 
@@ -185,15 +187,15 @@ export default {
 
     data() {
         return {
-            items: [{
-                id: "0",
-                address: '',
-                zod: null,
-                options: [
-                    { text: 'Да',    value: 'val0' },
-                    { text: 'Нет',   value: 'val1' },
-                ],
-            }],
+            // items: [{
+            //     id: "0",
+            //     address: '',
+            //     zod: null,
+            //     options: [
+            //         { text: 'Да',    value: 'val0' },
+            //         { text: 'Нет',   value: 'val1' },
+            //     ],
+            // }],
             nextTodoId: 1,
 
             required,
@@ -210,10 +212,16 @@ export default {
     },
 
     computed: {
-
+        items: {
+            get() { return this.$store.state.q12items; },
+            // set(value) { this.$store.commit('setq10items', value); }
+        }
     },
-
     methods: {
+        updateStore() {
+            this.$store.commit('setq12items', this.items )
+        },
+
         state(index,errors) {
             return this.items[index].address.length >= 1 ? true:null;
             // return errors.length > 0 ? false:items[index].address.length >= 1 ? true:null;
@@ -236,10 +244,14 @@ export default {
             this.$nextTick(() => {
                 this.trAddHeight(this.$refs.row[0].offsetHeight)
             })
+
+            this.updateStore();
         },
         removeItem(index) {
             this.items.splice(index, 1)
             this.trTrimHeight(this.$refs.row[0].offsetHeight)
+
+            this.updateStore();
         },
         initTrHeight() {
             this.trSetHeight(null)
