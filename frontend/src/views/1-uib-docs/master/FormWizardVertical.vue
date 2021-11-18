@@ -12,9 +12,6 @@
       @on-complete="formSubmitted"
     >
 
-
-
-
         <!-- OrgType tab 1-->
         <tab-content
             title="Тип учреждения"

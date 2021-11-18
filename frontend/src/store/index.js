@@ -262,7 +262,8 @@ export default new Vuex.Store({
         ],
 
         trans:[],                                                                       // 11
-                                                                                        // 12
+
+        q12nextTodoId: 1,                                                               // 12
         q12items: [{
             id: "0",
             address: '',
@@ -272,7 +273,8 @@ export default new Vuex.Store({
                 { text: 'Нет',   value: 'val1' },
             ],
         }],
-                                                                                        // 13
+
+        q13nextTodoId: 1,                                                                // 13
         q13items: [{
             id: "0",
             name: '',
@@ -539,7 +541,8 @@ export default new Vuex.Store({
             ];
 
             state.trans = [];                                                   // 11
-                                                                                // 12
+
+            state.q12nextTodoId= 1;                                             // 12
             state.q12items= [{
                 id: "0",
                 address: '',
@@ -550,7 +553,8 @@ export default new Vuex.Store({
                 ],
             }];
 
-                                                                                 // 13
+
+            state.q13nextTodoId= 1;                                              // 13                                                                 // 13
             state.q13items = [{
                 id: "0",
                 name: '',
@@ -601,8 +605,11 @@ export default new Vuex.Store({
         setq9select (state, value) { state.q9select = value; },                                 // 9
         setq10items (state, value) { state.q10items = value; },                                 // 10
         setTrans (state, value) { state.trans = value; },                                       // 11
+        setq12nextTodoId (state, value) { state.q12nextTodoId = value; },                       // 12
         setq12items (state, value) { state.q12items = value; },                                 // 12
         setq13items (state, value) { state.q13items = value; },                                 // 13
+        setq13nextTodoId (state, value) { state.q13nextTodoId = value; },                       // 13
+
     },
 
     modules: {

@@ -11,9 +11,9 @@
                     <small class="text-muted">Введите все информационные системы.</small>
                 </b-col>
             </b-row>
-
+<!--            :style="{height: trHeight}"-->
             <b-form
-                ref="form"
+                ref="formq13"
                 :style="{height: trHeight}"
                 class="repeater-form"
                 @submit.prevent="repeateAgain"
@@ -21,11 +21,12 @@
 
                 <!-- Row Loop -->
                 <b-row
-                    v-for="(item, index) in items"
-                    :id="item.id"
+                    v-for="(item, index) in this.items"
                     :key="item.id"
-                    ref="row"
+                    ref="rowq13"
                 >
+<!--                    :id="item.id"-->
+
 
                     <b-col md="6">
                         <b-form-group
@@ -37,13 +38,13 @@
                                 rules="required"
                             >
                                 <b-form-input
-                                    :id=item.id
                                     type="text"
                                     v-model="item.name"
                                     :state="errors.length > 0 ? false:item.name.length >= 1 ? true:null"
                                     placeholder="Название"
                                     @input="updateStore"
                                 />
+<!--                                :id=item.id-->
 
                                 <div v-if="( errors[0]  == null) ">
                                     <br>
@@ -165,28 +166,37 @@ export default {
             //         { text: 'Нет',   value: 'val2' },
             //     ],
             // }],
-            nextTodoId: 1,
+
+            items: this.$store.state.q13items,
+            // nextTodoId: 1,
 
             required,
         }
     },
     mounted() {
-        this.initTrHeight()
+        this.initTrHeight2();
+
+        this.trSetHeight(93)
+        this.$nextTick(() => {
+            this.trSetHeight(93*this.items.length)
+        })
     },
     created() {
-        window.addEventListener('resize', this.initTrHeight)
+        window.addEventListener('resize', this.initTrHeight2)
     },
     destroyed() {
-        window.removeEventListener('resize', this.initTrHeight)
+        window.removeEventListener('resize', this.initTrHeight2)
     },
-
     computed: {
-        items: {
-            get() { return this.$store.state.q13items; },
-            // set(value) { this.$store.commit('setq10items', value); }
+        // items: {
+        //     get() { return this.$store.state.q13items; },
+        // },
+
+        nextTodoId: {
+            get() { return this.$store.state.q13nextTodoId; },
+            set(value) { this.$store.commit('setq13nextTodoId', value); }
         }
     },
-
     methods: {
         updateStore() {
             this.$store.commit('setq13items', this.items )
@@ -198,9 +208,6 @@ export default {
         },
 
         repeateAgain() {
-            // this.item0.id = this.nextTodoId.toString()
-            // this.items.push(this.item0);
-
             this.items.push({
                 // id: this.nextTodoId += this.nextTodoId,
                 id: this.nextTodoId.toString(),
@@ -212,21 +219,22 @@ export default {
             this.nextTodoId += 1;
 
             this.$nextTick(() => {
-                this.trAddHeight(this.$refs.row[0].offsetHeight)
+                this.trAddHeight(this.$refs.rowq13[0].offsetHeight)
             })
 
             this.updateStore();
         },
         removeItem(index) {
             this.items.splice(index, 1)
-            this.trTrimHeight(this.$refs.row[0].offsetHeight)
+            this.trTrimHeight(this.$refs.rowq13[0].offsetHeight)
 
             this.updateStore();
         },
-        initTrHeight() {
+        initTrHeight2() {
             this.trSetHeight(null)
+
             this.$nextTick(() => {
-                this.trSetHeight(this.$refs.form.scrollHeight)
+                this.trSetHeight(this.$refs.formq13.scrollHeight)
             })
         },
     },

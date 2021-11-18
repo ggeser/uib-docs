@@ -22,10 +22,11 @@
                 <!-- Row Loop -->
                 <b-row
                     v-for="(item, index) in items"
-                    :id="item.id"
                     :key="item.id"
                     ref="row"
                 >
+<!--                    :id="item.id"-->
+
 
                     <b-col md="6">
                         <b-form-group
@@ -37,13 +38,13 @@
                                 rules="required"
                             >
                                 <b-form-input
-                                    :id=item.id
                                     type="text"
                                     v-model="item.address"
                                     :state="errors.length > 0 ? false:item.address.length >= 1 ? true:null"
                                     placeholder="Адрес"
                                     @input="updateStore"
                                 />
+<!--                                :id=item.id-->
 
                                 <div v-if="( errors[0]  == null) ">
                                     <br>
@@ -196,13 +197,20 @@ export default {
             //         { text: 'Нет',   value: 'val1' },
             //     ],
             // }],
-            nextTodoId: 1,
+            items: this.$store.state.q12items,
+
+            // nextTodoId: 1,
 
             required,
         }
     },
     mounted() {
-        this.initTrHeight()
+        this.initTrHeight();
+
+        this.trSetHeight(93)
+        this.$nextTick(() => {
+            this.trSetHeight(93*this.items.length)
+        })
     },
     created() {
         window.addEventListener('resize', this.initTrHeight)
@@ -212,10 +220,15 @@ export default {
     },
 
     computed: {
-        items: {
-            get() { return this.$store.state.q12items; },
-            // set(value) { this.$store.commit('setq10items', value); }
-        }
+        nextTodoId: {
+            get() { return this.$store.state.q12nextTodoId; },
+            set(value) { this.$store.commit('setq12nextTodoId', value); }
+        },
+
+        // items: {
+        //     get() { return this.$store.state.q12items; },
+        //     // set(value) { this.$store.commit('setq10items', value); }
+        // }
     },
     methods: {
         updateStore() {
@@ -228,9 +241,6 @@ export default {
         },
 
         repeateAgain() {
-            // this.item0.id = this.nextTodoId.toString()
-            // this.items.push(this.item0);
-
             this.items.push({
                 // id: this.nextTodoId += this.nextTodoId,
                 id: this.nextTodoId.toString(),
@@ -255,6 +265,7 @@ export default {
         },
         initTrHeight() {
             this.trSetHeight(null)
+
             this.$nextTick(() => {
                 this.trSetHeight(this.$refs.form.scrollHeight)
             })
