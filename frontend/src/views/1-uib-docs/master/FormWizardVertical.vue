@@ -13,34 +13,6 @@
     >
 
 
-
-        <!-- DataPlace tab 12-->
-        <tab-content
-            title="Места хранения"
-            :before-change="validationFormDataPlace"
-        >
-            <validation-observer
-                ref="dataPlaceRules"
-                tag="form"
-            >
-                <form-wizard-data-place12 />
-            </validation-observer>
-        </tab-content>
-
-        <!-- Inform tab 13-->
-        <tab-content
-            title="Информ. системы"
-            :before-change="validationFormInform"
-        >
-            <validation-observer
-                ref="informRules"
-                tag="form"
-            >
-                <form-wizard-inform13 />
-            </validation-observer>
-        </tab-content>
-
-
         <!-- OrgType tab 1-->
         <tab-content
             title="Тип учреждения"
@@ -169,6 +141,32 @@
                 tag="form"
             >
                 <form-wizard-trans11 />
+            </validation-observer>
+        </tab-content>
+
+        <!-- DataPlace tab 12-->
+        <tab-content
+            title="Места хранения"
+            :before-change="validationFormDataPlace"
+        >
+            <validation-observer
+                ref="dataPlaceRules"
+                tag="form"
+            >
+                <form-wizard-data-place12 />
+            </validation-observer>
+        </tab-content>
+
+        <!-- Inform tab 13-->
+        <tab-content
+            title="Информ. системы"
+            :before-change="validationFormInform"
+        >
+            <validation-observer
+                ref="informRules"
+                tag="form"
+            >
+                <form-wizard-inform13 />
             </validation-observer>
         </tab-content>
 

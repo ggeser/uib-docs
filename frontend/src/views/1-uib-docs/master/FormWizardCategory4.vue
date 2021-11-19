@@ -55,6 +55,7 @@
                                     v-model="data.value.checked"
                                     :value="data.value.id"
                                     :indeterminate="data.value.indet"
+                                    :disabled="dissabled(data.value.id)"
                                     @change=switchCheckbox(data.value.id,data.value,data)
                                 />
 <!--                                :id="data.value.id"-->
@@ -287,7 +288,6 @@ export default {
     },
 
     computed: {
-
         // items: {
         //     get() { return this.$store.state.q4Items; },
         //      // set(value) { this.$store.commit('setQ4Items', value); }
@@ -311,6 +311,18 @@ export default {
         // },
     },
     methods: {
+        dissabled(id_str) {
+            let rez = false;
+            let curCol= id_str[7];
+
+            if ( curCol === "1" && this.$store.state.q0select.indexOf("val2") === -1 ) { rez = true; }
+            if ( curCol === "2" && this.$store.state.q0select.indexOf("val3") === -1 ) { rez = true; }
+            if ( curCol === "3" && this.$store.state.q0select.indexOf("val4") === -1 ) { rez = true; }
+            if ( curCol === "4" && this.$store.state.q0select.indexOf("val5") === -1 ) { rez = true; }
+
+           return rez;
+        },
+
         mycheck() {
             // alert(this.items[1].read)
             // alert(this.selected)
@@ -339,15 +351,15 @@ export default {
 
                     this.items[stroka-1].alll.indet = false;
 
-                    this.items[stroka-1].col1.checked = this.items[stroka-1].col1.id;
-                    this.items[stroka-1].col2.checked = this.items[stroka-1].col2.id;
-                    this.items[stroka-1].col3.checked = this.items[stroka-1].col3.id;
-                    this.items[stroka-1].col4.checked = this.items[stroka-1].col4.id;
+                    if (this.dissabled("xxxxxxx1") === false) this.items[stroka-1].col1.checked = this.items[stroka-1].col1.id;
+                    if (this.dissabled("xxxxxxx2") === false) this.items[stroka-1].col2.checked = this.items[stroka-1].col2.id;
+                    if (this.dissabled("xxxxxxx3") === false) this.items[stroka-1].col3.checked = this.items[stroka-1].col3.id;
+                    if (this.dissabled("xxxxxxx4") === false) this.items[stroka-1].col4.checked = this.items[stroka-1].col4.id;
 
                     for (let i = 1; i <= 4; i++) {
                         curId = curPref + i;
-                        if (this.selected.indexOf(curId) === -1) {
-                            this.selected.push(curId);
+                        if ( this.selected.indexOf(curId) === -1 && this.dissabled(curId) === false ) {
+                             this.selected.push(curId);
                         }
                     }
                 }
