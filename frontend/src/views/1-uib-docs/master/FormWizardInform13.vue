@@ -21,7 +21,7 @@
 
                 <!-- Row Loop -->
                 <b-row
-                    v-for="(item, index) in this.items"
+                    v-for="(item, index) in items"
                     :key="item.id"
                     ref="rowq13"
                 >
@@ -167,7 +167,7 @@ export default {
             //     ],
             // }],
 
-            items: this.$store.state.q13items,
+            // items: this.$store.state.q13items,
             // nextTodoId: 1,
 
             required,
@@ -188,9 +188,10 @@ export default {
         window.removeEventListener('resize', this.initTrHeight2)
     },
     computed: {
-        // items: {
-        //     get() { return this.$store.state.q13items; },
-        // },
+        items: {
+            get() { return this.$store.state.q13items; },
+            set(value) { this.$store.commit('setq13items', value); }
+        },
 
         nextTodoId: {
             get() { return this.$store.state.q13nextTodoId; },
@@ -199,7 +200,7 @@ export default {
     },
     methods: {
         updateStore() {
-            this.$store.commit('setq13items', this.items )
+             this.$store.commit('setq13items', this.items )
         },
 
         state(index,errors) {

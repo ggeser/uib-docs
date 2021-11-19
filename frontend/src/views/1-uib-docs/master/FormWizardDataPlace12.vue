@@ -197,7 +197,7 @@ export default {
             //         { text: 'Нет',   value: 'val1' },
             //     ],
             // }],
-            items: this.$store.state.q12items,
+            // items: this.$store.state.q12items,
 
             // nextTodoId: 1,
 
@@ -220,15 +220,15 @@ export default {
     },
 
     computed: {
+        items: {
+            get() { return this.$store.state.q12items; },
+            set(value) { this.$store.commit('setq12items', value); }
+        },
+
         nextTodoId: {
             get() { return this.$store.state.q12nextTodoId; },
             set(value) { this.$store.commit('setq12nextTodoId', value); }
         },
-
-        // items: {
-        //     get() { return this.$store.state.q12items; },
-        //     // set(value) { this.$store.commit('setq10items', value); }
-        // }
     },
     methods: {
         updateStore() {
