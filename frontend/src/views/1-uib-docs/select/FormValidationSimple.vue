@@ -20,14 +20,25 @@
                       name="First Name"
                       rules="required"
                   >
-                      <b-form-checkbox-group
-                          v-model="value"
-                          :options="options"
 
+                      <b-form-checkbox-group
+                          v-model="selected"
                           class="demo-my-spacing"
                           name="checkbox-validation"
                           stacked
                       >
+                          <b-form-checkbox
+                              v-for="(option, key, index) in options" :key="index"
+                              :value="option.value"
+                          >
+                              {{ option.text }}
+                              <feather-icon
+                                  v-b-popover.hover.top="option.help"
+                                  variant="dark"
+                                  icon="HelpCircleIcon"
+                                  size="18"
+                              />
+                          </b-form-checkbox>
 <!--                          <b-form-invalid-feedback :state="state">-->
 <!--                              Пожалуйста выберите один пункт или больше-->
 <!--                          </b-form-invalid-feedback>-->
@@ -35,7 +46,7 @@
 <!--                              Спасибо-->
 <!--                          </b-form-valid-feedback>-->
                       </b-form-checkbox-group>
-                      <div v-if="(value.length >= 1) || ( errors[0]  == null) ">
+                      <div v-if="(selected.length >= 1) || ( errors[0]  == null) ">
                           <br>
                       </div>
                       <div v-else>
@@ -48,51 +59,6 @@
                   </validation-provider>
 
               </div>
-
-<!--            <b-row>-->
-<!--              <b-col md="6">-->
-<!--                <b-form-group>-->
-<!--                  <validation-provider-->
-<!--                    #default="{ errors }"-->
-<!--                    name="First Name"-->
-<!--                    rules="required"-->
-<!--                  >-->
-<!--                    <b-form-input-->
-<!--                      v-model="name"-->
-<!--                      :state="errors.length > 0 ? false:null"-->
-<!--                      placeholder="First Name"-->
-<!--                    />-->
-<!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                  </validation-provider>-->
-<!--                </b-form-group>-->
-<!--              </b-col>-->
-<!--              <b-col md="6">-->
-<!--                <b-form-group>-->
-<!--                  <validation-provider-->
-<!--                    #default="{ errors }"-->
-<!--                    name="Email"-->
-<!--                    rules="required|email"-->
-<!--                  >-->
-<!--                    <b-form-input-->
-<!--                      v-model="emailValue"-->
-<!--                      :state="errors.length > 0 ? false:null"-->
-<!--                      type="email"-->
-<!--                      placeholder="Email"-->
-<!--                    />-->
-<!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-<!--                  </validation-provider>-->
-<!--                </b-form-group>-->
-<!--              </b-col>-->
-<!--              <b-col cols="12">-->
-<!--                <b-button-->
-<!--                  variant="primary"-->
-<!--                  type="submit"-->
-<!--                  @click.prevent="validationForm"-->
-<!--                >-->
-<!--                  Submit-->
-<!--                </b-button>-->
-<!--              </b-col>-->
-<!--            </b-row>-->
 
               <b-button
                   variant="primary"
@@ -115,12 +81,16 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate'
 import {
   BFormInput, BFormGroup, BForm, BRow, BCol, BButton, BCardText, BCard,
     BFormCheckboxGroup, BFormInvalidFeedback, BFormValidFeedback, BFormCheckbox,
+    VBPopover,
 } from 'bootstrap-vue'
 import { required, email } from '@validations'
 import router from '@/router'
 
 
 export default {
+    directives: {
+        'b-popover': VBPopover,
+    },
     components: {
         ValidationProvider,
         ValidationObserver,
@@ -142,28 +112,45 @@ export default {
             email,
 
             // value: [],
+            // selected: [],
+
+            helps: [
+                'документ наличие которого требуется у каждой организации. Данный документ отображает с какими персональными данными и какие действия вы совершаете в процессе деятельности.',
+                '2документ наличие которого требуется у каждой организации. Данный документ отображает с какими персональными данными и какие действия вы совершаете в процессе деятельности.',
+            ],
+
             options: [
-                { text: 'Политика в отношении обработки персональных данных;',              value: 'val0' },
-                { text: 'Пользовательское соглашение посетителя сайта;',                    value: 'val1' },
-                { text: 'Согласие на обработку персональных данных для Клиента;',           value: 'val2' },
-                { text: 'Согласие на обработку персональных данных для Сотрудника;',        value: 'val3' },
-                { text: 'Согласие на распространение персональных данных для Клиента;',     value: 'val4' },
-                { text: 'Согласие на распространение персональных данных для Сотрудника;',  value: 'val5' },
-                { text: 'Уведомление в Роскомнадзор.',                                      value: 'val6' },
+                { text: 'Политика в отношении обработки персональных данных;',              value: 'val0', help: this.getHelp(0), },
+                { text: 'Пользовательское соглашение посетителя сайта;',                    value: 'val1', help: this.getHelp(1),  },
+                { text: 'Согласие на обработку персональных данных для Клиента;',           value: 'val2', help: this.getHelp(2), },
+                { text: 'Согласие на обработку персональных данных для Сотрудника;',        value: 'val3', help: this.getHelp(3), },
+                { text: 'Согласие на распространение персональных данных для Клиента;',     value: 'val4', help: this.getHelp(4), },
+                { text: 'Согласие на распространение персональных данных для Сотрудника;',  value: 'val5', help: this.getHelp(5), },
+                { text: 'Уведомление в Роскомнадзор.',                                      value: 'val6', help: this.getHelp(6), },
             ],
         }
     },
     computed: {
         state() {
-            return this.value.length >= 1
+            return this.selected.length >= 1
         },
 
-        value: {
+        selected: {
             get() { return this.$store.state.q0select; },
             set(value) { this.$store.commit('setq0select', value); }
         }
     },
     methods: {
+        getHelp(k) {
+            if ( k === 0 ) { return 'Документ наличие которого требуется у каждой организации. Данный документ отображает с какими персональными данными и какие действия вы совершаете в процессе деятельности.' }
+            if ( k === 1 ) { return 'Требуется на размещении любого сайта Вашей компании. Предупреждает об обработке файлов cookie.' }
+            if ( k === 2 ) { return 'Нужно при обращении клиента к Вам за товаром или услугой, если вы спрашиваете его контактные данные, то по требованию законодательства вы обязаны взять с него согласие на обработку персональных данных' }
+            if ( k === 3 ) { return 'Требуется взять при приёме сотрудника на работу. Отличается от согласия на обработку персональных данных клиента обхъёмом обрабатываемых данных и количеством операций производимых над ними' }
+            if ( k === 4 ) { return 'Если Ваша компания предполагает передачу персональных данных третьим не определённым лицам (например у Вас агенство для знакомств и Вы размещаете анкету клиента на сайте), то для этого надо взять отдельное согласие на распространение персональных данных' }
+            if ( k === 5 ) { return 'Если Ваша компания предполагает передачу персональных данных сотрудника не определенным третьим лицам (например вы представляете сотрудников на Вашем сайте), то требуется взять отдельное согласие на распространение персональных данных' }
+            if ( k === 6 ) { return 'Уведомление в Роскомнадзор.' }
+        },
+
         validationForm() {
             this.$refs.simpleRules.validate().then(success => {
                 if (success) {
