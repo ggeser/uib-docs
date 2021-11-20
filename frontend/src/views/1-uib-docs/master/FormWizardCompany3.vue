@@ -9,6 +9,50 @@
             </h5>
             <small class="text-muted">Введите сведения о компании.</small>
         </b-col>
+
+        <b-col
+            cols="12"
+            class="mb-2"
+        >
+<!--            <b-button-->
+<!--                v-b-popover.hover.top="'Недостающие данные можно узнать на сайте: <a>https://vypiska-nalog.com/</a>'"-->
+
+<!--                title="Справка"-->
+<!--                variant="outline-primary"-->
+<!--            >-->
+<!--                Справка-->
+<!--            </b-button>-->
+
+            <div id="my-container">
+                <div class="my-1">
+                    <!-- Our triggering (target) element -->
+                    <b-button
+                        id="popover-reactive-1"
+                        ref="button"
+                        variant="outline-primary"
+                    >
+                        Справка
+                    </b-button>
+                </div>
+                <b-popover
+                    ref="popover"
+                    target="popover-reactive-1"
+                    triggers="hover"
+                    :show.sync="popoverShow"
+                    placement="auto"
+                    container="my-container"
+                    @show="onShow"
+                    @shown="onShown"
+                    @hidden="onHidden"
+                >
+                    <div>
+                        Недостающие данные можно узнать на сайте: <a href="https://vypiska-nalog.com/" target="_blank">vypiska-nalog.com</a>
+                    </div>
+                </b-popover>
+            </div>
+        </b-col>
+
+
         <b-col md="6">
             <b-form-group
                 label="Наименование организации"
@@ -412,20 +456,27 @@ import {ValidationProvider, ValidationObserver, localize} from 'vee-validate'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import {
+  BButton,
   BRow,
   BCol,
   BFormGroup,
   BFormInput,
   BFormInvalidFeedback,
+  VBPopover, BPopover,BCard,
+
 } from 'bootstrap-vue'
 import { required, email } from '@validations'
 
 
 export default {
+    directives: {
+        'b-popover': VBPopover,
+    },
     components: {
         ValidationProvider,
         ValidationObserver,
         FormWizard,
+        BButton,
         TabContent,
         BRow,
         BCol,
@@ -436,6 +487,7 @@ export default {
         BFormInvalidFeedback,
         // eslint-disable-next-line vue/no-unused-components
         ToastificationContent,
+        BPopover,BCard,
     },
     data() {
         return {
@@ -462,17 +514,6 @@ export default {
 
             required,
             email,
-
-            // form: {
-            //     date: null,
-            // },
-            // options: {
-            //     date: {
-            //         date: true,
-            //         delimiter: '.',
-            //         datePattern: ['d', 'm', 'Y'],
-            //     },
-            // },
         }
     },
 
@@ -543,13 +584,6 @@ export default {
             set(value) { this.$store.commit('set_rekv_site', value); }
         },
     },
-
-
-    // methods: {
-    //     updateStore (e) {
-    //         this.$store.commit('setRekv', e.target.value)
-    //     }
-    // },
 }
 </script>
 
