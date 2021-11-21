@@ -9,6 +9,7 @@
       back-button-text="Назад"
       next-button-text="Далее"
       class="wizard-vertical mb-3"
+      :startIndex="startIndex"
       @on-complete="formSubmitted"
     >
 
@@ -175,17 +176,17 @@
 
     </form-wizard>
 
-      <!--            ////t-->
-      <b-button
-          @click="formSubmitted"
-      >
-          <span>Тест ген пдф</span>
-      </b-button>
-      <b-button
-          @click="formClearData"
-      >
-          <span>Сброс</span>
-      </b-button>
+
+<!--      <b-button-->
+<!--          @click="formSubmitted"-->
+<!--      >-->
+<!--          <span>Тест ген пдф</span>-->
+<!--      </b-button>-->
+<!--      <b-button-->
+<!--          @click="formClearData"-->
+<!--      >-->
+<!--          <span>Сброс</span>-->
+<!--      </b-button>-->
 
   </div>
 </template>
@@ -222,216 +223,222 @@ import axios from "@/libs/axios";
 
 
 export default {
-  components: {
-      ValidationProvider,
-      ValidationObserver,
-      FormWizard,
-      TabContent,
-      BRow,
-      BCol,
-      BFormGroup,
-      BFormInput,
-      BButton,
-      vSelect,
-      BFormInvalidFeedback,
-      // eslint-disable-next-line vue/no-unused-components
-      ToastificationContent,
-      FormWizardCompany3,
-      FormWizardRegion2,
-      FormWizardCategory4,
-      FormWizardOrgType01,
-      FormWizardDataSubj5,
-      FormWizardDataAct6,
-      FormWizardDataProc7,
-      FormWizardDataProc9,
-      FormWizardOtvets10,
-      FormWizardTrans11,
-      FormWizardDataPlace12,
-      FormWizardInform13,
-  },
-  data() {
-    return {
+    components: {
+        ValidationProvider,
+        ValidationObserver,
+        FormWizard,
+        TabContent,
+        BRow,
+        BCol,
+        BFormGroup,
+        BFormInput,
+        BButton,
+        vSelect,
+        BFormInvalidFeedback,
+        // eslint-disable-next-line vue/no-unused-components
+        ToastificationContent,
+        FormWizardCompany3,
+        FormWizardRegion2,
+        FormWizardCategory4,
+        FormWizardOrgType01,
+        FormWizardDataSubj5,
+        FormWizardDataAct6,
+        FormWizardDataProc7,
+        FormWizardDataProc9,
+        FormWizardOtvets10,
+        FormWizardTrans11,
+        FormWizardDataPlace12,
+        FormWizardInform13,
+    },
+    data() {
+        return {
 
-    }
-  },
-  methods: {
-    formSubmitted() {
-        axios({
-            url: '/api/pdf/generate',
-            method: 'POST',
-            responseType: 'blob', // important
-            data: {
-                params: {
-                    q0select: this.$store.state.q0select,       // 0
-                    orgType: this.$store.state.orgType,         // 1
-                    region: this.$store.state.region,           // 2
-                    rekv: this.$store.state.rekv,               // 3
-                    q4Selected: this.$store.state.q4Selected,   // 4
-                    q5select: this.$store.state.q5select,       // 5
-                    q6Selected: this.$store.state.q6Selected,   // 6
-                    q7select: this.$store.state.q7select,       // 7
-                    q9select: this.$store.state.q9select,       // 9
-                    q10items: this.$store.state.q10items,       // 10
-                    trans: this.$store.state.trans,             // 11
-                    q12items: this.$store.state.q12items,       // 12
-                    q13items: this.$store.state.q13items,       // 13
+        }
+    },
+    computed: {
+        startIndex: {
+            get() { return this.$store.state.startIndex; },
+            set(value) { this.$store.commit('setStartIndex', value); }
+        }
+    },
+    methods: {
+        formSubmitted() {
+            axios({
+                url: '/api/pdf/generate',
+                method: 'POST',
+                responseType: 'blob', // important
+                data: {
+                    params: {
+                        q0select: this.$store.state.q0select,       // 0
+                        orgType: this.$store.state.orgType,         // 1
+                        region: this.$store.state.region,           // 2
+                        rekv: this.$store.state.rekv,               // 3
+                        q4Selected: this.$store.state.q4Selected,   // 4
+                        q5select: this.$store.state.q5select,       // 5
+                        q6Selected: this.$store.state.q6Selected,   // 6
+                        q7select: this.$store.state.q7select,       // 7
+                        q9select: this.$store.state.q9select,       // 9
+                        q10items: this.$store.state.q10items,       // 10
+                        trans: this.$store.state.trans,             // 11
+                        q12items: this.$store.state.q12items,       // 12
+                        q13items: this.$store.state.q13items,       // 13
+                    }
                 }
-            }
-        }).then((response) => {
-            const url = window.URL.createObjectURL(new Blob([response.data]));
-            const link = document.createElement('a');
-            link.href = url;
-            // works in IE11
-            if (typeof window.navigator.msSaveBlob === 'function') {
-                window.navigator.msSaveBlob(
-                    response.data,
-                    `file.pdf`
-                );
-            } else {
-                link.setAttribute('download', 'file.pdf');
-                document.body.appendChild(link);
-                link.click();
-            }
-        });
-    },
-      formClearData() {
-          this.$store.commit('clearStore');
-    },
+            }).then((response) => {
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                // works in IE11
+                if (typeof window.navigator.msSaveBlob === 'function') {
+                    window.navigator.msSaveBlob(
+                        response.data,
+                        `file.pdf`
+                    );
+                } else {
+                    link.setAttribute('download', 'file.pdf');
+                    document.body.appendChild(link);
+                    link.click();
+                }
+            });
+        },
+        formClearData() {
+            this.$store.commit('clearStore');
+        },
 
-      validationFormInform() {
-          return new Promise((resolve, reject) => {
-              this.$refs.informRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormDataPlace() {
-          return new Promise((resolve, reject) => {
-              this.$refs.dataPlaceRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormTrans() {
-          return new Promise((resolve, reject) => {
-              this.$refs.transRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormOtvets() {
-          return new Promise((resolve, reject) => {
-              this.$refs.otvetsRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormDataProc2() {
-          return new Promise((resolve, reject) => {
-              this.$refs.dataProc2Rules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormDataProc() {
-          return new Promise((resolve, reject) => {
-              this.$refs.dataProcRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormDataAct() {
-          return new Promise((resolve, reject) => {
-              this.$refs.dataActRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormDataSubj() {
-          return new Promise((resolve, reject) => {
-              this.$refs.dataSubjRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormOrgType() {
-          return new Promise((resolve, reject) => {
-              this.$refs.orgTypeRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormRegion() {
-          return new Promise((resolve, reject) => {
-              this.$refs.regionRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormCompany() {
-          return new Promise((resolve, reject) => {
-              this.$refs.companyRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
-      validationFormCategory() {
-          return new Promise((resolve, reject) => {
-              this.$refs.categoryRules.validate().then(success => {
-                  if (success) {
-                      resolve(true)
-                  } else {
-                      reject()
-                  }
-              })
-          })
-      },
+        validationFormInform() {
+            return new Promise((resolve, reject) => {
+                this.$refs.informRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormDataPlace() {
+            return new Promise((resolve, reject) => {
+                this.$refs.dataPlaceRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormTrans() {
+            return new Promise((resolve, reject) => {
+                this.$refs.transRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormOtvets() {
+            return new Promise((resolve, reject) => {
+                this.$refs.otvetsRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormDataProc2() {
+            return new Promise((resolve, reject) => {
+                this.$refs.dataProc2Rules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormDataProc() {
+            return new Promise((resolve, reject) => {
+                this.$refs.dataProcRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormDataAct() {
+            return new Promise((resolve, reject) => {
+                this.$refs.dataActRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormDataSubj() {
+            return new Promise((resolve, reject) => {
+                this.$refs.dataSubjRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormOrgType() {
+            return new Promise((resolve, reject) => {
+                this.$refs.orgTypeRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormRegion() {
+            return new Promise((resolve, reject) => {
+                this.$refs.regionRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormCompany() {
+            return new Promise((resolve, reject) => {
+                this.$refs.companyRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
+        validationFormCategory() {
+            return new Promise((resolve, reject) => {
+                this.$refs.categoryRules.validate().then(success => {
+                    if (success) {
+                        resolve(true)
+                    } else {
+                        reject()
+                    }
+                })
+            })
+        },
 
-  },
+    },
 }
 </script>
 

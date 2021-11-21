@@ -12,6 +12,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        startIndex: 0,
+
         q0select:[],               // 0
         orgType:[],              // 1
         region: '',              // 2
@@ -288,6 +290,8 @@ export default new Vuex.Store({
     },
     mutations: {
         clearStore  (state) {
+            state.startIndex = 0;
+
             state.q0select = [];      // 0
             state.orgType = [];     // 1
             state.region = '';      // 2
@@ -568,47 +572,51 @@ export default new Vuex.Store({
 
 
 
-        setq0select (state, value) { state.q0select = value; },                         // 0
-        setOrgType (state, value) { state.orgType = value; },                       // 1
-        setRegion (state, value) { state.region = value; } ,                        // 2
+        setStartIndex (state, value) { state.startIndex = value; },
 
-        set_rekv_full_name (state, value) { state.rekv.full_name = value; } ,       // 3
-        set_rekv_short_name (state, value) { state.rekv.short_name = value; } ,
-        set_rekv_ur_address (state, value) { state.rekv.ur_address = value; } ,
-        set_rekv_fakt_address (state, value) { state.rekv.fakt_address = value; } ,
-        set_rekv_inn (state, value) { state.rekv.inn = value; } ,
-        set_rekv_kpp (state, value) { state.rekv.kpp = value; } ,
-        set_rekv_ogrn (state, value) { state.rekv.ogrn = value; } ,
-        set_rekv_okpo (state, value) { state.rekv.okpo = value; } ,
-        set_rekv_okfs (state, value) { state.rekv.okfs = value; } ,
-        set_rekv_okogu (state, value) { state.rekv.okogu = value; } ,
-        set_rekv_okopf (state, value) { state.rekv.okopf = value; } ,
-        set_rekv_uc_date (state, value) { state.rekv.uc_date = value; } ,
-        set_rekv_dolgnost (state, value) { state.rekv.dolgnost = value; } ,
-        set_rekv_fio (state, value) { state.rekv.fio = value; } ,
-        set_rekv_ot_date (state, value) { state.rekv.ot_date = value; } ,
-        set_rekv_site (state, value) { state.rekv.site = value; } ,
+        setq0select (state, value) { state.q0select = value; state.startIndex = 0; },                         // 0
+        setOrgType (state, value) { state.orgType = value; state.startIndex = 0; },                       // 1
+        setRegion (state, value) { state.region = value; state.startIndex = 1; } ,                        // 2
+
+        set_rekv_full_name (state, value) { state.rekv.full_name = value; state.startIndex = 2; } ,       // 3
+        set_rekv_short_name (state, value) { state.rekv.short_name = value; state.startIndex = 2; } ,
+        set_rekv_ur_address (state, value) { state.rekv.ur_address = value; state.startIndex = 2; } ,
+        set_rekv_fakt_address (state, value) { state.rekv.fakt_address = value; state.startIndex = 2; } ,
+        set_rekv_inn (state, value) { state.rekv.inn = value; state.startIndex = 2; } ,
+        set_rekv_kpp (state, value) { state.rekv.kpp = value; state.startIndex = 2; } ,
+        set_rekv_ogrn (state, value) { state.rekv.ogrn = value; state.startIndex = 2; } ,
+        set_rekv_okpo (state, value) { state.rekv.okpo = value; state.startIndex = 2; } ,
+        set_rekv_okfs (state, value) { state.rekv.okfs = value; state.startIndex = 2 } ,
+        set_rekv_okogu (state, value) { state.rekv.okogu = value; state.startIndex = 2; } ,
+        set_rekv_okopf (state, value) { state.rekv.okopf = value; state.startIndex = 2; } ,
+        set_rekv_uc_date (state, value) { state.rekv.uc_date = value; state.startIndex = 2; } ,
+        set_rekv_dolgnost (state, value) { state.rekv.dolgnost = value; state.startIndex = 2; } ,
+        set_rekv_fio (state, value) { state.rekv.fio = value; state.startIndex = 2; } ,
+        set_rekv_ot_date (state, value) { state.rekv.ot_date = value; state.startIndex = 2; } ,
+        set_rekv_site (state, value) { state.rekv.site = value; state.startIndex = 2; } ,
 
         setQ4Items (state, {items, selected}) {                                                 // 4
             state.q4Items = items;
             state.q4Selected = selected;
+            state.startIndex = 3;
         },
 
-        setq5select (state, value) { state.q5select = value; },                                 // 5
+        setq5select (state, value) { state.q5select = value; state.startIndex = 4; },                                 // 5
 
         setQ6Items (state, {items, selected}) {                                                 // 6
             state.q6Items = items;
             state.q6Selected = selected;
+            state.startIndex = 5;
         },
 
-        setq7select (state, value) { state.q7select = value; },                                 // 7
-        setq9select (state, value) { state.q9select = value; },                                 // 9
-        setq10items (state, value) { state.q10items = value; },                                 // 10
-        setTrans (state, value) { state.trans = value; },                                       // 11
-        setq12nextTodoId (state, value) { state.q12nextTodoId = value; },                       // 12
-        setq12items (state, value) { state.q12items = value; },                                 // 12
-        setq13items (state, value) { state.q13items = value; },                                 // 13
-        setq13nextTodoId (state, value) { state.q13nextTodoId = value; },                       // 13
+        setq7select (state, value) { state.q7select = value; state.startIndex = 6; },                                 // 7
+        setq9select (state, value) { state.q9select = value; state.startIndex = 7; },                                 // 9
+        setq10items (state, value) { state.q10items = value; state.startIndex = 8; },                                 // 10
+        setTrans (state, value) { state.trans = value; state.startIndex = 9; },                                       // 11
+        setq12nextTodoId (state, value) { state.q12nextTodoId = value; state.startIndex = 10; },                       // 12
+        setq12items (state, value) { state.q12items = value; state.startIndex = 10; },                                 // 12
+        setq13items (state, value) { state.q13items = value; state.startIndex = 11; },                                 // 13
+        setq13nextTodoId (state, value) { state.q13nextTodoId = value; state.startIndex = 11; },                       // 13
 
     },
 
