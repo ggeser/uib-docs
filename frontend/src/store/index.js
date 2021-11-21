@@ -153,7 +153,7 @@ export default new Vuex.Store({
         q6Selected: [],
         q6Items: [
             {
-                module: 'Сбор',
+                module: { name: 'Сбор', hidden: false, help: 'Любой факт передачи данных от субъекта персональных данных передающихся компании', },
                 alll: { id: 'val-01-0', checked: false, indet: false,},
                 col1: { id: 'val-01-1', checked: false, indet: false,},
                 col2: { id: 'val-01-2', checked: false, indet: false,},
@@ -161,7 +161,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-01-4', checked: false, indet: false,},
             },
             {
-                module: 'Запись',
+                module: { name: 'Запись', hidden: false, help: 'Внесение персональных данных в Информационную Систему компании', },
                 alll: { id: 'val-02-0', checked: false, indet: false,},
                 col1: { id: 'val-02-1', checked: false, indet: false,},
                 col2: { id: 'val-02-2', checked: false, indet: false,},
@@ -169,7 +169,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-02-4', checked: false, indet: false,},
             },
             {
-                module: 'Систематизация',
+                module: { name: 'Систематизация', hidden: false, help: 'Действия, направленные на объединение и расположение персональных данных в определенной последовательности', },
                 alll: { id: 'val-03-0', checked: false, indet: false,},
                 col1: { id: 'val-03-1', checked: false, indet: false,},
                 col2: { id: 'val-03-2', checked: false, indet: false,},
@@ -177,7 +177,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-03-4', checked: false, indet: false,},
             },
             {
-                module: 'Накопление',
+                module: { name: 'Накопление', hidden: false, help: 'Действия по систематизации персональных данных путем их внесения в базу, содержащую персональные данные', },
                 alll: { id: 'val-04-0', checked: false, indet: false,},
                 col1: { id: 'val-04-1', checked: false, indet: false,},
                 col2: { id: 'val-04-2', checked: false, indet: false,},
@@ -185,7 +185,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-04-4', checked: false, indet: false,},
             },
             {
-                module: 'Хранение',
+                module: { name: 'Хранение', hidden: false, help: 'Действия по обеспечению целостности, конфиденциальности и доступности персональных данных', },
                 alll: { id: 'val-05-0', checked: false, indet: false,},
                 col1: { id: 'val-05-1', checked: false, indet: false,},
                 col2: { id: 'val-05-2', checked: false, indet: false,},
@@ -194,7 +194,7 @@ export default new Vuex.Store({
             },
 
             {
-                module: 'Уточнение (обновление, изменение)',
+                module: { name: 'Уточнение (обновление, изменение)', hidden: false, help: 'Внесение изменений персональных данных', },
                 alll: { id: 'val-06-0', checked: false, indet: false,},
                 col1: { id: 'val-06-1', checked: false, indet: false,},
                 col2: { id: 'val-06-2', checked: false, indet: false,},
@@ -202,7 +202,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-06-4', checked: false, indet: false,},
             },
             {
-                module: 'Извлечение',
+                module: { name: 'Извлечение', hidden: false, help: 'Изъятие из Информационной системы персональных данных', },
                 alll: { id: 'val-07-0', checked: false, indet: false,},
                 col1: { id: 'val-07-1', checked: false, indet: false,},
                 col2: { id: 'val-07-2', checked: false, indet: false,},
@@ -210,7 +210,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-07-4', checked: false, indet: false,},
             },
             {
-                module: 'Передача (предоставление, доступ)',
+                module: { name: 'Передача (предоставление, доступ)', hidden: false, help: 'Предоставление данных организациями с которыми взаимодействуете для исполнения обязательств перед субъектом персональных данных(оказание услуги, выплата зарплаты и т. д.)\n', },
                 alll: { id: 'val-08-0', checked: false, indet: false,},
                 col1: { id: 'val-08-1', checked: false, indet: false,},
                 col2: { id: 'val-08-2', checked: false, indet: false,},
@@ -218,7 +218,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-08-4', checked: false, indet: false,},
             },
             {
-                module: 'Распространение',
+                module: { name: 'Распространение', hidden: false, help: 'Предоставление данных неопределенному кругу лиц', },
                 alll: { id: 'val-09-0', checked: false, indet: false,},
                 col1: { id: 'val-09-1', checked: false, indet: false,},
                 col2: { id: 'val-09-2', checked: false, indet: false,},
@@ -226,7 +226,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-09-4', checked: false, indet: false,},
             },
             {
-                module: 'Обезличивание',
+                module: { name: 'Обезличивание', hidden: false, help: 'Представляют собой действия, в результате которых становится невозможным без использования дополнительной информации определить принадлежность персональных данных конкретному субъекту персональных данных', },
                 alll: { id: 'val-10-0', checked: false, indet: false,},
                 col1: { id: 'val-10-1', checked: false, indet: false,},
                 col2: { id: 'val-10-2', checked: false, indet: false,},
@@ -234,7 +234,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-10-4', checked: false, indet: false,},
             },
             {
-                module: 'Блокирование',
+                module: { name: 'Блокирование', hidden: false, help: 'Временное прекращение обработки персональных данных (за исключением случаев, если обработка необходима для уточнения персональных данных)', },
                 alll: { id: 'val-11-0', checked: false, indet: false,},
                 col1: { id: 'val-11-1', checked: false, indet: false,},
                 col2: { id: 'val-11-2', checked: false, indet: false,},
@@ -242,7 +242,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-11-4', checked: false, indet: false,},
             },
             {
-                module: 'Удаление (уничтожение)',
+                module: { name: 'Удаление (уничтожение)', hidden: false, help: 'Действия, в результате которых невозможно восстановить содержание персональных данных в информационной системе персональных данных или в результате которых уничтожаются материальные носители персональных данных', },
                 alll: { id: 'val-12-0', checked: false, indet: false,},
                 col1: { id: 'val-12-1', checked: false, indet: false,},
                 col2: { id: 'val-12-2', checked: false, indet: false,},
@@ -430,7 +430,7 @@ export default new Vuex.Store({
                                                                                 // 6
             state.q6Items= [
                 {
-                    module: 'Сбор',
+                    module: { name: 'Сбор', hidden: false, help: 'Любой факт передачи данных от субъекта персональных данных передающихся компании', },
                     alll: { id: 'val-01-0', checked: false, indet: false,},
                     col1: { id: 'val-01-1', checked: false, indet: false,},
                     col2: { id: 'val-01-2', checked: false, indet: false,},
@@ -438,7 +438,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-01-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Запись',
+                    module: { name: 'Запись', hidden: false, help: 'Внесение персональных данных в Информационную Систему компании', },
                     alll: { id: 'val-02-0', checked: false, indet: false,},
                     col1: { id: 'val-02-1', checked: false, indet: false,},
                     col2: { id: 'val-02-2', checked: false, indet: false,},
@@ -446,7 +446,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-02-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Систематизация',
+                    module: { name: 'Систематизация', hidden: false, help: 'Действия, направленные на объединение и расположение персональных данных в определенной последовательности', },
                     alll: { id: 'val-03-0', checked: false, indet: false,},
                     col1: { id: 'val-03-1', checked: false, indet: false,},
                     col2: { id: 'val-03-2', checked: false, indet: false,},
@@ -454,7 +454,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-03-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Накопление',
+                    module: { name: 'Накопление', hidden: false, help: 'Действия по систематизации персональных данных путем их внесения в базу, содержащую персональные данные', },
                     alll: { id: 'val-04-0', checked: false, indet: false,},
                     col1: { id: 'val-04-1', checked: false, indet: false,},
                     col2: { id: 'val-04-2', checked: false, indet: false,},
@@ -462,7 +462,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-04-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Хранение',
+                    module: { name: 'Хранение', hidden: false, help: 'Действия по обеспечению целостности, конфиденциальности и доступности персональных данных', },
                     alll: { id: 'val-05-0', checked: false, indet: false,},
                     col1: { id: 'val-05-1', checked: false, indet: false,},
                     col2: { id: 'val-05-2', checked: false, indet: false,},
@@ -471,7 +471,7 @@ export default new Vuex.Store({
                 },
 
                 {
-                    module: 'Уточнение (обновление, изменение)',
+                    module: { name: 'Уточнение (обновление, изменение)', hidden: false, help: 'Внесение изменений персональных данных', },
                     alll: { id: 'val-06-0', checked: false, indet: false,},
                     col1: { id: 'val-06-1', checked: false, indet: false,},
                     col2: { id: 'val-06-2', checked: false, indet: false,},
@@ -479,7 +479,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-06-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Извлечение',
+                    module: { name: 'Извлечение', hidden: false, help: 'Изъятие из Информационной системы персональных данных', },
                     alll: { id: 'val-07-0', checked: false, indet: false,},
                     col1: { id: 'val-07-1', checked: false, indet: false,},
                     col2: { id: 'val-07-2', checked: false, indet: false,},
@@ -487,7 +487,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-07-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Передача (предоставление, доступ)',
+                    module: { name: 'Передача (предоставление, доступ)', hidden: false, help: 'Предоставление данных организациями с которыми взаимодействуете для исполнения обязательств перед субъектом персональных данных(оказание услуги, выплата зарплаты и т. д.)\n', },
                     alll: { id: 'val-08-0', checked: false, indet: false,},
                     col1: { id: 'val-08-1', checked: false, indet: false,},
                     col2: { id: 'val-08-2', checked: false, indet: false,},
@@ -495,7 +495,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-08-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Распространение',
+                    module: { name: 'Распространение', hidden: false, help: 'Предоставление данных неопределенному кругу лиц', },
                     alll: { id: 'val-09-0', checked: false, indet: false,},
                     col1: { id: 'val-09-1', checked: false, indet: false,},
                     col2: { id: 'val-09-2', checked: false, indet: false,},
@@ -503,7 +503,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-09-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Обезличивание',
+                    module: { name: 'Обезличивание', hidden: false, help: 'Представляют собой действия, в результате которых становится невозможным без использования дополнительной информации определить принадлежность персональных данных конкретному субъекту персональных данных', },
                     alll: { id: 'val-10-0', checked: false, indet: false,},
                     col1: { id: 'val-10-1', checked: false, indet: false,},
                     col2: { id: 'val-10-2', checked: false, indet: false,},
@@ -511,7 +511,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-10-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Блокирование',
+                    module: { name: 'Блокирование', hidden: false, help: 'Временное прекращение обработки персональных данных (за исключением случаев, если обработка необходима для уточнения персональных данных)', },
                     alll: { id: 'val-11-0', checked: false, indet: false,},
                     col1: { id: 'val-11-1', checked: false, indet: false,},
                     col2: { id: 'val-11-2', checked: false, indet: false,},
@@ -519,7 +519,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-11-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Удаление (уничтожение)',
+                    module: { name: 'Удаление (уничтожение)', hidden: false, help: 'Действия, в результате которых невозможно восстановить содержание персональных данных в информационной системе персональных данных или в результате которых уничтожаются материальные носители персональных данных', },
                     alll: { id: 'val-12-0', checked: false, indet: false,},
                     col1: { id: 'val-12-1', checked: false, indet: false,},
                     col2: { id: 'val-12-2', checked: false, indet: false,},

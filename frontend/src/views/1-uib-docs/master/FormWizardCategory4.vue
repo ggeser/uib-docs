@@ -45,10 +45,7 @@
                             </template>
 
                             <template #cell(module)="data">
-<!--                                <span class="text-nowrap">-->
-<!--                                <span class="myclass3">-->
-                                    {{ data.value.name }}
-<!--                                 </span>-->
+                                {{ data.value.name }}
                                 <feather-icon
                                     v-b-popover.hover.top="data.value.help"
                                     variant="dark"
