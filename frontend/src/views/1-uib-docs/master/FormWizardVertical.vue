@@ -65,6 +65,7 @@
             </validation-observer>
         </tab-content>
 
+
         <!-- DataSubj tab 5-->
         <tab-content
             title="Субъекты данных"

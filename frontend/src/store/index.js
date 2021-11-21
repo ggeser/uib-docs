@@ -39,7 +39,7 @@ export default new Vuex.Store({
         q4Selected: [],         // 4
         q4Items : [
             {
-                module: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
+                module: { name: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки', hidden: true, help: '', },
                 alll: { id: 'val-01-0', checked: false, indet: false,},
                 col1: { id: 'val-01-1', checked: false, indet: false,},
                 col2: { id: 'val-01-2', checked: false, indet: false,},
@@ -47,7 +47,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-01-4', checked: false, indet: false,},
             },
             {
-                module: 'Паспортные данные',
+                module: { name: 'Паспортные данные', hidden: true, help: '', },
                 alll: { id: 'val-02-0', checked: false, indet: false,},
                 col1: { id: 'val-02-1', checked: false, indet: false,},
                 col2: { id: 'val-02-2', checked: false, indet: false,},
@@ -55,7 +55,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-02-4', checked: false, indet: false,},
             },
             {
-                module: 'Семейное положение',
+                module: { name: 'Семейное положение', hidden: true, help: '', },
                 alll: { id: 'val-03-0', checked: false, indet: false,},
                 col1: { id: 'val-03-1', checked: false, indet: false,},
                 col2: { id: 'val-03-2', checked: false, indet: false,},
@@ -63,7 +63,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-03-4', checked: false, indet: false,},
             },
             {
-                module: 'Социальное положение',
+                module: { name: 'Социальное положение', hidden: false, help: 'Налоговые льготы, выплачиваемые пособия, степендиии и т.д.', },
                 alll: { id: 'val-04-0', checked: false, indet: false,},
                 col1: { id: 'val-04-1', checked: false, indet: false,},
                 col2: { id: 'val-04-2', checked: false, indet: false,},
@@ -71,7 +71,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-04-4', checked: false, indet: false,},
             },
             {
-                module: 'Имущественное положение',
+                module: { name: 'Имущественное положение', hidden: false, help: 'Наличие недвижимости, ТС и прочее', },
                 alll: { id: 'val-05-0', checked: false, indet: false,},
                 col1: { id: 'val-05-1', checked: false, indet: false,},
                 col2: { id: 'val-05-2', checked: false, indet: false,},
@@ -80,7 +80,7 @@ export default new Vuex.Store({
             },
 
             {
-                module: 'Документы об образовании',
+                module: { name: 'Документы об образовании', hidden: true, help: '', },
                 alll: { id: 'val-06-0', checked: false, indet: false,},
                 col1: { id: 'val-06-1', checked: false, indet: false,},
                 col2: { id: 'val-06-2', checked: false, indet: false,},
@@ -88,7 +88,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-06-4', checked: false, indet: false,},
             },
             {
-                module: 'Профессия',
+                module: { name: 'Профессия', hidden: true, help: '', },
                 alll: { id: 'val-07-0', checked: false, indet: false,},
                 col1: { id: 'val-07-1', checked: false, indet: false,},
                 col2: { id: 'val-07-2', checked: false, indet: false,},
@@ -96,7 +96,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-07-4', checked: false, indet: false,},
             },
             {
-                module: 'Сведения о доходах',
+                module: { name: 'Сведения о доходах', hidden: false, help: 'Справка 2 НДФЛ', },
                 alll: { id: 'val-08-0', checked: false, indet: false,},
                 col1: { id: 'val-08-1', checked: false, indet: false,},
                 col2: { id: 'val-08-2', checked: false, indet: false,},
@@ -104,7 +104,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-08-4', checked: false, indet: false,},
             },
             {
-                module: 'ИНН',
+                module: { name: 'ИНН', hidden: true, help: '', },
                 alll: { id: 'val-09-0', checked: false, indet: false,},
                 col1: { id: 'val-09-1', checked: false, indet: false,},
                 col2: { id: 'val-09-2', checked: false, indet: false,},
@@ -112,7 +112,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-09-4', checked: false, indet: false,},
             },
             {
-                module: 'Данные медицинского полиса',
+                module: { name: 'Данные медицинского полиса', hidden: true, help: '', },
                 alll: { id: 'val-10-0', checked: false, indet: false,},
                 col1: { id: 'val-10-1', checked: false, indet: false,},
                 col2: { id: 'val-10-2', checked: false, indet: false,},
@@ -120,7 +120,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-10-4', checked: false, indet: false,},
             },
             {
-                module: 'Страховое свидетельство',
+                module: { name: 'Страховое свидетельство', hidden: true, help: '', },
                 alll: { id: 'val-11-0', checked: false, indet: false,},
                 col1: { id: 'val-11-1', checked: false, indet: false,},
                 col2: { id: 'val-11-2', checked: false, indet: false,},
@@ -128,7 +128,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-11-4', checked: false, indet: false,},
             },
             {
-                module: 'Специальные персональные данные',
+                module: { name: 'Специальные персональные данные', hidden: false, help: 'Это данные о состоянии здоровья, рассовая принадлежность, политические и религиозные взгляды. Данные по которым можно составить представление о человеке', },
                 alll: { id: 'val-12-0', checked: false, indet: false,},
                 col1: { id: 'val-12-1', checked: false, indet: false,},
                 col2: { id: 'val-12-2', checked: false, indet: false,},
@@ -136,7 +136,7 @@ export default new Vuex.Store({
                 col4: { id: 'val-12-4', checked: false, indet: false,},
             },
             {
-                module: 'Биометрические персональные данные',
+                module: { name: 'Биометрические персональные данные', hidden: true, help: '', },
                 alll: { id: 'val-13-0', checked: false, indet: false,},
                 col1: { id: 'val-13-1', checked: false, indet: false,},
                 col2: { id: 'val-13-2', checked: false, indet: false,},
@@ -317,7 +317,7 @@ export default new Vuex.Store({
                         //4
             state.q4Items = [
                 {
-                    module: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки',
+                    module: { name: 'Фамилия, Имя, Отчество, дата рождения, адрес прописки', hidden: true, help: '', },
                     alll: { id: 'val-01-0', checked: false, indet: false,},
                     col1: { id: 'val-01-1', checked: false, indet: false,},
                     col2: { id: 'val-01-2', checked: false, indet: false,},
@@ -325,7 +325,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-01-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Паспортные данные',
+                    module: { name: 'Паспортные данные', hidden: true, help: '', },
                     alll: { id: 'val-02-0', checked: false, indet: false,},
                     col1: { id: 'val-02-1', checked: false, indet: false,},
                     col2: { id: 'val-02-2', checked: false, indet: false,},
@@ -333,7 +333,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-02-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Семейное положение',
+                    module: { name: 'Семейное положение', hidden: true, help: '', },
                     alll: { id: 'val-03-0', checked: false, indet: false,},
                     col1: { id: 'val-03-1', checked: false, indet: false,},
                     col2: { id: 'val-03-2', checked: false, indet: false,},
@@ -341,7 +341,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-03-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Социальное положение',
+                    module: { name: 'Социальное положение', hidden: false, help: 'Налоговые льготы, выплачиваемые пособия, степендиии и т.д.', },
                     alll: { id: 'val-04-0', checked: false, indet: false,},
                     col1: { id: 'val-04-1', checked: false, indet: false,},
                     col2: { id: 'val-04-2', checked: false, indet: false,},
@@ -349,7 +349,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-04-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Имущественное положение',
+                    module: { name: 'Имущественное положение', hidden: false, help: 'Наличие недвижимости, ТС и прочее', },
                     alll: { id: 'val-05-0', checked: false, indet: false,},
                     col1: { id: 'val-05-1', checked: false, indet: false,},
                     col2: { id: 'val-05-2', checked: false, indet: false,},
@@ -358,7 +358,7 @@ export default new Vuex.Store({
                 },
 
                 {
-                    module: 'Документы об образовании',
+                    module: { name: 'Документы об образовании', hidden: true, help: '', },
                     alll: { id: 'val-06-0', checked: false, indet: false,},
                     col1: { id: 'val-06-1', checked: false, indet: false,},
                     col2: { id: 'val-06-2', checked: false, indet: false,},
@@ -366,7 +366,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-06-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Профессия',
+                    module: { name: 'Профессия', hidden: true, help: '', },
                     alll: { id: 'val-07-0', checked: false, indet: false,},
                     col1: { id: 'val-07-1', checked: false, indet: false,},
                     col2: { id: 'val-07-2', checked: false, indet: false,},
@@ -374,7 +374,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-07-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Сведения о доходах',
+                    module: { name: 'Сведения о доходах', hidden: false, help: 'Справка 2 НДФЛ', },
                     alll: { id: 'val-08-0', checked: false, indet: false,},
                     col1: { id: 'val-08-1', checked: false, indet: false,},
                     col2: { id: 'val-08-2', checked: false, indet: false,},
@@ -382,7 +382,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-08-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'ИНН',
+                    module: { name: 'ИНН', hidden: true, help: '', },
                     alll: { id: 'val-09-0', checked: false, indet: false,},
                     col1: { id: 'val-09-1', checked: false, indet: false,},
                     col2: { id: 'val-09-2', checked: false, indet: false,},
@@ -390,7 +390,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-09-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Данные медицинского полиса',
+                    module: { name: 'Данные медицинского полиса', hidden: true, help: '', },
                     alll: { id: 'val-10-0', checked: false, indet: false,},
                     col1: { id: 'val-10-1', checked: false, indet: false,},
                     col2: { id: 'val-10-2', checked: false, indet: false,},
@@ -398,7 +398,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-10-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Страховое свидетельство',
+                    module: { name: 'Страховое свидетельство', hidden: true, help: '', },
                     alll: { id: 'val-11-0', checked: false, indet: false,},
                     col1: { id: 'val-11-1', checked: false, indet: false,},
                     col2: { id: 'val-11-2', checked: false, indet: false,},
@@ -406,7 +406,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-11-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Специальные персональные данные',
+                    module: { name: 'Специальные персональные данные', hidden: false, help: 'Это данные о состоянии здоровья, рассовая принадлежность, политические и религиозные взгляды. Данные по которым можно составить представление о человеке', },
                     alll: { id: 'val-12-0', checked: false, indet: false,},
                     col1: { id: 'val-12-1', checked: false, indet: false,},
                     col2: { id: 'val-12-2', checked: false, indet: false,},
@@ -414,7 +414,7 @@ export default new Vuex.Store({
                     col4: { id: 'val-12-4', checked: false, indet: false,},
                 },
                 {
-                    module: 'Биометрические персональные данные',
+                    module: { name: 'Биометрические персональные данные', hidden: true, help: '', },
                     alll: { id: 'val-13-0', checked: false, indet: false,},
                     col1: { id: 'val-13-1', checked: false, indet: false,},
                     col2: { id: 'val-13-2', checked: false, indet: false,},
