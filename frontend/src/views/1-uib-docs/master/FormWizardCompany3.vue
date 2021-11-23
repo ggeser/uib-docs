@@ -34,16 +34,18 @@
                         Справка
                     </b-button>
                 </div>
+<!--                :show.sync="popoverShow"-->
+<!--                @show="onShow"-->
+<!--                @shown="onShown"-->
+<!--                @hidden="onHidden"-->
                 <b-popover
                     ref="popover"
                     target="popover-reactive-1"
                     triggers="hover"
-                    :show.sync="popoverShow"
+
                     placement="auto"
                     container="my-container"
-                    @show="onShow"
-                    @shown="onShown"
-                    @hidden="onHidden"
+
                 >
                     <div>
                         Недостающие данные можно узнать на сайте: <a href="https://vypiska-nalog.com/" target="_blank">vypiska-nalog.com</a>

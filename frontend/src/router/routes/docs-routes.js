@@ -31,6 +31,14 @@ export default [
             // layout: 'full',
         },
     },
+    {
+        path: '/checkout',
+        name: 'checkout',
+        component: () => import('@/views/1-uib-docs/checkout/checkout.vue'),
+        meta: {
+            // layout: 'full',
+        },
+    },
     // {
     //   path: '/dashboard/ecommerce',
     //   name: 'dashboard-ecommerce',

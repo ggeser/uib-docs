@@ -220,6 +220,7 @@ import {
 } from 'bootstrap-vue'
 import { required, email } from '@validations'
 import axios from "@/libs/axios";
+import router from "@/router";
 
 
 export default {
@@ -263,44 +264,16 @@ export default {
     },
     methods: {
         formSubmitted() {
-            axios({
-                url: '/api/pdf/generate',
-                method: 'POST',
-                responseType: 'blob', // important
-                data: {
-                    params: {
-                        q0select: this.$store.state.q0select,       // 0
-                        orgType: this.$store.state.orgType,         // 1
-                        region: this.$store.state.region,           // 2
-                        rekv: this.$store.state.rekv,               // 3
-                        q4Selected: this.$store.state.q4Selected,   // 4
-                        q5select: this.$store.state.q5select,       // 5
-                        q6Selected: this.$store.state.q6Selected,   // 6
-                        q7select: this.$store.state.q7select,       // 7
-                        q9select: this.$store.state.q9select,       // 9
-                        q10items: this.$store.state.q10items,       // 10
-                        trans: this.$store.state.trans,             // 11
-                        q12items: this.$store.state.q12items,       // 12
-                        q13items: this.$store.state.q13items,       // 13
-                    }
-                }
-            }).then((response) => {
-                const url = window.URL.createObjectURL(new Blob([response.data]));
-                const link = document.createElement('a');
-                link.href = url;
-                // works in IE11
-                if (typeof window.navigator.msSaveBlob === 'function') {
-                    window.navigator.msSaveBlob(
-                        response.data,
-                        `file.pdf`
-                    );
-                } else {
-                    link.setAttribute('download', 'file.pdf');
-                    document.body.appendChild(link);
-                    link.click();
-                }
-            });
+            router.push('checkout')
+
+            // this.$refs.simpleRules.validate().then(success => {
+            //     if (success) {
+            //         router.push('checkout')
+            //     }
+            // })
         },
+
+
         formClearData() {
             this.$store.commit('clearStore');
         },
