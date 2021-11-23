@@ -287,6 +287,8 @@ export default new Vuex.Store({
             ],
         }],
 
+        checkoutSelect: [],
+
     },
     mutations: {
         clearStore  (state) {
@@ -568,6 +570,8 @@ export default new Vuex.Store({
                     { text: 'Нет',   value: 'val2' },
                 ],
             }];
+
+            state.checkoutSelect= [];
         },
 
 
@@ -618,6 +622,7 @@ export default new Vuex.Store({
         setq13items (state, value) { state.q13items = value; state.startIndex = 11; },                                 // 13
         setq13nextTodoId (state, value) { state.q13nextTodoId = value; state.startIndex = 11; },                       // 13
 
+        setCheckoutSelect (state, value) { state.checkoutSelect = value; state.startIndex = 0; },
     },
 
     modules: {

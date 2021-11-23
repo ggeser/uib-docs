@@ -15,21 +15,32 @@
                     Базовая стоимость {{ baseCost }} руб
                 </h6>
                 <div class="business-items">
-                    <div
-                        v-for="businessItem in businessItems"
-                        :key="businessItem.id"
-                        class="business-item"
+                    <b-form-checkbox-group
+                        v-model="selected"
+                        name="checkbox-validation"
                     >
-                        <div class="d-flex align-items-center justify-content-between">
-                            <b-form-checkbox :checked="businessItem.checked">
-                                {{ businessItem.option }}
-                            </b-form-checkbox>
-                            <b-badge :variant="businessItem.badgeColor">
-                                + {{ businessItem.money }} руб
-                            </b-badge>
+                        <div
+                            v-for="businessItem in businessItems"
+                            :key="businessItem.id"
+                            class="business-item"
+                        >
+                            <div class="d-flex align-items-center justify-content-between">
+                                <b-form-checkbox
+                                    class="custom-control-success"
+                                    :value="businessItem.value"
+                                >
+                                    {{ businessItem.option }}
+                                </b-form-checkbox>
+    <!--                            <b-badge :variant="businessItem.badgeColor">-->
+                                <b-badge :variant="getColor(businessItem.id)">
+                                    + {{ businessItem.money }} руб
+                                </b-badge>
+                            </div>
                         </div>
-                    </div>
+                    </b-form-checkbox-group>
                 </div>
+
+
 
                 <div class="d-flex align-items-center justify-content-between">
                     <ul class="list-unstyled price-details">
@@ -46,7 +57,7 @@
                     <ul class="list-unstyled">
                         <li class="price-detail">
                             <div class="detail-title detail-total">
-                                Итого
+<!--                                Итого-->
                             </div>
                             <div class="detail-amt font-weight-bolder myclass">
                                 {{ finalPrice }} руб
@@ -54,6 +65,8 @@
                         </li>
                     </ul>
                 </div>
+
+
 
                 <!-- button -->
                 <b-button
@@ -104,20 +117,22 @@ export default {
     data() {
         return {
 
+            // selected: [],
+
             baseCost: 599,
 
             businessItems: [
                 {
-                    id: 0, option: 'Option #1', money: 50, badgeColor: 'light-success', checked: false,
+                    id: 0, value: 'val0', option: 'Option #1', money: 50, badgeColor: 'light-success', checked: false,
                 },
                 {
-                    id: 1, option: 'Option #2', money: 85, badgeColor: 'light-primary', checked: false,
+                    id: 1, value: 'val1', option: 'Option #2', money: 85, badgeColor: 'light-primary', checked: false,
                 },
                 {
-                    id: 2, option: 'Option #3', money: 199, badgeColor: 'light-success', checked: false,
+                    id: 2, value: 'val2', option: 'Option #3', money: 199, badgeColor: 'light-success', checked: false,
                 },
                 {
-                    id: 3, option: 'Консультация юриста', money: 459, badgeColor: 'light-success', checked: false,
+                    id: 3, value: 'val3', option: 'Консультация юриста', money: 459, badgeColor: 'light-success', checked: false,
                 },
             ],
 
@@ -131,7 +146,7 @@ export default {
         finalPrice() {
             let rez = this.baseCost;
             for (let i = 0; i < this.businessItems.length; i++) {
-                if ( this.businessItems[i].checked ) rez += this.businessItems[i].money;
+                if ( this.selected.indexOf( this.businessItems[i].value ) !== -1 ) rez += this.businessItems[i].money;
             }
 
             return rez;
@@ -142,11 +157,18 @@ export default {
         },
 
         selected: {
-            get() { return this.$store.state.q0select; },
-            set(value) { this.$store.commit('setq0select', value); }
+            get() { return this.$store.state.checkoutSelect; },
+            set(value) { this.$store.commit('setCheckoutSelect', value); }
         }
     },
     methods: {
+
+        getColor(k) {
+            let rez = 'light-primary';
+            if ( this.selected.indexOf( this.businessItems[k].value ) !== -1 ) { rez = 'light-success'; }
+
+            return rez;
+        },
 
 
         // validationForm() {
@@ -177,6 +199,7 @@ export default {
                         trans: this.$store.state.trans,             // 11
                         q12items: this.$store.state.q12items,       // 12
                         q13items: this.$store.state.q13items,       // 13
+                        checkoutSelect: this.$store.state.checkoutSelect,
                     }
                 }
             }).then((response) => {
