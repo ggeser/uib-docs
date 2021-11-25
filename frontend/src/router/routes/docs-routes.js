@@ -39,6 +39,14 @@ export default [
             // layout: 'full',
         },
     },
+    {
+        path: '/success',
+        name: 'success',
+        component: () => import('@/views/1-uib-docs/success/success.vue'),
+        meta: {
+            // layout: 'full',
+        },
+    },
     // {
     //   path: '/dashboard/ecommerce',
     //   name: 'dashboard-ecommerce',

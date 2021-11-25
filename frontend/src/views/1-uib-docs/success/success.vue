@@ -6,7 +6,7 @@
             class="business-card"
         >
             <b-card-header class="pb-1">
-                <b-card-title>Корзина</b-card-title>
+                <b-card-title>Success</b-card-title>
             </b-card-header>
 
             <b-card-body>
@@ -14,57 +14,8 @@
                 <h6 class="mb-75">
                     Базовая стоимость {{ baseCost }} руб
                 </h6>
-                <div class="business-items">
-                    <b-form-checkbox-group
-                        v-model="selected"
-                        name="checkbox-validation"
-                    >
-                        <div
-                            v-for="businessItem in businessItems"
-                            :key="businessItem.id"
-                            class="business-item"
-                        >
-                            <div class="d-flex align-items-center justify-content-between">
-                                <b-form-checkbox
-                                    class="custom-control-success"
-                                    :value="businessItem.value"
-                                >
-                                    {{ businessItem.option }}
-                                </b-form-checkbox>
-    <!--                            <b-badge :variant="businessItem.badgeColor">-->
-                                <b-badge :variant="getColor(businessItem.id)">
-                                    + {{ businessItem.money }} руб
-                                </b-badge>
-                            </div>
-                        </div>
-                    </b-form-checkbox-group>
-                </div>
 
-
-
-                <div class="d-flex align-items-center justify-content-between">
-                    <ul class="list-unstyled price-details">
-                        <li class="price-detail">
-                            <div class="details-title">
-                                Итоговая стоимость:
-                            </div>
-                            <div class="detail-amt font-weight-bolder">
-
-                            </div>
-                        </li>
-                    </ul>
-
-                    <ul class="list-unstyled">
-                        <li class="price-detail">
-                            <div class="detail-title detail-total">
-<!--                                Итого-->
-                            </div>
-                            <div class="detail-amt font-weight-bolder myclass">
-                                {{ finalPrice }} руб
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                Success
 
 
 
@@ -73,7 +24,6 @@
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     variant="primary"
                     block
-                    @click="formSubmitted"
                 >
                     Перейти к оплате
                 </b-button>
@@ -120,38 +70,12 @@ export default {
 
             // selected: [],
 
-            baseCost: 599,
-
-            businessItems: [
-                {
-                    id: 0, value: 'val0', option: 'Option #1', money: 50, badgeColor: 'light-success', checked: false,
-                },
-                {
-                    id: 1, value: 'val1', option: 'Option #2', money: 85, badgeColor: 'light-primary', checked: false,
-                },
-                {
-                    id: 2, value: 'val2', option: 'Option #3', money: 199, badgeColor: 'light-success', checked: false,
-                },
-                {
-                    id: 3, value: 'val3', option: 'Консультация юриста', money: 459, badgeColor: 'light-success', checked: false,
-                },
-            ],
-
             required,
             email,
 
         }
     },
     computed: {
-
-        finalPrice() {
-            let rez = this.baseCost;
-            for (let i = 0; i < this.businessItems.length; i++) {
-                if ( this.selected.indexOf( this.businessItems[i].value ) !== -1 ) rez += this.businessItems[i].money;
-            }
-
-            return rez;
-        },
 
         state() {
             return this.selected.length >= 1
@@ -163,22 +87,6 @@ export default {
         }
     },
     methods: {
-
-        getColor(k) {
-            let rez = 'light-primary';
-            if ( this.selected.indexOf( this.businessItems[k].value ) !== -1 ) { rez = 'light-success'; }
-
-            return rez;
-        },
-
-
-        // validationForm() {
-        //     this.$refs.simpleRules.validate().then(success => {
-        //         if (success) {
-        //             router.push('master')
-        //         }
-        //     })
-        // },
 
         formSubmitted() {
             axios({

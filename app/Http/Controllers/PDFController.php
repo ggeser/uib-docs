@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Davidnadejdin\LaravelRobokassa\Robokassa;
 use Illuminate\Http\Request;
-use PDF;
+use Barryvdh\DomPDF\PDF;
+use Davidnadejdin\LaravelRobokassa\LaravelRobokassaClass;
 
 class PDFController extends Controller
 {
@@ -18,35 +20,42 @@ class PDFController extends Controller
         error_log('@@ lara generatePDF $request'. $request);
         $params = $request["params"];
 
-        $q0select = $params["q0select"];                // 0
-        $orgType = $params["orgType"];                  // 1
-        $region = $params["region"]["value"];           // 2
-        $rekv = $params["rekv"];                        // 3
-        $q4Selected = $params["q4Selected"];            // 4
-        $q5select = $params["q5select"];                // 5
+//        $q0select = $params["q0select"];                // 0
+//        $orgType = $params["orgType"];                  // 1
+//        $region = $params["region"]["value"];           // 2
+//        $rekv = $params["rekv"];                        // 3
+//        $q4Selected = $params["q4Selected"];            // 4
+//        $q5select = $params["q5select"];                // 5
+//
+////        var_dump($q0select[0]);
+////        error_log('@@ '. $q0select[0]);
+////        if (in_array("val0", $q0select)) {
+////            error_log('@@ 1');
+////        }
+////        else{
+////            error_log('@@ 0');
+////        }
+//
+//
+//        $data = array(
+//            "q0select" => $q0select,        // 0
+//            "orgType" => $orgType,          // 1
+//            "region" => $region,            // 2
+//            "rekv" => $rekv,                // 3
+//            "q4Selected" => $q4Selected,    // 4
+//            "q5select" => $q5select,        // 5
+//
+//        );
+//
+//        $pdf = PDF::loadView('preview3', $data);
+//
+//        return $pdf->download('demo.pdf');
 
-//        var_dump($q0select[0]);
-//        error_log('@@ '. $q0select[0]);
-//        if (in_array("val0", $q0select)) {
-//            error_log('@@ 1');
-//        }
-//        else{
-//            error_log('@@ 0');
-//        }
+        $payment = Robokassa::createPayment("00000001",100,"test1");
 
+        error_log('@@ $payment->getPaymentUrl()'. $payment->getPaymentUrl());
 
-        $data = array(
-            "q0select" => $q0select,        // 0
-            "orgType" => $orgType,          // 1
-            "region" => $region,            // 2
-            "rekv" => $rekv,                // 3
-            "q4Selected" => $q4Selected,    // 4
-            "q5select" => $q5select,        // 5
+        return redirect($payment->getPaymentUrl());
 
-        );
-
-        $pdf = PDF::loadView('preview3', $data);
-        return $pdf->download('demo.pdf');
-//        return $pdf->stream('demo.pdf');
     }
 }
