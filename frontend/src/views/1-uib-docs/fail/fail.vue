@@ -6,16 +6,16 @@
             class="business-card"
         >
             <b-card-header class="pb-1">
-                <b-card-title>Success</b-card-title>
+                <b-card-title>Fail</b-card-title>
             </b-card-header>
 
             <b-card-body>
-                <b-card-text>Оплата прошла успешно</b-card-text>
+                <b-card-text>Оплата не прошла</b-card-text>
                 <h6 class="mb-75">
-                    Success
+                    Fail
                 </h6>
 
-                Success
+                Fail
 
 
 
@@ -25,7 +25,7 @@
                     variant="primary"
                     block
                 >
-                    Скачать pdf
+                    Вернуться к корзине
                 </b-button>
             </b-card-body>
         </b-card>

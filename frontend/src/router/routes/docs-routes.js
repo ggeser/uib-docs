@@ -47,6 +47,16 @@ export default [
             // layout: 'full',
         },
     },
+    {
+        path: '/fail',
+        name: 'fail',
+        component: () => import('@/views/1-uib-docs/fail/fail.vue'),
+        meta: {
+            // layout: 'full',
+        },
+    },
+
+
     // {
     //   path: '/dashboard/ecommerce',
     //   name: 'dashboard-ecommerce',

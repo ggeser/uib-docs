@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StructController;
 use App\Http\Controllers\DepartController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,6 +21,8 @@ use App\Http\Controllers\PDFController;
 
 //    error_log('@@ api.php');
 
+    Route::post('/api/payment/result', [PaymentController::class, 'resultPayment'])->name('paument.generate');
+    Route::post('/api/payment/generate', [PaymentController::class, 'generatePayment'])->name('paument.generate');
     Route::post('/api/pdf/generate', [PDFController::class, 'generatePDF'])->name('pdf.generate');
 
 

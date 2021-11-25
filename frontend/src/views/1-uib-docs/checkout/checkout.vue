@@ -182,7 +182,7 @@ export default {
 
         requestPayment() {
             axios({
-                url: '/api/pdf/generate',
+                url: '/api/payment/generate',
                 method: 'POST',
                 // responseType: 'blob', // important
                 data: {
@@ -204,15 +204,23 @@ export default {
                     }
                 }
             }).then((response) => {
-                console.log(response);
-                console.log(response.data);
-                console.log(response.data.href);
+                // console.log(response);
+                // console.log(response.data);
+                // console.log(response.data.href);
+                console.log(response.data.url);
 
-                if (response.data.href !== undefined) {
-                    location.href = response.data.href
+                // window.location.href = response.data.url;
+
+                if (response.data.url !== undefined) {
+                    location.href = response.data.url
                 } else {
                     location.reload(true);
                 }
+                // if (response.data.href !== undefined) {
+                //     location.href = response.data.href
+                // } else {
+                //     location.reload(true);
+                // }
             })
                 .catch(function (error) {
                     console.log(error);
