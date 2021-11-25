@@ -53,9 +53,9 @@ class PDFController extends Controller
 
         $payment = Robokassa::createPayment("00000001",100,"test1");
 
-        error_log('@@ $payment->getPaymentUrl()'. $payment->getPaymentUrl());
+        $url = $payment->getPaymentUrl();
+        error_log('@@ $payment->getPaymentUrl()'. $url);
 
-        return redirect($payment->getPaymentUrl());
-
+        return response()->json($url);
     }
 }
