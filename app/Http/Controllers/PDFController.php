@@ -21,12 +21,12 @@ class PDFController extends Controller
 
         $orgType = '';
 
-        $q0select = $params["q0select"] ?? ' ';                // 0
-        if ( $params["orgType"] !== null && count($params["orgType"]) !== 0 ) { $orgType = $params["orgType"]; } // 1
-        $region = $params["region"]["value"] ?? ' ';          // 2
-        $rekv = $params["rekv"] ?? ' ';                        // 3
-        $q4Selected = $params["q4Selected"] ?? ' ';            // 4
-        $q5select = $params["q5select"] ?? ' ';                // 5
+//        $q0select = $params["q0select"] ?? ' ';                // 0
+        if ( $params["orgType"] !== null && ($params["orgType"]) !== [] ) { $orgType = $params["orgType"]; } // 1
+//        $region = $params["region"]["value"] ?? ' ';          // 2
+//        $rekv = $params["rekv"] ?? ' ';                        // 3
+//        $q4Selected = $params["q4Selected"] ?? ' ';            // 4
+//        $q5select = $params["q5select"] ?? ' ';                // 5
 
 
 
