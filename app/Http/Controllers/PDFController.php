@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\PDF;
+use PDF;
 
 
 class PDFController extends Controller
@@ -19,12 +19,16 @@ class PDFController extends Controller
         error_log('@@ lara generatePDF $request'. $request);
         $params = $request["params"];
 
-        $q0select = $params["q0select"];                // 0
-        $orgType = $params["orgType"];                  // 1
-        $region = $params["region"]["value"];           // 2
-        $rekv = $params["rekv"];                        // 3
-        $q4Selected = $params["q4Selected"];            // 4
-        $q5select = $params["q5select"];                // 5
+        $orgType = '';
+
+        $q0select = $params["q0select"] ?? ' ';                // 0
+        if ( $params["orgType"] !== null && count($params["orgType"]) !== 0 ) { $orgType = $params["orgType"]; } // 1
+        $region = $params["region"]["value"] ?? ' ';          // 2
+        $rekv = $params["rekv"] ?? ' ';                        // 3
+        $q4Selected = $params["q4Selected"] ?? ' ';            // 4
+        $q5select = $params["q5select"] ?? ' ';                // 5
+
+
 
 //        var_dump($q0select[0]);
 //        error_log('@@ '. $q0select[0]);
@@ -37,12 +41,12 @@ class PDFController extends Controller
 
 
         $data = array(
-            "q0select" => $q0select,        // 0
-            "orgType" => $orgType,          // 1
-            "region" => $region,            // 2
-            "rekv" => $rekv,                // 3
-            "q4Selected" => $q4Selected,    // 4
-            "q5select" => $q5select,        // 5
+            "q0select" => $q0select ?? ' ',        // 0
+            "orgType" => $orgType ?? ' ',          // 1
+            "region" => $region ?? ' ',            // 2
+            "rekv" => $rekv ?? ' ',                // 3
+            "q4Selected" => $q4Selected ?? ' ',    // 4
+            "q5select" => $q5select ?? ' ',        // 5
 
         );
 

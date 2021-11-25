@@ -24,6 +24,7 @@
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     variant="primary"
                     block
+                    @click="formSubmitted"
                 >
                     Скачать pdf
                 </b-button>
