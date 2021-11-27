@@ -12,14 +12,3 @@
 10. feather-icons - иконки.
 11. Vuexy - bootstrap шаблон дизайна.
 
-
-
-timeweb
-ВЫГРУЗКА САЙТА
-- создать в админке новый сайт и создать для него папку
-- привязать к сайту домен
-- скомпилить сайт в продакт режиме. Взаимное расположение папок не трогаю, все остается на своих местах: папка laravel, public итд
-- выгрузить сайт в папку на хостинге по фтп, убедиться что есть папка public
-- создать символьную ссылку с public_html на public согласно инструкции https://timeweb.com/ru/help/pages/viewpage.action?pageId=4358246
-ln -s ~/uib-docs/public ~/uib-docs/public_html
-- если сайт не работает убедиться что уже установлен npm nodejs и сделать по инструкции https://timeweb.com/ru/help/pages/viewpage.action?pageId=8781927
