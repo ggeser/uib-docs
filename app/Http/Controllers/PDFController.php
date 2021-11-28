@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use PDF;
 
 
@@ -23,7 +24,7 @@ class PDFController extends Controller
 
 //        $q0select = $params["q0select"] ?? ' ';                // 0
         if ( $params["orgType"] !== null && ($params["orgType"]) !== [] ) { $orgType = $params["orgType"]; } // 1
-//        $region = $params["region"]["value"] ?? ' ';          // 2
+        $region = $params["region"]["value"] ?? ' ';          // 2
 //        $rekv = $params["rekv"] ?? ' ';                        // 3
 //        $q4Selected = $params["q4Selected"] ?? ' ';            // 4
 //        $q5select = $params["q5select"] ?? ' ';                // 5
@@ -39,11 +40,15 @@ class PDFController extends Controller
 //            error_log('@@ 0');
 //        }
 
+        $regionsArr = Config::get('constants.regions');
+        $RegionOtdel = $regionsArr[$region]["desc"];
+
+
 
         $data = array(
             "q0select" => $q0select ?? ' ',        // 0
             "orgType" => $orgType ?? ' ',          // 1
-            "region" => $region ?? ' ',            // 2
+            "region" => $RegionOtdel ?? ' ',            // 2
             "rekv" => $rekv ?? ' ',                // 3
             "q4Selected" => $q4Selected ?? ' ',    // 4
             "q5select" => $q5select ?? ' ',        // 5
