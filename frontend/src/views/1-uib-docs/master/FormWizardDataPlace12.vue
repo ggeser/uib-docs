@@ -208,8 +208,12 @@ export default {
         this.initTrHeight();
 
         this.trSetHeight(93)
+
+        let len = 1;
+        if ( this.items.length !== null && this.items.length >= 1 ) { len = this.items.length; }
+
         this.$nextTick(() => {
-            this.trSetHeight(93*this.items.length)
+            this.trSetHeight(93 * len)
         })
     },
     created() {

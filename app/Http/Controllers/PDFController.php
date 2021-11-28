@@ -34,26 +34,35 @@ class PDFController extends Controller
         $q9select = $params["q9select"] ?? ' ';                                                                  // 9 !
         $q10items = $params["q10items"] ?? ' ';                                                                  // 10
         if ( $params["trans"] !== null && ($params["trans"]) !== [] ) { $trans = $params["trans"]; }             // 11
+        $q12items = $params["q12items"] ?? ' ';                                                                  // 12
+        $q13items = $params["q13items"] ?? ' ';                                                                  // 13
+        $checkoutSelect = $params["checkoutSelect"] ?? ' ';                                                      // checkout
+
 
 
         $regionsArr = Config::get('constants.regions');
         $RegionOtdel = $regionsArr[$region]["desc"] ?? '';
 //        error_log('@@ '. $rekv["full_name"]);
 //        error_log('@@ '. $q10items[0]["text"]);
+//        error_log('@@ '. count($q12items) . "  " . $q12items[0]["address"] . "  " . $q12items[0]["zod"]);
+//        error_log('@@ '. count($q13items) . "  " . $$q13items[0]["name"]);
 
 
         $data = array(
-            "q0select" => $q0select ?? ' ',        // 0
-            "orgType" => $orgType ?? ' ',          // 1
-            "region" => $RegionOtdel ?? ' ',       // 2
-            "rekv" => $rekv ?? ' ',                // 3
-            "q4Selected" => $q4Selected ?? ' ',    // 4
-            "q5select" => $q5select ?? ' ',        // 5
-            "q6Selected" => $q6Selected ?? ' ',    // 6
-            "q7select" => $q7select ?? ' ',        // 7
-            "q9select" => $q9select ?? ' ',        // 9 !
-            "q10items" => $q10items ?? ' ',        // 10
-            "trans"    => $trans ?? ' ',           // 11
+            "q0select" => $q0select ?? ' ',                 // 0
+            "orgType" => $orgType ?? ' ',                   // 1
+            "region" => $RegionOtdel ?? ' ',                // 2
+            "rekv" => $rekv ?? ' ',                         // 3
+            "q4Selected" => $q4Selected ?? ' ',             // 4
+            "q5select" => $q5select ?? ' ',                 // 5
+            "q6Selected" => $q6Selected ?? ' ',             // 6
+            "q7select" => $q7select ?? ' ',                 // 7
+            "q9select" => $q9select ?? ' ',                 // 9 !
+            "q10items" => $q10items ?? ' ',                 // 10
+            "trans"    => $trans ?? ' ',                    // 11
+            "q12items" => $q12items ?? ' ',                 // 12
+            "q13items" => $q13items ?? ' ',                 // 13
+            "checkoutSelect" => $checkoutSelect ?? ' ',     // checkout
 
         );
 

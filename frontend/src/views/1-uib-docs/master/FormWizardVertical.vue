@@ -10,7 +10,7 @@
       next-button-text="Далее"
       class="wizard-vertical mb-3"
       :startIndex="startIndex"
-      @on-complete="formSubmitted"
+      @on-complete="endOpros"
     >
 
 
@@ -173,7 +173,6 @@
         </tab-content>
 
 
-
     </form-wizard>
 
 
@@ -304,6 +303,10 @@ export default {
             });
         },
 
+
+        endOpros() {
+            router.push('checkout')
+        },
 
         formClearData() {
             this.$store.commit('clearStore');
