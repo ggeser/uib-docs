@@ -96,20 +96,20 @@ export default {
                 responseType: 'blob', // important
                 data: {
                     params: {
-                        q0select: this.$store.state.q0select,       // 0
-                        orgType: this.$store.state.orgType,         // 1
-                        region: this.$store.state.region,           // 2
-                        rekv: this.$store.state.rekv,               // 3
-                        q4Selected: this.$store.state.q4Selected,   // 4
-                        q5select: this.$store.state.q5select,       // 5
-                        q6Selected: this.$store.state.q6Selected,   // 6
-                        q7select: this.$store.state.q7select,       // 7
-                        q9select: this.$store.state.q9select,       // 9
-                        q10items: this.$store.state.q10items,       // 10
-                        trans: this.$store.state.trans,             // 11
-                        q12items: this.$store.state.q12items,       // 12
-                        q13items: this.$store.state.q13items,       // 13
-                        checkoutSelect: this.$store.state.checkoutSelect,
+                        q0select: this.$store.state.q0select,               // 0
+                        orgType: this.$store.state.orgType,                 // 1
+                        region: this.$store.state.region,                   // 2
+                        rekv: this.$store.state.rekv,                       // 3
+                        q4Selected: this.$store.state.q4Selected,           // 4
+                        q5select: this.$store.state.q5select,               // 5
+                        q6Selected: this.$store.state.q6Selected,           // 6
+                        q7select: this.$store.state.q7select,               // 7
+                        q9select: this.$store.state.q9select,               // 9
+                        q10items: this.$store.state.q10items,               // 10
+                        trans: this.$store.state.trans,                     // 11
+                        q12items: this.$store.state.q12items,               // 12
+                        q13items: this.$store.state.q13items,               // 13
+                        checkoutSelect: this.$store.state.checkoutSelect,   //checkout
                     }
                 }
             }).then((response) => {

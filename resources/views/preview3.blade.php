@@ -54,9 +54,11 @@
                     Настоящее Пользовательское соглашение (далее – Соглашение) относится к сайту
                     <br>
                     <br>$orgType == {{ $orgType }}.
-{{--                    <br>$rekv["full_name"] == {{ $rekv["full_name"] }}.--}}
-{{--                    <br>$rekv["short_name"] == {{ $rekv["short_name"] }}.--}}
-{{--                    <br>$region == {{ $region }}.--}}
+                    <br>$rekv["full_name"] == {{ $rekv["full_name"] }}.
+                    <br>$rekv["short_name"] == {{ $rekv["short_name"] }}.
+                    <br>$region == {{ $region }}.
+
+                    <br>$q10items[0]["text"] == {{ $q10items[0]["text"] }}.
 
 
                     <br>
