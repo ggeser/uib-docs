@@ -17,6 +17,7 @@ class PDFController extends Controller
 
     public function generatePDF(Request $request)
     {
+
         error_log('@@ lara generatePDF $request'. $request);
         $params = $request["params"];
 
